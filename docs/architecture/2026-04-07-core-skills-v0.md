@@ -149,6 +149,12 @@ Produces the reusable learning artifact:
 
 The next iteration should add:
 
-1. define the owner-led challenge pattern for `cmon:design`
-2. refresh the end-to-end example so it exercises the explicit `cmon:design` stage
-3. add a second end-to-end example that exercises a larger or multi-file unit
+1. refresh the end-to-end example so it exercises the explicit `cmon:design` stage
+2. add execution strategy selection to `cmon:work`
+3. add stronger system-interaction checks to `cmon:work`
+4. exercise the new `cmon:plan` critique stack and `cmon:work` review loop in a richer example
+
+Detailed comparison and prioritization live in:
+
+- `docs/architecture/2026-04-07-design-plan-work-benchmark-v0.md`
+- `docs/architecture/2026-04-07-design-plan-work-v1-gap-list.md`

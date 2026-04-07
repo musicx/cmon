@@ -23,6 +23,11 @@ This alignment also makes one governance choice explicit:
 - multi-role coverage is required across the lifecycle
 - symmetric multi-role parallelism is not required at every stage
 
+For a deeper stage-by-stage benchmark and the resulting implementation backlog, see:
+
+- `docs/architecture/2026-04-07-design-plan-work-benchmark-v0.md`
+- `docs/architecture/2026-04-07-design-plan-work-v1-gap-list.md`
+
 ## 1. Synthesis
 
 ### What `superpowers` contributes
@@ -242,6 +247,5 @@ This alignment implies these foundational choices for `cmon`:
 
 The next high-value follow-up after this alignment pass is:
 
-- define the lightweight challenge pattern for owner-led `cmon:design`
+- add execution strategy selection and stronger system interaction checks to `cmon:work`
 - refresh the end-to-end example so the chain includes `cmon:design`
-- then evaluate whether plan-quality review should run as a dedicated `cmon` skill or remain embedded inside `cmon:plan`

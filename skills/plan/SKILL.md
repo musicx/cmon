@@ -11,6 +11,11 @@ Define how approved work will be implemented.
 
 Its job is to produce a decision-quality implementation plan that gives `cmon:work` a safe boundary.
 
+`cmon:plan` now has two canonical modes:
+
+- `create` for writing a new implementation plan
+- `deepen` for strengthening an existing plan in place
+
 ## Preconditions
 
 Use this skill when one of these is true:
@@ -37,6 +42,8 @@ Produce a plan that includes:
 9. Risks or deferred questions
 
 Use `templates/plans/implementation-plan-template.md` as the default starting structure.
+Use `templates/plans/plan-run-manifest-template.md` when planning mode, research scope, or upstream inputs should be explicit before the pass begins.
+Use `templates/plans/plan-critique-input-template.md` when the plan should pass through the pre-work critique stack before execution.
 
 ## Plan Philosophy
 
@@ -50,6 +57,7 @@ It should answer:
 - which existing patterns should be followed
 - what must be tested
 - how correctness will be checked
+- what research and prior knowledge shaped the chosen structure when that matters
 
 It should not try to pre-write all production code.
 
@@ -62,14 +70,19 @@ A plan is not ready unless:
 - every feature-bearing unit has concrete test scenarios
 - execution boundaries are small enough to review cleanly
 - no critical requirement is delegated to executor improvisation
+- local patterns and prior learnings have been considered
+- deferred questions are truly execution-owned rather than hidden planning gaps
+- non-trivial plans have survived a lightweight critique pass before execution starts
 
 ## Workflow
 
-1. Read the approved requirements source
-2. Read the approved design source when one exists
-3. Re-read local repo constraints, patterns, and prior learnings
-4. Define a bounded set of implementation units
-5. For each unit, specify:
+1. Resolve whether this pass is `create` or `deepen`
+2. Read the approved requirements source
+3. Read the approved design source when one exists
+4. Re-read local repo constraints, patterns, and prior learnings
+5. Run conditional external research when the topic is risky or local patterns are thin
+6. Define or tighten a bounded set of implementation units
+7. For each unit, specify:
    - goal
    - files or modules in scope
    - constraints
@@ -78,9 +91,35 @@ A plan is not ready unless:
    - test scenarios
    - execution note when posture matters
    - verification
-6. Identify what is explicitly out of scope
-7. Run a self-check for coverage, placeholders, and vague tests
-8. Write the plan to `docs/plans/`
+8. Identify what is explicitly out of scope
+9. Run a self-check for coverage, placeholders, weak research, and vague tests
+10. Run the pre-work critique stack when the plan is non-trivial, cross-cutting, or risk-bearing
+11. Write the plan to `docs/plans/`
+
+Use:
+
+- `templates/plans/research-summary-template.md` when research inputs should be captured explicitly
+- `templates/plans/plan-deepening-template.md` when strengthening an existing plan
+- `templates/plans/plan-critique-summary-template.md` when merging critique feedback into one readiness decision
+
+## Plan Critique Stack
+
+For non-trivial plans, run a smaller critique stack before handing off to `cmon:work`.
+
+The default critiques are:
+
+1. `design-consistency-review`
+   - checks whether the plan still preserves approved design and user-facing behavior
+
+2. `engineering-feasibility-review`
+   - checks whether boundaries, dependencies, architecture, and verification survive contact with the codebase
+
+3. `scope-risk-review`
+   - checks whether the plan is overreaching, under-defended, or hiding avoidable risk
+
+This stack is intentionally smaller than `gstack`.
+
+It is meant to tighten a plan, not turn planning into a heavy runtime or a many-round approval ceremony.
 
 ## Implementation Unit Standard
 
@@ -108,9 +147,17 @@ Each unit must include:
 - Do not produce a plan that leaves execution boundaries vague
 - Do not invent missing design decisions that should have been resolved earlier
 - Do not move to code from this skill
+- Do not skip local pattern and learning recovery
+- Do not use `deepen` as a way to avoid confronting upstream ambiguity
 
 ## Handoff
 
 The only normal next step is:
 
 - `cmon:work`
+
+The operational execution and manual procedure are documented in:
+
+- `docs/architecture/2026-04-07-plan-execution-v0.md`
+- `docs/architecture/2026-04-07-plan-operating-procedure-v0.md`
+- `docs/architecture/2026-04-07-plan-review-stack-v0.md`

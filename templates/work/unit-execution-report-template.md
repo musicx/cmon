@@ -30,6 +30,13 @@
 - Evidence Summary:
   - <summary>
 
+## Internal Review Loop
+
+- Spec Compliance Review Path: <path or "inline below">
+- Spec Compliance Outcome: <pass | fix_required>
+- Code Quality Review Path: <path or "inline below">
+- Code Quality Outcome: <pass | fix_required>
+
 ## Trace Integrity
 
 - Requirements preserved: <yes | no | unclear>

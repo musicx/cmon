@@ -3,6 +3,7 @@ title: <clear design title>
 status: draft
 date: YYYY-MM-DD
 origin: docs/brainstorms/<requirements-file>.md
+owner_mode: product-led | engineering-led
 ---
 
 # <Clear Design Title>
@@ -10,6 +11,11 @@ origin: docs/brainstorms/<requirements-file>.md
 ## Problem Frame
 
 [Short restatement of the approved problem and intended outcome]
+
+## Design Scope
+
+- Owner Mode: <product-led | engineering-led>
+- Design Focus: <what ambiguity this design pass removes before planning>
 
 ## Design Goals
 
@@ -62,6 +68,11 @@ origin: docs/brainstorms/<requirements-file>.md
 - User or operator clarity: [strong | weak | needs revision]
 - Operability realism: [strong | weak | needs revision]
 - Ambiguity left for implementer: [acceptable | too high]
+
+## Challenge Decision
+
+- Planning readiness: [ready | revise]
+- Must fix before planning: [short summary or "none"]
 
 ## Next Step
 

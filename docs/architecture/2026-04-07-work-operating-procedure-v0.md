@@ -95,7 +95,36 @@ The evidence must come from this session.
 
 Do not reuse stale output unless the command was rerun after the relevant code changed.
 
-## 7. Step 6: Write The Unit Execution Report
+## 7. Step 6: Run Spec Compliance Review
+
+After verification succeeds, assemble a packet using:
+
+- `templates/work/spec-compliance-input-template.md`
+
+The goal is to answer:
+
+- did the unit stay aligned with requirements, design, and plan
+- does the evidence actually support the unit claim
+
+If the answer is not clearly yes, return to implementation.
+
+Do not move forward just because tests passed.
+
+## 8. Step 7: Run Code-Quality Review
+
+Only after spec compliance is sound, assemble:
+
+- `templates/work/code-quality-review-input-template.md`
+
+The goal is to surface:
+
+- obvious maintainability traps
+- weak tests or weak evidence
+- incomplete handling inside the approved scope
+
+If material concerns remain, return to implementation and rerun the loop.
+
+## 9. Step 8: Write The Unit Execution Report
 
 After implementation and verification, write:
 
@@ -106,10 +135,11 @@ The report should include:
 - what changed
 - files changed
 - verification evidence
+- internal review loop results
 - open findings
 - whether scope stayed intact
 
-## 8. Step 7: Route To The Next Skill
+## 10. Step 9: Route To The Next Skill
 
 Default next step:
 
@@ -123,7 +153,7 @@ If the unit could not be completed because the plan boundary broke:
 
 - return to `cmon:plan`
 
-## 9. Failure Cases
+## 11. Failure Cases
 
 Stop and surface the issue when:
 
@@ -131,5 +161,7 @@ Stop and surface the issue when:
 - required verification is unavailable
 - a file outside scope is needed and expansion is not narrow
 - the change needs product or architectural re-decision
+- spec compliance review shows plan or design drift
+- code-quality review shows material engineering weakness inside the unit
 
 `cmon:work` should fail loudly rather than succeed ambiguously.

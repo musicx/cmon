@@ -1,6 +1,6 @@
 ---
 name: cmon:work
-description: Use to execute an approved implementation unit within explicit boundaries. Enforces scoped implementation, fresh verification, and no-drift execution.
+description: Use to execute an approved implementation unit within explicit boundaries. Enforces scoped implementation, fresh verification, internal review loops, and no-drift execution.
 ---
 
 # cmon:work
@@ -43,9 +43,12 @@ Use `templates/work/work-run-manifest-template.md` as the default way to lock th
 5. Implement only what the unit requires
 6. If scope expansion appears necessary, stop and record it explicitly
 7. Verify the unit with explicit evidence
-8. Run a direct self-review for plan drift, edge cases, and missing coverage
-9. Record any findings that affect later units or require review
-10. Produce a clean handoff package for `cmon:review`
+8. Run internal spec compliance review against requirements, design, and plan
+9. If compliance fails, return to the same unit and correct it before proceeding
+10. Run internal code-quality review on the completed unit
+11. If code quality fails, return to the same unit and correct it before proceeding
+12. Record any findings that affect later units or require review
+13. Produce a clean handoff package for `cmon:review`
 
 ## Execution Posture
 
@@ -88,6 +91,22 @@ Unacceptable completion language:
 
 If the plan's test scenarios are obviously incomplete for the unit, supplement them before claiming completion. Do not pretend the missing cases do not exist.
 
+## Internal Review Loop
+
+Before a unit can hand off to `cmon:review`, it must pass two narrower internal checks:
+
+1. `spec-compliance-review`
+   - confirms the implemented unit still matches approved requirements, design, and plan boundaries
+   - uses `templates/work/spec-compliance-input-template.md`
+
+2. `code-quality-review`
+   - checks maintainability, edge cases, verification sufficiency, and obvious engineering weaknesses inside the approved scope
+   - uses `templates/work/code-quality-review-input-template.md`
+
+These are not replacements for `cmon:review`.
+
+They exist to catch obvious drift and weak execution before the change reaches the broader multi-lens review stage.
+
 ## Output
 
 For each executed unit, report:
@@ -96,6 +115,7 @@ For each executed unit, report:
 - `Files changed`
 - `Requirements / Design trace`
 - `Verification`
+- `Internal review loop result`
 - `Open findings for review`
 
 Use `templates/work/unit-execution-report-template.md` as the default handoff structure.
@@ -107,6 +127,7 @@ Use `templates/work/unit-execution-report-template.md` as the default handoff st
 - No hidden scope expansion
 - No hiding plan gaps behind "reasonable assumptions"
 - No jumping to adjacent units without closing the current one
+- No skipping the internal review loop because the code "looks fine"
 
 ## Handoff
 

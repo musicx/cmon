@@ -3,9 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
-This document defines the first real execution scaffolding for `cmon:work`.
+This document defines the current execution scaffolding for `cmon:work`.
 
-Its job is to turn plan units into bounded implementation runs.
+Its job is to turn plan units into bounded implementation runs with an internal review loop before broader review.
 
 ## 1. Purpose
 
@@ -27,9 +27,11 @@ For each execution unit, `cmon:work` must:
 2. restate the unit boundary explicitly
 3. execute only within that boundary
 4. produce fresh verification evidence
-5. report what changed and what still needs review
+5. run internal spec compliance review
+6. run internal code-quality review
+7. report what changed and what still needs review
 
-If it cannot do one of those five things, it should stop and surface the problem.
+If it cannot do one of those seven things, it should stop and surface the problem.
 
 ## 3. Required Inputs
 
@@ -50,7 +52,7 @@ Preferred explicit manifest:
 
 ## 4. Output Artifacts
 
-`cmon:work` should standardize four work artifacts.
+`cmon:work` should standardize six work artifacts.
 
 ### 4.1 Work Run Manifest
 
@@ -92,7 +94,33 @@ Template:
 
 - `templates/work/verification-evidence-template.md`
 
-### 4.4 Unit Execution Report
+### 4.4 Spec Compliance Review Input
+
+Used after verification and before final handoff.
+
+Purpose:
+
+- compare the implemented unit against requirements, design, and plan intent
+- detect boundary drift before broader review
+
+Template:
+
+- `templates/work/spec-compliance-input-template.md`
+
+### 4.5 Code Quality Review Input
+
+Used only after spec compliance review passes.
+
+Purpose:
+
+- inspect the finished unit for maintainability, coverage gaps, and weak verification
+- catch obvious engineering issues before external review
+
+Template:
+
+- `templates/work/code-quality-review-input-template.md`
+
+### 4.6 Unit Execution Report
 
 Used at the end of the unit.
 
@@ -184,13 +212,80 @@ At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package
 
 The point is to make `cmon:review` judge the actual executed unit, not reconstruct it from chat memory.
 
-## 10. Why This Matches cmon Philosophy
+## 10. Internal Review Loop
+
+This is the main v0.1 upgrade inspired by the strongest part of `superpowers`.
+
+After implementation and verification, `cmon:work` should run two narrow reviews:
+
+1. spec compliance review
+2. code-quality review
+
+The order matters.
+
+Spec compliance comes first because a beautifully written change that violates the approved intent is still wrong.
+
+Code-quality review comes second because it should assess the right implementation, not a drifting one.
+
+### 10.1 Spec Compliance Review
+
+This review asks:
+
+- does the unit still match approved requirements
+- does it preserve approved design intent
+- does it stay inside the plan boundary
+- do the verification results actually support the claimed unit outcome
+
+Typical failure modes:
+
+- hidden expansion beyond the approved unit
+- quiet reinterpretation of behavior
+- skipping an edge case the unit explicitly required
+- evidence that does not prove the actual claim
+
+### 10.2 Code-Quality Review
+
+This review asks:
+
+- is the unit understandable and maintainable
+- are the main edge cases handled inside the approved scope
+- are tests and verification appropriately strong for the change
+- did the implementation create obvious future hazards
+
+Typical failure modes:
+
+- brittle structure or unclear ownership
+- weak or misleading tests
+- obvious maintainability traps
+- partial completion hidden behind passing narrow checks
+
+### 10.3 Outcome Routing
+
+If spec compliance fails:
+
+- return to the current unit immediately
+- do not continue to code-quality review
+- do not hand off to `cmon:review`
+
+If code-quality review fails:
+
+- return to the current unit immediately
+- rerun verification if the fix changes relevant behavior
+- rerun the review loop before external handoff
+
+If both pass:
+
+- write the unit execution report
+- move to `cmon:review`
+
+## 11. Why This Matches cmon Philosophy
 
 This design keeps the strongest part of `superpowers`:
 
 - bounded execution
 - verification before completion
 - stop-on-drift behavior
+- internal review before broader signoff
 
 while preserving the broader `cmon` chain:
 
@@ -199,11 +294,12 @@ while preserving the broader `cmon` chain:
 
 It strengthens discipline without requiring a large runtime.
 
-## 11. Next Step
+## 12. Next Step
 
-This contract now has a matching manual operating procedure:
+This contract now has matching operating docs:
 
 - `docs/architecture/2026-04-07-work-operating-procedure-v0.md`
+- `docs/architecture/2026-04-07-work-review-loop-v0.md`
 
 It is also exercised by this end-to-end example:
 
@@ -211,5 +307,6 @@ It is also exercised by this end-to-end example:
 
 The next useful additions are:
 
-1. optional lightweight helpers for rendering work manifests and reports
-2. a second example run that exercises scope expansion or a blocked unit
+1. execution strategy selection for inline, serial, or parallel unit delivery
+2. stronger system-wide interaction checks
+3. a second example run that exercises scope expansion or a blocked unit

@@ -22,6 +22,13 @@ This stage is owner-led by default.
 
 Other lenses challenge and constrain the design when needed, but they do not need to co-author parallel drafts by default.
 
+The canonical execution shape is now:
+
+1. owner draft
+2. non-owner challenge
+3. synthesized challenge decision
+4. revision or approval
+
 ## When to Use
 
 Use this skill when any of these are true:
@@ -89,6 +96,7 @@ Write the result to:
 - `docs/architecture/` only when the design decision is primarily architectural and repo-level
 
 Use `templates/design/design-spec-template.md` as the default structure.
+Use `templates/design/design-run-manifest-template.md` when owner mode or challenge scope should be explicit before drafting starts.
 
 The artifact must include:
 
@@ -112,6 +120,15 @@ Before handing off to `cmon:plan`, review the artifact against these dimensions:
 
 If any dimension is materially weak, revise the design artifact before planning.
 
+The v0 challenge flow uses:
+
+- `templates/design/challenge-invocation-template.md`
+- `templates/design/design-synthesizer-input-template.md`
+- `agents/design/product-challenger.md`
+- `agents/design/engineering-challenger.md`
+- `agents/design/ops-challenger.md`
+- `agents/design/design-synthesizer.md`
+
 ## Hard Rules
 
 - No implementation plan in disguise
@@ -128,3 +145,8 @@ If approved and non-blocking:
 If not:
 
 - revise the design artifact and continue design work
+
+The operational execution and manual procedure are documented in:
+
+- `docs/architecture/2026-04-07-design-execution-v0.md`
+- `docs/architecture/2026-04-07-design-operating-procedure-v0.md`

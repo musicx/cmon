@@ -5,6 +5,8 @@ status: active
 date: YYYY-MM-DD
 origin: docs/brainstorms/<requirements-file>.md
 design: docs/designs/<design-file>.md | none
+mode: create | deepen
+deepened: YYYY-MM-DD | none
 ---
 
 # <Plan Title>
@@ -45,6 +47,10 @@ design: docs/designs/<design-file>.md | none
 ### Prior Learnings
 
 - [Relevant `docs/solutions/` artifact, if any]
+
+### Research Notes
+
+- [Relevant local or external research result that shaped the plan]
 
 ## Key Technical Decisions
 
@@ -149,6 +155,13 @@ design: docs/designs/<design-file>.md | none
 - [Meaningful risk]
 - [Mitigation or fallback]
 
+## Plan Critique Result
+
+- Design consistency review: <not run | pass | revise>
+- Engineering feasibility review: <not run | pass | revise>
+- Scope and risk review: <not run | pass | revise>
+- Readiness decision: <ready_for_work | revise_plan>
+
 ## Plan Quality Check
 
 - Requirements covered: [yes | no]
@@ -156,6 +169,9 @@ design: docs/designs/<design-file>.md | none
 - Exact file paths named: [yes | no]
 - Feature-bearing units have test scenarios: [yes | no]
 - Execution boundaries are reviewable: [yes | no]
+- Research shaped the plan where needed: [yes | no]
+- Deferred questions are truly execution-owned: [yes | no]
+- Critique stack cleared when needed: [yes | no | not_needed]
 
 ## Recommended Next Step
 

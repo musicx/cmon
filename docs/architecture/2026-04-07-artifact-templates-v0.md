@@ -79,6 +79,9 @@ Key sections:
 Path:
 
 - `templates/design/design-spec-template.md`
+- `templates/design/design-run-manifest-template.md`
+- `templates/design/challenge-invocation-template.md`
+- `templates/design/design-synthesizer-input-template.md`
 
 Used by:
 
@@ -89,6 +92,7 @@ Purpose:
 - turn approved requirements into an explicit design artifact
 - make flows, states, boundaries, and interaction choices reviewable before planning
 - keep design review criteria explicit instead of hiding them inside planning
+- support owner-led challenge and approval before planning
 
 Key sections:
 
@@ -97,12 +101,16 @@ Key sections:
 - interface and boundary decisions
 - requirements trace
 - design quality gate
+- owner mode and challenge routing
 
 ### Plan
 
 Path:
 
 - `templates/plans/implementation-plan-template.md`
+- `templates/plans/plan-run-manifest-template.md`
+- `templates/plans/research-summary-template.md`
+- `templates/plans/plan-deepening-template.md`
 
 Used by:
 
@@ -111,6 +119,7 @@ Used by:
 Purpose:
 
 - turn approved intent into a bounded implementation plan
+- support planning mode selection, research capture, and deepening passes
 
 Key sections:
 
@@ -118,6 +127,7 @@ Key sections:
 - design trace
 - scope boundaries
 - existing patterns and constraints
+- research notes
 - technical decisions
 - implementation units
 - test scenarios
@@ -265,12 +275,12 @@ The initial template set now covers:
 - reusable knowledge capture
 - multi-lens review dispatch and synthesis
 
-So the template layer is sufficient for a v0.1 end-to-end document flow, with the remaining gap being the operational execution layer for `cmon:design`.
+So the template layer is sufficient for a v0.1 end-to-end document flow, including the first operational `cmon:design` challenge flow.
 
 ## 5. Immediate Next Step
 
 The next useful addition after templates is:
 
-- an owner-led operating pattern for `cmon:design`
+- stronger system-interaction checks inside `cmon:work`
 - a refreshed end-to-end example that includes `cmon:design`
-- a second end-to-end example that exercises multi-file work
+- a richer example that exercises plan critique and work review-loop artifacts together
