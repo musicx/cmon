@@ -281,6 +281,5 @@ So the template layer is sufficient for a v0.1 end-to-end document flow, includi
 
 The next useful addition after templates is:
 
-- stronger system-interaction checks inside `cmon:work`
 - a refreshed end-to-end example that includes `cmon:design`
-- a richer example that exercises plan critique and work review-loop artifacts together
+- a richer example that exercises plan critique, work review-loop, and system-interaction artifacts together

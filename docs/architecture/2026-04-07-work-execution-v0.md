@@ -5,7 +5,7 @@ Status: Draft
 
 This document defines the current execution scaffolding for `cmon:work`.
 
-Its job is to turn plan units into bounded implementation runs with an internal review loop before broader review.
+Its job is to turn plan units into bounded implementation runs with explicit strategy choice, system interaction checks, and an internal review loop before broader review.
 
 ## 1. Purpose
 
@@ -28,11 +28,12 @@ For each execution unit, `cmon:work` must:
 3. choose an execution strategy that fits the unit
 4. execute only within that boundary
 5. produce fresh verification evidence
-6. run internal spec compliance review
-7. run internal code-quality review
-8. report what changed and what still needs review
+6. run system interaction checks when the unit has non-local effects
+7. run internal spec compliance review
+8. run internal code-quality review
+9. report what changed and what still needs review
 
-If it cannot do one of those eight things, it should stop and surface the problem.
+If it cannot do one of those nine things, it should stop and surface the problem.
 
 ## 3. Required Inputs
 
@@ -46,6 +47,7 @@ Minimum inputs:
 - constraints
 - execution strategy
 - verification target
+- system interaction check requirement
 - stop condition
 
 Preferred explicit manifest:
@@ -54,7 +56,7 @@ Preferred explicit manifest:
 
 ## 4. Output Artifacts
 
-`cmon:work` should standardize six work artifacts.
+`cmon:work` should standardize eight work artifacts.
 
 ### 4.1 Work Run Manifest
 
@@ -111,7 +113,20 @@ Template:
 
 - `templates/work/verification-evidence-template.md`
 
-### 4.5 Spec Compliance Review Input
+### 4.5 System Interaction Check
+
+Used when the unit has non-local effects.
+
+Purpose:
+
+- force explicit inspection of callbacks, middleware, retries, state cleanup, and interface parity when relevant
+- close the gap between local verification and actual system behavior
+
+Template:
+
+- `templates/work/system-interaction-check-template.md`
+
+### 4.6 Spec Compliance Review Input
 
 Used after verification and before final handoff.
 
@@ -124,7 +139,7 @@ Template:
 
 - `templates/work/spec-compliance-input-template.md`
 
-### 4.6 Code Quality Review Input
+### 4.7 Code Quality Review Input
 
 Used only after spec compliance review passes.
 
@@ -137,7 +152,7 @@ Template:
 
 - `templates/work/code-quality-review-input-template.md`
 
-### 4.7 Unit Execution Report
+### 4.8 Unit Execution Report
 
 Used at the end of the unit.
 
@@ -213,13 +228,36 @@ This is intentionally narrower than `ce:work`.
 
 The strategy must serve the unit boundary, not weaken it.
 
-## 7. Stop Conditions
+## 7. System Interaction Check Policy
+
+Some units need more than local verification.
+
+Run the system interaction check when the unit touches:
+
+- callbacks, observers, hooks, or event handlers
+- middleware or request chain logic
+- retries, fallbacks, or layered error handling
+- persistence before external calls or risky side effects
+- multiple interfaces that should preserve parity
+
+The check should answer:
+
+- what else fires when this unit runs
+- whether tests exercise the real chain
+- whether failure leaves orphaned state or duplicate risk
+- whether interface parity must be preserved
+- whether error strategies align across layers
+
+This is the main place where `cmon` borrows from the strongest system-awareness parts of `ce:work` without inheriting its broader execution model.
+
+## 8. Stop Conditions
 
 `cmon:work` must stop and surface the issue when:
 
 - the current unit boundary is unclear
 - required files are out of scope
 - verification cannot be run as planned
+- a required system interaction check cannot be completed responsibly
 - a failing dependency invalidates the unit
 - the work now requires product or architectural re-decision
 
@@ -227,7 +265,7 @@ This is a core `cmon` policy:
 
 stop instead of freelancing.
 
-## 8. Scope Expansion Policy
+## 9. Scope Expansion Policy
 
 Scope expansion is allowed only when all of these are true:
 
@@ -240,7 +278,7 @@ If those conditions are not met, execution should stop and return to:
 
 - `cmon:plan`
 
-## 9. Verification Policy
+## 10. Verification Policy
 
 This is heavily influenced by `superpowers`:
 
@@ -264,7 +302,7 @@ Weak evidence includes:
 
 `cmon:work` should preserve evidence in a dedicated verification artifact or report section.
 
-## 10. Handoff Contract To Review
+## 11. Handoff Contract To Review
 
 At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package containing:
 
@@ -273,11 +311,12 @@ At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package
 - files changed
 - constraints actually observed
 - verification evidence
+- system interaction check result when relevant
 - any open findings or uncertainty
 
 The point is to make `cmon:review` judge the actual executed unit, not reconstruct it from chat memory.
 
-## 11. Internal Review Loop
+## 12. Internal Review Loop
 
 This is the main v0.1 upgrade inspired by the strongest part of `superpowers`.
 
@@ -292,7 +331,7 @@ Spec compliance comes first because a beautifully written change that violates t
 
 Code-quality review comes second because it should assess the right implementation, not a drifting one.
 
-### 11.1 Spec Compliance Review
+### 12.1 Spec Compliance Review
 
 This review asks:
 
@@ -308,7 +347,7 @@ Typical failure modes:
 - skipping an edge case the unit explicitly required
 - evidence that does not prove the actual claim
 
-### 11.2 Code-Quality Review
+### 12.2 Code-Quality Review
 
 This review asks:
 
@@ -324,7 +363,7 @@ Typical failure modes:
 - obvious maintainability traps
 - partial completion hidden behind passing narrow checks
 
-### 11.3 Outcome Routing
+### 12.3 Outcome Routing
 
 If spec compliance fails:
 
@@ -343,7 +382,7 @@ If both pass:
 - write the unit execution report
 - move to `cmon:review`
 
-## 12. Why This Matches cmon Philosophy
+## 13. Why This Matches cmon Philosophy
 
 This design keeps the strongest part of `superpowers`:
 
@@ -358,9 +397,13 @@ while preserving the broader `cmon` chain:
 - review after implementation
 - compound when reusable learning appears
 
+and adds one of the strongest practical parts of `ce:work`:
+
+- explicit checking for non-local system effects
+
 It strengthens discipline without requiring a large runtime.
 
-## 13. Next Step
+## 14. Next Step
 
 This contract now has matching operating docs:
 
@@ -373,5 +416,5 @@ It is also exercised by this end-to-end example:
 
 The next useful additions are:
 
-1. stronger system-wide interaction checks
-2. a second example run that exercises scope expansion, blocked execution, or delegated strategy choice
+1. a second example run that exercises scope expansion, blocked execution, or delegated strategy choice
+2. a richer end-to-end example that forces the system interaction check to matter

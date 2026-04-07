@@ -29,6 +29,8 @@
 - Verification Evidence Path: <path or "inline below">
 - Evidence Summary:
   - <summary>
+- System Interaction Check Path: <path | "not needed">
+- System Interaction Outcome: <pass | concerns | not_needed>
 
 ## Internal Review Loop
 

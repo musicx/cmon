@@ -87,7 +87,7 @@ Where the comparison is asymmetric, this document says so explicitly rather than
 ### 3.3 Where `cmon` is still behind
 
 - `cmon:plan` now has research, deepening, and a smaller critique stack, but it still needs richer proof through stronger examples.
-- `cmon:work` now has a first internal review loop and explicit execution strategies, but it is still missing stronger system-interaction checks from `ce:work`.
+- `cmon:work` now has a first internal review loop, explicit execution strategies, and system interaction checks, but it still needs richer proof through stronger examples.
 - `cmon:design` now has its first execution layer, but it still lacks an explicit end-to-end proof case and later helper support.
 
 ### 3.4 Main recommendation
@@ -388,7 +388,7 @@ Current weakness:
 - the execution-strategy layer is still newer and lighter than the mature reference systems
 - the internal review loop is still newer and lighter than the mature reference systems
 - delegated execution conventions are not yet proven through stronger examples
-- no strong "system-wide interaction check" equivalent yet
+- the new system interaction check layer is not yet proven through stronger examples
 
 ### 6.2 `superpowers` equivalent capability
 
@@ -487,7 +487,7 @@ Add:
 1. deepen the new `superpowers`-style two-stage review loop:
    - spec or plan compliance review
    - code quality review
-2. `ce:work`-style system-wide interaction checks for callbacks, middleware, retries, and other non-local effects
+2. prove the new `ce:work`-influenced system interaction checks on a stronger example
 3. prove delegated `serial` and `parallel` modes with stronger examples rather than only protocol docs
 
 Do not add:

@@ -24,6 +24,15 @@
 - What this evidence does not prove:
   - <gap or "none">
 
+## System Interaction Trigger
+
+- Does this unit have non-local effects? <yes | no>
+- If yes:
+  - Complete `templates/work/system-interaction-check-template.md`
+- If no:
+  - Why not:
+    - <leaf change | no callbacks | no middleware | no multi-interface exposure | other>
+
 ## Freshness Check
 
 - Were these runs executed after the final relevant code changes? <yes | no>

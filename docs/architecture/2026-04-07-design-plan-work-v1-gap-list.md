@@ -118,25 +118,27 @@ Remaining follow-up:
 - the richer end-to-end example should exercise `serial` or `parallel` explicitly
 - later refinement may add lightweight handoff conventions for delegated sub-steps, but not a runtime-heavy coordinator
 
-### P1-2: Add system-wide interaction checks to `cmon:work`
+### Implemented: P1-2 add system-wide interaction checks to `cmon:work`
 
-Problem:
+What changed:
 
-- current verification emphasizes direct evidence, but not enough non-local interaction checking
+- `cmon:work` now distinguishes direct verification from system interaction checks
+- verification now explicitly asks whether callbacks, middleware, retries, cleanup, or interface parity make non-local checking mandatory
+- work handoff artifacts now carry the system interaction result when relevant
 
-Target behavior:
-
-- require explicit inspection of callbacks, middleware, retries, cross-interface parity, and failure cleanup when relevant
-
-Reference shape:
-
-- borrow this from the strongest parts of `ce:work`
-
-Artifacts to add:
+Implemented artifacts:
 
 - `templates/work/system-interaction-check-template.md`
-- update `verification-evidence-template.md`
-- update `unit-execution-report-template.md`
+- updates to `templates/work/verification-evidence-template.md`
+- updates to `templates/work/unit-execution-report-template.md`
+- updates to `skills/work/SKILL.md`
+- updates to `docs/architecture/2026-04-07-work-execution-v0.md`
+- updates to `docs/architecture/2026-04-07-work-operating-procedure-v0.md`
+
+Remaining follow-up:
+
+- the richer end-to-end example should force this check to matter on a real scenario
+- later refinement may add stronger heuristics for exactly when integration coverage is mandatory
 
 ### Implemented: P1-3 add plan critique stack on top of `cmon:plan`
 
@@ -241,8 +243,7 @@ If only one lane is worked at a time, use this order:
 
 The next unfinished items are now:
 
-1. `P1-2` `cmon:work` system-wide interaction checks
-2. `P1-4` refreshed and richer end-to-end examples
+1. `P1-4` refreshed and richer end-to-end examples
 
 ## 6. Suggested Ownership Model
 

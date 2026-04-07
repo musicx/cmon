@@ -115,7 +115,17 @@ The evidence must come from this session.
 
 Do not reuse stale output unless the command was rerun after the relevant code changed.
 
-## 8. Step 7: Run Spec Compliance Review
+## 8. Step 7: Run System Interaction Check When Needed
+
+If the unit has non-local effects, fill:
+
+- `templates/work/system-interaction-check-template.md`
+
+Run this check when the unit touches callbacks, middleware, retries, failure cleanup, or multi-interface parity.
+
+If the check reveals that the unit's actual impact is larger than the current boundary or current verification, stop and revise before continuing.
+
+## 9. Step 8: Run Spec Compliance Review
 
 After verification succeeds, assemble a packet using:
 
@@ -130,7 +140,7 @@ If the answer is not clearly yes, return to implementation.
 
 Do not move forward just because tests passed.
 
-## 9. Step 8: Run Code-Quality Review
+## 10. Step 9: Run Code-Quality Review
 
 Only after spec compliance is sound, assemble:
 
@@ -144,7 +154,7 @@ The goal is to surface:
 
 If material concerns remain, return to implementation and rerun the loop.
 
-## 10. Step 9: Write The Unit Execution Report
+## 11. Step 10: Write The Unit Execution Report
 
 After implementation and verification, write:
 
@@ -155,12 +165,13 @@ The report should include:
 - what changed
 - files changed
 - verification evidence
+- system interaction check result when relevant
 - execution strategy
 - internal review loop results
 - open findings
 - whether scope stayed intact
 
-## 11. Step 10: Route To The Next Skill
+## 12. Step 11: Route To The Next Skill
 
 Default next step:
 
@@ -174,13 +185,14 @@ If the unit could not be completed because the plan boundary broke:
 
 - return to `cmon:plan`
 
-## 12. Failure Cases
+## 13. Failure Cases
 
 Stop and surface the issue when:
 
 - the unit boundary is not real in practice
 - the chosen execution strategy is no longer valid in practice
 - required verification is unavailable
+- a required system interaction check exposes broader impact than the unit can safely carry
 - a file outside scope is needed and expansion is not narrow
 - the change needs product or architectural re-decision
 - spec compliance review shows plan or design drift

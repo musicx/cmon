@@ -100,6 +100,7 @@ It is allowed only when:
 - Do not silently reinterpret requirements or design intent during execution
 - Do not use delegation to hide weak unit boundaries
 - Do not use `parallel` when write scopes overlap or when sequencing is ambiguous
+- Do not skip system interaction checks when the unit clearly has non-local effects
 
 ## Verification Rules
 
@@ -113,6 +114,7 @@ Acceptable evidence includes:
 - focused manual verification steps when automation is not practical
 
 Use `templates/work/verification-evidence-template.md` as the default structure when evidence needs to be captured explicitly.
+Use `templates/work/system-interaction-check-template.md` when the unit has non-local effects such as callbacks, middleware, retries, multi-interface exposure, or failure cleanup risk.
 
 Unacceptable completion language:
 
@@ -121,6 +123,28 @@ Unacceptable completion language:
 - "done" without evidence
 
 If the plan's test scenarios are obviously incomplete for the unit, supplement them before claiming completion. Do not pretend the missing cases do not exist.
+
+## System Interaction Checks
+
+Some units change behavior beyond the local file or function.
+
+When the unit touches any of the following, run an explicit system interaction check:
+
+- callbacks, observers, hooks, or event handlers
+- middleware or request/response pipeline behavior
+- retry, fallback, or error propagation behavior
+- state persistence before risky downstream calls
+- the same behavior exposed through multiple interfaces
+
+The purpose is to catch failures that narrow local verification often misses.
+
+Use `templates/work/system-interaction-check-template.md` to record:
+
+- what else fires when this unit runs
+- whether tests exercise the real chain
+- whether failure leaves orphaned state
+- whether interface parity must be preserved
+- whether error strategy is coherent across layers
 
 ## Internal Review Loop
 

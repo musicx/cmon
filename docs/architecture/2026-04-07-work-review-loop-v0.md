@@ -129,6 +129,6 @@ This layer is mainly influenced by:
 
 The next upgrades after this loop are:
 
-1. execution-strategy selection for `inline`, `serial`, and `parallel` unit delivery
-2. stronger system-interaction checks inside verification
-3. a refreshed end-to-end example that exercises this loop explicitly
+1. stronger examples that exercise delegated execution and the review loop together
+2. a refreshed end-to-end example that exercises this loop explicitly
+3. a richer example that forces the system interaction check to matter
