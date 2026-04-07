@@ -51,7 +51,27 @@ Record:
 
 The manifest is the working contract for the unit.
 
-## 4. Step 3: Inspect The Actual Code Area
+## 4. Step 3: Choose The Execution Strategy
+
+Before implementation starts, choose one of:
+
+- `inline`
+- `serial`
+- `parallel`
+
+Default to `inline`.
+
+Use:
+
+- `templates/work/execution-strategy-template.md`
+
+whenever the strategy is not obvious from the unit itself.
+
+Only choose `parallel` when write scopes are disjoint and dependency order is genuinely absent.
+
+If that is not clearly true, downgrade to `serial` or `inline`.
+
+## 5. Step 4: Inspect The Actual Code Area
 
 Before editing:
 
@@ -63,7 +83,7 @@ This is the last point where context gathering is allowed.
 
 After this, do not let implementation turn back into open-ended repo exploration.
 
-## 5. Step 4: Execute Only The Unit
+## 6. Step 5: Execute Only The Unit
 
 Implement only what the unit requires.
 
@@ -85,7 +105,7 @@ If extra work is required, use:
 
 and stop unless the expansion is clearly narrow and justified.
 
-## 6. Step 5: Capture Verification Evidence
+## 7. Step 6: Capture Verification Evidence
 
 Before saying the unit is complete, gather fresh evidence using:
 
@@ -95,7 +115,7 @@ The evidence must come from this session.
 
 Do not reuse stale output unless the command was rerun after the relevant code changed.
 
-## 7. Step 6: Run Spec Compliance Review
+## 8. Step 7: Run Spec Compliance Review
 
 After verification succeeds, assemble a packet using:
 
@@ -110,7 +130,7 @@ If the answer is not clearly yes, return to implementation.
 
 Do not move forward just because tests passed.
 
-## 8. Step 7: Run Code-Quality Review
+## 9. Step 8: Run Code-Quality Review
 
 Only after spec compliance is sound, assemble:
 
@@ -124,7 +144,7 @@ The goal is to surface:
 
 If material concerns remain, return to implementation and rerun the loop.
 
-## 9. Step 8: Write The Unit Execution Report
+## 10. Step 9: Write The Unit Execution Report
 
 After implementation and verification, write:
 
@@ -135,11 +155,12 @@ The report should include:
 - what changed
 - files changed
 - verification evidence
+- execution strategy
 - internal review loop results
 - open findings
 - whether scope stayed intact
 
-## 10. Step 9: Route To The Next Skill
+## 11. Step 10: Route To The Next Skill
 
 Default next step:
 
@@ -153,11 +174,12 @@ If the unit could not be completed because the plan boundary broke:
 
 - return to `cmon:plan`
 
-## 11. Failure Cases
+## 12. Failure Cases
 
 Stop and surface the issue when:
 
 - the unit boundary is not real in practice
+- the chosen execution strategy is no longer valid in practice
 - required verification is unavailable
 - a file outside scope is needed and expansion is not narrow
 - the change needs product or architectural re-decision

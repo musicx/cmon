@@ -93,34 +93,30 @@ Implemented artifacts:
 
 Remaining follow-up:
 
-- a future pass should connect this loop to execution-strategy selection
 - a future example should exercise the loop with a non-trivial unit, not only the protocol docs
 
 ## 3. P1 Gaps
 
-### P1-1: Add execution strategy selection to `cmon:work`
+### Implemented: P1-1 add execution strategy selection to `cmon:work`
 
-Problem:
+What changed:
 
-- `cmon:work` assumes bounded execution, but does not yet formalize different execution modes
+- `cmon:work` now requires an explicit execution-mode choice for non-trivial units
+- the workflow now distinguishes `inline`, `serial`, and `parallel`
+- `parallel` is explicitly forbidden unless write scopes are disjoint and sequencing is absent
 
-Target behavior:
-
-- choose one of:
-  - inline execution
-  - serial delegated units
-  - parallel delegated units for disjoint write scopes
-
-Why this is P1 instead of P0:
-
-- it improves efficiency and scalability
-- but the boundary model is more urgent than the orchestration model
-
-Artifacts to add:
+Implemented artifacts:
 
 - `templates/work/execution-strategy-template.md`
 - updates to `work-run-manifest-template.md`
+- updates to `skills/work/SKILL.md`
+- updates to `docs/architecture/2026-04-07-work-execution-v0.md`
 - updates to `work-operating-procedure-v0.md`
+
+Remaining follow-up:
+
+- the richer end-to-end example should exercise `serial` or `parallel` explicitly
+- later refinement may add lightweight handoff conventions for delegated sub-steps, but not a runtime-heavy coordinator
 
 ### P1-2: Add system-wide interaction checks to `cmon:work`
 
@@ -242,6 +238,11 @@ If only one lane is worked at a time, use this order:
 5. `P1-1` `cmon:work` execution strategy selection
 6. `P1-2` `cmon:work` system-wide interaction checks
 7. `P1-4` refreshed end-to-end example
+
+The next unfinished items are now:
+
+1. `P1-2` `cmon:work` system-wide interaction checks
+2. `P1-4` refreshed and richer end-to-end examples
 
 ## 6. Suggested Ownership Model
 

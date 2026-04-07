@@ -33,22 +33,24 @@ Before implementation starts, identify:
 7. Stop condition
 
 Use `templates/work/work-run-manifest-template.md` as the default way to lock the unit before coding when the execution boundary needs to be made explicit.
+Use `templates/work/execution-strategy-template.md` when the unit needs an explicit choice between inline, serial delegation, and parallel delegation.
 
 ## Workflow
 
 1. Read the relevant implementation unit critically
 2. Lock the current unit boundary
-3. Inspect the affected files, referenced patterns, and nearby tests
-4. Honor the unit's `Execution Note` when one exists
-5. Implement only what the unit requires
-6. If scope expansion appears necessary, stop and record it explicitly
-7. Verify the unit with explicit evidence
-8. Run internal spec compliance review against requirements, design, and plan
-9. If compliance fails, return to the same unit and correct it before proceeding
-10. Run internal code-quality review on the completed unit
-11. If code quality fails, return to the same unit and correct it before proceeding
-12. Record any findings that affect later units or require review
-13. Produce a clean handoff package for `cmon:review`
+3. Choose the execution strategy
+4. Inspect the affected files, referenced patterns, and nearby tests
+5. Honor the unit's `Execution Note` when one exists
+6. Implement only what the unit requires
+7. If scope expansion appears necessary, stop and record it explicitly
+8. Verify the unit with explicit evidence
+9. Run internal spec compliance review against requirements, design, and plan
+10. If compliance fails, return to the same unit and correct it before proceeding
+11. Run internal code-quality review on the completed unit
+12. If code quality fails, return to the same unit and correct it before proceeding
+13. Record any findings that affect later units or require review
+14. Produce a clean handoff package for `cmon:review`
 
 ## Execution Posture
 
@@ -62,6 +64,33 @@ The plan is a decision artifact, not a script.
 
 If the unit is missing detail that blocks responsible execution, stop and return to `cmon:plan`.
 
+## Execution Strategy
+
+`cmon:work` allows exactly three execution strategies:
+
+1. `inline`
+   - one executor handles the unit directly
+   - default for single-file or tightly coupled units
+
+2. `serial`
+   - bounded sub-steps or delegated units run one after another
+   - use when the unit has dependency order but still benefits from narrower focused execution
+
+3. `parallel`
+   - multiple delegated sub-steps run concurrently
+   - allowed only when write scopes are disjoint and dependency order is genuinely absent
+
+The strategy should be chosen before implementation starts and recorded explicitly for non-trivial units.
+
+`parallel` is never allowed just because the task feels large.
+
+It is allowed only when:
+
+- write scopes do not overlap
+- the sub-steps do not depend on each other's unfinished output
+- each sub-step can still preserve the approved unit boundary
+- the final integrator can review the merged result coherently
+
 ## Execution Rules
 
 - Only edit files that are in scope for the current unit, unless a narrow dependency forces expansion
@@ -69,6 +98,8 @@ If the unit is missing detail that blocks responsible execution, stop and return
 - Prefer the smallest change that satisfies the unit
 - Do not mix unrelated cleanup into the same unit
 - Do not silently reinterpret requirements or design intent during execution
+- Do not use delegation to hide weak unit boundaries
+- Do not use `parallel` when write scopes overlap or when sequencing is ambiguous
 
 ## Verification Rules
 
@@ -115,6 +146,7 @@ For each executed unit, report:
 - `Files changed`
 - `Requirements / Design trace`
 - `Verification`
+- `Execution strategy`
 - `Internal review loop result`
 - `Open findings for review`
 
@@ -128,6 +160,7 @@ Use `templates/work/unit-execution-report-template.md` as the default handoff st
 - No hiding plan gaps behind "reasonable assumptions"
 - No jumping to adjacent units without closing the current one
 - No skipping the internal review loop because the code "looks fine"
+- No using `parallel` delegation without explicit disjoint write scopes
 
 ## Handoff
 

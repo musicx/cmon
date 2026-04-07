@@ -150,9 +150,9 @@ Produces the reusable learning artifact:
 The next iteration should add:
 
 1. refresh the end-to-end example so it exercises the explicit `cmon:design` stage
-2. add execution strategy selection to `cmon:work`
-3. add stronger system-interaction checks to `cmon:work`
-4. exercise the new `cmon:plan` critique stack and `cmon:work` review loop in a richer example
+2. add stronger system-interaction checks to `cmon:work`
+3. exercise the new `cmon:plan` critique stack and `cmon:work` review loop in a richer example
+4. exercise delegated `serial` or `parallel` execution in an end-to-end example
 
 Detailed comparison and prioritization live in:
 

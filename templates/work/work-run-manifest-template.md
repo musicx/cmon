@@ -27,6 +27,11 @@
 
 ## Verification Contract
 
+- Execution Strategy: <inline | serial | parallel>
+- Strategy Notes:
+  - <why this strategy fits the unit>
+  - <for parallel, list the disjoint write scopes>
+
 - Verification Target:
   - <test/build/manual verification>
 - Done Condition:

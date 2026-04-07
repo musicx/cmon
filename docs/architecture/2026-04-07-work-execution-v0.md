@@ -25,13 +25,14 @@ For each execution unit, `cmon:work` must:
 
 1. load an approved unit from the plan
 2. restate the unit boundary explicitly
-3. execute only within that boundary
-4. produce fresh verification evidence
-5. run internal spec compliance review
-6. run internal code-quality review
-7. report what changed and what still needs review
+3. choose an execution strategy that fits the unit
+4. execute only within that boundary
+5. produce fresh verification evidence
+6. run internal spec compliance review
+7. run internal code-quality review
+8. report what changed and what still needs review
 
-If it cannot do one of those seven things, it should stop and surface the problem.
+If it cannot do one of those eight things, it should stop and surface the problem.
 
 ## 3. Required Inputs
 
@@ -43,6 +44,7 @@ Minimum inputs:
 - unit identifier or unit title
 - files or modules in scope
 - constraints
+- execution strategy
 - verification target
 - stop condition
 
@@ -62,6 +64,7 @@ Purpose:
 
 - declare the exact unit being executed
 - lock scope and constraints
+- record the chosen execution strategy
 - define verification before implementation starts
 
 Template:
@@ -81,7 +84,21 @@ Template:
 
 - `templates/work/scope-expansion-request-template.md`
 
-### 4.3 Verification Evidence
+### 4.3 Execution Strategy Record
+
+Used before implementation when the execution mode is not trivially obvious.
+
+Purpose:
+
+- choose between `inline`, `serial`, and `parallel`
+- justify delegation boundaries before coding begins
+- force explicit write-scope checks before allowing `parallel`
+
+Template:
+
+- `templates/work/execution-strategy-template.md`
+
+### 4.4 Verification Evidence
 
 Used after code changes but before claiming completion.
 
@@ -94,7 +111,7 @@ Template:
 
 - `templates/work/verification-evidence-template.md`
 
-### 4.4 Spec Compliance Review Input
+### 4.5 Spec Compliance Review Input
 
 Used after verification and before final handoff.
 
@@ -107,7 +124,7 @@ Template:
 
 - `templates/work/spec-compliance-input-template.md`
 
-### 4.5 Code Quality Review Input
+### 4.6 Code Quality Review Input
 
 Used only after spec compliance review passes.
 
@@ -120,7 +137,7 @@ Template:
 
 - `templates/work/code-quality-review-input-template.md`
 
-### 4.6 Unit Execution Report
+### 4.7 Unit Execution Report
 
 Used at the end of the unit.
 
@@ -148,7 +165,55 @@ These states are intentionally simple.
 
 They are not a project-management system. They are execution discipline.
 
-## 6. Stop Conditions
+## 6. Execution Strategy Policy
+
+`cmon:work` allows only three execution strategies:
+
+- `inline`
+- `serial`
+- `parallel`
+
+### 6.1 Inline
+
+Use when:
+
+- the unit is small
+- the files are tightly coupled
+- the coordination cost of delegation is higher than the execution gain
+
+This should remain the default unless there is a real reason to delegate.
+
+### 6.2 Serial
+
+Use when:
+
+- the unit contains sub-steps with a clear dependency order
+- narrower focused execution would improve quality
+- one sub-step's output becomes another sub-step's input
+
+This is the safest delegation mode.
+
+### 6.3 Parallel
+
+Use only when:
+
+- sub-steps have disjoint write scopes
+- sub-steps do not depend on each other's in-flight output
+- the unit can still be reviewed coherently after merge
+
+If any of those are false or unclear:
+
+- do not use `parallel`
+
+### 6.4 Policy Choice
+
+This is intentionally narrower than `ce:work`.
+
+`cmon` does not support free-form delegation based only on task size or vague intuition.
+
+The strategy must serve the unit boundary, not weaken it.
+
+## 7. Stop Conditions
 
 `cmon:work` must stop and surface the issue when:
 
@@ -162,7 +227,7 @@ This is a core `cmon` policy:
 
 stop instead of freelancing.
 
-## 7. Scope Expansion Policy
+## 8. Scope Expansion Policy
 
 Scope expansion is allowed only when all of these are true:
 
@@ -175,7 +240,7 @@ If those conditions are not met, execution should stop and return to:
 
 - `cmon:plan`
 
-## 8. Verification Policy
+## 9. Verification Policy
 
 This is heavily influenced by `superpowers`:
 
@@ -199,7 +264,7 @@ Weak evidence includes:
 
 `cmon:work` should preserve evidence in a dedicated verification artifact or report section.
 
-## 9. Handoff Contract To Review
+## 10. Handoff Contract To Review
 
 At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package containing:
 
@@ -212,7 +277,7 @@ At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package
 
 The point is to make `cmon:review` judge the actual executed unit, not reconstruct it from chat memory.
 
-## 10. Internal Review Loop
+## 11. Internal Review Loop
 
 This is the main v0.1 upgrade inspired by the strongest part of `superpowers`.
 
@@ -227,7 +292,7 @@ Spec compliance comes first because a beautifully written change that violates t
 
 Code-quality review comes second because it should assess the right implementation, not a drifting one.
 
-### 10.1 Spec Compliance Review
+### 11.1 Spec Compliance Review
 
 This review asks:
 
@@ -243,7 +308,7 @@ Typical failure modes:
 - skipping an edge case the unit explicitly required
 - evidence that does not prove the actual claim
 
-### 10.2 Code-Quality Review
+### 11.2 Code-Quality Review
 
 This review asks:
 
@@ -259,7 +324,7 @@ Typical failure modes:
 - obvious maintainability traps
 - partial completion hidden behind passing narrow checks
 
-### 10.3 Outcome Routing
+### 11.3 Outcome Routing
 
 If spec compliance fails:
 
@@ -278,7 +343,7 @@ If both pass:
 - write the unit execution report
 - move to `cmon:review`
 
-## 11. Why This Matches cmon Philosophy
+## 12. Why This Matches cmon Philosophy
 
 This design keeps the strongest part of `superpowers`:
 
@@ -286,6 +351,7 @@ This design keeps the strongest part of `superpowers`:
 - verification before completion
 - stop-on-drift behavior
 - internal review before broader signoff
+- explicit execution-mode choice before delegation
 
 while preserving the broader `cmon` chain:
 
@@ -294,7 +360,7 @@ while preserving the broader `cmon` chain:
 
 It strengthens discipline without requiring a large runtime.
 
-## 12. Next Step
+## 13. Next Step
 
 This contract now has matching operating docs:
 
@@ -307,6 +373,5 @@ It is also exercised by this end-to-end example:
 
 The next useful additions are:
 
-1. execution strategy selection for inline, serial, or parallel unit delivery
-2. stronger system-wide interaction checks
-3. a second example run that exercises scope expansion or a blocked unit
+1. stronger system-wide interaction checks
+2. a second example run that exercises scope expansion, blocked execution, or delegated strategy choice

@@ -247,5 +247,5 @@ This alignment implies these foundational choices for `cmon`:
 
 The next high-value follow-up after this alignment pass is:
 
-- add execution strategy selection and stronger system interaction checks to `cmon:work`
+- add stronger system interaction checks to `cmon:work`
 - refresh the end-to-end example so the chain includes `cmon:design`

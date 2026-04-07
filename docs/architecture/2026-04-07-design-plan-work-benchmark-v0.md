@@ -86,8 +86,8 @@ Where the comparison is asymmetric, this document says so explicitly rather than
 
 ### 3.3 Where `cmon` is still behind
 
-- `cmon:plan` now has research and deepening support, but it is still missing the critique stack that makes `ce:plan` and `gstack` plans more resilient.
-- `cmon:work` now has a first internal review loop, but it is still missing execution-strategy maturity and stronger system-interaction checks from `superpowers` and `ce:work`.
+- `cmon:plan` now has research, deepening, and a smaller critique stack, but it still needs richer proof through stronger examples.
+- `cmon:work` now has a first internal review loop and explicit execution strategies, but it is still missing stronger system-interaction checks from `ce:work`.
 - `cmon:design` now has its first execution layer, but it still lacks an explicit end-to-end proof case and later helper support.
 
 ### 3.4 Main recommendation
@@ -385,9 +385,9 @@ Current strengths:
 
 Current weakness:
 
-- execution strategy selection is still thin
+- the execution-strategy layer is still newer and lighter than the mature reference systems
 - the internal review loop is still newer and lighter than the mature reference systems
-- no mature orchestration for serial vs parallel unit execution
+- delegated execution conventions are not yet proven through stronger examples
 - no strong "system-wide interaction check" equivalent yet
 
 ### 6.2 `superpowers` equivalent capability
@@ -472,7 +472,7 @@ Interpretation:
 | Dimension | cmon | superpowers | compound-engineering | gstack |
 |---|---|---|---|---|
 | Approved-unit boundary discipline | strong | strongest | medium-strong | weak |
-| Execution strategy maturity | weak-medium | medium | strongest | weak |
+| Execution strategy maturity | medium | medium | strongest | weak |
 | Review loops inside execution | medium | strongest | medium | weak |
 | Fresh verification bar | strong | strong | strong | medium-strong |
 | Delivery completion tooling | weak | medium | medium | strongest |
@@ -484,14 +484,11 @@ Do not let it become a broad "just execute the request" skill.
 
 Add:
 
-1. execution strategy selection:
-   - inline
-   - serial delegated units
-   - parallel delegated units when units are disjoint
-2. deepen the new `superpowers`-style two-stage review loop:
+1. deepen the new `superpowers`-style two-stage review loop:
    - spec or plan compliance review
    - code quality review
-3. `ce:work`-style system-wide interaction checks for callbacks, middleware, retries, and other non-local effects
+2. `ce:work`-style system-wide interaction checks for callbacks, middleware, retries, and other non-local effects
+3. prove delegated `serial` and `parallel` modes with stronger examples rather than only protocol docs
 
 Do not add:
 
