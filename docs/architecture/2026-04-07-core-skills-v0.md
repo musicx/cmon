@@ -3,12 +3,14 @@
 Date: 2026-04-07
 Status: Draft
 
-This document maps the first six `cmon` skills and the intended handoff between them.
+This document maps the current core `cmon` skills and the intended handoff between them.
+It now also records the explicit design split added after the initial v0 chain.
 
 ## Canonical Skill Names
 
 - `cmon:understand`
 - `cmon:brainstorm`
+- `cmon:design`
 - `cmon:plan`
 - `cmon:work`
 - `cmon:review`
@@ -17,7 +19,7 @@ This document maps the first six `cmon` skills and the intended handoff between 
 ## Lifecycle
 
 ```text
-cmon:understand -> cmon:brainstorm -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:brainstorm -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the default path for substantial work.
@@ -37,14 +39,30 @@ Produces the context packet:
 
 ### `cmon:brainstorm`
 
-Produces the approved requirements/design artifact:
+Produces the approved requirements artifact:
 
 - problem frame
 - intended behavior
 - scope boundaries
 - success criteria
-- key decisions
+- alternatives and recommendation
 - lens-specific tradeoffs and blockers
+
+### `cmon:design`
+
+Produces the approved design artifact:
+
+- user or system flow
+- states and failure handling
+- interface and boundary decisions
+- requirements trace
+- resolved and still-open design decisions
+
+Default collaboration pattern:
+
+- owner-led
+- `product-led` for experience-heavy design
+- `engineering-led` for architecture and interface-heavy design
 
 ### `cmon:plan`
 
@@ -52,9 +70,16 @@ Produces the implementation plan:
 
 - implementation units
 - files in scope
+- patterns to follow
 - dependencies
+- test scenarios
+- execution note when posture matters
 - verification
 - unit-level constraints
+
+Default collaboration pattern:
+
+- engineering-owned
 
 ### `cmon:work`
 
@@ -65,6 +90,10 @@ Produces the implementation result:
 - verification evidence
 - review-relevant findings
 - scoped execution artifacts when needed
+
+Default collaboration pattern:
+
+- engineering execution
 
 ### `cmon:review`
 
@@ -91,6 +120,7 @@ Produces the reusable learning artifact:
 |---|---|
 | `cmon:understand` | none by default, context only |
 | `cmon:brainstorm` | `docs/brainstorms/...` |
+| `cmon:design` | `docs/designs/...` |
 | `cmon:plan` | `docs/plans/...` |
 | `cmon:work` | code + tests + verification evidence + scoped execution artifacts |
 | `cmon:review` | merged review decision, may remain session-local in v0 |
@@ -101,6 +131,7 @@ Produces the reusable learning artifact:
 ### Mandatory
 
 - no substantial coding before `cmon:plan`
+- no substantial planning when design ambiguity still blocks implementation decisions
 - no substantial review without product / engineering / operations lenses
 - no completion claim without evidence
 - no reusable lesson left undocumented when the compound trigger is met
@@ -116,6 +147,6 @@ Produces the reusable learning artifact:
 
 The next iteration should add:
 
-1. a manual operating procedure or lightweight local script for the `cmon:review` helper
-2. an end-to-end example that proves the chain through `cmon:compound`
-3. a second end-to-end example that exercises a larger or multi-file unit
+1. define the owner-led challenge pattern for `cmon:design`
+2. refresh the end-to-end example so it exercises the explicit `cmon:design` stage
+3. add a second end-to-end example that exercises a larger or multi-file unit

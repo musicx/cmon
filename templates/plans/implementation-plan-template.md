@@ -4,6 +4,7 @@ type: feat | fix | refactor
 status: active
 date: YYYY-MM-DD
 origin: docs/brainstorms/<requirements-file>.md
+design: docs/designs/<design-file>.md | none
 ---
 
 # <Plan Title>
@@ -20,6 +21,11 @@ origin: docs/brainstorms/<requirements-file>.md
 
 - R1. [Requirement this plan satisfies]
 - R2. [Requirement this plan satisfies]
+
+## Design Trace
+
+- D1. [Design decision, flow, or boundary this plan preserves]
+- D2. [Design decision, flow, or boundary this plan preserves]
 
 ## Scope Boundaries
 
@@ -81,6 +87,15 @@ origin: docs/brainstorms/<requirements-file>.md
 **Patterns To Follow:**
 - [Existing file, component, or convention]
 
+**Execution Note:**
+- [None | test-first | characterization-first | other bounded posture]
+
+**Test Scenarios:**
+- Happy path: [specific input/action and expected result]
+- Edge case: [boundary condition and expected result]
+- Failure path: [invalid input or downstream failure and expected result]
+- Integration: [cross-layer scenario when applicable]
+
 **Verification:**
 - [Concrete proof that the unit is complete]
 
@@ -109,6 +124,14 @@ origin: docs/brainstorms/<requirements-file>.md
 **Patterns To Follow:**
 - [Existing file, component, or convention]
 
+**Execution Note:**
+- [None | test-first | characterization-first | other bounded posture]
+
+**Test Scenarios:**
+- Happy path: [specific input/action and expected result]
+- Edge case: [boundary condition and expected result]
+- Failure path: [invalid input or downstream failure and expected result]
+
 **Verification:**
 - [Concrete proof]
 
@@ -125,6 +148,14 @@ origin: docs/brainstorms/<requirements-file>.md
 
 - [Meaningful risk]
 - [Mitigation or fallback]
+
+## Plan Quality Check
+
+- Requirements covered: [yes | no]
+- Design decisions preserved: [yes | no]
+- Exact file paths named: [yes | no]
+- Feature-bearing units have test scenarios: [yes | no]
+- Execution boundaries are reviewable: [yes | no]
 
 ## Recommended Next Step
 

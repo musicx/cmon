@@ -3,6 +3,8 @@
 ## Unit Identity
 
 - Plan Path: <docs/plans/...>
+- Requirements Path: <docs/brainstorms/... or "none">
+- Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Unit ID Or Title: <unit id>
 - Final Status: <awaiting_review | blocked | complete>
 
@@ -27,6 +29,11 @@
 - Verification Evidence Path: <path or "inline below">
 - Evidence Summary:
   - <summary>
+
+## Trace Integrity
+
+- Requirements preserved: <yes | no | unclear>
+- Design intent preserved: <yes | no | unclear>
 
 ## Open Findings For Review
 

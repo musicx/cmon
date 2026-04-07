@@ -3,7 +3,7 @@
 Date: 2026-04-07
 Status: Draft
 
-This document is a compact operator-facing routing reference for the six core `cmon` skills.
+This document is a compact operator-facing routing reference for the current core `cmon` skills.
 
 It exists so an operator can answer three questions quickly:
 
@@ -14,7 +14,7 @@ It exists so an operator can answer three questions quickly:
 ## Default Lifecycle
 
 ```text
-cmon:understand -> cmon:brainstorm -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:brainstorm -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
 ```
 
 Not every task needs the full chain, but substantial work should start from this model.
@@ -24,8 +24,9 @@ Not every task needs the full chain, but substantial work should start from this
 | Skill | Use When | Requires | Produces | Do Not Use It For | Normal Next Step |
 |---|---|---|---|---|---|
 | `cmon:understand` | Repo area, prior decisions, or constraints are not fully loaded | Task summary and a repo area or permission to infer it | Context packet: relevant area, artifacts, patterns, constraints, open questions | Planning, implementation, or full review | `cmon:brainstorm`, `cmon:plan`, or `cmon:review` |
-| `cmon:brainstorm` | Problem framing, scope, or approach is still open | Understand packet or equivalent context | Approved requirements or design direction with blockers made explicit | Code, implementation steps, or vague "we'll figure it out later" plans | `cmon:plan` |
-| `cmon:plan` | Approved intent exists and implementation needs bounded units | Requirements/design artifact or already-clear behavior | Implementation plan with units, file scope, constraints, verification, and review watchpoints | Brainstorming or free-form coding | `cmon:work` |
+| `cmon:brainstorm` | Problem framing, scope, or approach is still open | Understand packet or equivalent context | Approved requirements with blockers made explicit and recommendation recorded | Code, implementation steps, or vague "we'll figure it out later" plans | `cmon:design` or `cmon:plan` |
+| `cmon:design` | Flow, state, UX, interface, or boundary design is still ambiguous | Approved requirements artifact | Approved design spec with flows, states, boundary decisions, and planning blockers made explicit | Exact file mapping or implementation sequencing | `cmon:plan` |
+| `cmon:plan` | Approved intent exists and implementation needs bounded units | Requirements artifact, design artifact when relevant, or already-clear behavior | Implementation plan with units, file scope, constraints, patterns, test scenarios, verification, and review watchpoints | Brainstorming, design exploration, or free-form coding | `cmon:work` |
 | `cmon:work` | One approved implementation unit is ready to execute | Plan unit, file scope, constraints, verification target, stop condition | Code, tests, verification evidence, scoped execution artifacts, review-ready report | Unbounded implementation or silent scope expansion | `cmon:review` or back to `cmon:plan` if the boundary breaks |
 | `cmon:review` | A meaningful unit was implemented and needs acceptance judgment | Diff, approved requirements/design, approved plan, verification evidence | Product/engineering/operations findings, merged actions, accept-or-revise decision | Single-lens correctness-only review | `cmon:work` or `cmon:compound` |
 | `cmon:compound` | The work created reusable learning worth preserving | Accepted work outcome plus a real lesson, guardrail, or recurring pattern | Durable solution, pattern, or guardrail artifact | Logging every trivial edit | Loop complete |
@@ -37,12 +38,14 @@ Not every task needs the full chain, but substantial work should start from this
 Make sure:
 
 - the intended behavior is already clear
+- the design is explicit enough that planning does not need to invent flow or state behavior
 - scope boundaries are explicit
 - success criteria are concrete
 
 If not, go back to:
 
 - `cmon:brainstorm`
+- `cmon:design`
 
 ### Before `cmon:work`
 

@@ -9,6 +9,7 @@ These templates are intentionally influenced by:
 
 - `superpowers` for explicit structure and execution boundaries
 - `compound-engineering` for durable artifacts and reusable knowledge capture
+- `gstack` for design and plan quality gates
 
 They are not direct copies.
 
@@ -51,7 +52,7 @@ Used by:
 
 Purpose:
 
-- turn an explored problem into an approved requirements/design artifact
+- turn an explored problem into an approved requirements artifact
 - keep multi-lens brainstorming inputs and synthesis consistent
 
 Key sections:
@@ -59,10 +60,35 @@ Key sections:
 - problem frame
 - intended outcome
 - requirements with stable IDs
+- alternatives and recommendation
 - success criteria
 - scope boundaries
 - key decisions
 - blocking and deferred questions
+
+### Design
+
+Path:
+
+- `templates/design/design-spec-template.md`
+
+Used by:
+
+- `cmon:design`
+
+Purpose:
+
+- turn approved requirements into an explicit design artifact
+- make flows, states, boundaries, and interaction choices reviewable before planning
+- keep design review criteria explicit instead of hiding them inside planning
+
+Key sections:
+
+- design goals
+- flow and state definition
+- interface and boundary decisions
+- requirements trace
+- design quality gate
 
 ### Plan
 
@@ -81,10 +107,13 @@ Purpose:
 Key sections:
 
 - requirements trace
+- design trace
 - scope boundaries
 - existing patterns and constraints
 - technical decisions
 - implementation units
+- test scenarios
+- execution note
 - verification
 - review watchpoints
 
@@ -107,6 +136,7 @@ Purpose:
 - record scope expansion rather than letting it hide in chat
 - capture fresh verification evidence
 - create a clean handoff package for review
+- keep execution traceable back to requirements, design, and plan posture
 
 ### Solutions
 
@@ -165,14 +195,15 @@ Purpose:
 
 ## 2. Design Choices
 
-### Why requirements and plan are separate
+### Why requirements, design, and plan are separate
 
 This follows the `compound-engineering` split between:
 
 - what should be built
+- how it should behave structurally
 - how it should be implemented
 
-`cmon` keeps this separation because it reduces hidden product invention during planning.
+`cmon` keeps this separation because it reduces hidden product invention during planning and hidden design invention during implementation planning.
 
 ### Why the plan template includes implementation units
 
@@ -219,18 +250,19 @@ The initial template set now covers:
 
 - repo understanding and context recovery
 - pre-implementation intent artifacts
+- explicit design artifacts
 - bounded implementation planning
 - bounded unit execution
 - trigger-based knowledge capture
 - reusable knowledge capture
 - multi-lens review dispatch and synthesis
 
-So the template layer is sufficient for a v0 end-to-end document flow.
+So the template layer is sufficient for a v0.1 end-to-end document flow, with the remaining gap being the operational execution layer for `cmon:design`.
 
 ## 5. Immediate Next Step
 
 The next useful addition after templates is:
 
-- a lightweight helper that assembles and routes review templates automatically
+- an owner-led operating pattern for `cmon:design`
+- a refreshed end-to-end example that includes `cmon:design`
 - a second end-to-end example that exercises multi-file work
-- an end-to-end example that proves the chain all the way through `cmon:compound`

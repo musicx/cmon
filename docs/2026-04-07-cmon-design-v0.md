@@ -11,6 +11,7 @@ The goal is not to clone an existing repo. The goal is to deliberately combine:
 
 - the strict execution boundaries and implementation discipline of `superpowers`
 - the planning, review, and knowledge-compounding philosophy of `compound-engineering`
+- the pre-implementation critique and plan-tightening bar of `gstack`
 - a lightweight enough repo structure that the system remains understandable and composable
 
 `cmon` should help a coding agent do work that is:
@@ -28,6 +29,7 @@ The initial canonical names are:
 
 - `cmon:understand`
 - `cmon:brainstorm`
+- `cmon:design`
 - `cmon:plan`
 - `cmon:work`
 - `cmon:review`
@@ -59,7 +61,7 @@ The result is that no single existing repo matches the desired shape:
 1. **Codify a complete engineering loop**
    - repo understanding
    - `cmon:brainstorm`
-   - design / requirements
+   - `cmon:design`
    - `cmon:plan`
    - `cmon:work`
    - `cmon:review`
@@ -67,6 +69,7 @@ The result is that no single existing repo matches the desired shape:
 
 2. **Make role separation explicit**
    - `product`, `engineering`, and `operations` are baseline perspectives, not optional decoration
+   - But role separation should not be interpreted as "every stage is parallel multi-agent"
 
 3. **Constrain implementation tightly**
    - implementation should be driven by approved plan boundaries
@@ -138,7 +141,7 @@ If work produces no durable residue, future work stays expensive.
 
 ## 6.1 High-Level Lifecycle
 
-`cmon:understand -> cmon:brainstorm -> design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
+`cmon:understand -> cmon:brainstorm -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
 
 ### `cmon:understand`
 
@@ -166,36 +169,40 @@ Output:
 
 - clarified problem statement
 - scoped decision
-- durable brainstorm / requirements document
+- approved requirements document with explicit scope boundaries, success criteria, and blocking questions
 
-### Design / Requirements
+### `cmon:design`
 
 Purpose:
 
-- convert brainstorm output into a stable, reviewable artifact
+- convert approved requirements into a stable, reviewable design artifact
+- make flows, states, interfaces, and ambiguity explicit before planning
+- run a design quality pass strong enough that planning does not need to invent missing experience decisions
 
 Output:
 
-- requirements or design doc with:
-  - problem frame
-  - intended behavior
-  - scope boundaries
-  - success criteria
-  - key decisions
-  - unresolved blockers
+- design doc with:
+  - user or system flow
+  - states, failure handling, and operator experience
+  - interface and boundary decisions
+  - requirements trace
+  - open questions that still block planning
 
 ### `cmon:plan`
 
 Purpose:
 
-- define how the approved work will be implemented
+- define how the approved requirements and design will be implemented
 
 Output:
 
 - implementation plan with:
   - files or modules in scope
+  - existing patterns to follow
   - sequencing
   - dependencies
+  - test scenarios
+  - execution posture where needed
   - verification expectations
   - explicit boundaries and constraints
 
@@ -242,10 +249,18 @@ These are meant to become hard rules in `cmon` skills.
 3. No completion claim without verification evidence
 4. No substantial review using only one viewpoint
 5. No meaningful solved problem should disappear into chat history
+6. No plan should have to invent missing design decisions that should have been resolved earlier
 
 ## 7. Role Model
 
 `cmon` should start with a small but explicit role set.
+
+The important design principle is:
+
+- multi-role coverage across the lifecycle is required
+- symmetric multi-role parallelism at every stage is not
+
+Different stages should use different collaboration patterns depending on what decision is being made.
 
 ## 7.1 Required Core Roles
 
@@ -261,7 +276,7 @@ Questions:
 Best used in:
 
 - `cmon:brainstorm`
-- design review
+- owner-led or review support for `cmon:design`
 - final review
 
 ### Engineering Lens
@@ -276,6 +291,7 @@ Questions:
 Best used in:
 
 - repo understanding
+- owner-led or review support for `cmon:design`
 - `cmon:plan`
 - implementation review
 
@@ -290,11 +306,98 @@ Questions:
 Best used in:
 
 - `cmon:brainstorm` for risky changes
-- `cmon:plan`
+- challenge and constraint input for `cmon:design`
+- `cmon:plan` where rollout or failure realism matters
 - `cmon:review`
 - knowledge capture
 
-## 7.2 Supporting Roles
+## 7.2 Role Usage By Stage
+
+### `cmon:understand`
+
+Default pattern:
+
+- multi-lens context recovery
+
+Reason:
+
+- repo context is easy to misread if only one viewpoint is loaded
+
+### `cmon:brainstorm`
+
+Default pattern:
+
+- multi-lens exploration
+
+Reason:
+
+- this stage benefits from disagreement about problem framing, scope, and tradeoffs
+
+### `cmon:design`
+
+Default pattern:
+
+- owner-led design
+- supporting challenge from non-owner lenses
+
+Owner selection:
+
+- `product-led` when the design problem is mainly about user flow, operator flow, UX, or behavior
+- `engineering-led` when the design problem is mainly about interfaces, architecture, protocol, or system boundaries
+
+Role of non-owner lenses:
+
+- `engineering` should challenge feasibility, complexity, and boundary clarity when `product` leads
+- `product` should challenge usability, clarity, and outcome alignment when `engineering` leads
+- `operations` should challenge rollout realism, failure behavior, and misconfiguration handling
+
+Non-goal:
+
+- do not force three co-equal parallel drafts by default
+
+### `cmon:plan`
+
+Default pattern:
+
+- engineering-owned
+
+Reason:
+
+- this stage is about implementation units, file scope, patterns, tests, verification, and sequencing
+- product and operations should constrain the plan, not co-author it symmetrically
+
+### `cmon:work`
+
+Default pattern:
+
+- engineering execution
+
+Reason:
+
+- bounded implementation quality depends on a clear execution owner
+- other roles should re-enter through blockers, scope decisions, review, or compound capture
+
+### `cmon:review`
+
+Default pattern:
+
+- multi-lens review
+
+Reason:
+
+- acceptance quality depends on product, engineering, and operations all having veto power over meaningful risks
+
+### `cmon:compound`
+
+Default pattern:
+
+- multi-lens when the lesson has cross-role reuse value
+
+Reason:
+
+- many reusable lessons are not purely technical
+
+## 7.3 Supporting Roles
 
 These should likely appear early, but do not need to be first-class on day one.
 
@@ -317,7 +420,7 @@ Purpose:
 - convert session learnings into durable docs
 - update stale docs when needed
 
-## 7.3 Initial Role Count Recommendation
+## 7.4 Initial Role Count Recommendation
 
 For v0, keep the active role set small:
 

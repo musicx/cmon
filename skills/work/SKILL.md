@@ -1,6 +1,6 @@
 ---
 name: cmon:work
-description: Use to execute an approved plan within explicit boundaries. Enforces scoped implementation, verification, and no-drift execution.
+description: Use to execute an approved implementation unit within explicit boundaries. Enforces scoped implementation, fresh verification, and no-drift execution.
 ---
 
 # cmon:work
@@ -25,23 +25,39 @@ If neither exists, go back to `cmon:plan`.
 Before implementation starts, identify:
 
 1. The plan or work unit being executed
-2. Files or modules in scope
-3. Explicit constraints
-4. Verification target
-5. Stop condition
+2. The originating requirements and design artifacts when relevant
+3. Files or modules in scope
+4. Explicit constraints
+5. Patterns to follow
+6. Verification target
+7. Stop condition
 
 Use `templates/work/work-run-manifest-template.md` as the default way to lock the unit before coding when the execution boundary needs to be made explicit.
 
 ## Workflow
 
-1. Read the relevant implementation unit
+1. Read the relevant implementation unit critically
 2. Lock the current unit boundary
-3. Inspect the affected files and nearby tests
-4. Implement only what the unit requires
-5. If scope expansion appears necessary, stop and record it explicitly
-6. Verify the unit with explicit evidence
-7. Record any findings that affect later units or require review
-8. Produce a clean handoff package for `cmon:review`
+3. Inspect the affected files, referenced patterns, and nearby tests
+4. Honor the unit's `Execution Note` when one exists
+5. Implement only what the unit requires
+6. If scope expansion appears necessary, stop and record it explicitly
+7. Verify the unit with explicit evidence
+8. Run a direct self-review for plan drift, edge cases, and missing coverage
+9. Record any findings that affect later units or require review
+10. Produce a clean handoff package for `cmon:review`
+
+## Execution Posture
+
+The plan is a decision artifact, not a script.
+
+`cmon:work` must:
+
+- treat requirements, design, and plan boundaries as the source of truth
+- honor `Execution Note` when a unit is marked test-first or characterization-first
+- prefer existing patterns before inventing new structure
+
+If the unit is missing detail that blocks responsible execution, stop and return to `cmon:plan`.
 
 ## Execution Rules
 
@@ -49,6 +65,7 @@ Use `templates/work/work-run-manifest-template.md` as the default way to lock th
 - If scope expansion is required, use `templates/work/scope-expansion-request-template.md` and stop unless the expansion is narrow, justified, and recorded
 - Prefer the smallest change that satisfies the unit
 - Do not mix unrelated cleanup into the same unit
+- Do not silently reinterpret requirements or design intent during execution
 
 ## Verification Rules
 
@@ -69,12 +86,15 @@ Unacceptable completion language:
 - "probably fixed"
 - "done" without evidence
 
+If the plan's test scenarios are obviously incomplete for the unit, supplement them before claiming completion. Do not pretend the missing cases do not exist.
+
 ## Output
 
 For each executed unit, report:
 
 - `Implemented`
 - `Files changed`
+- `Requirements / Design trace`
 - `Verification`
 - `Open findings for review`
 
@@ -85,6 +105,7 @@ Use `templates/work/unit-execution-report-template.md` as the default handoff st
 - No unbounded implementation
 - No claim of completion without evidence
 - No hidden scope expansion
+- No hiding plan gaps behind "reasonable assumptions"
 - No jumping to adjacent units without closing the current one
 
 ## Handoff

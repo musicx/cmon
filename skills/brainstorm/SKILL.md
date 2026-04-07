@@ -1,6 +1,6 @@
 ---
 name: cmon:brainstorm
-description: Use before non-trivial implementation to clarify the problem, compare approaches, and produce an approved requirements or design artifact through product, engineering, and operations lenses.
+description: Use before non-trivial implementation to clarify the problem, compare approaches, and produce an approved requirements artifact through product, engineering, and operations lenses.
 ---
 
 # cmon:brainstorm
@@ -17,6 +17,7 @@ This skill is mandatory for non-trivial feature work unless the request is alrea
 - whether the requested scope is right-sized
 - what tradeoffs matter
 - what product, engineering, and operations each think about the change
+- whether there is enough clarity to move into explicit design or directly into planning
 
 ## Hard Gate
 
@@ -24,8 +25,8 @@ Do not move to implementation from this skill.
 
 The only valid next step after a successful brainstorm is:
 
-- writing or updating the requirements/design artifact
-- then handing off to `cmon:plan`
+- writing or updating the requirements artifact
+- then handing off to `cmon:design` or `cmon:plan`
 
 ## Required Lenses
 
@@ -56,8 +57,35 @@ Skip to `cmon:plan` only when:
 - intended behavior is already clear
 - scope boundaries are already explicit
 - success criteria are already concrete
+- no additional design clarification is needed
+
+## Core Contract
+
+`cmon:brainstorm` answers:
+
+- what should exist
+- why it matters
+- what is in and out of scope
+- which approach is preferred and why
+
+It does not answer:
+
+- exact file structure
+- implementation sequence
+- detailed technical design
+- how work units will be executed
 
 ## Workflow
+
+### Stage 0: Assess whether brainstorming is needed
+
+Before going deep, decide whether the request already contains:
+
+- concrete expected behavior
+- explicit scope limits
+- success criteria
+
+If yes, keep this pass compact and write only the minimum durable artifact needed for handoff.
 
 ### Stage 1: Recover context
 
@@ -83,7 +111,7 @@ Dispatch in parallel:
 
 Use `templates/brainstorm/lens-invocation-template.md` as the default wrapper for each brainstorm call.
 
-### Stage 4: Synthesize the direction
+### Stage 4: Pressure-test and synthesize the direction
 
 Pass the shared context and brainstorm outputs into:
 
@@ -91,9 +119,11 @@ Pass the shared context and brainstorm outputs into:
 
 Use `templates/brainstorm/synthesizer-input-template.md` as the default synthesis structure.
 
+When meaningful alternatives exist, the synthesized result should explicitly compare 2-3 approaches and recommend one.
+
 ### Stage 5: Write the durable artifact
 
-If planning readiness is clear, write or update the requirements/design artifact.
+If planning readiness is clear, write or update the requirements artifact.
 
 ### Stage 6: Get approval before handoff
 
@@ -102,7 +132,6 @@ If planning readiness is clear, write or update the requirements/design artifact
 Write the result to:
 
 - `docs/brainstorms/` for exploratory or scope-shaping work
-- `docs/architecture/` only if the brainstorm is fundamentally architectural
 
 Use `templates/brainstorm/requirements-template.md` as the default structure unless the work is so small that a compact variant is clearly better.
 
@@ -110,6 +139,7 @@ The artifact must include:
 
 - problem frame
 - intended behavior
+- alternatives and recommendation when the choice is real
 - scope boundaries
 - success criteria
 - key decisions
@@ -118,17 +148,19 @@ The artifact must include:
 ## Hard Rules
 
 - No coding
-- No pseudo-implementation steps
+- No exact file layout, implementation sequencing, or shell choreography
 - No silent collapse of product questions into engineering assumptions
 - No skipping the operations viewpoint on meaningful changes
+- No default inclusion of libraries, schemas, endpoints, or code structure unless the brainstorm is itself about an architectural decision
 - No transition to `cmon:plan` while `Resolve Before Planning` still contains blocking ambiguity
 
 ## Handoff
 
 If approved:
 
-- move to `cmon:plan`
+- move to `cmon:design` when flows, states, interfaces, or cross-surface behavior still need explicit design work
+- otherwise move to `cmon:plan`
 
 If not approved:
 
-- revise the requirements/design artifact and continue brainstorming
+- revise the requirements artifact and continue brainstorming

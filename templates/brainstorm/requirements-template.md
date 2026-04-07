@@ -14,6 +14,13 @@ date: YYYY-MM-DD
 
 [What should be true for the user or system if this work succeeds]
 
+## Alternatives Considered
+
+- Option A: [Short description]
+  - Why it is strong: [reason]
+  - Why it was not selected: [reason]
+- Recommended: [Chosen option and why]
+
 ## Requirements
 
 ### Core Behavior
@@ -40,6 +47,10 @@ date: YYYY-MM-DD
 - [Decision]: [Why this direction was chosen]
 - [Decision]: [Why another direction was rejected]
 
+## Dependencies Or Assumptions
+
+- [Only include if it materially shapes scope or success]
+
 ## Risks Or Tensions
 
 - [Meaningful product, engineering, or operations concern]
@@ -60,5 +71,6 @@ date: YYYY-MM-DD
 
 ## Next Step
 
-- `cmon:plan` when `Resolve Before Planning` is empty
+- `cmon:design` when flow, state, or interface design still needs explicit work
+- `cmon:plan` when design is already explicit enough
 - resume `cmon:brainstorm` when blocking questions remain
