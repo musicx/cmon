@@ -60,7 +60,7 @@ Use:
 
 The synthesizer should recommend one of:
 
-- `cmon:brainstorm`
+- `cmon:think`
 - `cmon:plan`
 - `cmon:review`
 

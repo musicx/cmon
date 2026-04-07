@@ -1,5 +1,8 @@
 # Brainstorm Run Manifest
 
+Deprecated compatibility template.
+Prefer `templates/think/think-run-manifest-template.md` for canonical `cmon:think` usage.
+
 ## Task
 
 - Request Summary: <what needs to be framed>

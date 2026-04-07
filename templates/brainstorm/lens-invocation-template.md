@@ -1,9 +1,12 @@
 # Brainstorm Lens Invocation
 
+Deprecated compatibility template.
+Prefer `templates/think/lens-invocation-template.md` for canonical `cmon:think` usage.
+
 ## Brainstorm Lens
 
 - Lens: <product | engineering | operations>
-- Brainstormer Prompt Path: <agents/brainstorm/...>
+- Brainstormer Prompt Path: <agents/think/...>
 
 ## Invocation Objective
 

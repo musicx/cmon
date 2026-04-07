@@ -107,6 +107,6 @@ Recommended sections:
 
 Typical next steps:
 
-- `cmon:brainstorm` if the problem or scope is still open
+- `cmon:think` if the problem, direction, or scope is still open
 - `cmon:plan` if the requirements are already clear
 - `cmon:review` if the task is to assess an existing change

@@ -15,7 +15,7 @@
 
 ## Output Expectations
 
-- Expected Next Skill: <cmon:brainstorm | cmon:plan | cmon:review | infer>
+- Expected Next Skill: <cmon:think | cmon:plan | cmon:review | infer>
 - Notes:
   - <note or "none">
 

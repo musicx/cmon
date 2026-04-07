@@ -33,12 +33,16 @@ All user-facing core skill names must begin with the `cmon:` namespace.
 Required initial skill names:
 
 - `cmon:understand`
-- `cmon:brainstorm`
+- `cmon:think`
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
 - `cmon:review`
 - `cmon:compound`
+
+Deprecated compatibility alias:
+
+- `cmon:brainstorm`
 
 If repo-internal directories or files use filesystem-safe names without `:`, that is acceptable. The exported skill identity must still use the `cmon:` prefix.
 
@@ -47,7 +51,7 @@ If repo-internal directories or files use filesystem-safe names without `:`, tha
 These assumptions are project policy unless explicitly revised in a design doc.
 
 1. **Multi-agent role separation is necessary**
-   - Especially for repo understanding, brainstorming, review, and knowledge capture
+   - Especially for repo understanding, pre-design thinking, review, and knowledge capture
    - At minimum, the system must support `product`, `engineering`, and `operations` viewpoints
    - This does **not** mean every stage uses symmetric parallel roles
    - Different stages may be multi-lens, owner-led, or engineering-owned depending on the decision being made
@@ -81,10 +85,14 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Scan repo context, existing docs, and prior decisions
    - Use role-separated repo understanding where useful
 
-2. **`cmon:brainstorm`**
-   - Clarify the problem, tradeoffs, and scope
+2. **`cmon:think`**
+   - Unified pre-design thinking skill
+   - Routes internally between:
+     - `ideate` when the user needs candidate directions
+     - `brainstorm` when the user needs requirements clarification for a chosen direction
+     - `fast-path` when the request is already clear enough for quick routing
    - Include at least product, engineering, and operations lenses for meaningful work
-   - Produce an approved requirements artifact, not an implementation sketch
+   - Produce either a ranked option set or an approved requirements artifact, not an implementation sketch
 
 3. **`cmon:design`**
    - Turn approved requirements into an explicit design artifact when flows, states, interfaces, UX, or architecture decisions would otherwise leak into planning
@@ -138,6 +146,9 @@ Additional lenses can be added later, but these three are mandatory in the proje
   - often multi-lens, because context is easy to misread from only one viewpoint
 
 - `cmon:brainstorm`
+  - deprecated alias for `cmon:think`
+
+- `cmon:think`
   - multi-lens by default
   - product, engineering, and operations should all shape problem framing and scope
 
@@ -166,7 +177,7 @@ Additional lenses can be added later, but these three are mandatory in the proje
 This repo should converge on a small set of durable artifact types:
 
 - `docs/brainstorms/`
-  - requirements, framing, scope, decisions before design or planning
+  - requirements, framing, scope, and chosen direction artifacts from `cmon:think`
 
 - `docs/designs/`
   - design specs, user flows, states, interaction choices, and architecture-level design clarifications before planning

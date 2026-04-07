@@ -10,7 +10,7 @@
 - Command Or Procedure: manual comparison against `AGENTS.md`
   - Result: pass
   - Evidence:
-    - the lifecycle order in the matrix matches `cmon:understand -> cmon:brainstorm -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
+    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
     - no new stage names or runtime concepts were introduced
 
 - Command Or Procedure: manual comparison against `docs/architecture/2026-04-07-core-skills-v0.md`
@@ -22,7 +22,7 @@
 - Command Or Procedure: manual comparison against the six `skills/*/SKILL.md` files
   - Result: pass
   - Evidence:
-    - `understand`, `brainstorm`, `plan`, `work`, `review`, and `compound` all match the matrix's use/requirement/next-step framing at a high level
+    - `understand`, `think`, `design`, `plan`, `work`, `review`, and `compound` all match the matrix's use/requirement/next-step framing at a high level
 
 ## Coverage Notes
 

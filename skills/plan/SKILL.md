@@ -15,11 +15,11 @@ Its job is to produce a decision-quality implementation plan that gives `cmon:wo
 
 Use this skill when one of these is true:
 
-- `cmon:brainstorm` already produced an approved requirements artifact
+- `cmon:think` already produced an approved requirements artifact
 - `cmon:design` already produced an approved design artifact
 - the user provided sufficiently clear behavior, scope, and success criteria
 
-If product behavior is still ambiguous, go back to `cmon:brainstorm`.
+If product behavior or chosen direction is still ambiguous, go back to `cmon:think`.
 If flow, state, or boundary design is still ambiguous, go back to `cmon:design`.
 
 ## Required Outputs

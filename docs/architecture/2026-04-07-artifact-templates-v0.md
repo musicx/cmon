@@ -36,35 +36,43 @@ Purpose:
 - keep multi-lens repo observation consistent
 - produce one shared context packet for the next skill
 
-### Brainstorm
+### Think
 
 Path:
 
-- `templates/brainstorm/requirements-template.md`
-- `templates/brainstorm/brainstorm-run-manifest-template.md`
-- `templates/brainstorm/brainstorm-context-template.md`
-- `templates/brainstorm/lens-invocation-template.md`
-- `templates/brainstorm/synthesizer-input-template.md`
+- `templates/think/directions-template.md`
+- `templates/think/requirements-template.md`
+- `templates/think/think-run-manifest-template.md`
+- `templates/think/think-context-template.md`
+- `templates/think/lens-invocation-template.md`
+- `templates/think/synthesizer-input-template.md`
 
 Used by:
 
-- `cmon:brainstorm`
+- `cmon:think`
 
 Purpose:
 
-- turn an explored problem into an approved requirements artifact
-- keep multi-lens brainstorming inputs and synthesis consistent
+- support the canonical `cmon:think` implementation surface
+- turn an explored problem into either a chosen direction or an approved requirements artifact
+- keep multi-lens thinking inputs and synthesis consistent
 
 Key sections:
 
-- problem frame
-- intended outcome
-- requirements with stable IDs
-- alternatives and recommendation
-- success criteria
-- scope boundaries
-- key decisions
-- blocking and deferred questions
+- for direction artifacts:
+  - problem frame
+  - current status quo
+  - candidate directions with smallest credible wedge
+  - ranked recommendation
+- for requirements artifacts:
+  - problem frame
+  - intended outcome
+  - requirements with stable IDs
+  - alternatives and recommendation
+  - success criteria
+  - scope boundaries
+  - key decisions
+  - blocking and deferred questions
 
 ### Design
 

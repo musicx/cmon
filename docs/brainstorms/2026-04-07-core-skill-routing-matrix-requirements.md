@@ -68,4 +68,4 @@ An operator can quickly determine:
 ## Next Step
 
 - `cmon:plan` when `Resolve Before Planning` is empty
-- resume `cmon:brainstorm` when blocking questions remain
+- resume `cmon:think` when blocking questions remain

@@ -9,7 +9,7 @@ It now also records the explicit design split added after the initial v0 chain.
 ## Canonical Skill Names
 
 - `cmon:understand`
-- `cmon:brainstorm`
+- `cmon:think`
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
@@ -19,7 +19,7 @@ It now also records the explicit design split added after the initial v0 chain.
 ## Lifecycle
 
 ```text
-cmon:understand -> cmon:brainstorm -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the default path for substantial work.
@@ -37,10 +37,12 @@ Produces the context packet:
 - open questions
 - role-separated context when needed
 
-### `cmon:brainstorm`
+### `cmon:think`
 
-Produces the approved requirements artifact:
+Produces the pre-design thinking output:
 
+- a ranked direction set when ideation is needed
+- or an approved requirements artifact when a direction is being clarified
 - problem frame
 - intended behavior
 - scope boundaries
@@ -119,7 +121,7 @@ Produces the reusable learning artifact:
 | Skill | Primary durable artifact |
 |---|---|
 | `cmon:understand` | none by default, context only |
-| `cmon:brainstorm` | `docs/brainstorms/...` |
+| `cmon:think` | `docs/brainstorms/...` |
 | `cmon:design` | `docs/designs/...` |
 | `cmon:plan` | `docs/plans/...` |
 | `cmon:work` | code + tests + verification evidence + scoped execution artifacts |

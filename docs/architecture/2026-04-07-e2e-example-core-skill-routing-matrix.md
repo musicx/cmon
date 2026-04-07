@@ -7,6 +7,8 @@ This document records the first end-to-end example run for `cmon`.
 
 Note: this example was recorded before `cmon:design` was split into its own explicit stage. It still proves the original v0 chain, but should be refreshed in a later pass to include `cmon:design`.
 
+It was also recorded before `cmon:brainstorm` was renamed to `cmon:think`, so references to the older skill name in this example are historical, not canonical.
+
 The example task was intentionally small:
 
 - add one compact operator-facing routing matrix for the six core `cmon:*` skills
@@ -18,7 +20,7 @@ The goal was not to stress complexity. The goal was to prove the artifact chain 
 This task is small enough to stay bounded, but real enough to exercise the full flow:
 
 - `cmon:understand` must recover the current lifecycle and key docs
-- `cmon:brainstorm` must choose the right artifact shape and hold scope
+- `cmon:think` must choose the right artifact shape and hold scope
 - `cmon:plan` must define one bounded implementation unit
 - `cmon:work` must execute that unit with explicit verification
 - `cmon:review` must judge the result against the approved intent

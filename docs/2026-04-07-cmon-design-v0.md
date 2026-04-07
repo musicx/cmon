@@ -28,7 +28,7 @@ All exported core skill names must use the `cmon:` namespace.
 The initial canonical names are:
 
 - `cmon:understand`
-- `cmon:brainstorm`
+- `cmon:think`
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
@@ -36,6 +36,9 @@ The initial canonical names are:
 - `cmon:compound`
 
 Repo-internal folder names may remain filesystem-safe, but public skill names must keep the namespace.
+
+Canonical internal implementation paths should follow the exported skill name when practical.
+For v0 this means `templates/think/` and `agents/think/` are preferred over new `brainstorm/*` internals.
 
 ## 2. Problem Statement
 
@@ -60,7 +63,7 @@ The result is that no single existing repo matches the desired shape:
 
 1. **Codify a complete engineering loop**
    - repo understanding
-   - `cmon:brainstorm`
+   - `cmon:think`
    - `cmon:design`
    - `cmon:plan`
    - `cmon:work`
@@ -141,7 +144,7 @@ If work produces no durable residue, future work stays expensive.
 
 ## 6.1 High-Level Lifecycle
 
-`cmon:understand -> cmon:brainstorm -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
+`cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
 
 ### `cmon:understand`
 
@@ -157,19 +160,21 @@ Output:
 - relevant existing files / docs
 - known constraints
 
-### `cmon:brainstorm`
+### `cmon:think`
 
 Purpose:
 
+- act as the unified pre-design thinking stage
 - pressure-test the problem framing
-- compare approaches
+- generate candidate directions when the request is still open-ended
+- compare approaches and clarify requirements when a direction exists
 - examine the request from product, engineering, and operations viewpoints
 
 Output:
 
-- clarified problem statement
-- scoped decision
-- approved requirements document with explicit scope boundaries, success criteria, and blocking questions
+- either:
+  - a ranked direction set when the user is still choosing what to pursue
+  - or an approved requirements document with explicit scope boundaries, success criteria, and blocking questions
 
 ### `cmon:design`
 
@@ -275,7 +280,7 @@ Questions:
 
 Best used in:
 
-- `cmon:brainstorm`
+- `cmon:think`
 - owner-led or review support for `cmon:design`
 - final review
 
@@ -305,7 +310,7 @@ Questions:
 
 Best used in:
 
-- `cmon:brainstorm` for risky changes
+- `cmon:think` for risky changes
 - challenge and constraint input for `cmon:design`
 - `cmon:plan` where rollout or failure realism matters
 - `cmon:review`
@@ -323,7 +328,7 @@ Reason:
 
 - repo context is easy to misread if only one viewpoint is loaded
 
-### `cmon:brainstorm`
+### `cmon:think`
 
 Default pattern:
 
@@ -331,7 +336,7 @@ Default pattern:
 
 Reason:
 
-- this stage benefits from disagreement about problem framing, scope, and tradeoffs
+- this stage benefits from disagreement about direction quality, problem framing, scope, and tradeoffs
 
 ### `cmon:design`
 
@@ -650,11 +655,14 @@ cmon/
   docs/
     architecture/
     brainstorms/
+    designs/
     plans/
     solutions/
   skills/
     understand/        # exports cmon:understand
-    brainstorm/        # exports cmon:brainstorm
+    brainstorm/        # deprecated alias for cmon:think
+    think/             # exports cmon:think
+    design/            # exports cmon:design
     plan/              # exports cmon:plan
     work/              # exports cmon:work
     review/            # exports cmon:review
@@ -689,19 +697,22 @@ Recommended first skills:
 1. `cmon:understand`
    - repo understanding and context recovery
 
-2. `cmon:brainstorm`
-   - problem framing with product / engineering / operations lenses
+2. `cmon:think`
+   - ideation, problem framing, and requirements clarification with product / engineering / operations lenses
 
-3. `cmon:plan`
+3. `cmon:design`
+   - explicit design decisions before planning
+
+4. `cmon:plan`
    - implementation planning with explicit boundaries
 
-4. `cmon:work`
+5. `cmon:work`
    - bounded execution against approved plan
 
-5. `cmon:review`
+6. `cmon:review`
    - multi-role review and synthesis
 
-6. `cmon:compound`
+7. `cmon:compound`
    - solution and pattern capture
 
 This is enough to express the complete philosophy.
@@ -715,14 +726,15 @@ Deliverables:
 - project structure
 - root guidance docs
 - architecture doc
-- initial templates for brainstorm / plan / solution docs
+- initial templates for think / design / plan / solution docs
 
 ## Phase 2: Core Workflow Skills
 
 Deliverables:
 
 - `cmon:understand`
-- `cmon:brainstorm`
+- `cmon:think`
+- `cmon:design`
 - `cmon:plan`
 
 Goal:

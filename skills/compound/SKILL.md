@@ -120,4 +120,4 @@ Decide whether to:
 After compounding:
 
 - the work loop is complete
-- future runs of `cmon:understand`, `cmon:brainstorm`, `cmon:plan`, and `cmon:review` should be able to discover the artifact
+- future runs of `cmon:understand`, `cmon:think`, `cmon:plan`, and `cmon:review` should be able to discover the artifact

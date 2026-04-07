@@ -79,7 +79,7 @@ The result should identify:
 
 Default next steps:
 
-- `cmon:brainstorm` if scope or problem framing is still open
+- `cmon:think` if scope, direction, or problem framing is still open
 - `cmon:plan` if requirements are already clear
 - `cmon:review` if the task is to assess an existing change
 

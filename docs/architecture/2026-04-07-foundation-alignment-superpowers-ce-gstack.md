@@ -5,7 +5,7 @@ Status: Draft
 
 This document defines how `cmon` should align its foundational skill contracts with `superpowers`, `compound-engineering`, and `gstack` across the critical path:
 
-- `cmon:brainstorm`
+- `cmon:think`
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
@@ -65,14 +65,14 @@ This alignment also makes one governance choice explicit:
 
 | Step | Target capability to absorb | `cmon` decision |
 |---|---|---|
-| Brainstorm | `superpowers` hard gate, `compound-engineering` right-sized requirements, `gstack` product pressure test | `cmon:brainstorm` owns problem framing, scope shaping, alternatives, and approved requirements. It must not drift into implementation planning. |
+| Think | `superpowers` hard gate, `compound-engineering` ideate plus brainstorm split, and `gstack` product pressure test | `cmon:think` owns direction finding, problem framing, scope shaping, alternatives, and approved requirements. It must not drift into implementation planning. |
 | Design | `superpowers` approved design expectation, `gstack` design review bar, `compound-engineering` artifact discipline | `cmon:design` becomes explicit. It is owner-led by default, not symmetric three-way co-authoring. It owns flows, states, interfaces, ambiguity removal, and design quality gating before planning. |
 | Plan | `compound-engineering` research, traceability, and deepening plus `gstack` critique mentality and `superpowers` bounded units | `cmon:plan` is engineering-owned. It must produce exact-file, bounded implementation units with patterns, test scenarios, execution note, verification, and self-checks. |
 | Work | `superpowers` no-drift execution and verification, `compound-engineering` plan-aware execution and review posture | `cmon:work` is engineering execution. It must execute one bounded unit, honor execution posture, stop on drift, verify continuously, and hand off cleanly to review. |
 
 ## 2.1 Collaboration Pattern By Step
 
-- `cmon:brainstorm`
+- `cmon:think`
   - multi-lens by default
 
 - `cmon:design`
@@ -91,10 +91,11 @@ This alignment also makes one governance choice explicit:
 
 ## 3. Contracts By Step
 
-### `cmon:brainstorm`
+### `cmon:think`
 
 Responsibilities:
 
+- generate candidate directions when the request is still open-ended
 - assess whether brainstorming is needed
 - recover minimal repo context before questioning
 - pressure-test the problem framing
@@ -227,6 +228,7 @@ This alignment implies these foundational choices for `cmon`:
 4. Work execution must trace back to requirements, design, and plan rather than only "the current task".
 5. Quality gates must live inside the skill contracts, not only in architecture docs.
 6. Multi-role coverage is enforced across the lifecycle, but `design` is owner-led and `plan/work` are engineering-owned.
+7. `cmon:think` is the canonical pre-design thinking skill, with `ideate`, `brainstorm`, and `fast-path` as internal modes.
 
 ## 5. Explicit Non-Alignment
 

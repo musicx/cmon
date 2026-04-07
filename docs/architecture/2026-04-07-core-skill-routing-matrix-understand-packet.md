@@ -10,7 +10,7 @@ Task: add a compact routing reference that tells operators which `cmon:*` skill 
   - `docs/architecture/2026-04-07-core-skills-v0.md`
   - `docs/architecture/2026-04-07-artifact-templates-v0.md`
   - `skills/understand/SKILL.md`
-  - `skills/brainstorm/SKILL.md`
+  - `skills/think/SKILL.md`
   - `skills/plan/SKILL.md`
   - `skills/work/SKILL.md`
   - `skills/review/SKILL.md`
@@ -50,5 +50,5 @@ Task: add a compact routing reference that tells operators which `cmon:*` skill 
 
 ## Recommended Next Step
 
-- `cmon:brainstorm`
+- `cmon:think`
 - Reason: the task is clear enough to be small, but it still needs one pass to decide the right shape, scope boundary, and artifact style.

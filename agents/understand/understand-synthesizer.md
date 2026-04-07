@@ -63,6 +63,6 @@ Only synthesize from the provided outputs and shared context bundle.
 - <question or "none">
 
 ## Recommended Next Step
-- cmon:brainstorm | cmon:plan | cmon:review
+- cmon:think | cmon:plan | cmon:review
 - Reason: <short explanation>
 ```
