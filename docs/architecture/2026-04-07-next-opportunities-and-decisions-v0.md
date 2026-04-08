@@ -172,11 +172,13 @@ As of the current draft state:
 
 - `cmon:understand` has been strengthened into a more explicit stage-entry contract
 - the shared stage transition contract now exists and has been adopted into the major stage handoffs
+- a first thin critique orchestration layer now exists through `cmon:pressure-test`
+- a first knowledge-maintenance layer now exists through `cmon:refresh-knowledge`
 
 So the next highest-value follow-ups are now:
 
-1. consider thin critique orchestration
-2. consider knowledge-base maintenance upgrades
+1. consider light helper automation for the critique surface only if repeated manual use shows payoff
+2. consider light helper automation for scoped knowledge refresh only if repeated maintenance work shows payoff
 
 ## 7. Related
 

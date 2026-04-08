@@ -98,6 +98,10 @@ Decide whether to:
 - update an existing doc
 - skip if the signal is too weak
 
+If the pass discovers multiple stale, overlapping, or contradictory docs that go beyond a narrow in-place update:
+
+- recommend a targeted `cmon:refresh-knowledge` follow-up instead of widening the current compounding pass into a broad maintenance sweep
+
 ## Preferred Categories of Learning
 
 - solved bug with reusable root cause

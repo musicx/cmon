@@ -83,6 +83,14 @@ Default target:
 
 Use `docs/architecture/` only for stable repo-level guidance that no longer fits as a solution doc.
 
+If the synthesized result exposes a broader maintenance problem:
+
+- overlapping docs
+- stale pattern surfaces
+- contradiction between old and new guidance
+
+recommend a narrow `cmon:refresh-knowledge` follow-up instead of widening the current pass.
+
 ## 3. v0 Policy Choice
 
 `cmon:compound` is mandatory when triggered, but it is not universal after every accepted change.
@@ -111,4 +119,4 @@ This execution doc now has a matching manual operating procedure:
 
 The next useful upgrade after this is:
 
-- an end-to-end example that proves `cmon:review -> cmon:compound`
+- targeted maintenance support for stale or overlapping durable knowledge

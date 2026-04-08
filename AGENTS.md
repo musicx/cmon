@@ -40,6 +40,13 @@ Required initial skill names:
 - `cmon:review`
 - `cmon:compound`
 
+Supporting non-core workflow skills may also use the `cmon:` namespace when they help orchestrate the lifecycle without becoming new mandatory stages.
+
+Current supporting skill:
+
+- `cmon:pressure-test`
+- `cmon:refresh-knowledge`
+
 Deprecated compatibility alias:
 
 - `cmon:brainstorm`

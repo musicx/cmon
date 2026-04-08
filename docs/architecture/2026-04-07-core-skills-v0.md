@@ -16,6 +16,13 @@ It now also records the explicit design split added after the initial v0 chain.
 - `cmon:review`
 - `cmon:compound`
 
+## Supporting Workflow Skill
+
+- `cmon:pressure-test`
+  - auxiliary thin orchestration surface for reusing existing critique stacks
+- `cmon:refresh-knowledge`
+  - auxiliary maintenance surface for stale, overlapping, or duplicated durable knowledge
+
 ## Lifecycle
 
 ```text
@@ -162,8 +169,8 @@ Shared handoff decisions should use:
 
 The next iteration should focus on:
 
-1. consider thinner critique orchestration now that major stage handoffs share one transition contract
-2. consider knowledge-maintenance upgrades in `cmon:compound`
+1. consider light helper automation for `cmon:pressure-test` only if manual use proves worthwhile
+2. consider light helper automation for `cmon:refresh-knowledge` only if manual use proves worthwhile
 3. add more proof-only examples only if later evidence shows the current proof set is too optimistic
 
 Detailed comparison and prioritization live in:

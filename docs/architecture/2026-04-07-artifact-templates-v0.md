@@ -191,6 +191,18 @@ Purpose:
 - preserve multi-lens learning signals
 - support new-doc versus update-existing decisions
 
+- `templates/compound/knowledge-refresh-manifest-template.md`
+- `templates/compound/knowledge-refresh-summary-template.md`
+
+Used by:
+
+- `cmon:refresh-knowledge`
+
+Purpose:
+
+- support narrow refresh passes for stale, overlapping, or duplicated knowledge
+- keep maintenance evidence-based and scoped
+
 ### Review
 
 Paths:
@@ -216,6 +228,8 @@ Purpose:
 Paths:
 
 - `templates/workflow/stage-transition-decision-template.md`
+- `templates/workflow/pressure-test-run-manifest-template.md`
+- `templates/workflow/pressure-test-summary-template.md`
 
 Used by:
 
@@ -226,6 +240,7 @@ Purpose:
 - normalize handoff decisions into `proceed / revise / block`
 - make the next stage explicit
 - keep missing conditions visible instead of implying readiness
+- provide one thin orchestration surface for reusing existing critique stacks
 
 ## 2. Design Choices
 
