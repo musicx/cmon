@@ -42,8 +42,9 @@ Required initial skill names:
 
 Supporting non-core workflow skills may also use the `cmon:` namespace when they help orchestrate the lifecycle without becoming new mandatory stages.
 
-Current supporting skill:
+Current supporting skills:
 
+- `cmon:debug`
 - `cmon:pressure-test`
 - `cmon:refresh-knowledge`
 - `cmon:revalidate`

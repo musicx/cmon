@@ -188,3 +188,4 @@ So the next highest-value follow-ups are now:
 - `docs/architecture/2026-04-07-foundation-alignment-superpowers-ce-gstack.md`
 - `docs/architecture/2026-04-07-workflow-proof-coverage-v0.md`
 - `docs/architecture/2026-04-07-handoff-and-artifact-gc-analysis-v0.md`
+- `docs/architecture/2026-04-08-shared-extra-capabilities-across-skill-repos-v0.md`

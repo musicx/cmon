@@ -160,6 +160,23 @@ Purpose:
 - create a clean handoff package for review
 - keep execution traceable back to requirements, design, and plan posture
 
+### Debug
+
+Paths:
+
+- `templates/debug/debug-run-manifest-template.md`
+- `templates/debug/debug-report-template.md`
+
+Used by:
+
+- `cmon:debug`
+
+Purpose:
+
+- lock one bounded debugging pass before investigation drifts
+- capture reproducibility, evidence, and current hypothesis explicitly
+- produce a clean debugging handoff before any fix or reroute
+
 ### Solutions
 
 Paths:

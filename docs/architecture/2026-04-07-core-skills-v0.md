@@ -18,6 +18,8 @@ It now also records the explicit design split added after the initial v0 chain.
 
 ## Supporting Workflow Skill
 
+- `cmon:debug`
+  - auxiliary investigation surface for root-cause-first debugging before any fix attempt
 - `cmon:pressure-test`
   - auxiliary thin orchestration surface for reusing existing critique stacks
 - `cmon:refresh-knowledge`
@@ -110,6 +112,17 @@ Default collaboration pattern:
 
 - engineering execution
 
+### `cmon:debug`
+
+Produces the debugging handoff:
+
+- precise symptom statement
+- reproduction status
+- evidence gathered
+- concrete hypothesis
+- confirmed root cause or best current failure boundary
+- narrow next-action recommendation
+
 ### `cmon:review`
 
 Produces the acceptance decision:
@@ -184,3 +197,5 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-07-stage-transition-contract-v0.md`
 - `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`
 - `docs/architecture/2026-04-07-handoff-and-artifact-gc-analysis-v0.md`
+- `docs/architecture/2026-04-08-shared-extra-capabilities-across-skill-repos-v0.md`
+- `docs/architecture/2026-04-08-debug-skill-v0.md`
