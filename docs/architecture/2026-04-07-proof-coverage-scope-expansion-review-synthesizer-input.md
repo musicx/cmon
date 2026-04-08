@@ -8,4 +8,4 @@
 
 ## Follow-Up
 
-- The remaining higher-value proof gap is still a less documentation-heavy `update_existing` compound case.
+- The remaining optional proof gap is a blocked path only if later review still demands it.

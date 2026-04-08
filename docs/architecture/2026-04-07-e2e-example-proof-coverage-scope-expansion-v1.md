@@ -84,4 +84,4 @@ Add a compact workflow proof-coverage reference and surface it from the right ov
 ## What It Still Does Not Prove
 
 - It does not yet prove a fully blocked execution path.
-- It does not yet prove the same compound behavior on a less documentation-heavy task.
+- It does not yet prove a code-changing `parallel` path.
