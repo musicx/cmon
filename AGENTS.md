@@ -16,7 +16,7 @@ It does **not** currently aim to be a general cross-host framework, a runtime-he
 `cmon` should feel like:
 
 - `superpowers` in execution discipline
-- `compound-engineering` in planning, review, and knowledge compounding
+- `compound-engineering` in planning, challenge/verification discipline, and knowledge compounding
 - `gstack` in pre-implementation critique loops and design/plan quality gates
 - a smaller, clearer, more directly composable system than either
 
@@ -64,7 +64,7 @@ If repo-internal directories or files use filesystem-safe names without `:`, tha
 These assumptions are project policy unless explicitly revised in a design doc.
 
 1. **Multi-agent role separation is necessary**
-   - Especially for repo understanding, pre-design thinking, review, and knowledge capture
+   - Especially for repo understanding, pre-design thinking, multi-role challenge, and knowledge capture
    - At minimum, the system must support `product`, `engineering`, and `operations` viewpoints
    - This does **not** mean every stage uses symmetric parallel roles
    - Different stages may be multi-lens, owner-led, or engineering-owned depending on the decision being made

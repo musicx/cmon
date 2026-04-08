@@ -137,7 +137,7 @@ Produces the verification judgment:
 - claim under test
 - evidence used
 - gaps still visible
-- accept / revise / escalate decision
+- accept / revise decision with explicit reflow guidance when the root cause is upstream
 
 ### `cmon:debug`
 
