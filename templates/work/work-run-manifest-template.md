@@ -5,6 +5,8 @@
 - Plan Path: <docs/plans/...>
 - Requirements Path: <docs/brainstorms/... or "none">
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
+- Repo Root Or Project Directory: <path>
+- Existing Git Repo Confirmed: <yes | no>
 - Unit ID Or Title: <unit id>
 - Requirements Reference: <R1, R2 or "none">
 

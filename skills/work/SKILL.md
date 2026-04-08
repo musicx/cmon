@@ -20,6 +20,13 @@ Do not use this skill unless one of these exists:
 
 If neither exists, go back to `cmon:plan`.
 
+Before any real development begins, confirm the target project area is already a git repo.
+
+If the work is substantial greenfield project creation and no git repo exists yet:
+
+- initialize git first
+- then continue with the bounded unit
+
 ## Required Inputs
 
 Before implementation starts, identify:
@@ -38,19 +45,20 @@ Use `templates/work/execution-strategy-template.md` when the unit needs an expli
 ## Workflow
 
 1. Read the relevant implementation unit critically
-2. Lock the current unit boundary
-3. Choose the execution strategy
-4. Inspect the affected files, referenced patterns, and nearby tests
-5. Honor the unit's `Execution Note` when one exists
-6. Implement only what the unit requires
-7. If scope expansion appears necessary, stop and record it explicitly
-8. Verify the unit with explicit evidence
-9. Run internal spec compliance review against requirements, design, and plan
-10. If compliance fails, return to the same unit and correct it before proceeding
-11. Run internal code-quality review on the completed unit
-12. If code quality fails, return to the same unit and correct it before proceeding
-13. Record any findings that affect later units or require review
-14. Produce a clean handoff package for `cmon:verify`
+2. Confirm repo foundation before editing anything
+3. Lock the current unit boundary
+4. Choose the execution strategy
+5. Inspect the affected files, referenced patterns, and nearby tests
+6. Honor the unit's `Execution Note` when one exists
+7. Implement only what the unit requires
+8. If scope expansion appears necessary, stop and record it explicitly
+9. Verify the unit with explicit evidence
+10. Run internal spec compliance review against requirements, design, and plan
+11. If compliance fails, return to the same unit and correct it before proceeding
+12. Run internal code-quality review on the completed unit
+13. If code quality fails, return to the same unit and correct it before proceeding
+14. Record any findings that affect later units or require review
+15. Produce a clean handoff package for `cmon:verify`
 
 ## Execution Posture
 
@@ -94,6 +102,7 @@ It is allowed only when:
 ## Execution Rules
 
 - Only edit files that are in scope for the current unit, unless a narrow dependency forces expansion
+- Do not start editing inside a new substantial project directory that still lacks git initialization
 - If scope expansion is required, use `templates/work/scope-expansion-request-template.md` and stop unless the expansion is narrow, justified, and recorded
 - Prefer the smallest change that satisfies the unit
 - Do not mix unrelated cleanup into the same unit

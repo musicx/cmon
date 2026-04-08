@@ -38,7 +38,21 @@ If any of those are missing or vague, stop and return to:
 
 Do not start coding from an underspecified unit.
 
-## 3. Step 2: Fill The Work Run Manifest
+## 3. Step 2: Confirm Repo Foundation
+
+Before any edits:
+
+- identify the target repo root or project directory
+- confirm it is already a git repo
+
+If the work is substantial greenfield project creation and git is still missing:
+
+- initialize git first
+- then continue
+
+Do not start real development in an unversioned project directory.
+
+## 4. Step 3: Fill The Work Run Manifest
 
 Record:
 
@@ -51,7 +65,7 @@ Record:
 
 The manifest is the working contract for the unit.
 
-## 4. Step 3: Choose The Execution Strategy
+## 5. Step 4: Choose The Execution Strategy
 
 Before implementation starts, choose one of:
 
@@ -71,7 +85,7 @@ Only choose `parallel` when write scopes are disjoint and dependency order is ge
 
 If that is not clearly true, downgrade to `serial` or `inline`.
 
-## 5. Step 4: Inspect The Actual Code Area
+## 6. Step 5: Inspect The Actual Code Area
 
 Before editing:
 
@@ -83,7 +97,7 @@ This is the last point where context gathering is allowed.
 
 After this, do not let implementation turn back into open-ended repo exploration.
 
-## 6. Step 5: Execute Only The Unit
+## 7. Step 6: Execute Only The Unit
 
 Implement only what the unit requires.
 
@@ -105,7 +119,7 @@ If extra work is required, use:
 
 and stop unless the expansion is clearly narrow and justified.
 
-## 7. Step 6: Capture Verification Evidence
+## 8. Step 7: Capture Verification Evidence
 
 Before saying the unit is complete, gather fresh evidence using:
 
@@ -115,7 +129,7 @@ The evidence must come from this session.
 
 Do not reuse stale output unless the command was rerun after the relevant code changed.
 
-## 8. Step 7: Run System Interaction Check When Needed
+## 9. Step 8: Run System Interaction Check When Needed
 
 If the unit has non-local effects, fill:
 
@@ -125,7 +139,7 @@ Run this check when the unit touches callbacks, middleware, retries, failure cle
 
 If the check reveals that the unit's actual impact is larger than the current boundary or current verification, stop and revise before continuing.
 
-## 9. Step 8: Run Spec Compliance Review
+## 10. Step 9: Run Spec Compliance Review
 
 After verification succeeds, assemble a packet using:
 
@@ -140,7 +154,7 @@ If the answer is not clearly yes, return to implementation.
 
 Do not move forward just because tests passed.
 
-## 10. Step 9: Run Code-Quality Review
+## 11. Step 10: Run Code-Quality Review
 
 Only after spec compliance is sound, assemble:
 
@@ -154,7 +168,7 @@ The goal is to surface:
 
 If material concerns remain, return to implementation and rerun the loop.
 
-## 11. Step 10: Write The Unit Execution Report
+## 12. Step 11: Write The Unit Execution Report
 
 After implementation and verification, write:
 
@@ -171,7 +185,7 @@ The report should include:
 - open findings
 - whether scope stayed intact
 
-## 12. Step 11: Route To The Next Skill
+## 13. Step 12: Route To The Next Skill
 
 Record the result using:
 
@@ -194,10 +208,11 @@ If the unit remains correctable inside the same bounded execution slice:
 
 - `revise -> cmon:work`
 
-## 13. Failure Cases
+## 14. Failure Cases
 
 Stop and surface the issue when:
 
+- the target project directory still is not a git repo when real development should begin
 - the unit boundary is not real in practice
 - the chosen execution strategy is no longer valid in practice
 - required verification is unavailable

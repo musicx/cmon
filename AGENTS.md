@@ -96,8 +96,8 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
 1. **`cmon:understand`**
    - Scan repo context, existing docs, and prior decisions
    - Use role-separated repo understanding where useful
-   - For greenfield or newly created project directories, confirm repo foundation state before later stages proceed
-   - If substantial work will produce durable artifacts or code and the directory is not yet a git repo, initialize git before design, plan, and implementation continue
+   - Recover repo foundation state when it materially affects later routing
+   - For greenfield or newly created project directories, if substantial tracked work is clearly about to begin and no git repo exists yet, initializing git during `understand` is acceptable
 
 2. **`cmon:think`**
    - Unified pre-design thinking skill
@@ -129,6 +129,7 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Implement only against approved scope
    - Keep tasks bounded and verifiable
    - This stage is explicitly `engineering-execution`, not multi-role co-execution
+   - Before any actual development starts, confirm the target project area is already a git repo, or initialize it if the work is substantial greenfield project creation
 
 7. **`cmon:verify`**
    - Treat implementation as unaccepted until the evidence package actually supports the claim

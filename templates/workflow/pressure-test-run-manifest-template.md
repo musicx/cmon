@@ -15,6 +15,7 @@
 - Review Artifacts:
   - <path or "none">
 
+
 ## Critique Goal
 
 - What Must Be Proven Before Handoff: <note>

@@ -85,6 +85,7 @@ Run the existing pre-work critique stack already defined by `cmon:plan`:
 
 Return one `proceed / revise / block` decision for the transition into `cmon:work`.
 
+
 ### `work`
 
 Run the existing narrow internal review surface already defined by `cmon:work`:

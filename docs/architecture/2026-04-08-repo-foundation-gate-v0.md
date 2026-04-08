@@ -20,7 +20,10 @@ That is not acceptable for non-trivial project creation.
 
 ## Decision
 
-For greenfield or newly created project directories, `cmon:understand` must explicitly check repo foundation state before later stages proceed.
+For greenfield or newly created project directories, `cmon` should treat repo foundation as a real workflow concern in two places:
+
+- `cmon:understand` should discover it early and may initialize git immediately when the target is clearly a new substantial project
+- `cmon:work` must re-check it before any real development starts and should not proceed without a git repo
 
 At minimum, it must determine:
 
@@ -41,16 +44,19 @@ This is a foundation check, not a late cleanup task.
 
 ## Placement
 
-This check belongs in `cmon:understand`.
+This check should be enforced in two different ways:
+
+- early recovery and optional initialization in `cmon:understand`
+- mandatory execution-time enforcement in `cmon:work`
 
 Reason:
 
-- it is a stage-entry concern
-- it affects later routing, worktree use, reviewability, and evidence quality
-- it should happen before planning and implementation start depending on git state
+- `understand` is still the right place to notice repo foundation early
+- `work` is the last reliable place to stop unsafe execution before edits begin
+- `pressure-test` should stay focused on artifact readiness, not environment bootstrapping
 
 ## Related
 
 - `docs/architecture/2026-04-07-understand-execution-v0.md`
-- `docs/architecture/2026-04-07-understand-operating-procedure-v0.md`
+- `docs/architecture/2026-04-07-work-execution-v0.md`
 - `docs/architecture/2026-04-08-worktree-skill-v0.md`

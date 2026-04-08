@@ -47,7 +47,10 @@ Check repo foundation state explicitly:
 - is it already a git repository
 - if not, is this substantial enough that durable artifacts and code should be tracked from the start
 
-If the answer is yes and the directory is still not a git repo, stop and initialize git before later stages continue.
+If the answer is yes and the directory is still not a git repo:
+
+- initialize git immediately when this is clearly a new substantial project root
+- otherwise record it clearly in the packet so later stages do not treat repo state as invisible
 
 Explicitly recover:
 

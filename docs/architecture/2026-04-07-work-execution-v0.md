@@ -24,16 +24,17 @@ This layer exists to prevent the failures that usually happen during implementat
 For each execution unit, `cmon:work` must:
 
 1. load an approved unit from the plan
-2. restate the unit boundary explicitly
-3. choose an execution strategy that fits the unit
-4. execute only within that boundary
-5. produce fresh verification evidence
-6. run system interaction checks when the unit has non-local effects
-7. run internal spec compliance review
-8. run internal code-quality review
-9. report what changed and what still needs verification or broader audit
+2. confirm repo foundation before making edits
+3. restate the unit boundary explicitly
+4. choose an execution strategy that fits the unit
+5. execute only within that boundary
+6. produce fresh verification evidence
+7. run system interaction checks when the unit has non-local effects
+8. run internal spec compliance review
+9. run internal code-quality review
+10. report what changed and what still needs verification or broader audit
 
-If it cannot do one of those nine things, it should stop and surface the problem.
+If it cannot do one of those ten things, it should stop and surface the problem.
 
 ## 3. Required Inputs
 
@@ -43,6 +44,7 @@ Minimum inputs:
 
 - approved plan path
 - unit identifier or unit title
+- target project directory or repo root
 - files or modules in scope
 - constraints
 - execution strategy
@@ -65,6 +67,7 @@ Used before editing starts.
 Purpose:
 
 - declare the exact unit being executed
+- confirm the repo root is versioned before edits start
 - lock scope and constraints
 - record the chosen execution strategy
 - define verification before implementation starts
@@ -254,6 +257,7 @@ This is the main place where `cmon` borrows from the strongest system-awareness 
 
 `cmon:work` must stop and surface the issue when:
 
+- the target project area still lacks git initialization
 - the current unit boundary is unclear
 - required files are out of scope
 - verification cannot be run as planned

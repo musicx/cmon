@@ -24,6 +24,7 @@ Use this skill when:
 - resuming work after a break
 - reviewing a change that depends on prior decisions
 - planning work in an unfamiliar area of the repo
+- recovering repo foundation context for a greenfield or newly created project area when that will affect later routing
 
 Do not use this skill as a substitute for implementation or review. It produces context, not code.
 
@@ -85,6 +86,8 @@ Check repo foundation explicitly:
 
 If the target is a greenfield project directory and it is not yet a git repo, do not treat that as invisible context.
 
+If the target directory is clearly intended to become a real project root for substantial tracked work, initializing git during `cmon:understand` is acceptable.
+
 ### Stage 3: Dispatch lens observers
 
 Dispatch in parallel:
@@ -131,7 +134,7 @@ Recommended sections:
 ## Hard Rules
 
 - Do not invent repo structure that you did not verify
-- Do not ignore missing git initialization for substantial greenfield project work
+- Do not ignore missing git initialization when it materially affects tracked project work
 - Do not skip prior docs if they clearly match the task
 - Do not jump into implementation from this skill
 - Do not collapse product, engineering, and operations observations into one unlabeled blob when the multi-lens pipeline is available
@@ -163,6 +166,5 @@ Typical transition decisions:
 
 - `block`
   - if the repo area, task target, or prior-decision surface is still too ambiguous to route responsibly
-  - or if a substantial new project directory still lacks the repo foundation needed for durable tracked work
 
 Later stages should treat the context packet as the shared starting point rather than silently rebuilding incompatible context from scratch.

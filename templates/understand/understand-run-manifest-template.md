@@ -12,7 +12,7 @@
 - Repo Foundation Check:
   - Target Directory: <path or "current repo">
   - Existing Git Repo: <yes | no | infer>
-  - If No, Should This Pass Establish Git Before Later Stages: <yes | no>
+  - If No, Should This Pass Initialize Git Immediately: <yes | no | infer>
 - Explicit Artifact Paths:
   - <path or "none">
 - Explicit Code Paths:

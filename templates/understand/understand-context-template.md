@@ -17,10 +17,10 @@
 ## Repo Foundation State
 
 - Target Directory:
-- Existing Git Repo: <yes | no>
-- Foundation Strong Enough For Durable Work: <yes | no>
+- Existing Git Repo: <yes | no | unclear>
+- Foundation Strong Enough For Durable Work: <yes | no | unclear>
 - Required Action If No:
-  - <initialize git | clarify intent | none>
+  - <initialize git now | initialize git before work | clarify intent | none>
 
 ## Relevant Artifacts
 

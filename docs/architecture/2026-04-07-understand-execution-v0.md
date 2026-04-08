@@ -3,13 +3,15 @@
 Date: 2026-04-07
 Status: Draft
 
-This document turns `cmon:understand` into a stronger multi-role stage-entry flow.
+This document turns `cmon:understand` into a stronger multi-role context-recovery flow.
 
 ## 1. Purpose
 
 `cmon:understand` exists to recover verified context before later stages invent around gaps.
 
 It should produce one concise context packet that later stages can actually reuse, not a giant repo survey and not a vague preface.
+
+It may also initialize repo foundation early for clear greenfield project work, but it is not the only enforcement point for git initialization.
 
 ## 2. Execution Stages
 
