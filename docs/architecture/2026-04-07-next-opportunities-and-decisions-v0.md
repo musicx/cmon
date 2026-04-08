@@ -174,11 +174,13 @@ As of the current draft state:
 - the shared stage transition contract now exists and has been adopted into the major stage handoffs
 - a first thin critique orchestration layer now exists through `cmon:pressure-test`
 - a first knowledge-maintenance layer now exists through `cmon:refresh-knowledge`
+- the primary design gap is no longer missing stages, but insufficient real-world dogfooding outside the `cmon` repo itself
 
 So the next highest-value follow-ups are now:
 
-1. consider light helper automation for the critique surface only if repeated manual use shows payoff
-2. consider light helper automation for scoped knowledge refresh only if repeated maintenance work shows payoff
+1. dogfood the full workflow on real non-`cmon` work before adding more structure
+2. consider light helper automation for the critique surface only if repeated manual use shows payoff
+3. consider light helper automation for scoped knowledge refresh only if repeated maintenance work shows payoff
 
 ## 7. Related
 

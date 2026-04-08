@@ -169,9 +169,10 @@ Shared handoff decisions should use:
 
 The next iteration should focus on:
 
-1. consider light helper automation for `cmon:pressure-test` only if manual use proves worthwhile
-2. consider light helper automation for `cmon:refresh-knowledge` only if manual use proves worthwhile
-3. add more proof-only examples only if later evidence shows the current proof set is too optimistic
+1. dogfood the current workflow on real non-`cmon` tasks before widening the system further
+2. consider light helper automation for `cmon:pressure-test` only if repeated manual use proves worthwhile
+3. consider light helper automation for `cmon:refresh-knowledge` only if repeated maintenance work proves worthwhile
+4. add more proof-only examples only if later evidence shows the current proof set is too optimistic
 
 Detailed comparison and prioritization live in:
 

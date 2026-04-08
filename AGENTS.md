@@ -233,14 +233,14 @@ When there is tension between starting implementation faster and making design a
 
 ## Current Phase
 
-This project is in **workflow hardening and v1 stabilization**.
+This project is in **v1 dogfooding and operational validation**.
 
-The immediate goal is to strengthen the operating system around the existing workflow:
+The immediate goal is to validate the existing workflow against real work without widening the system prematurely:
 
-- make `cmon:understand` a stronger entry contract
-- make stage transitions more explicit and reusable
-- keep critique orchestration lightweight rather than runtime-heavy
-- keep improving knowledge maintenance without widening scope into delivery infrastructure
+- use the current `cmon` chain on non-`cmon` tasks and capture friction precisely
+- keep helper automation conditional on repeated manual pain rather than design ambition
+- prefer small contract corrections over new stages, runtime layers, or orchestration surfaces
+- keep improving knowledge maintenance only when real usage shows drift, overlap, or stale learnings
 
 Current strategic follow-up:
 
