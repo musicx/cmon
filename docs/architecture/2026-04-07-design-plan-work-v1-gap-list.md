@@ -166,25 +166,26 @@ Remaining follow-up:
 - a richer example should prove the critique stack catches and corrects a real weak plan
 - later refinement may add merge rules or a dedicated synthesizer if usage shows the need
 
-### P1-4: Refresh the end-to-end example to include explicit `cmon:design`
+### Implemented: P1-4 refresh the end-to-end example to include explicit `cmon:design`
 
-Problem:
+What changed:
 
-- the current end-to-end example proves most of the chain, but it still does not fully exercise the new explicit design stage in a meaningful scenario
+- the repo now has a richer end-to-end example that explicitly exercises `cmon:design`
+- the richer example also proves `cmon:plan` critique, `cmon:work` execution strategy, and `cmon:work` system interaction checks
+- the example updates an existing solution doc through `cmon:compound`, rather than only creating a new one
 
-Target behavior:
+Implemented artifacts:
 
-- one end-to-end example that genuinely requires:
-  - `cmon:think`
-  - `cmon:design`
-  - `cmon:plan`
-  - `cmon:work`
-  - `cmon:review`
-  - `cmon:compound`
+- `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md`
+- `docs/brainstorms/2026-04-07-routing-matrix-refresh-requirements.md`
+- `docs/designs/2026-04-07-routing-matrix-refresh-design.md`
+- `docs/plans/2026-04-07-routing-matrix-refresh-plan.md`
+- the full supporting design / plan critique / work / review / compound artifacts under `docs/architecture/2026-04-07-routing-matrix-refresh-*`
 
-Why this matters:
+Remaining follow-up:
 
-- it is the fastest way to catch mismatched assumptions across artifacts
+- a future example should still prove `parallel` execution on a real disjoint-write scenario
+- a future example should still prove a blocked or scope-expansion path
 
 ## 4. P2 Gaps
 
@@ -243,7 +244,8 @@ If only one lane is worked at a time, use this order:
 
 The next unfinished items are now:
 
-1. `P1-4` refreshed and richer end-to-end examples
+1. a `parallel` execution example with real disjoint write scopes
+2. a blocked or scope-expansion example
 
 ## 6. Suggested Ownership Model
 

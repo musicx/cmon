@@ -149,10 +149,9 @@ Produces the reusable learning artifact:
 
 The next iteration should add:
 
-1. refresh the end-to-end example so it exercises the explicit `cmon:design` stage
-2. exercise the new `cmon:plan` critique stack and `cmon:work` review loop in a richer example
-3. exercise delegated `serial` or `parallel` execution in an end-to-end example
-4. force the new system interaction check to matter in an end-to-end example
+1. exercise delegated `parallel` execution in an end-to-end example
+2. exercise a blocked or scope-expansion case in an end-to-end example
+3. prove update-existing compound flows on a less documentation-heavy task
 
 Detailed comparison and prioritization live in:
 

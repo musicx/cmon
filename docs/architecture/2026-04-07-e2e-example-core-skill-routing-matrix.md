@@ -5,7 +5,7 @@ Status: Draft
 
 This document records the first end-to-end example run for `cmon`.
 
-Note: this example was recorded before `cmon:design` was split into its own explicit stage. It still proves the original v0 chain, but should be refreshed in a later pass to include `cmon:design`.
+Note: this example was recorded before `cmon:design` was split into its own explicit stage. It still proves the original v0 chain, but it has now been superseded by `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md` for the richer proof case.
 
 It was also recorded before `cmon:brainstorm` was renamed to `cmon:think`, so references to the older skill name in this example are historical, not canonical.
 

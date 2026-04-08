@@ -247,5 +247,5 @@ This alignment implies these foundational choices for `cmon`:
 
 The next high-value follow-up after this alignment pass is:
 
-- refresh the end-to-end example so the chain includes `cmon:design`
-- prove the new `cmon:work` execution and verification layers on a richer example
+- prove the same execution model on a less documentation-heavy example
+- add a stronger example for `parallel` or blocked execution

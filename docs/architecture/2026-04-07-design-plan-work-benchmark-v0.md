@@ -82,13 +82,13 @@ Where the comparison is asymmetric, this document says so explicitly rather than
 
 - `cmon:plan` is already closest to `compound-engineering` in spirit and should continue using it as the main reference shape.
 - `cmon:work` already shares the right philosophy with `superpowers`, even though it does not yet match its enforcement and review-loop maturity.
-- `cmon:design` now has a stronger stage definition and a first owner-led challenge mechanism, though it still needs proof through richer examples and continued refinement.
+- `cmon:design` now has a stronger stage definition, an owner-led challenge mechanism, and a richer proof example, though it may still benefit from continued refinement.
 
 ### 3.3 Where `cmon` is still behind
 
 - `cmon:plan` now has research, deepening, and a smaller critique stack, but it still needs richer proof through stronger examples.
 - `cmon:work` now has a first internal review loop, explicit execution strategies, and system interaction checks, but it still needs richer proof through stronger examples.
-- `cmon:design` now has its first execution layer, but it still lacks an explicit end-to-end proof case and later helper support.
+- `cmon:design` now has its first execution layer and an explicit richer proof case, but later helper support may still be useful.
 
 ### 3.4 Main recommendation
 
