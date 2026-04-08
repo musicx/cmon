@@ -51,6 +51,19 @@ The difference is timing and object:
 - `challenge` tests proposed work before implementation
 - `verify` tests implemented work after implementation
 
+## Operational Upgrade
+
+`cmon:challenge` should not stop at a simple summary template.
+
+It should inherit the strongest execution behaviors from the older review surface:
+
+- structured findings
+- conservative merge rules
+- explicit scope verdicts
+- dedicated product / engineering / operations challengers
+
+This keeps the stage split without losing the earlier review system's best discipline.
+
 ## Relationship To Old Skills
 
 ### `cmon:pressure-test`
@@ -75,4 +88,3 @@ cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> c
 ```
 
 Not every task needs the full chain, but this is the canonical path for substantial new work.
-

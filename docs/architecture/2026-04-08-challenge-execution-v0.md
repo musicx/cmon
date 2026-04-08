@@ -29,6 +29,9 @@ Default inputs:
 Use:
 
 - `templates/workflow/challenge-run-manifest-template.md`
+- `templates/challenge/challenge-context-template.md`
+- `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/synthesizer-input-template.md`
 
 ## 3. Execution Stages
 
@@ -50,6 +53,10 @@ Assemble:
 - understand packet summary when relevant
 - explicit open risks
 
+Capture the bundle using:
+
+- `templates/challenge/challenge-context-template.md`
+
 ### Stage 3: Run Multi-Role Challenge
 
 Challenge the target through:
@@ -62,12 +69,33 @@ The goal is not to duplicate authorship.
 
 The goal is to expose what still looks weak before implementation begins.
 
+Use:
+
+- `agents/challenge/product-challenger.md`
+- `agents/challenge/engineering-challenger.md`
+- `agents/challenge/ops-challenger.md`
+- `templates/challenge/lens-invocation-template.md`
+
+Each challenger should emit structured findings rather than a loose paragraph summary.
+
 ### Stage 4: Merge The Challenge Result
 
 Use:
 
 - `templates/workflow/challenge-summary-template.md`
+- `templates/challenge/synthesizer-input-template.md`
 - `templates/workflow/stage-transition-decision-template.md`
+
+Synthesis should:
+
+- deduplicate by issue, not wording
+- keep the more conservative severity on disagreement
+- preserve lens-specific reasoning
+- emit one merged routing decision
+
+Use:
+
+- `agents/challenge/challenge-synthesizer.md`
 
 Return one of:
 
@@ -93,4 +121,4 @@ It should stay narrow:
 - artifact challenge only
 - no code mutation
 - no post-work verification role
-
+- but it should still inherit the strongest structured-finding and conservative-merge behavior from the earlier multi-role review surface

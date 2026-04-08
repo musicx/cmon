@@ -177,6 +177,26 @@ Purpose:
 - check implementation against approved design / plan and engineering quality expectations
 - produce an explicit accept / revise verification decision
 
+### Challenge
+
+Paths:
+
+- `templates/workflow/challenge-run-manifest-template.md`
+- `templates/workflow/challenge-summary-template.md`
+- `templates/challenge/challenge-context-template.md`
+- `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/synthesizer-input-template.md`
+
+Used by:
+
+- `cmon:challenge`
+
+Purpose:
+
+- challenge a proposed design / plan package before implementation begins
+- keep product, engineering, and operations challenge inputs consistent
+- preserve structured findings and conservative synthesis at the pre-work gate
+
 ### Debug
 
 Paths:
