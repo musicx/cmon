@@ -104,6 +104,11 @@ Typical routes:
 - `proceed -> cmon:compound`
 - `revise -> cmon:work`
 
+Interpretation:
+
+- `revise -> cmon:work` is the default post-work reflow
+- if `cmon:work` discovers the mismatch is structural rather than local, the workflow should continue rerouting upstream to `cmon:plan` or `cmon:design`
+
 ## 4. Policy Choice
 
 `cmon:verify` is the default post-work engineering acceptance gate.

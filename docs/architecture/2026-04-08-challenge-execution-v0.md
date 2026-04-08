@@ -129,6 +129,11 @@ Typical routes:
 - `revise -> cmon:plan`
 - `block`
 
+Interpretation:
+
+- `revise` is the normal answer when the challenged package is directionally right but still weak
+- `block` means implementation must not start yet; it normally forces an upstream reroute rather than ending the overall task
+
 ## 4. Policy Choice
 
 `cmon:challenge` is now the explicit pre-work gate.

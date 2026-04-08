@@ -49,7 +49,13 @@ The current stage produced enough clarity, quality, and evidence for the target 
 
 The current stage is directionally correct, but its own artifact or output still needs improvement before handoff.
 
-The work stays in the same stage.
+The default assumption is:
+
+- revise locally first
+
+But `revise` does **not** mean the work must stay in the same stage forever.
+
+If attempted revision reveals that the real defect lives upstream, the workflow should explicitly reroute upstream instead of forcing the current stage to absorb the wrong job.
 
 ### `block`
 
@@ -60,6 +66,16 @@ The handoff must either:
 - return upstream
 - escalate a missing decision
 - stop until required context appears
+
+`block` means:
+
+- do not continue forward from the current stage
+
+It does **not** automatically mean:
+
+- abandon the overall task
+
+In most cases, `block` means the workflow must reroute to the correct earlier stage or wait for missing context.
 
 ## 3. Required Fields
 
@@ -120,9 +136,13 @@ The minimum transition decision should record:
 - `proceed`
   - the tested artifact is ready for the named next stage
 - `revise`
-  - the current stage artifact needs tightening before handoff
+  - the design / plan package needs tightening before handoff
+  - route to `cmon:design` when the weakness is behavioral, flow, state, or boundary truth
+  - route to `cmon:plan` when the weakness is implementation structure, dependency, scope, or verification realism
 - `block`
   - the artifact is too weak, incomplete, or misrouted for safe progression
+  - do not start `cmon:work`
+  - reroute upstream rather than pretending the issue can be repaired during implementation
 
 ### `cmon:work`
 
@@ -139,8 +159,12 @@ The minimum transition decision should record:
   - the implementation claim is sufficiently supported and the implementation is acceptable
 - `revise`
   - the change requires more work or stronger evidence before acceptance
+  - default route is back to `cmon:work`
+  - if implementation repair reveals that the accepted design or plan is itself wrong, the workflow should then reroute further upstream to `cmon:plan` or `cmon:design`
 - `block`
   - the claim cannot be judged responsibly because the evidence base or handoff package is too weak
+  - do not treat the unit as accepted
+  - restore a valid upstream route before any new acceptance claim
 
 ### `cmon:compound`
 
@@ -151,7 +175,24 @@ The minimum transition decision should record:
 - `block`
   - compounding cannot be completed yet because the source learning is still unresolved
 
-## 5. Routing Rule
+## 5. Reflow Rule
+
+When a stage finds unacceptable problems, the workflow should return to the **earliest stage that truly owns the defect**.
+
+Use this rule:
+
+- if the defect is in framing or missing intent, reroute to `cmon:think`
+- if the defect is in behavior, flow, state, or boundary truth, reroute to `cmon:design`
+- if the defect is in implementation structure, unit boundaries, sequencing, or verification strategy, reroute to `cmon:plan`
+- if the defect is in code, tests, or execution evidence, reroute to `cmon:work`
+
+Operationally:
+
+- `cmon:challenge` usually reflows to `cmon:design` or `cmon:plan`
+- `cmon:verify` usually reflows to `cmon:work` first
+- a later reroute from `cmon:work` to `cmon:plan` or `cmon:design` is expected when the mismatch proves structural rather than local
+
+## 6. Routing Rule
 
 The transition decision should name the target explicitly.
 
@@ -167,7 +208,7 @@ Examples:
 - `cmon:verify -> complete`
 - `cmon:compound -> complete`
 
-## 6. Policy Choice
+## 7. Policy Choice
 
 This is intentionally a documentation and prompt-level contract first.
 
@@ -179,7 +220,7 @@ It is not:
 
 The purpose is to make stage boundaries explicit now so later orchestration can remain thin.
 
-## 7. Related
+## 8. Related
 
 - `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`
 - `docs/architecture/2026-04-07-core-skills-v0.md`
