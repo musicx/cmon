@@ -132,6 +132,10 @@ Produces the reusable learning artifact:
 | `cmon:review` | merged review decision, may remain session-local in v0 |
 | `cmon:compound` | `docs/solutions/...` or updated durable doc |
 
+Current workflow proof coverage lives in:
+
+- `docs/architecture/2026-04-07-workflow-proof-coverage-v0.md`
+
 ## Initial Policy
 
 ### Mandatory
@@ -153,9 +157,8 @@ Produces the reusable learning artifact:
 
 The next iteration should add:
 
-1. exercise a blocked or scope-expansion case in an end-to-end example
-2. prove update-existing compound flows on a less documentation-heavy task
-3. add a code-changing `parallel` example only if later evidence shows the docs-first proof is insufficient
+1. add a blocked example only if later evidence shows the scope-expansion proof is insufficient
+2. add a code-changing `parallel` example only if later evidence shows the docs-first proof is insufficient
 
 Detailed comparison and prioritization live in:
 

@@ -415,8 +415,9 @@ It is also exercised by this end-to-end example:
 - `docs/architecture/2026-04-07-e2e-example-core-skill-routing-matrix.md`
 - `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md`
 - `docs/architecture/2026-04-07-e2e-example-stage-ownership-parallel-v1.md`
+- `docs/architecture/2026-04-07-e2e-example-proof-coverage-scope-expansion-v1.md`
 
 The next useful additions are:
 
-1. a blocked or scope-expansion example
-2. a less documentation-heavy example that still exercises mature verification and review gates
+1. a blocked example only if the current narrow-expansion proof is not enough
+2. a code-changing `parallel` example only if the docs-first proof starts to look too weak

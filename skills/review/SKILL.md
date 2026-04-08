@@ -55,6 +55,7 @@ Review should use all of the following when available:
 2. The approved requirements/design artifact
 3. The approved plan
 4. Verification evidence from `cmon:work`
+5. Execution-boundary artifacts from `cmon:work`, especially a scope expansion request when one exists
 
 ## Default Scope Resolution
 
@@ -118,6 +119,8 @@ The bundle should contain:
 - diff
 - approved requirements/design artifact path and summary
 - approved plan path and summary
+- work execution report path
+- scope expansion request path and summary when present
 - verification evidence
 - any known scope notes
 
@@ -143,6 +146,8 @@ Locate:
 - approved requirements/design artifact
 - approved implementation plan
 - verification evidence
+- work execution report
+- scope expansion request when present
 
 If one or more are missing, continue, but record that explicitly in the review context bundle.
 
@@ -151,6 +156,8 @@ If one or more are missing, continue, but record that explicitly in the review c
 Assemble the shared context once.
 
 Do not make each reviewer rediscover scope independently.
+
+When a scope expansion request exists, include it in the shared bundle so reviewers can judge whether the widened review target still reflects one coherent unit.
 
 ### Stage 4: Dispatch lens reviewers
 

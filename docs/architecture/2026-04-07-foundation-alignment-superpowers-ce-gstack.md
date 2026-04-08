@@ -247,5 +247,5 @@ This alignment implies these foundational choices for `cmon`:
 
 The next high-value follow-up after this alignment pass is:
 
-- prove the same execution model on a less documentation-heavy example
-- add a stronger example for blocked execution or scope expansion
+- add a stronger blocked example only if later review shows the current proof set is still too optimistic
+- add a code-changing `parallel` example only if the docs-first proof starts to look too weak

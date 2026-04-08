@@ -80,6 +80,8 @@ Resolve:
 - requirements or design artifact
 - implementation plan
 - verification evidence
+- work execution report
+- scope expansion request when present
 
 The helper should prefer explicit paths when available.
 
@@ -129,6 +131,8 @@ The helper should accept these inputs, whether they are passed explicitly or inf
 - requirements or design artifact path
 - implementation plan path
 - verification evidence notes
+- work execution report path
+- scope expansion request path
 - changed-file allowlist
 - untracked-file include note
 - review scope notes

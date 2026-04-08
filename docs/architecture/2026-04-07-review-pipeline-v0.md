@@ -24,6 +24,7 @@ When available, every reviewer should receive:
 2. the approved requirements/design artifact
 3. the approved implementation plan
 4. verification evidence from `cmon:work`
+5. execution-boundary artifacts from `cmon:work`, especially a scope expansion request when present
 
 This is a core `cmon` design rule.
 

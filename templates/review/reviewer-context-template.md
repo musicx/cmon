@@ -31,6 +31,13 @@
   - <key point>
   - <key point>
 
+## Work Execution Artifacts
+
+- Work Report Path: <path or "none">
+- Scope Expansion Request Path: <path or "none">
+- Scope Expansion Summary:
+  - <summary or "none">
+
 ## Verification Evidence
 
 - <test/build/manual verification evidence or "none provided">

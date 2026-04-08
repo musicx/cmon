@@ -17,6 +17,11 @@
 - Requirements Or Design Artifact: <path or "infer">
 - Implementation Plan: <path or "infer">
 
+## Work Execution Artifacts
+
+- Work Execution Report: <path or "infer">
+- Scope Expansion Request: <path | "none" | "infer if present">
+
 ## Verification Evidence
 
 - Evidence Notes:

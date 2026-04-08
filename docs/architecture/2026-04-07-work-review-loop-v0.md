@@ -129,5 +129,5 @@ This layer is mainly influenced by:
 
 The next upgrades after this loop are:
 
-1. a blocked or scope-expansion example that exercises delegated execution and the review loop together
-2. a less documentation-heavy example that forces the same loop to carry more of the quality burden
+1. a blocked example that exercises delegated execution and the review loop together
+2. a more code-bearing example only if later review shows the current proof set is too docs-skewed

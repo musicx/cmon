@@ -281,5 +281,4 @@ So the template layer is sufficient for a v0.1 end-to-end document flow, includi
 
 The next useful addition after templates is:
 
-- a less documentation-heavy example that exercises the same mature workflow
-- a stronger blocked or scope-expansion example
+- a stronger blocked example

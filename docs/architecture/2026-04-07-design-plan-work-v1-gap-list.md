@@ -185,7 +185,7 @@ Implemented artifacts:
 
 Remaining follow-up:
 
-- a future example should still prove a blocked or scope-expansion path
+- a blocked example may still be useful later, but the scope-expansion proof closes the base gap
 - a future code-changing `parallel` example may still be useful, but the base proof gap is now closed
 
 ### Implemented: P1-5 prove delegated `parallel` execution on a real disjoint-write task
@@ -207,8 +207,49 @@ Implemented artifacts:
 
 Remaining follow-up:
 
-- a blocked or scope-expansion proof case is still needed
+- a blocked example may still be useful later, but the scope-expansion proof closes the base gap
 - a code-changing `parallel` example may still be useful later, but it is not the next priority
+
+### Implemented: P1-6 prove narrow scope expansion on a real bounded task
+
+What changed:
+
+- the repo now has a full end-to-end example where `cmon:work` starts from a bounded unit, discovers a contradiction, records a narrow scope expansion, and then continues
+- the example proves that file-scope growth can stay disciplined when the unit goal does not change
+- the example also adds a compact proof-coverage reference so operators can tell which workflow claims are already backed by concrete examples
+
+Implemented artifacts:
+
+- `docs/architecture/2026-04-07-e2e-example-proof-coverage-scope-expansion-v1.md`
+- the supporting `docs/architecture/2026-04-07-proof-coverage-scope-expansion-*` artifacts
+- `docs/architecture/2026-04-07-workflow-proof-coverage-v0.md`
+- `docs/solutions/workflow/narrow-scope-expansion-when-unit-goal-stays-fixed-2026-04-07.md`
+
+Remaining follow-up:
+
+- a blocked example may still be useful later, but the base boundary-break proof is now present
+- the next remaining example gap is a blocked path only if later review still demands it
+
+### Implemented: P1-7 prove less-doc-heavy `update_existing` compound behavior
+
+What changed:
+
+- the repo now has a full end-to-end example centered on review templates and skill contracts rather than on summary architecture docs
+- the example updates an existing workflow pattern doc in place instead of creating a new one
+- the example proves that `cmon:compound` can use `update_existing` on a more operational, less docs-heavy task
+
+Implemented artifacts:
+
+- `docs/architecture/2026-04-07-e2e-example-review-scope-expansion-handoff-v1.md`
+- the supporting `docs/architecture/2026-04-07-review-scope-expansion-handoff-*` artifacts
+- updates to `templates/review/review-run-manifest-template.md`
+- updates to `templates/review/reviewer-context-template.md`
+- updates to `skills/review/SKILL.md`
+- updates to `docs/solutions/workflow/narrow-scope-expansion-when-unit-goal-stays-fixed-2026-04-07.md`
+
+Remaining follow-up:
+
+- a blocked example may still be useful later, but the highest-value v1 proof gaps are now closed
 
 ## 4. P2 Gaps
 
@@ -267,8 +308,7 @@ If only one lane is worked at a time, use this order:
 
 The next unfinished items are now:
 
-1. a blocked or scope-expansion example
-2. a less documentation-heavy proof for update-existing `compound`
+1. a blocked example only if later review shows the current scope-expansion proof is insufficient
 
 ## 6. Suggested Ownership Model
 

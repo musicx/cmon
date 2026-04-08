@@ -40,6 +40,8 @@ Locate:
 - approved requirements/design artifact
 - approved implementation plan
 - verification evidence
+- work execution report
+- scope expansion request when present
 
 If any are missing, record that explicitly rather than hiding the gap.
 
@@ -50,6 +52,14 @@ Build one shared bundle using:
 - `templates/review/reviewer-context-template.md`
 
 This prevents reviewer drift and keeps all lenses anchored to the same scope.
+
+When a scope expansion request exists, include it in the shared bundle.
+
+Reviewers should be able to judge:
+
+- whether the expansion was narrow
+- whether the unit goal stayed fixed
+- whether the post-expansion review target is still coherent
 
 ### Stage 4: Parallel Lens Review
 
