@@ -26,6 +26,8 @@ Default inputs:
 Use:
 
 - `templates/verify/verify-run-manifest-template.md`
+- `templates/verify/hard-stop-checklist-template.md`
+- `templates/verify/specialist-escalation-template.md`
 
 ## 3. Execution Stages
 
@@ -46,14 +48,52 @@ Check:
 - are non-local effects covered when they matter
 - are obvious gaps still visible
 
-### Stage 3: Judge Verification Sufficiency
+### Stage 3: Classify Verification Depth
+
+Classify the pass as:
+
+- `quick`
+- `standard`
+- `deep`
+
+Use risk and proof burden, not only line count.
+
+### Stage 4: Run Hard-Stop Check
+
+Record the hard-stop checklist:
+
+- fresh evidence
+- claim / evidence match
+- approved source truth present
+- plan / design alignment preserved
+- system interaction proof when needed
+- regression proof when needed
+- risk-sensitive scrutiny when needed
+
+If any hard stop fails:
+
+- do not accept the unit
+- route back to `cmon:work`
+
+### Stage 5: Decide Specialist Escalation
+
+Record whether specialist scrutiny is needed for:
+
+- security
+- reliability
+- performance
+- contract-sensitive behavior
+
+This may stay manual in v0, but it should be made explicit.
+
+### Stage 6: Judge Verification Sufficiency
 
 Return one of:
 
 - sufficient
 - insufficient but correctable inside work
 
-### Stage 4: Route
+### Stage 7: Route
 
 Use:
 
@@ -69,3 +109,8 @@ Typical routes:
 `cmon:verify` is the default post-work engineering acceptance gate.
 
 It should stay focused on implemented code, evidence, and engineering quality.
+
+It should also:
+
+- scale scrutiny with risk
+- stop on hard failures instead of softening them into vague concerns

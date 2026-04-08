@@ -36,6 +36,9 @@ The corrected shape is:
 - decide whether the unit may stop or needs more work
 - review whether the implementation still matches the approved plan and design
 - enforce engineering quality such as correctness, safety, effectiveness, and simplicity
+- classify verification depth
+- stop on hard acceptance failures
+- record when specialist scrutiny is required
 
 ## What `cmon:verify` Should Not Do
 
@@ -59,6 +62,14 @@ It should not:
 
 It should handle design and plan challenge before code exists.
 
+## Further Tightening
+
+`cmon:verify` should now tighten in three ways:
+
+- depth-aware
+- hard-stop aware
+- specialist-escalation aware
+
 ## Corrected Lifecycle
 
 For substantial implementation work, the default path should now be:
@@ -70,5 +81,6 @@ cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> c
 ## Related
 
 - `docs/architecture/2026-04-08-verification-positioning-v0.md`
+- `docs/architecture/2026-04-08-verify-depth-and-hard-stops-v0.md`
 - `docs/architecture/2026-04-07-core-skills-v0.md`
 - `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`

@@ -166,6 +166,8 @@ Paths:
 
 - `templates/verify/verify-run-manifest-template.md`
 - `templates/verify/verification-summary-template.md`
+- `templates/verify/hard-stop-checklist-template.md`
+- `templates/verify/specialist-escalation-template.md`
 
 Used by:
 

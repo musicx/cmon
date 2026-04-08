@@ -17,6 +17,8 @@ Before starting, collect:
 Then create:
 
 - `templates/verify/verify-run-manifest-template.md`
+- `templates/verify/hard-stop-checklist-template.md`
+- `templates/verify/specialist-escalation-template.md`
 
 ## 2. Step 1: Lock the Verification Claim
 
@@ -35,7 +37,41 @@ Check:
 - non-local behavior coverage when needed
 - whether the evidence supports the actual claim rather than only a nearby one
 
-## 4. Step 3: Write the Verification Summary
+## 4. Step 3: Classify Verification Depth
+
+Choose:
+
+- `quick`
+- `standard`
+- `deep`
+
+Use risk and proof burden, not only diff size.
+
+## 5. Step 4: Run the Hard-Stop Checklist
+
+Use:
+
+- `templates/verify/hard-stop-checklist-template.md`
+
+If any hard stop fails:
+
+- do not accept the unit
+- route back to `cmon:work`
+
+## 6. Step 5: Record Specialist Escalation
+
+Use:
+
+- `templates/verify/specialist-escalation-template.md`
+
+Record whether the unit needs:
+
+- security scrutiny
+- reliability scrutiny
+- performance scrutiny
+- contract scrutiny
+
+## 7. Step 6: Write the Verification Summary
 
 Use:
 
@@ -45,10 +81,13 @@ The summary should state:
 
 - what was verified
 - what evidence was used
+- what verification depth was used
+- whether any hard stops blocked acceptance
+- whether specialist scrutiny is still required
 - what remains unproven
 - whether the unit is accepted or needs more work
 
-## 5. Step 4: Route
+## 8. Step 7: Route
 
 Use:
 

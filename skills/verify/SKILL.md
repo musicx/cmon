@@ -28,6 +28,8 @@ Use:
 
 - `templates/verify/verify-run-manifest-template.md`
 - `templates/verify/verification-summary-template.md`
+- `templates/verify/hard-stop-checklist-template.md`
+- `templates/verify/specialist-escalation-template.md`
 
 Default inputs:
 
@@ -48,7 +50,10 @@ This skill should answer:
 3. what remains unproven
 4. whether the implementation still matches the approved plan and design
 5. whether the code meets the engineering bar for correctness, safety, effectiveness, and simplicity
-6. whether the unit should return to work or stop as accepted
+6. whether any hard stop blocks acceptance
+7. whether the verification depth should be quick, standard, or deep
+8. whether specialist scrutiny is required before acceptance
+9. whether the unit should return to work or stop as accepted
 
 ## Non-Goals
 
@@ -57,6 +62,18 @@ Do not use this skill to:
 - replace `cmon:work`
 - rerun pre-work multi-role challenge
 - become a generic product strategy or scope challenge stage
+
+## Hard Stops
+
+Treat these as hard stops:
+
+- no fresh evidence
+- claim / evidence mismatch
+- missing approved plan or missing relevant design source
+- unapproved plan or design drift
+- required system-interaction proof missing
+- regression fix without regression proof
+- risk-sensitive change without matching scrutiny
 
 ## Typical Handoffs
 

@@ -53,6 +53,9 @@ Use:
 
 - `templates/workflow/challenge-run-manifest-template.md`
 - `templates/workflow/challenge-summary-template.md`
+- `templates/challenge/challenge-context-template.md`
+- `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/synthesizer-input-template.md`
 
 Default inputs:
 
@@ -60,6 +63,12 @@ Default inputs:
 - design artifact when one exists
 - implementation plan when one exists
 - understand packet when local context materially shapes the proposal
+
+The challenge pass should preserve:
+
+- scope verdict
+- structured findings
+- conservative merged routing
 
 ## Core Questions
 
@@ -69,6 +78,7 @@ This skill should answer:
 2. what assumptions still look weak
 3. what must be revised before implementation starts
 4. whether the next stage should be `cmon:work`, return to `cmon:design`, or return to `cmon:plan`
+5. whether scope is `on_target`, `drift`, or `incomplete`
 
 ## Non-Goals
 
@@ -103,4 +113,3 @@ Typical transitions:
 
 - `docs/architecture/2026-04-08-challenge-skill-v0.md`
 - `docs/architecture/2026-04-08-challenge-execution-v0.md`
-

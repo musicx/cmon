@@ -17,6 +17,12 @@ It reuses the strongest part of the earlier multi-role review idea:
 
 But it applies that challenge to design and plan artifacts, not to completed code.
 
+It should preserve the best operational behaviors from the older review surface:
+
+- structured findings
+- scope verdict
+- conservative synthesis
+
 ## 2. Inputs
 
 Default inputs:
@@ -77,6 +83,17 @@ Use:
 - `templates/challenge/lens-invocation-template.md`
 
 Each challenger should emit structured findings rather than a loose paragraph summary.
+
+At minimum, each challenger should contribute:
+
+- scope verdict
+- finding title
+- severity
+- action class
+- owner
+- confidence
+- evidence
+- recommended revision
 
 ### Stage 4: Merge The Challenge Result
 

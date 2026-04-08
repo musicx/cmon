@@ -55,6 +55,12 @@ The corrected design is:
 - challenge is the explicit pre-work multi-role gate
 - verify is the default explicit post-work code-review and acceptance stage
 
+`verify` should now be strengthened with:
+
+- verification depth
+- hard stops
+- conditional specialist escalation
+
 ## Future Option
 
 `cmon:verify` should be narrower than `cmon:work` and focused on post-work implementation review rather than pre-work scope challenge.
@@ -88,3 +94,4 @@ For the corrected version of `cmon`:
 - `docs/architecture/2026-04-07-work-review-loop-v0.md`
 - `docs/architecture/2026-04-08-challenge-skill-v0.md`
 - `docs/architecture/2026-04-08-verify-skill-v0.md`
+- `docs/architecture/2026-04-08-verify-depth-and-hard-stops-v0.md`
