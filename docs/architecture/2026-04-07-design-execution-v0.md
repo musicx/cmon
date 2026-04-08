@@ -85,13 +85,21 @@ Do not hand unresolved design ambiguity to planning just because the draft is "c
 
 ### Stage 6: Route To Next Skill
 
+Use:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If planning readiness is `ready`:
 
-- move to `cmon:plan`
+- `proceed -> cmon:plan`
 
 If the decision is `revise`:
 
-- remain in `cmon:design`
+- `revise -> cmon:design`
+
+If upstream instability prevents responsible design closure:
+
+- `block`
 
 ## 3. v0 Policy Choice
 
@@ -134,4 +142,4 @@ This execution doc now has a matching manual operating procedure:
 
 The next useful upgrade after this document is:
 
-- a full end-to-end example that exercises `cmon:design` as an explicit stage
+- broader adoption of the shared stage transition contract in operating procedures and examples

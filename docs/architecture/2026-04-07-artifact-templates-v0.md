@@ -211,6 +211,22 @@ Purpose:
 - give synthesis a stable merged-input shape
 - give the review helper one explicit invocation contract
 
+### Workflow
+
+Paths:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
+Used by:
+
+- all major `cmon:*` stage handoffs
+
+Purpose:
+
+- normalize handoff decisions into `proceed / revise / block`
+- make the next stage explicit
+- keep missing conditions visible instead of implying readiness
+
 ## 2. Design Choices
 
 ### Why requirements, design, and plan are separate

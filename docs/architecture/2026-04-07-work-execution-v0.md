@@ -304,6 +304,10 @@ Weak evidence includes:
 
 ## 11. Handoff Contract To Review
 
+Use:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package containing:
 
 - plan path

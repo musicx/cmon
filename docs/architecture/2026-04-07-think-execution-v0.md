@@ -87,17 +87,25 @@ Use `docs/architecture/` only when the problem is fundamentally architectural.
 
 ### Stage 6: Route To Next Skill
 
+Use:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If blockers remain or the output is still a ranked option set:
 
-- stay in `cmon:think`
+- `revise -> cmon:think`
 
 If a design artifact is still needed:
 
-- move to `cmon:design`
+- `proceed -> cmon:design`
 
 If blockers are resolved and design ambiguity is already low:
 
-- move to `cmon:plan`
+- `proceed -> cmon:plan`
+
+If ambiguity remains and cannot responsibly be compressed into assumptions:
+
+- `block`
 
 ## 3. v0 Policy Choice
 

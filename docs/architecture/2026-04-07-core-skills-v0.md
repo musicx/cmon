@@ -136,6 +136,11 @@ Current workflow proof coverage lives in:
 
 - `docs/architecture/2026-04-07-workflow-proof-coverage-v0.md`
 
+Shared handoff decisions should use:
+
+- `docs/architecture/2026-04-07-stage-transition-contract-v0.md`
+- `templates/workflow/stage-transition-decision-template.md`
+
 ## Initial Policy
 
 ### Mandatory
@@ -157,12 +162,13 @@ Current workflow proof coverage lives in:
 
 The next iteration should focus on:
 
-1. strengthen `cmon:understand` into a stronger stage-entry contract
-2. add a unified stage transition decision contract across major handoffs
-3. consider thinner critique orchestration before adding more proof-only examples
+1. consider thinner critique orchestration now that major stage handoffs share one transition contract
+2. consider knowledge-maintenance upgrades in `cmon:compound`
+3. add more proof-only examples only if later evidence shows the current proof set is too optimistic
 
 Detailed comparison and prioritization live in:
 
 - `docs/architecture/2026-04-07-design-plan-work-benchmark-v0.md`
 - `docs/architecture/2026-04-07-design-plan-work-v1-gap-list.md`
 - `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`
+- `docs/architecture/2026-04-07-stage-transition-contract-v0.md`

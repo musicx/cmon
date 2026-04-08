@@ -101,7 +101,7 @@ What should change:
 
 Decision:
 
-- do this after strengthening `cmon:understand`
+- do this immediately after strengthening `cmon:understand`
 
 ### P1. Add a thin critique orchestrator without building a runtime
 
@@ -165,6 +165,18 @@ The next implementation order should be:
 2. add the unified stage transition contract
 3. consider thin critique orchestration
 4. consider knowledge-base maintenance upgrades
+
+## 6.1 Status Update
+
+As of the current draft state:
+
+- `cmon:understand` has been strengthened into a more explicit stage-entry contract
+- the shared stage transition contract now exists and has been adopted into the major stage handoffs
+
+So the next highest-value follow-ups are now:
+
+1. consider thin critique orchestration
+2. consider knowledge-base maintenance upgrades
 
 ## 7. Related
 

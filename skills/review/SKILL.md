@@ -261,10 +261,23 @@ Do not let one reviewer absorb another reviewer's job.
 
 ## Handoff
 
-If changes are required:
+Record the handoff using:
 
-- return to `cmon:work`
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical transition decisions:
+
+- `revise -> cmon:work`
+  - if changes are required
 
 If accepted and reusable learning was created:
 
-- move to `cmon:compound`
+- `proceed -> cmon:compound`
+
+If accepted and no compounding is needed:
+
+- `proceed -> complete`
+
+If review cannot responsibly judge the target because the artifact set or evidence base is insufficient:
+
+- `block`

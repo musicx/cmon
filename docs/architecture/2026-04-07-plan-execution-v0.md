@@ -119,16 +119,21 @@ The purpose is to catch:
 
 ### Stage 8: Route To Next Skill
 
+Use:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If the plan is strong enough:
 
-- move to `cmon:work`
+- `proceed -> cmon:work`
 
 If not:
 
-- remain in `cmon:plan`
+- `revise -> cmon:plan`
 
 If upstream ambiguity was rediscovered:
 
+- `block`
 - route back to `cmon:think` or `cmon:design`
 
 ## 3. v0 Policy Choice

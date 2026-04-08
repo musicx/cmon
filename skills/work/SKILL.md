@@ -188,14 +188,24 @@ Use `templates/work/unit-execution-report-template.md` as the default handoff st
 
 ## Handoff
 
-After implementation of a meaningful unit:
+Record the handoff using:
 
-- move to `cmon:review`
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical transition decisions:
+
+- `proceed -> cmon:review`
+  - after implementation of a meaningful unit with evidence and internal review completion
 
 If the unit produced reusable learning:
 
-- follow review with `cmon:compound`
+- review may later `proceed -> cmon:compound`
 
 If the unit boundary breaks and cannot be resolved narrowly:
 
+- `block`
 - return to `cmon:plan`
+
+If the unit remains correctable inside the same bounded execution slice:
+
+- `revise -> cmon:work`

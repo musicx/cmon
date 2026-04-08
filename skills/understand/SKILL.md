@@ -130,11 +130,28 @@ Recommended sections:
 
 ## Handoff
 
-Typical next steps:
+Record the handoff using:
 
-- `cmon:think` if the problem, direction, or scope is still open
-- `cmon:design` if requirements are already clear but flow, state, or interface behavior still needs explicit design
-- `cmon:plan` if the requirements and design are already clear enough
-- `cmon:review` if the task is to assess an existing change
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical transition decisions:
+
+- `proceed -> cmon:think`
+  - if the problem, direction, or scope is still open
+
+- `proceed -> cmon:design`
+  - if requirements are already clear but flow, state, or interface behavior still needs explicit design
+
+- `proceed -> cmon:plan`
+  - if the requirements and design are already clear enough
+
+- `proceed -> cmon:review`
+  - if the task is to assess an existing change
+
+- `revise -> cmon:understand`
+  - if the packet is directionally useful but still missing context the next stage would need
+
+- `block`
+  - if the repo area, task target, or prior-decision surface is still too ambiguous to route responsibly
 
 Later stages should treat the context packet as the shared starting point rather than silently rebuilding incompatible context from scratch.

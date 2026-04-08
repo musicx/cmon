@@ -117,7 +117,19 @@ Decide whether to:
 
 ## Handoff
 
-After compounding:
+Record the handoff using:
 
-- the work loop is complete
-- future runs of `cmon:understand`, `cmon:think`, `cmon:plan`, and `cmon:review` should be able to discover the artifact
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical transition decisions:
+
+- `proceed -> complete`
+  - after compounding when the durable knowledge state is updated
+
+- `revise -> cmon:compound`
+  - if the learning artifact is real but still needs tightening
+
+- `block`
+  - if compounding cannot finish because the source learning is still unresolved or contradictory
+
+Future runs of `cmon:understand`, `cmon:think`, `cmon:plan`, and `cmon:review` should be able to discover the artifact.

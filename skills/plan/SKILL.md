@@ -154,9 +154,20 @@ Each unit must include:
 
 ## Handoff
 
-The only normal next step is:
+Record the handoff using:
 
-- `cmon:work`
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical transition decisions:
+
+- `proceed -> cmon:work`
+  - when the plan is bounded, traced, critique-checked, and ready for execution
+
+- `revise -> cmon:plan`
+  - when the plan needs stronger boundaries, verification, or critique integration
+
+- `block`
+  - when upstream ambiguity was rediscovered and planning should not continue as if it were execution-owned
 
 The operational execution and manual procedure are documented in:
 

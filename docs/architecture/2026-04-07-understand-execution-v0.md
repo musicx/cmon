@@ -79,6 +79,10 @@ If the packet cannot support a responsible next-stage start, stay in `cmon:under
 
 ### Stage 6: Route To Next Skill
 
+Use:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 The synthesizer should recommend one of:
 
 - `cmon:think`
@@ -124,4 +128,4 @@ It is also exercised by this end-to-end example:
 
 The next useful upgrade after this document is:
 
-- a unified stage transition contract that turns packet handoff into an explicit `proceed / revise / block` decision
+- adoption of the shared stage transition contract across the remaining stages

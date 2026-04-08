@@ -146,13 +146,22 @@ The v0 challenge flow uses:
 
 ## Handoff
 
+Record the handoff using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If approved and non-blocking:
 
-- move to `cmon:plan`
+- `proceed -> cmon:plan`
 
 If not:
 
+- `revise -> cmon:design`
 - revise the design artifact and continue design work
+
+If upstream requirements or task framing instability prevent responsible design closure:
+
+- `block`
 
 The operational execution and manual procedure are documented in:
 

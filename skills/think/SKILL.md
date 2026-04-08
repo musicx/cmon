@@ -176,15 +176,24 @@ Use:
 
 ## Handoff
 
+Record the handoff using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If the result is still a ranked direction set:
 
-- stay in `cmon:think` and continue on the chosen direction
+- `revise -> cmon:think`
+- continue on the chosen direction
 
 If approved requirements exist:
 
-- move to `cmon:design` when flow, state, interfaces, or cross-surface behavior still need explicit design work
-- otherwise move to `cmon:plan`
+- `proceed -> cmon:design` when flow, state, interfaces, or cross-surface behavior still need explicit design work
+- otherwise `proceed -> cmon:plan`
 
 If not approved:
 
-- revise and continue within `cmon:think`
+- `revise -> cmon:think`
+
+If blocking ambiguity remains and cannot responsibly be compressed into assumptions:
+
+- `block`
