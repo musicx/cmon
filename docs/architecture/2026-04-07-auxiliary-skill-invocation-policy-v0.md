@@ -9,11 +9,39 @@ The goal is to keep the system disciplined without turning every pass into manda
 
 Current auxiliary skills:
 
+- `cmon:worktree`
 - `cmon:pressure-test`
 - `cmon:refresh-knowledge`
 - `cmon:revalidate`
 
-## 1. `cmon:pressure-test`
+## 1. `cmon:worktree`
+
+### Recommended
+
+Use `cmon:worktree` when:
+
+- the current branch contains unrelated changes
+- the next unit is risky enough that a cleaner diff boundary is worth explicit isolation
+- more than one stream of implementation or fix work may proceed in parallel
+- a review or debug pass would be materially clearer in an isolated workspace
+
+### Conditionally Mandatory
+
+Treat `cmon:worktree` as effectively mandatory when:
+
+- the same working tree already carries unrelated in-progress work
+- the intended parallel work would otherwise violate clean write-scope isolation
+- the invoking workflow explicitly depends on a clean diff boundary
+
+### Usually Skip
+
+Usually skip it when:
+
+- the change is already isolated enough on the current branch
+- the overhead of another workspace is clearly higher than the isolation value
+- the task is tiny and does not benefit from a second filesystem workspace
+
+## 2. `cmon:pressure-test`
 
 ### Recommended
 
@@ -39,7 +67,7 @@ Usually skip it when:
 - the artifact is tiny and the underlying stage already includes the necessary critique inline
 - the pressure-test would duplicate a critique pass already run moments ago with no new evidence
 
-## 2. `cmon:compound` vs `cmon:revalidate` vs `cmon:refresh-knowledge`
+## 3. `cmon:compound` vs `cmon:revalidate` vs `cmon:refresh-knowledge`
 
 ### Use `cmon:compound`
 
@@ -96,7 +124,7 @@ Prefer:
 - explicit periodic `cmon:revalidate`
 - or a direct recommendation from `cmon:compound` when it notices likely drift
 
-## 3. `cmon:refresh-knowledge`
+## 4. `cmon:refresh-knowledge`
 
 ### Recommended
 
@@ -120,7 +148,7 @@ Usually skip it when:
 - the evidence for drift is still weak
 - the scope would be broad enough that the pass is really a docs rewrite project
 
-## 4. `cmon:revalidate`
+## 5. `cmon:revalidate`
 
 ### Recommended
 
@@ -145,7 +173,7 @@ Usually skip it when:
 - `cmon:compound` already knows it only needs one narrow in-place update
 - the task is really fresh knowledge capture, not artifact revalidation
 
-## 5. Policy Choice
+## 6. Policy Choice
 
 Auxiliary skills should be:
 

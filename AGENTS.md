@@ -48,6 +48,7 @@ Current supporting skills:
 - `cmon:pressure-test`
 - `cmon:refresh-knowledge`
 - `cmon:revalidate`
+- `cmon:worktree`
 
 Deprecated compatibility alias:
 

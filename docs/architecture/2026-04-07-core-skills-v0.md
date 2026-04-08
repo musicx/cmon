@@ -26,6 +26,8 @@ It now also records the explicit design split added after the initial v0 chain.
   - auxiliary maintenance surface for stale, overlapping, or duplicated durable knowledge
 - `cmon:revalidate`
   - auxiliary periodic audit surface for artifact trust, lifecycle drift, and narrow GC routing
+- `cmon:worktree`
+  - auxiliary isolation surface for deciding when work should stay, branch, or use a dedicated worktree
 
 ## Lifecycle
 
@@ -199,3 +201,4 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-07-handoff-and-artifact-gc-analysis-v0.md`
 - `docs/architecture/2026-04-08-shared-extra-capabilities-across-skill-repos-v0.md`
 - `docs/architecture/2026-04-08-debug-skill-v0.md`
+- `docs/architecture/2026-04-08-worktree-skill-v0.md`
