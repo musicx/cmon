@@ -181,7 +181,7 @@ For each executed unit, report:
 - `Verification`
 - `Execution strategy`
 - `Internal review loop result`
-- `Open findings for review`
+- `Open findings for verify or broader review`
 
 Use `templates/work/unit-execution-report-template.md` as the default handoff structure.
 

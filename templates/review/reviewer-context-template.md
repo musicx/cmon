@@ -47,6 +47,9 @@
 ## Verification Evidence
 
 - <test/build/manual verification evidence or "none provided">
+- Verification Summary Path: <path or "none">
+- Verification Summary:
+  - <key point or "none">
 
 ## Known Context Gaps
 

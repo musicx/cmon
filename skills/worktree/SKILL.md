@@ -86,7 +86,7 @@ Use:
 Typical transitions:
 
 - `proceed -> cmon:work`
-  - when the isolation decision is complete and execution can begin safely
+  - when the isolation decision is complete and `cmon:work` preconditions already hold
 
 - `block`
   - when the repo state is not clean enough to make a safe isolation move without user intervention

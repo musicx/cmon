@@ -133,7 +133,7 @@ Use:
 Typical transitions:
 
 - `proceed -> cmon:work`
-  - when the cause is clear and the next step is a narrow fix
+  - when the cause is clear, the next step is a narrow fix, and `cmon:work` preconditions still hold
 
 - `revise -> cmon:debug`
   - when the current hypothesis was invalidated and another evidence-backed pass is needed

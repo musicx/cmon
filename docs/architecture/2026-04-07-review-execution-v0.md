@@ -41,6 +41,7 @@ Locate:
 - approved requirements/design artifact
 - approved implementation plan
 - verification evidence
+- verification summary from `cmon:verify` when one exists
 - work execution report
 - scope expansion request when present
 

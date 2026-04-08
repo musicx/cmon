@@ -27,6 +27,7 @@
 
 - Evidence Notes:
   - <test/build/manual evidence or "infer from session">
+- Verification Summary Path: <path | "none" | "infer if present">
 
 ## Dispatch Mode
 
