@@ -155,9 +155,16 @@ The real question is:
 
 The stronger model is:
 
-- every major stage emits a packet
+- every major stage has a handoff packet
 - every packet has a readiness decision
 - every readiness decision names what the next stage may rely on
+
+In early `cmon`, a handoff packet should default to:
+
+- existing canonical stage artifacts
+- plus a normalized transition decision
+
+It should not default to creating a brand-new peer artifact just because a handoff happened.
 
 The handoff unit should therefore be:
 
@@ -166,6 +173,14 @@ The handoff unit should therefore be:
 - readiness claims
 - unresolved items
 - evidence of freshness
+
+So the first design question is not:
+
+- what new packet artifact should be added
+
+It is:
+
+- how to normalize reuse of current canonical artifacts so the consumer stage can trust them cleanly
 
 This stays lightweight if the packet shape is standardized.
 
@@ -180,6 +195,13 @@ It does not require:
 `cmon:refresh-knowledge` should remain narrow.
 
 But the architecture around it should broaden into an explicit artifact lifecycle model.
+
+In early `cmon`, GC discovery should not be forced into `cmon:compound`.
+
+Instead, use:
+
+- `cmon:revalidate` for periodic or explicitly requested artifact trust audits
+- `cmon:refresh-knowledge` for narrow maintenance once the target is already clear
 
 The right split is:
 
@@ -207,6 +229,14 @@ Every meaningful stage handoff should eventually standardize around:
 - `blocking_unknowns`
 - `freshness_statement`
 - `recommended_next_action`
+
+These fields should initially live in:
+
+- the transition decision
+- stage manifests
+- or another thin wrapper around existing canonical artifacts
+
+They do not require a second parallel artifact tree.
 
 ## 6.2 Producer Obligations
 
@@ -254,18 +284,18 @@ This is useful because not every handoff failure should be treated as the same k
 
 ## 7. Proposed Artifact GC Model
 
-## 7.1 Artifact Classes
+## 7.1 Artifact Families
 
-`cmon` should explicitly classify artifacts into:
+`cmon` should explicitly classify artifacts by family:
 
-### Active Decision Artifacts
+### Decision Artifacts
 
 - current requirements
 - current design
 - current implementation plan
 - current work manifest
 
-These are live artifacts for the current chain.
+These are the canonical decision artifacts for the current chain.
 
 ### Durable Knowledge Artifacts
 
@@ -293,6 +323,10 @@ These prove workflow behavior, but are not always the canonical operational refe
 
 These should usually not accumulate indefinitely.
 
+Artifact family and lifecycle state should stay separate.
+
+The same artifact may remain in one family while changing lifecycle state over time.
+
 ## 7.2 Lifecycle States
 
 For artifact families that matter long-term, `cmon` should converge on a small status model:
@@ -316,6 +350,15 @@ Artifact cleanup or maintenance should be triggered by:
 - proof example still exists but no longer proves the intended behavior cleanly
 - duplicate durable guidance increases retrieval ambiguity
 - artifact volume makes discovery materially worse
+
+Default early owner:
+
+- `cmon:revalidate` on a periodic or explicitly requested basis
+
+Conditional owners later, only if dogfooding proves payoff:
+
+- `cmon:compound` may suggest a GC follow-up
+- other stage skills may surface suspected drift, but should not be forced to carry GC by default
 
 ## 7.4 GC Actions
 
@@ -364,6 +407,7 @@ Deliverables:
 - an artifact family matrix
 - a status model for durable, superseded, archived, and ephemeral artifacts
 - a GC trigger and action matrix
+- a `cmon:revalidate` contract for periodic audit and routing
 
 Expected repo impact:
 
@@ -374,11 +418,11 @@ Expected repo impact:
 
 Goal:
 
-- connect `compound`, `refresh-knowledge`, and broader artifact lifecycle rules
+- connect `compound`, `revalidate`, `refresh-knowledge`, and broader artifact lifecycle rules
 
 Deliverables:
 
-- revised `cmon:compound` and `cmon:refresh-knowledge` relationship doc
+- revised `cmon:compound`, `cmon:revalidate`, and `cmon:refresh-knowledge` relationship doc
 - narrower routing rules for when a simple update is enough versus when topic maintenance is required
 - maintenance heuristics for proof docs and operator-facing references
 
@@ -407,7 +451,7 @@ The next implementation sequence should be:
 
 1. define the handoff packet model
 2. define artifact lifecycle classes and states
-3. connect `compound` and `refresh-knowledge` to that lifecycle model
+3. connect `compound`, `revalidate`, and `refresh-knowledge` to that lifecycle model
 4. only then decide whether any helper automation is justified
 
 This sequence keeps the work architectural first and automation second.

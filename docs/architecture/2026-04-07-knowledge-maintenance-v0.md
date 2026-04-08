@@ -25,20 +25,27 @@ Why:
 
 Trying to force both into one step makes both noisier.
 
-## 2. Auxiliary Skill
+## 2. Auxiliary Skills
 
-The maintenance surface is:
+The maintenance surfaces are:
 
 - `cmon:refresh-knowledge`
+- `cmon:revalidate`
 
-This is intentionally not a core lifecycle stage.
+These are intentionally not core lifecycle stages.
 
-It is a narrow maintenance helper for:
+`cmon:refresh-knowledge` is a narrow maintenance helper for:
 
 - stale docs
 - overlapping docs
 - duplicate guidance
 - pattern docs that no longer match current evidence
+
+`cmon:revalidate` is a periodic or ad hoc audit helper for:
+
+- artifact trust checking
+- lifecycle-state assessment
+- deciding whether follow-up should be refresh, supersede, archive, or no action
 
 ## 3. Supported Maintenance Actions
 
@@ -94,7 +101,17 @@ Use `cmon:refresh-knowledge` when:
 
 - the main task is maintaining existing durable knowledge against newer evidence
 
-If a fresh `cmon:compound` pass discovers stale candidates, it should recommend a narrow `cmon:refresh-knowledge` follow-up rather than expanding the capture pass into a broad maintenance sweep.
+Use `cmon:revalidate` when:
+
+- the main task is deciding which existing artifacts can still be trusted
+- the right maintenance action is not yet clear
+- the audit scope includes proof docs, routing docs, or multiple artifact candidates
+
+If a fresh `cmon:compound` pass discovers stale candidates, it should usually recommend:
+
+- a direct narrow update when one obvious doc should be refreshed
+- `cmon:revalidate` when the trust problem is broader or still unclear
+- `cmon:refresh-knowledge` only when one narrow maintenance target is already clear
 
 ## 6. Policy Choice
 
@@ -120,3 +137,4 @@ After this layer exists, the next optional step is:
 
 - `docs/architecture/2026-04-07-compound-execution-v0.md`
 - `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`
+- `docs/architecture/2026-04-08-revalidate-execution-v0.md`

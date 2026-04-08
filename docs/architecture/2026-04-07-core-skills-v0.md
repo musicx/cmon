@@ -22,6 +22,8 @@ It now also records the explicit design split added after the initial v0 chain.
   - auxiliary thin orchestration surface for reusing existing critique stacks
 - `cmon:refresh-knowledge`
   - auxiliary maintenance surface for stale, overlapping, or duplicated durable knowledge
+- `cmon:revalidate`
+  - auxiliary periodic audit surface for artifact trust, lifecycle drift, and narrow GC routing
 
 ## Lifecycle
 
