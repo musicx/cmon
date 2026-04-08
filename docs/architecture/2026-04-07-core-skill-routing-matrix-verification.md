@@ -10,7 +10,7 @@
 - Command Or Procedure: manual comparison against `AGENTS.md`
   - Result: pass
   - Evidence:
-    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
+    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound`
     - no new stage names or runtime concepts were introduced
 
 - Command Or Procedure: manual comparison against `docs/architecture/2026-04-07-core-skills-v0.md`

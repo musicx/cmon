@@ -179,11 +179,11 @@ Record the result using:
 
 Default next step:
 
-- `proceed -> cmon:review`
+- `proceed -> cmon:verify`
 
 If execution uncovered reusable learning:
 
-- follow review with `cmon:compound`
+- follow verification with `cmon:compound`
 
 If the unit could not be completed because the plan boundary broke:
 

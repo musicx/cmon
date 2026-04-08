@@ -57,6 +57,7 @@ Use `cmon:pressure-test` when:
 Treat `cmon:pressure-test` as effectively mandatory when:
 
 - the artifact is non-trivial and cross-cutting
+- the next stage is `cmon:work`
 - the next stage is expensive to start wrong
 - prior critique surfaces already exist but would otherwise be skipped ad hoc
 

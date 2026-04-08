@@ -31,6 +31,7 @@ Decide:
 
 Assemble:
 
+- repo foundation state
 - relevant docs
 - relevant code areas
 - prior durable artifacts
@@ -69,6 +70,7 @@ Use:
 
 Before handoff, validate that the packet includes:
 
+- repo foundation state when the target is a greenfield or newly created project directory
 - verified relevant area
 - strongest prior artifacts
 - reusable local patterns

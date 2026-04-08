@@ -28,7 +28,9 @@ The transition contract makes handoff decisions consistent across:
 - `cmon:think`
 - `cmon:design`
 - `cmon:plan`
+- `cmon:pressure-test`
 - `cmon:work`
+- `cmon:verify`
 - `cmon:review`
 - `cmon:compound`
 
@@ -108,20 +110,38 @@ The minimum transition decision should record:
 ### `cmon:plan`
 
 - `proceed`
-  - execution may begin
+  - explicit pre-work critique may begin
 - `revise`
   - the plan needs stronger boundaries, traceability, or verification
 - `block`
   - unresolved upstream ambiguity prevents safe planning
 
+### `cmon:pressure-test`
+
+- `proceed`
+  - the tested artifact is ready for the named next stage
+- `revise`
+  - the current stage artifact needs tightening before handoff
+- `block`
+  - the artifact is too weak, incomplete, or misrouted for safe progression
+
 ### `cmon:work`
 
 - `proceed`
-  - the unit is implemented and ready for review
+  - the unit is implemented and ready for explicit verification
 - `revise`
   - the unit stays in `cmon:work` for more implementation or tighter verification
 - `block`
   - the unit cannot continue safely without upstream replanning or explicit scope decision
+
+### `cmon:verify`
+
+- `proceed`
+  - the implementation claim is sufficiently supported and may either stop, compound, or escalate to broader review
+- `revise`
+  - the change requires more work or stronger evidence before acceptance
+- `block`
+  - the claim cannot be judged responsibly because the evidence base or handoff package is too weak
 
 ### `cmon:review`
 
@@ -150,9 +170,13 @@ Examples:
 - `cmon:understand -> cmon:think`
 - `cmon:think -> cmon:design`
 - `cmon:design -> cmon:plan`
-- `cmon:plan -> cmon:work`
-- `cmon:work -> cmon:review`
+- `cmon:plan -> cmon:pressure-test`
+- `cmon:pressure-test -> cmon:work`
+- `cmon:work -> cmon:verify`
+- `cmon:verify -> cmon:compound`
+- `cmon:verify -> cmon:review`
 - `cmon:review -> cmon:compound`
+- `cmon:verify -> complete`
 - `cmon:review -> complete`
 - `cmon:compound -> complete`
 

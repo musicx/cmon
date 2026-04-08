@@ -144,7 +144,7 @@ If work produces no durable residue, future work stays expensive.
 
 ## 6.1 High-Level Lifecycle
 
-`cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound`
+`cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound`
 
 ### `cmon:understand`
 

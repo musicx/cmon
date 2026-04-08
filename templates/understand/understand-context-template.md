@@ -14,6 +14,14 @@
 - Why These Paths Matter:
   - <note>
 
+## Repo Foundation State
+
+- Target Directory:
+- Existing Git Repo: <yes | no>
+- Foundation Strong Enough For Durable Work: <yes | no>
+- Required Action If No:
+  - <initialize git | clarify intent | none>
+
 ## Relevant Artifacts
 
 - Path: <path>

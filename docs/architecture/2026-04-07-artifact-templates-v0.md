@@ -157,8 +157,25 @@ Purpose:
 - lock one implementation unit before editing starts
 - record scope expansion rather than letting it hide in chat
 - capture fresh verification evidence
-- create a clean handoff package for review
+- create a clean handoff package for explicit verification
 - keep execution traceable back to requirements, design, and plan posture
+
+### Verify
+
+Paths:
+
+- `templates/verify/verify-run-manifest-template.md`
+- `templates/verify/verification-summary-template.md`
+
+Used by:
+
+- `cmon:verify`
+
+Purpose:
+
+- judge whether the post-work implementation claim is actually supported by fresh evidence
+- distinguish routine implementation verification from broader multi-lens review
+- produce an explicit accept / revise / escalate verification decision
 
 ### Debug
 

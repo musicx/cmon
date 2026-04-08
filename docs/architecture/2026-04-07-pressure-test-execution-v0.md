@@ -80,7 +80,7 @@ Routing table:
 |---|---|---|
 | `design` | owner-led challenge plus design synthesizer | planning readiness |
 | `plan` | plan critique stack plus critique summary | execution readiness |
-| `work` | spec compliance plus code-quality review | review readiness |
+| `work` | spec compliance plus code-quality review | verification or broader-audit readiness |
 | `review` | review packet completeness plus review synthesis | acceptance or downstream routing readiness |
 
 ### Stage 4: Normalize Findings
@@ -150,7 +150,7 @@ This is the real output contract.
 
 - evidence exists
 - internal review loop passed
-- handoff package is coherent enough for multi-lens review
+- handoff package is coherent enough for explicit verification or justified broader audit
 
 ### Review
 

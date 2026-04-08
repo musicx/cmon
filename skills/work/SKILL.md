@@ -50,7 +50,7 @@ Use `templates/work/execution-strategy-template.md` when the unit needs an expli
 11. Run internal code-quality review on the completed unit
 12. If code quality fails, return to the same unit and correct it before proceeding
 13. Record any findings that affect later units or require review
-14. Produce a clean handoff package for `cmon:review`
+14. Produce a clean handoff package for `cmon:verify`
 
 ## Execution Posture
 
@@ -148,7 +148,7 @@ Use `templates/work/system-interaction-check-template.md` to record:
 
 ## Internal Review Loop
 
-Before a unit can hand off to `cmon:review`, it must pass two narrower internal checks:
+Before a unit can hand off to `cmon:verify`, it must pass two narrower internal checks:
 
 1. `spec-compliance-review`
    - confirms the implemented unit still matches approved requirements, design, and plan boundaries
@@ -158,9 +158,9 @@ Before a unit can hand off to `cmon:review`, it must pass two narrower internal 
    - checks maintainability, edge cases, verification sufficiency, and obvious engineering weaknesses inside the approved scope
    - uses `templates/work/code-quality-review-input-template.md`
 
-These are not replacements for `cmon:review`.
+These are not replacements for `cmon:verify`.
 
-They exist to catch obvious drift and weak execution before the change reaches the broader multi-lens review stage.
+They exist to catch obvious drift and weak execution before the change reaches the explicit verification stage.
 
 ## Output
 
@@ -194,12 +194,12 @@ Record the handoff using:
 
 Typical transition decisions:
 
-- `proceed -> cmon:review`
+- `proceed -> cmon:verify`
   - after implementation of a meaningful unit with evidence and internal review completion
 
 If the unit produced reusable learning:
 
-- review may later `proceed -> cmon:compound`
+- verify may later `proceed -> cmon:compound`
 
 If the unit boundary breaks and cannot be resolved narrowly:
 

@@ -9,7 +9,7 @@ Run the smallest useful critique orchestration for an existing `cmon` artifact.
 
 This is an auxiliary workflow skill.
 
-It is not part of the default core lifecycle, but it exists to make the current critique surfaces easier to reuse consistently.
+It is not a core stage, but it now serves as the default pre-work review gate for substantial plan-level readiness.
 
 ## Purpose
 
@@ -36,6 +36,8 @@ Typical uses:
 - pressure-test a plan before work
 - pressure-test a work handoff package before broader review
 - pressure-test whether a review packet is strong enough to judge
+
+For substantial implementation work, the plan-before-work use is the default case, not an edge case.
 
 ## Non-Goals
 
@@ -90,7 +92,7 @@ Run the existing narrow internal review surface already defined by `cmon:work`:
 - spec compliance review
 - code-quality review
 
-Return one `proceed / revise / block` decision for the transition into `cmon:review`.
+Return one `proceed / revise / block` decision for the transition into `cmon:verify` or, when explicitly warranted, `cmon:review`.
 
 ### `review`
 

@@ -1,13 +1,15 @@
 ---
 name: cmon:review
-description: Use after substantial implementation to review changes through product, engineering, and operations lenses, then merge the findings into one actionable decision.
+description: Use after `cmon:verify`, or when explicitly needed, to run a broader multi-lens audit of an implemented change through product, engineering, and operations lenses.
 ---
 
 # cmon:review
 
-Review changes against intent, implementation quality, and operational reality.
+Review changes against intent, implementation quality, and operational reality when broader scrutiny is warranted.
 
-This skill is central to `cmon`. It is not a generic "check my diff" prompt.
+This skill is central, but it is no longer the default immediate stage after every `cmon:work` pass.
+
+It is not a generic "check my diff" prompt.
 
 It should answer three different questions:
 
@@ -55,8 +57,9 @@ Review should use all of the following when available:
 2. The approved requirements/design artifact
 3. The approved plan
 4. Verification evidence from `cmon:work`
-5. Execution-boundary artifacts from `cmon:work`, especially a scope expansion request when one exists
-6. The current `cmon:understand` packet when prior repo decisions or local patterns materially shape the review target
+5. Verification summary from `cmon:verify` when one exists
+6. Execution-boundary artifacts from `cmon:work`, especially a scope expansion request when one exists
+7. The current `cmon:understand` packet when prior repo decisions or local patterns materially shape the review target
 
 ## Default Scope Resolution
 

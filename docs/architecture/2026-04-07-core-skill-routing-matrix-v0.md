@@ -14,7 +14,7 @@ It exists so an operator can answer three questions quickly:
 ## Default Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but substantial work should start from this model.

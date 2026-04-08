@@ -21,7 +21,7 @@ The goal is to identify which extra capabilities recur across repos strongly eno
 This comparison is intentionally limited to capabilities outside the current default `cmon` chain:
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 So this document does not re-compare baseline thinking, planning, work, review, or compounding as such.

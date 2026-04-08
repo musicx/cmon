@@ -160,8 +160,8 @@ Record the handoff using:
 
 Typical transition decisions:
 
-- `proceed -> cmon:work`
-  - when the plan is bounded, traced, critique-checked, and ready for execution
+- `proceed -> cmon:pressure-test`
+  - when the plan is bounded, traced, and ready for explicit pre-work critique
 
 - `revise -> cmon:plan`
   - when the plan needs stronger boundaries, verification, or critique integration

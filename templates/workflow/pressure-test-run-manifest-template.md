@@ -4,7 +4,7 @@
 
 - Stage Under Test: <design | plan | work | review>
 - Primary Artifact Path: <path>
-- Expected Next Stage: <cmon:plan | cmon:work | cmon:review | cmon:compound | complete | infer>
+- Expected Next Stage: <cmon:plan | cmon:work | cmon:verify | cmon:review | cmon:compound | complete | infer>
 
 ## Supporting Artifacts
 

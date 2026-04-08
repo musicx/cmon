@@ -5,7 +5,7 @@ Status: Draft
 
 This document defines the current execution scaffolding for `cmon:work`.
 
-Its job is to turn plan units into bounded implementation runs with explicit strategy choice, system interaction checks, and an internal review loop before broader review.
+Its job is to turn plan units into bounded implementation runs with explicit strategy choice, system interaction checks, and an internal review loop before explicit verification.
 
 ## 1. Purpose
 
@@ -17,7 +17,7 @@ This layer exists to prevent the failures that usually happen during implementat
 - invisible boundary expansion
 - mixing unrelated cleanup into one unit
 - claiming completion without evidence
-- handing weak or ambiguous state into review
+- handing weak or ambiguous state into verification or later review
 
 ## 2. What cmon:work Must Do
 
@@ -31,7 +31,7 @@ For each execution unit, `cmon:work` must:
 6. run system interaction checks when the unit has non-local effects
 7. run internal spec compliance review
 8. run internal code-quality review
-9. report what changed and what still needs review
+9. report what changed and what still needs verification or broader audit
 
 If it cannot do one of those nine things, it should stop and surface the problem.
 
@@ -133,7 +133,7 @@ Used after verification and before final handoff.
 Purpose:
 
 - compare the implemented unit against requirements, design, and plan intent
-- detect boundary drift before broader review
+- detect boundary drift before explicit verification
 
 Template:
 
@@ -159,7 +159,7 @@ Used at the end of the unit.
 Purpose:
 
 - summarize implementation state
-- hand cleanly into `cmon:review`
+- hand cleanly into `cmon:verify`
 
 Template:
 
@@ -173,7 +173,7 @@ Every work unit should be in one of these states:
 - `in_progress`
 - `blocked`
 - `awaiting_scope_decision`
-- `awaiting_review`
+- `awaiting_verify`
 - `complete`
 
 These states are intentionally simple.

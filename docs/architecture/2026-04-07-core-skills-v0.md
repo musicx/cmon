@@ -13,6 +13,7 @@ It now also records the explicit design split added after the initial v0 chain.
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
+- `cmon:verify`
 - `cmon:review`
 - `cmon:compound`
 
@@ -32,7 +33,7 @@ It now also records the explicit design split added after the initial v0 chain.
 ## Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:work -> cmon:review -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the default path for substantial work.
@@ -114,6 +115,15 @@ Default collaboration pattern:
 
 - engineering execution
 
+### `cmon:verify`
+
+Produces the verification judgment:
+
+- claim under test
+- evidence used
+- gaps still visible
+- accept / revise / escalate decision
+
 ### `cmon:debug`
 
 Produces the debugging handoff:
@@ -153,7 +163,8 @@ Produces the reusable learning artifact:
 | `cmon:design` | `docs/designs/...` |
 | `cmon:plan` | `docs/plans/...` |
 | `cmon:work` | code + tests + verification evidence + scoped execution artifacts |
-| `cmon:review` | merged review decision, may remain session-local in v0 |
+| `cmon:verify` | explicit verification judgment and routing decision |
+| `cmon:review` | merged review decision when broader post-implementation audit is warranted |
 | `cmon:compound` | `docs/solutions/...` or updated durable doc |
 
 Current workflow proof coverage lives in:
@@ -171,7 +182,8 @@ Shared handoff decisions should use:
 
 - no substantial coding before `cmon:plan`
 - no substantial planning when design ambiguity still blocks implementation decisions
-- no substantial review without product / engineering / operations lenses
+- no substantial work before the plan has survived explicit pre-work critique
+- no implementation claim accepted without an explicit verify pass
 - no completion claim without evidence
 - no reusable lesson left undocumented when the compound trigger is met
 
@@ -202,3 +214,5 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-08-shared-extra-capabilities-across-skill-repos-v0.md`
 - `docs/architecture/2026-04-08-debug-skill-v0.md`
 - `docs/architecture/2026-04-08-worktree-skill-v0.md`
+- `docs/architecture/2026-04-08-verify-skill-v0.md`
+- `docs/architecture/2026-04-08-repo-foundation-gate-v0.md`

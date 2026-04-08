@@ -7,11 +7,9 @@ This document records the current `cmon` decision about verification.
 
 ## Current Judgment
 
-`cmon` does already cover verification.
+Dogfooding changed the earlier position.
 
-It does **not** currently expose verification as a separate canonical skill or lifecycle stage.
-
-That is intentional for now.
+`cmon` now needs an explicit `verify` stage.
 
 ## Where Verification Already Lives
 
@@ -29,49 +27,42 @@ Current `cmon:work` requires:
 
 So verification is not missing from the framework.
 
-It is embedded inside bounded execution.
+It remains embedded inside bounded execution, but that is no longer sufficient as the only explicit acceptance gate.
+
+### `cmon:verify`
+
+`cmon:verify` should now be the default post-work stage.
+
+Its job is to explicitly judge whether the work evidence actually supports the implementation claim.
 
 ### `cmon:review`
 
-`cmon:review` treats verification evidence as part of the review input contract.
-
-This means review is not just looking at code diffs.
-
-It is also checking whether the implementation was actually supported by evidence.
+`cmon:review` remains useful, but it should now be treated as a broader optional audit stage after verification when additional product / operations / engineering scrutiny is warranted.
 
 ### `cmon:pressure-test`
 
-`cmon:pressure-test` can lightly cover readiness and handoff quality when a narrower gate is useful.
-
-This makes it the current best auxiliary surface for lightweight verification-like checks without invoking a full multi-lens review.
+`cmon:pressure-test` is better understood as a pre-work artifact review gate than as the answer to post-work verification.
 
 ## Decision
 
-Do **not** add verification as a new mandatory lifecycle stage right now.
-
-Do **not** split verification out of `cmon:work`.
+Add `cmon:verify` as the default post-work stage.
 
 Reason:
 
-- it would overlap heavily with existing `cmon:work` behavior
-- it would also partially overlap with `cmon:review`
-- and it would risk turning one concept into multiple competing entry points too early
+- dogfooding showed that post-work acceptance needs a clearer explicit gate
+- broader multi-lens review should not be the default answer to every completed work unit
+- pre-work critique and post-work verification should be distinguished more clearly
 
-The current design is simpler:
+The corrected design is:
 
-- execution must verify
-- review must consume verification evidence
-- pressure-test may add a lighter readiness gate when needed
+- execution must still gather evidence
+- verify is the default explicit post-work acceptance stage
+- review is the optional broader audit stage
+- pressure-test is the explicit pre-work artifact review gate
 
 ## Future Option
 
-A lightweight auxiliary skill such as `cmon:verify` may still become useful later.
-
-If added, it should be:
-
-- auxiliary, not canonical
-- lighter than `cmon:review`
-- narrower than `cmon:work`
+`cmon:verify` should be lighter than `cmon:review` and narrower than `cmon:work`.
 
 The likely use cases would be:
 
@@ -81,21 +72,20 @@ The likely use cases would be:
 
 ## Conditions For Adding `cmon:verify`
 
-Only add a separate `cmon:verify` if dogfooding shows repeated friction in cases like:
+The dogfooding evidence has now been met:
 
-- verification is needed without re-running the full `cmon:work` posture
-- verification is needed before `cmon:review`, but `cmon:pressure-test` is too abstract
-- operators repeatedly build ad hoc verification packets outside the existing workflow
-
-If those patterns do not recur, keep verification where it is now.
+- verification was needed as a distinct post-work step
+- `cmon:review` was being used to catch issues that should have been separated from broader audit
+- `cmon:pressure-test` was too ambiguously positioned to serve as the post-work answer
 
 ## Conclusion
 
-For the current version of `cmon`:
+For the corrected version of `cmon`:
 
-- verification is covered
-- it is intentionally distributed across `cmon:work`, `cmon:review`, and `cmon:pressure-test`
-- a standalone `cmon:verify` is optional future refinement, not current framework debt
+- verification is now explicit
+- `cmon:work` gathers evidence
+- `cmon:verify` judges post-work sufficiency
+- `cmon:review` adds broader audit only when justified
 
 ## Related
 
@@ -103,3 +93,4 @@ For the current version of `cmon`:
 - `docs/architecture/2026-04-07-work-review-loop-v0.md`
 - `docs/architecture/2026-04-07-review-execution-v0.md`
 - `docs/architecture/2026-04-07-thin-critique-orchestration-v0.md`
+- `docs/architecture/2026-04-08-verify-skill-v0.md`

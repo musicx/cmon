@@ -29,7 +29,7 @@
 - Output Mode: <session_local | write_artifact>
 - Run Critique Stack: <yes | no | conditional>
 - Expected Transition:
-  - <proceed -> cmon:work | revise -> cmon:plan | block | infer>
+  - <proceed -> cmon:pressure-test | revise -> cmon:plan | block | infer>
 
 ## Known Constraints
 

@@ -32,6 +32,7 @@ Do not use this skill as a substitute for implementation or review. It produces 
 Produce a concise context packet containing:
 
 1. The relevant area of the repo
+2. Repo foundation state for the target area or target project directory
 2. Existing durable artifacts that matter
 3. Local patterns and neighboring implementation surfaces
 4. Known constraints from `AGENTS.md`, `README.md`, and nearby docs
@@ -75,6 +76,14 @@ Recover prior knowledge explicitly:
 - solution or pattern docs that already cover the topic
 - prior brainstorms, designs, or plans that should shape the next stage
 - repo-local patterns the next stage should follow instead of reinventing
+
+Check repo foundation explicitly:
+
+- does the target directory already exist
+- is it already a git repository
+- is this substantial enough that durable artifacts and code should be versioned from the start
+
+If the target is a greenfield project directory and it is not yet a git repo, do not treat that as invisible context.
 
 ### Stage 3: Dispatch lens observers
 
@@ -122,6 +131,7 @@ Recommended sections:
 ## Hard Rules
 
 - Do not invent repo structure that you did not verify
+- Do not ignore missing git initialization for substantial greenfield project work
 - Do not skip prior docs if they clearly match the task
 - Do not jump into implementation from this skill
 - Do not collapse product, engineering, and operations observations into one unlabeled blob when the multi-lens pipeline is available
@@ -153,5 +163,6 @@ Typical transition decisions:
 
 - `block`
   - if the repo area, task target, or prior-decision surface is still too ambiguous to route responsibly
+  - or if a substantial new project directory still lacks the repo foundation needed for durable tracked work
 
 Later stages should treat the context packet as the shared starting point rather than silently rebuilding incompatible context from scratch.

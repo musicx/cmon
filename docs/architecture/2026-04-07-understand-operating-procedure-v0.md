@@ -41,6 +41,14 @@ Read:
 
 Inspect the nearby code area enough to verify structure and patterns.
 
+Check repo foundation state explicitly:
+
+- does the target directory already exist
+- is it already a git repository
+- if not, is this substantial enough that durable artifacts and code should be tracked from the start
+
+If the answer is yes and the directory is still not a git repo, stop and initialize git before later stages continue.
+
 Explicitly recover:
 
 - any prior brainstorm, design, or plan that should constrain the next stage

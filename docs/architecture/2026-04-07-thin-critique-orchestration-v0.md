@@ -66,7 +66,7 @@ Use the already-defined plan critique stack:
 
 Output:
 
-- transition decision for `cmon:plan -> cmon:work`
+- transition decision for `cmon:plan -> cmon:pressure-test`
 
 ### Work handoff packages
 
@@ -77,7 +77,7 @@ Use the already-defined internal review loop:
 
 Output:
 
-- transition decision for `cmon:work -> cmon:review`
+- transition decision for `cmon:work -> cmon:verify`
 
 ### Review packets
 

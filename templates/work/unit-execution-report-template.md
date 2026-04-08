@@ -6,7 +6,7 @@
 - Requirements Path: <docs/brainstorms/... or "none">
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Unit ID Or Title: <unit id>
-- Final Status: <awaiting_review | blocked | complete>
+- Final Status: <awaiting_verify | blocked | complete>
 
 ## Implemented
 
@@ -44,10 +44,10 @@
 - Requirements preserved: <yes | no | unclear>
 - Design intent preserved: <yes | no | unclear>
 
-## Open Findings For Review
+## Open Findings For Verify Or Review
 
 - <finding or "none">
 
 ## Recommended Next Step
 
-- <cmon:review | cmon:plan>
+- <cmon:verify | cmon:plan | cmon:review>

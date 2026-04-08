@@ -24,6 +24,7 @@ It does **not** currently aim to be a general cross-host framework, a runtime-he
 
 - `gstack` with a large runtime layer, browser QA stack, or deploy chain
 - `Waza` style minimal constraint / model-first freedom
+- a general knowledge ingestion, research processing, or prose-polishing platform
 - a generic plugin marketplace product
 
 ## Naming Convention
@@ -37,6 +38,7 @@ Required initial skill names:
 - `cmon:design`
 - `cmon:plan`
 - `cmon:work`
+- `cmon:verify`
 - `cmon:review`
 - `cmon:compound`
 
@@ -94,6 +96,8 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
 1. **`cmon:understand`**
    - Scan repo context, existing docs, and prior decisions
    - Use role-separated repo understanding where useful
+   - For greenfield or newly created project directories, confirm repo foundation state before later stages proceed
+   - If substantial work will produce durable artifacts or code and the directory is not yet a git repo, initialize git before design, plan, and implementation continue
 
 2. **`cmon:think`**
    - Unified pre-design thinking skill
@@ -117,16 +121,23 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Carry requirements and design decisions forward with traceability
    - This stage is normally `engineering-owned`
 
-5. **`cmon:work`**
+5. **`cmon:pressure-test`**
+   - Run the explicit pre-work critique gate for non-trivial design or plan artifacts
+   - Use this to catch weak design or plan decisions before implementation starts
+
+6. **`cmon:work`**
    - Implement only against approved scope
    - Keep tasks bounded and verifiable
    - This stage is explicitly `engineering-execution`, not multi-role co-execution
 
-6. **`cmon:review`**
-   - Review through multiple lenses, not just correctness
-   - Product fit, engineering quality, and operational safety all matter
+7. **`cmon:verify`**
+   - Treat implementation as unaccepted until the evidence package actually supports the claim
+   - This is the default post-work stage
 
-7. **`cmon:compound`**
+8. **`cmon:review`**
+   - Use broader multi-lens review when the change is risky, externally significant, or explicitly worth the extra scrutiny
+
+9. **`cmon:compound`**
    - If the work produced new reusable knowledge, write it down in the project knowledge store
 
 ## Required Review Lenses
@@ -223,6 +234,7 @@ Until explicitly approved in a design doc, do not treat these as part of v0:
 - deploy / canary / benchmark pipeline
 - telemetry, self-update, or persistent runtime daemon
 - maximizing model improvisation by minimizing constraints
+- general URL/PDF reading, research collection, or writing-polish workflows that are not tightly in service of the engineering harness
 
 ## Decision Standard
 

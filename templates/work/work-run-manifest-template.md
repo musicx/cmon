@@ -45,10 +45,10 @@
 
 ## Execution State
 
-- Status: <ready | in_progress | blocked | awaiting_scope_decision | awaiting_review | complete>
+- Status: <ready | in_progress | blocked | awaiting_scope_decision | awaiting_verify | complete>
 - Notes:
   - <note or "none">
 
 ## Expected Transition
 
-- <proceed -> cmon:review | revise -> cmon:work | block | infer>
+- <proceed -> cmon:verify | revise -> cmon:work | block | infer>

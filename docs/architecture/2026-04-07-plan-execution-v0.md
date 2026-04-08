@@ -125,7 +125,7 @@ Use:
 
 If the plan is strong enough:
 
-- `proceed -> cmon:work`
+- `proceed -> cmon:pressure-test`
 
 If not:
 
