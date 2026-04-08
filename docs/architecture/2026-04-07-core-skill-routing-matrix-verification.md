@@ -10,19 +10,19 @@
 - Command Or Procedure: manual comparison against `AGENTS.md`
   - Result: pass
   - Evidence:
-    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound`
+    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound`
     - no new stage names or runtime concepts were introduced
 
 - Command Or Procedure: manual comparison against `docs/architecture/2026-04-07-core-skills-v0.md`
   - Result: pass
   - Evidence:
-    - the matrix rows use the same six canonical skill names
+    - the matrix rows use the same canonical skill names for the current chain
     - each row's output aligns with the current skill role summary
 
 - Command Or Procedure: manual comparison against the six `skills/*/SKILL.md` files
   - Result: pass
   - Evidence:
-    - `understand`, `think`, `design`, `plan`, `work`, `review`, and `compound` all match the matrix's use/requirement/next-step framing at a high level
+    - `understand`, `think`, `design`, `plan`, `challenge`, `work`, `verify`, and `compound` all match the matrix's use/requirement/next-step framing at a high level
 
 ## Coverage Notes
 

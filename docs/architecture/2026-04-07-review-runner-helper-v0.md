@@ -3,6 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
+Legacy note: this helper belongs to the older `cmon:review` surface.
+It is retained for compatibility and historical examples, not as the canonical current stage.
+
 This document defines the first helper layer for `cmon:review`.
 
 The helper exists to make review execution repeatable without turning `cmon` into a runtime-heavy system.

@@ -1,6 +1,6 @@
 ---
 name: cmon:verify
-description: Use after `cmon:work` to judge whether the implementation claim is actually supported by fresh evidence, and to route the result to completion, more work, or broader review.
+description: Use after `cmon:work` to review the implemented change against the approved plan and design, verify the evidence, and enforce engineering quality before acceptance.
 ---
 
 # cmon:verify
@@ -15,7 +15,12 @@ This is the default post-work stage for substantial implementation.
 
 - implementation is not accepted just because code was written and some evidence exists
 
-It checks whether the evidence is actually strong enough.
+It should review the implemented change against:
+
+- approved requirements and design intent
+- approved implementation plan
+- fresh verification evidence
+- core engineering quality expectations such as correctness, safety, effectiveness, and simplicity
 
 ## Inputs
 
@@ -27,6 +32,9 @@ Use:
 Default inputs:
 
 - work execution report
+- diff when the changed code itself must be inspected
+- approved plan
+- approved design when relevant
 - verification evidence
 - system interaction check when relevant
 - scope expansion request when relevant
@@ -38,15 +46,17 @@ This skill should answer:
 1. what exact claim is being verified
 2. what evidence supports it
 3. what remains unproven
-4. whether the unit should return to work, stop as accepted, or escalate to broader review
+4. whether the implementation still matches the approved plan and design
+5. whether the code meets the engineering bar for correctness, safety, effectiveness, and simplicity
+6. whether the unit should return to work or stop as accepted
 
 ## Non-Goals
 
 Do not use this skill to:
 
 - replace `cmon:work`
-- rerun plan critique
-- become a general product / engineering / operations review
+- rerun pre-work multi-role challenge
+- become a generic product strategy or scope challenge stage
 
 ## Typical Handoffs
 
@@ -57,13 +67,10 @@ Use:
 Typical transitions:
 
 - `proceed -> cmon:compound`
-  - when the unit is sufficiently verified and no broader audit is needed
+  - when the unit is sufficiently verified and accepted
 
 - `revise -> cmon:work`
-  - when evidence is weak, stale, incomplete, or misaligned with the claim
-
-- `proceed -> cmon:review`
-  - when verification is adequate but the change still deserves broader multi-lens scrutiny
+  - when evidence is weak, stale, incomplete, misaligned with the claim, or the implementation violates the approved plan/design or engineering bar
 
 ## Related
 

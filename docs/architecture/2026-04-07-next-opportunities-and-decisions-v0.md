@@ -112,7 +112,7 @@ Why this matters:
 
 What should change:
 
-- add a small contract such as `cmon:autocritique` or `cmon:pressure-test`
+- add a small contract such as `cmon:autocritique` or `cmon:challenge`
 - input: an artifact and stage type
 - output: a merged readiness decision
 
@@ -172,7 +172,7 @@ As of the current draft state:
 
 - `cmon:understand` has been strengthened into a more explicit stage-entry contract
 - the shared stage transition contract now exists and has been adopted into the major stage handoffs
-- a first thin critique orchestration layer now exists through `cmon:pressure-test`
+- a first thin critique orchestration layer now exists through `cmon:challenge`
 - a first knowledge-maintenance layer now exists through `cmon:refresh-knowledge`
 - the primary design gap is no longer missing stages, but insufficient real-world dogfooding outside the `cmon` repo itself
 

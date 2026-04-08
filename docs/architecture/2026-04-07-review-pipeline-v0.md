@@ -3,6 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
+Legacy note: this pipeline now exists mainly for deprecated `cmon:review` compatibility.
+The canonical main chain uses `cmon:challenge` for pre-work multi-lens challenge and `cmon:verify` for post-work engineering acceptance.
+
 This document defines the first review pipeline for `cmon`.
 
 It exists so that `cmon:review` can dispatch multiple reviewers and still get deterministic, mergeable output.

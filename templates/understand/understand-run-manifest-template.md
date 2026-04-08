@@ -5,7 +5,7 @@
 - Request Summary: <what needs to be understood>
 - Starting Path Or Area: <path or "infer">
 - Why This Understanding Pass Is Needed: <reason>
-- Most Likely Next Stage: <cmon:think | cmon:design | cmon:plan | cmon:review | infer>
+- Most Likely Next Stage: <cmon:think | cmon:design | cmon:plan | cmon:verify | infer>
 
 ## Scope Controls
 
@@ -22,7 +22,7 @@
 
 ## Output Expectations
 
-- Expected Next Skill: <cmon:think | cmon:design | cmon:plan | cmon:review | infer>
+- Expected Next Skill: <cmon:think | cmon:design | cmon:plan | cmon:verify | infer>
 - Packet Must Clarify:
   - <what the next stage cannot responsibly guess>
 - Notes:

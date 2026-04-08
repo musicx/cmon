@@ -2,8 +2,8 @@
 
 ## Transition
 
-- From Stage: <cmon:understand | cmon:think | cmon:design | cmon:plan | cmon:work | cmon:review | cmon:compound>
-- To Stage: <same-stage | cmon:think | cmon:design | cmon:plan | cmon:work | cmon:review | cmon:compound | complete>
+- From Stage: <cmon:understand | cmon:think | cmon:design | cmon:plan | cmon:challenge | cmon:work | cmon:verify | cmon:compound>
+- To Stage: <same-stage | cmon:think | cmon:design | cmon:plan | cmon:challenge | cmon:work | cmon:verify | cmon:compound | complete>
 - Decision: <proceed | revise | block>
 
 ## Reason

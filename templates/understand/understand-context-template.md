@@ -4,7 +4,7 @@
 
 - Request: <what is being understood>
 - Suspected Repo Area: <path or "infer">
-- Expected Next Stage: <cmon:think | cmon:design | cmon:plan | cmon:review | infer>
+- Expected Next Stage: <cmon:think | cmon:design | cmon:plan | cmon:verify | infer>
 - Scope Notes: <notes or "none">
 
 ## Relevant Repo Area

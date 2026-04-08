@@ -3,6 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
+Legacy note: this procedure remains only for deprecated `cmon:pressure-test` compatibility.
+Use `cmon:challenge` for current pre-work challenge passes.
+
 This procedure describes how to run one `cmon:pressure-test` pass end to end.
 
 ## 1. Inputs

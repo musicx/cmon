@@ -131,14 +131,17 @@ If debugging shows the problem is really a missing or wrong implementation bound
 
 If debugging reveals the real problem is a behavior or state-model ambiguity rather than implementation error, the right route may be back to `cmon:design`.
 
-### `cmon:review`
+### `cmon:challenge` and `cmon:verify`
 
-`cmon:review` is broader and multi-lens.
+`cmon:challenge` is broader and pre-work.
+
+`cmon:verify` is broader and post-work.
 
 `cmon:debug` is narrower and investigation-first.
 
-Use `cmon:debug` before fix attempts.
-Use `cmon:review` after substantial implementation work.
+Use `cmon:debug` before speculative fix attempts.
+Use `cmon:challenge` before implementation when the proposed solution still needs multi-lens stress.
+Use `cmon:verify` after implementation when code and evidence need engineering acceptance.
 
 ## Typical Outputs
 

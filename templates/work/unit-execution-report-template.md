@@ -44,10 +44,10 @@
 - Requirements preserved: <yes | no | unclear>
 - Design intent preserved: <yes | no | unclear>
 
-## Open Findings For Verify Or Review
+## Open Findings For Verify
 
 - <finding or "none">
 
 ## Recommended Next Step
 
-- <cmon:verify | cmon:plan | cmon:review>
+- <cmon:verify | cmon:plan>

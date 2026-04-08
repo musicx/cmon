@@ -10,7 +10,7 @@ This document defines the initial design correction for `cmon:verify`.
 Dogfooding exposed a mismatch in the earlier workflow:
 
 - plan and design quality checks were not prominent enough before implementation
-- post-implementation flow defaulted too quickly toward `cmon:review`
+- post-implementation flow was still conflating verification with a broader, older review concept
 
 That made it too easy to discover implementation-adjacent problems only after code had already been written.
 
@@ -21,10 +21,10 @@ That made it too easy to discover implementation-adjacent problems only after co
 The corrected shape is:
 
 - design gets challenged before planning
-- plan gets pressure-tested before work
+- plan gets challenged before work
 - work implements the approved unit
 - verify checks whether implementation claims are actually supported
-- review becomes an additional multi-lens audit for riskier or more consequential changes, not the default stage after every unit
+- verify itself becomes the default post-work engineering review and acceptance gate
 
 ## What `cmon:verify` Should Do
 
@@ -33,7 +33,9 @@ The corrected shape is:
 - consume the work handoff package
 - check that evidence really supports the implementation claim
 - consolidate test/build/manual evidence into one explicit verification judgment
-- decide whether the unit may stop, needs more work, or needs escalation to broader review
+- decide whether the unit may stop or needs more work
+- review whether the implementation still matches the approved plan and design
+- enforce engineering quality such as correctness, safety, effectiveness, and simplicity
 
 ## What `cmon:verify` Should Not Do
 
@@ -41,8 +43,7 @@ It should not:
 
 - re-run planning critique
 - replace `cmon:work`
-- replace `cmon:review`
-- become a generic multi-lens code review stage
+- become a multi-role pre-work challenge stage
 
 ## Relationship to Existing Skills
 
@@ -52,37 +53,19 @@ It should not:
 
 `cmon:verify` is the explicit stage that judges whether that evidence is good enough to accept the implemented unit.
 
-### `cmon:pressure-test`
+### `cmon:challenge`
 
-`cmon:pressure-test` should now be understood primarily as a pre-work artifact review gate, especially for plans and design-linked readiness.
+`cmon:challenge` is the canonical pre-work multi-role stage.
 
-It is not the default answer to post-work verification anymore.
-
-### `cmon:review`
-
-`cmon:review` remains valuable, but it should be used:
-
-- when the change is risky
-- when broader product / operations audit is warranted
-- when the user explicitly wants a multi-lens post-implementation review
-
-It is no longer the default immediate next stage after every work unit.
+It should handle design and plan challenge before code exists.
 
 ## Corrected Lifecycle
 
 For substantial implementation work, the default path should now be:
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
 ```
-
-And optionally:
-
-```text
-cmon:verify -> cmon:review
-```
-
-when the change needs broader scrutiny.
 
 ## Related
 

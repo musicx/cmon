@@ -158,8 +158,8 @@ Typical transition decisions:
 - `proceed -> cmon:plan`
   - if the requirements and design are already clear enough
 
-- `proceed -> cmon:review`
-  - if the task is to assess an existing change
+- `proceed -> cmon:verify`
+  - if the task is to assess an existing implemented change against its approved plan and evidence
 
 - `revise -> cmon:understand`
   - if the packet is directionally useful but still missing context the next stage would need

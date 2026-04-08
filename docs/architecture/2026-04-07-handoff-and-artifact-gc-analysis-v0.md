@@ -74,7 +74,7 @@ This is an optimization of `cmon`'s current identity, not a shift toward:
 - per-stage manifests
 - explicit stage ownership
 - explicit review and compound handoff packets
-- a thin critique reuse layer through `cmon:pressure-test`
+- a thin critique reuse layer through `cmon:challenge`
 
 Key docs:
 

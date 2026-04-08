@@ -136,4 +136,4 @@ Typical transition decisions:
 - `block`
   - if compounding cannot finish because the source learning is still unresolved or contradictory
 
-Future runs of `cmon:understand`, `cmon:think`, `cmon:plan`, and `cmon:review` should be able to discover the artifact.
+Future runs of `cmon:understand`, `cmon:think`, `cmon:plan`, `cmon:challenge`, and `cmon:verify` should be able to discover the artifact.

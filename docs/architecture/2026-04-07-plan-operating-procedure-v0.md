@@ -133,7 +133,7 @@ Record the result using:
 
 If the plan is strong and non-blocking:
 
-- `proceed -> cmon:pressure-test`
+- `proceed -> cmon:challenge`
 
 If the plan is still weak:
 

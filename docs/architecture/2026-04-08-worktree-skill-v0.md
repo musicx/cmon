@@ -164,13 +164,13 @@ The v0 skill should focus on a few checks only:
 
 It may invoke `cmon:worktree` when bounded execution would be safer in isolation.
 
-### `cmon:review`
+### `cmon:verify`
 
-`cmon:review` can benefit indirectly because isolated worktrees tend to produce cleaner diffs and clearer scope boundaries.
+`cmon:verify` can benefit indirectly because isolated worktrees tend to produce cleaner diffs and clearer scope boundaries.
 
-### `cmon:pressure-test`
+### `cmon:challenge`
 
-`cmon:pressure-test` may recommend isolation as a readiness condition, but it should not replace `cmon:worktree`.
+`cmon:challenge` may recommend isolation as a readiness condition, but it should not replace `cmon:worktree`.
 
 ## Initial Decision
 

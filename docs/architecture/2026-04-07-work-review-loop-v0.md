@@ -5,11 +5,11 @@ Status: Draft
 
 This document defines the internal review loop inside `cmon:work`.
 
-It exists to keep implementation aligned before the change graduates to explicit `cmon:verify` and, when warranted, broader `cmon:review`.
+It exists to keep implementation aligned before the change graduates to explicit `cmon:verify`.
 
 ## 1. Why This Layer Exists
 
-`cmon:verify` is the default post-work acceptance stage, and `cmon:review` is the broader optional multi-lens stage.
+`cmon:verify` is the default post-work acceptance stage.
 
 It should not be the first place where the workflow notices that:
 
@@ -96,14 +96,13 @@ If both reviews pass:
 
 ## 6. Boundaries
 
-This loop does not replace `cmon:verify` or `cmon:review`.
+This loop does not replace `cmon:verify`.
 
 It is intentionally narrower.
 
 It does not:
 
 - make final product judgment
-- synthesize product, engineering, and operations concerns
 - authorize scope expansion
 - auto-fix issues
 

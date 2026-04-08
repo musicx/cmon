@@ -3,6 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
+Legacy note: `cmon:pressure-test` is now a deprecated compatibility alias.
+Current canonical pre-work gate is `cmon:challenge`.
+
 This document turns `cmon:pressure-test` from a helper idea into a reusable execution surface.
 
 ## 1. Purpose

@@ -5,12 +5,11 @@ Status: Draft
 
 This document defines the first thin orchestration layer for `cmon` critique surfaces.
 
-It exists because `cmon` now has enough critique and review machinery that manual reuse is starting to fragment:
+It exists because `cmon` now has enough critique machinery that manual reuse is starting to fragment:
 
 - `cmon:design` has owner-led challenge
 - `cmon:plan` has a pre-work critique stack
-- `cmon:work` has an internal review loop
-- `cmon:review` has multi-lens synthesis
+- `cmon:challenge` has multi-lens synthesis for pre-work artifact challenge
 
 The goal is to unify how those are invoked without building a runtime-heavy orchestrator.
 
@@ -36,11 +35,11 @@ This keeps orchestration at the documentation and prompt-contract layer.
 
 The orchestration surface is:
 
-- `cmon:pressure-test`
+- `cmon:challenge`
 
-This is intentionally not a core lifecycle stage.
+This is now a core pre-work lifecycle stage rather than a generic helper.
 
-It is a reusable helper that runs the right existing critique surface for an artifact that already exists.
+It runs the right existing critique surface for a proposed design / plan package that already exists.
 
 ## 3. Supported Targets
 
@@ -66,43 +65,21 @@ Use the already-defined plan critique stack:
 
 Output:
 
-- transition decision for `cmon:plan -> cmon:pressure-test`
-
-### Work handoff packages
-
-Use the already-defined internal review loop:
-
-- spec compliance review
-- code-quality review
-
-Output:
-
-- transition decision for `cmon:work -> cmon:verify`
-
-### Review packets
-
-Use the already-defined review synthesis surface and packet completeness check.
-
-Output:
-
-- transition decision for:
-  - `cmon:review -> cmon:compound`
-  - `cmon:review -> complete`
-  - `cmon:review -> cmon:work`
+- transition decision for `cmon:plan -> cmon:challenge`
 
 ## 4. Required Templates
 
 Use:
 
-- `templates/workflow/pressure-test-run-manifest-template.md`
-- `templates/workflow/pressure-test-summary-template.md`
+- `templates/workflow/challenge-run-manifest-template.md`
+- `templates/workflow/challenge-summary-template.md`
 - `templates/workflow/stage-transition-decision-template.md`
 
 ## 5. Why This Is Worth Doing
 
 This adds three concrete benefits:
 
-1. a stable operator-facing entry point for critique reuse
+1. a stable operator-facing entry point for pre-work critique reuse
 2. one consistent readiness decision shape across multiple stages
 3. a future bridge into helper automation that does not require a runtime redesign
 
@@ -114,6 +91,7 @@ This layer does not:
 - invent new reviewer families
 - automate artifact discovery beyond what current stage contracts already support
 - turn critique into a mandatory heavy ceremony for every tiny change
+- expand back into post-work review orchestration
 
 ## 7. Immediate Follow-Up
 
@@ -123,7 +101,7 @@ After this layer exists, the next priority is:
 
 The next optional follow-up after that is:
 
-- light helper automation for `cmon:pressure-test`, but only if repeated manual use shows real payoff
+- light helper automation for `cmon:challenge`, but only if repeated manual use shows real payoff
 
 ## 8. Related
 

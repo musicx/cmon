@@ -221,7 +221,7 @@ Quality gate:
 
 - evidence exists for the unit's verification contract
 - scope integrity is explicit
-- open findings are surfaced for `cmon:review` instead of buried in chat
+- open findings are surfaced for `cmon:verify` instead of buried in chat
 
 ## 4. Resulting Repository Changes
 

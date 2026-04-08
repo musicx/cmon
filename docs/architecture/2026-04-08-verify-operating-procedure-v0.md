@@ -46,7 +46,7 @@ The summary should state:
 - what was verified
 - what evidence was used
 - what remains unproven
-- whether the unit is accepted, needs more work, or should escalate to review
+- whether the unit is accepted or needs more work
 
 ## 5. Step 4: Route
 
@@ -58,4 +58,3 @@ Default next steps:
 
 - `proceed -> cmon:compound`
 - `revise -> cmon:work`
-- `proceed -> cmon:review`

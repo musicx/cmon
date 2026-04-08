@@ -92,7 +92,7 @@ The synthesizer should recommend one of:
 - `cmon:think`
 - `cmon:design`
 - `cmon:plan`
-- `cmon:review`
+- `cmon:verify`
 
 ## 3. v0 Policy Choice
 

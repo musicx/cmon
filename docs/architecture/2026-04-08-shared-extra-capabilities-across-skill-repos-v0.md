@@ -21,7 +21,7 @@ The goal is to identify which extra capabilities recur across repos strongly eno
 This comparison is intentionally limited to capabilities outside the current default `cmon` chain:
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 So this document does not re-compare baseline thinking, planning, work, review, or compounding as such.
@@ -100,8 +100,8 @@ Important differences:
 Judgment:
 
 - this cluster is highly shared
-- `cmon` already covers some of it through `cmon:review` and `cmon:pressure-test`
-- the gap is a narrower pre-fix or pre-completion gate that is lighter than full `cmon:review`
+- `cmon` now covers the main split through `cmon:challenge` before work and `cmon:verify` after work
+- the remaining gap is not another generic review stage, but sharper execution-time and debug-time gates where needed
 
 ### 3. Parallelization and Agent Orchestration
 

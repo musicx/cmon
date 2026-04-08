@@ -28,10 +28,9 @@ The transition contract makes handoff decisions consistent across:
 - `cmon:think`
 - `cmon:design`
 - `cmon:plan`
-- `cmon:pressure-test`
+- `cmon:challenge`
 - `cmon:work`
 - `cmon:verify`
-- `cmon:review`
 - `cmon:compound`
 
 ## 2. Decision Shape
@@ -116,7 +115,7 @@ The minimum transition decision should record:
 - `block`
   - unresolved upstream ambiguity prevents safe planning
 
-### `cmon:pressure-test`
+### `cmon:challenge`
 
 - `proceed`
   - the tested artifact is ready for the named next stage
@@ -137,20 +136,11 @@ The minimum transition decision should record:
 ### `cmon:verify`
 
 - `proceed`
-  - the implementation claim is sufficiently supported and may either stop, compound, or escalate to broader review
+  - the implementation claim is sufficiently supported and the implementation is acceptable
 - `revise`
   - the change requires more work or stronger evidence before acceptance
 - `block`
   - the claim cannot be judged responsibly because the evidence base or handoff package is too weak
-
-### `cmon:review`
-
-- `proceed`
-  - the change is accepted and may move to `cmon:compound` or stop as complete
-- `revise`
-  - the change requires fixes and should return to `cmon:work`
-- `block`
-  - acceptance is impossible because the target or evidence base is insufficient for review
 
 ### `cmon:compound`
 
@@ -170,14 +160,11 @@ Examples:
 - `cmon:understand -> cmon:think`
 - `cmon:think -> cmon:design`
 - `cmon:design -> cmon:plan`
-- `cmon:plan -> cmon:pressure-test`
-- `cmon:pressure-test -> cmon:work`
+- `cmon:plan -> cmon:challenge`
+- `cmon:challenge -> cmon:work`
 - `cmon:work -> cmon:verify`
 - `cmon:verify -> cmon:compound`
-- `cmon:verify -> cmon:review`
-- `cmon:review -> cmon:compound`
 - `cmon:verify -> complete`
-- `cmon:review -> complete`
 - `cmon:compound -> complete`
 
 ## 6. Policy Choice

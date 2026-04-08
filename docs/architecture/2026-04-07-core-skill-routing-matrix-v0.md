@@ -14,7 +14,7 @@ It exists so an operator can answer three questions quickly:
 ## Default Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but substantial work should start from this model.
@@ -23,12 +23,13 @@ Not every task needs the full chain, but substantial work should start from this
 
 | Skill | Use When | Requires | Produces | Do Not Use It For | Normal Next Step |
 |---|---|---|---|---|---|
-| `cmon:understand` | Repo area, prior decisions, or constraints are not fully loaded | Task summary and a repo area or permission to infer it | Context packet: relevant area, artifacts, patterns, constraints, open questions | Planning, implementation, or full review | `cmon:think`, `cmon:plan`, or `cmon:review` |
+| `cmon:understand` | Repo area, prior decisions, or constraints are not fully loaded | Task summary and a repo area or permission to infer it | Context packet: relevant area, artifacts, patterns, constraints, open questions | Planning, implementation, or pre-work challenge itself | `cmon:think`, `cmon:design`, or `cmon:plan` |
 | `cmon:think` | Problem framing, candidate directions, scope, or approach is still open | Understand packet or equivalent context | Either a ranked direction set or approved requirements with blockers made explicit and recommendation recorded | Code, implementation steps, or vague "we'll figure it out later" plans | stay in `cmon:think`, `cmon:design`, or `cmon:plan` depending on mode outcome |
 | `cmon:design` | Flow, state, UX, interface, or boundary design is still ambiguous | Approved requirements artifact | Approved design spec with flows, states, boundary decisions, and planning blockers made explicit | Exact file mapping or implementation sequencing | `cmon:plan` |
-| `cmon:plan` | Approved intent exists and implementation needs bounded units | Requirements artifact, design artifact when relevant, or already-clear behavior | Implementation plan with units, file scope, constraints, patterns, test scenarios, verification, and critique-cleared readiness when needed | Brainstorming, design exploration, or free-form coding | stay in `cmon:plan` until critique is clear, then `cmon:pressure-test` |
+| `cmon:plan` | Approved intent exists and implementation needs bounded units | Requirements artifact, design artifact when relevant, or already-clear behavior | Implementation plan with units, file scope, constraints, patterns, test scenarios, verification, and challenge-ready boundaries when needed | Brainstorming, design exploration, or free-form coding | stay in `cmon:plan` until critique is clear, then `cmon:challenge` |
+| `cmon:challenge` | A design, plan, or combined package should be challenged before implementation starts | Requirements artifact when relevant, design artifact when one exists, plan when one exists, and understand packet when local context matters | Product/engineering/operations challenge findings plus a merged proceed / revise / block decision | Reviewing completed code or replacing `cmon:verify` | `cmon:work`, `cmon:design`, or `cmon:plan` |
 | `cmon:work` | One approved implementation unit is ready to execute | Plan unit, file scope, constraints, execution strategy, verification target, stop condition, system interaction trigger check when relevant, and a valid git-backed repo root before edits begin | Code, tests, verification evidence, execution artifacts, system interaction result when relevant, internal review loop outputs, verify-ready report | Unbounded implementation or silent scope expansion | `cmon:verify` or back to `cmon:plan` if the boundary breaks |
-| `cmon:review` | A verified unit still needs broader acceptance judgment | Diff, approved requirements/design, approved plan, verification evidence, and verification summary when present | Product/engineering/operations findings, merged actions, accept-or-revise decision | Single-lens correctness-only review | `cmon:work` or `cmon:compound` |
+| `cmon:verify` | A completed implementation unit needs engineering acceptance before it is treated as done | Diff when needed, approved design/plan references, work report, fresh verification evidence, and system interaction check when relevant | Verification judgment covering plan alignment, evidence sufficiency, correctness, safety, effectiveness, and simplicity | Re-running pre-work challenge or broader problem framing | `cmon:compound` or back to `cmon:work` |
 | `cmon:compound` | The work created reusable learning worth preserving | Accepted work outcome plus a real lesson, guardrail, or recurring pattern | Durable solution, pattern, or guardrail artifact | Logging every trivial edit | Loop complete |
 
 ## Skill Entry Checks
@@ -47,11 +48,27 @@ If not, go back to:
 - `cmon:think`
 - `cmon:design`
 
+### Before `cmon:challenge`
+
+Make sure:
+
+- the relevant design artifact exists when design ambiguity mattered
+- the relevant plan exists
+- the artifact package is specific enough to challenge rather than still being raw brainstorming
+- the desired next step is actually implementation
+
+If not, go back to:
+
+- `cmon:think`
+- `cmon:design`
+- `cmon:plan`
+
 ### Before `cmon:work`
 
 Make sure:
 
 - exactly one implementation unit is being executed
+- the design / plan package already survived `cmon:challenge`
 - file scope is explicit
 - execution strategy is chosen
 - verification is named before editing starts
@@ -76,18 +93,6 @@ Make sure:
 If not, go back to:
 
 - `cmon:work`
-
-### Before `cmon:review`
-
-Make sure:
-
-- `cmon:verify` has already judged the implementation claim
-- broader multi-lens audit is actually warranted
-- verification summary is available when one exists
-
-If not, go back to:
-
-- `cmon:verify`
 
 ## Why This Document Exists
 

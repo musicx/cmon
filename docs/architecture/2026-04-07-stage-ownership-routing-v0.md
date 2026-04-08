@@ -21,7 +21,8 @@ It does not require the same collaboration pattern at every stage.
 | `cmon:design` | owner-led | `product` or `engineering` depending on design type | challenge, constrain, and force ambiguity into the open | three-way co-authoring by default |
 | `cmon:plan` | engineering-owned | `engineering` | provide constraints, not parallel authorship | product strategy work or design invention |
 | `cmon:work` | engineering execution | `engineering` | re-enter only through blockers, scope decisions, or later review | multi-role co-execution |
-| `cmon:review` | multi-lens | shared synthesis | issue findings and acceptance pressure from product, engineering, and operations | correctness-only review |
+| `cmon:challenge` | multi-lens | shared synthesis | challenge design / plan quality before implementation from product, engineering, and operations | single-owner pre-work signoff |
+| `cmon:verify` | engineering-led | implementation acceptance | confirm the implemented unit still matches approved design / plan and meets engineering quality expectations | treating code as accepted before evidence and review |
 | `cmon:compound` | multi-lens when reuse crosses roles | shared synthesis | decide what lesson is worth preserving | logging every trivial change |
 
 ## Quick Heuristic

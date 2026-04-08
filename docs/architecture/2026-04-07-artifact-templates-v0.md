@@ -174,8 +174,8 @@ Used by:
 Purpose:
 
 - judge whether the post-work implementation claim is actually supported by fresh evidence
-- distinguish routine implementation verification from broader multi-lens review
-- produce an explicit accept / revise / escalate verification decision
+- check implementation against approved design / plan and engineering quality expectations
+- produce an explicit accept / revise verification decision
 
 ### Debug
 
@@ -241,7 +241,7 @@ Purpose:
 - support narrow refresh passes for stale, overlapping, or duplicated knowledge
 - keep maintenance evidence-based and scoped
 
-### Review
+### Legacy Review Compatibility
 
 Paths:
 
@@ -252,11 +252,11 @@ Paths:
 
 Used by:
 
-- `cmon:review`
+- deprecated `cmon:review` compatibility flows only
 
 Purpose:
 
-- keep multi-lens review inputs consistent
+- keep old multi-lens review inputs consistent while legacy examples still exist
 - prevent reviewer drift across product, engineering, and operations lenses
 - give synthesis a stable merged-input shape
 - give the review helper one explicit invocation contract
@@ -266,8 +266,8 @@ Purpose:
 Paths:
 
 - `templates/workflow/stage-transition-decision-template.md`
-- `templates/workflow/pressure-test-run-manifest-template.md`
-- `templates/workflow/pressure-test-summary-template.md`
+- `templates/workflow/challenge-run-manifest-template.md`
+- `templates/workflow/challenge-summary-template.md`
 
 Used by:
 

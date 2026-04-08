@@ -11,7 +11,6 @@ Current auxiliary skills:
 
 - `cmon:debug`
 - `cmon:worktree`
-- `cmon:pressure-test`
 - `cmon:refresh-knowledge`
 - `cmon:revalidate`
 
@@ -67,34 +66,7 @@ Usually skip it when:
 - the overhead of another workspace is clearly higher than the isolation value
 - the task is tiny and does not benefit from a second filesystem workspace
 
-## 3. `cmon:pressure-test`
-
-### Recommended
-
-Use `cmon:pressure-test` when:
-
-- a `design` artifact exists and the next decision is whether planning may begin
-- a `plan` exists and the work is non-trivial enough that critique should be reused explicitly
-- a `work` handoff package exists and you want one explicit readiness pass before broader review
-- a `review` packet exists but acceptance confidence depends on packet completeness
-
-### Conditionally Mandatory
-
-Treat `cmon:pressure-test` as effectively mandatory when:
-
-- the artifact is non-trivial and cross-cutting
-- the next stage is `cmon:work`
-- the next stage is expensive to start wrong
-- prior critique surfaces already exist but would otherwise be skipped ad hoc
-
-### Usually Skip
-
-Usually skip it when:
-
-- the artifact is tiny and the underlying stage already includes the necessary critique inline
-- the pressure-test would duplicate a critique pass already run moments ago with no new evidence
-
-## 4. `cmon:compound` vs `cmon:revalidate` vs `cmon:refresh-knowledge`
+## 3. `cmon:compound` vs `cmon:revalidate` vs `cmon:refresh-knowledge`
 
 ### Use `cmon:compound`
 
@@ -151,7 +123,7 @@ Prefer:
 - explicit periodic `cmon:revalidate`
 - or a direct recommendation from `cmon:compound` when it notices likely drift
 
-## 5. `cmon:refresh-knowledge`
+## 4. `cmon:refresh-knowledge`
 
 ### Recommended
 
@@ -175,7 +147,7 @@ Usually skip it when:
 - the evidence for drift is still weak
 - the scope would be broad enough that the pass is really a docs rewrite project
 
-## 6. `cmon:revalidate`
+## 5. `cmon:revalidate`
 
 ### Recommended
 
@@ -200,7 +172,7 @@ Usually skip it when:
 - `cmon:compound` already knows it only needs one narrow in-place update
 - the task is really fresh knowledge capture, not artifact revalidation
 
-## 7. Policy Choice
+## 6. Policy Choice
 
 Auxiliary skills should be:
 

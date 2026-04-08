@@ -12,9 +12,9 @@ It now also records the explicit design split added after the initial v0 chain.
 - `cmon:think`
 - `cmon:design`
 - `cmon:plan`
+- `cmon:challenge`
 - `cmon:work`
 - `cmon:verify`
-- `cmon:review`
 - `cmon:compound`
 
 ## Supporting Workflow Skill
@@ -22,7 +22,9 @@ It now also records the explicit design split added after the initial v0 chain.
 - `cmon:debug`
   - auxiliary investigation surface for root-cause-first debugging before any fix attempt
 - `cmon:pressure-test`
-  - auxiliary thin orchestration surface for reusing existing critique stacks
+  - deprecated compatibility alias for `cmon:challenge`
+- `cmon:review`
+  - deprecated compatibility alias for older workflows that still mean pre-work multi-role challenge
 - `cmon:refresh-knowledge`
   - auxiliary maintenance surface for stale, overlapping, or duplicated durable knowledge
 - `cmon:revalidate`
@@ -33,7 +35,7 @@ It now also records the explicit design split added after the initial v0 chain.
 ## Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:pressure-test -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the default path for substantial work.
@@ -101,6 +103,19 @@ Default collaboration pattern:
 
 - engineering-owned
 
+### `cmon:challenge`
+
+Produces the pre-work challenge judgment:
+
+- product challenge findings
+- engineering challenge findings
+- operations challenge findings
+- merged proceed / revise / block decision
+
+Default collaboration pattern:
+
+- multi-lens challenge
+
 ### `cmon:work`
 
 Produces the implementation result:
@@ -135,16 +150,6 @@ Produces the debugging handoff:
 - confirmed root cause or best current failure boundary
 - narrow next-action recommendation
 
-### `cmon:review`
-
-Produces the acceptance decision:
-
-- product findings
-- engineering findings
-- operations findings
-- merged actions
-- accept / revise decision
-
 ### `cmon:compound`
 
 Produces the reusable learning artifact:
@@ -162,9 +167,9 @@ Produces the reusable learning artifact:
 | `cmon:think` | `docs/brainstorms/...` |
 | `cmon:design` | `docs/designs/...` |
 | `cmon:plan` | `docs/plans/...` |
+| `cmon:challenge` | explicit pre-work challenge judgment and routing decision |
 | `cmon:work` | code + tests + verification evidence + scoped execution artifacts |
 | `cmon:verify` | explicit verification judgment and routing decision |
-| `cmon:review` | merged review decision when broader post-implementation audit is warranted |
 | `cmon:compound` | `docs/solutions/...` or updated durable doc |
 
 Current workflow proof coverage lives in:
@@ -182,7 +187,7 @@ Shared handoff decisions should use:
 
 - no substantial coding before `cmon:plan`
 - no substantial planning when design ambiguity still blocks implementation decisions
-- no substantial work before the plan has survived explicit pre-work critique
+- no substantial work before the design / plan package has survived explicit pre-work challenge
 - no implementation claim accepted without an explicit verify pass
 - no completion claim without evidence
 - no reusable lesson left undocumented when the compound trigger is met
@@ -199,7 +204,7 @@ Shared handoff decisions should use:
 The next iteration should focus on:
 
 1. dogfood the current workflow on real non-`cmon` tasks before widening the system further
-2. consider light helper automation for `cmon:pressure-test` only if repeated manual use proves worthwhile
+2. consider light helper automation for `cmon:challenge` only if repeated manual use proves worthwhile
 3. consider light helper automation for `cmon:refresh-knowledge` only if repeated maintenance work proves worthwhile
 4. add more proof-only examples only if later evidence shows the current proof set is too optimistic
 
@@ -215,4 +220,5 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-08-debug-skill-v0.md`
 - `docs/architecture/2026-04-08-worktree-skill-v0.md`
 - `docs/architecture/2026-04-08-verify-skill-v0.md`
+- `docs/architecture/2026-04-08-challenge-skill-v0.md`
 - `docs/architecture/2026-04-08-repo-foundation-gate-v0.md`

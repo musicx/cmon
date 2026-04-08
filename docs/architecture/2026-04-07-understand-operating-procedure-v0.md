@@ -105,7 +105,7 @@ Default next steps:
 - `cmon:think` if scope, direction, or problem framing is still open
 - `cmon:design` if requirements exist but flows, states, or boundaries still need explicit design
 - `cmon:plan` if requirements and design are already clear enough
-- `cmon:review` if the task is to assess an existing change
+- `cmon:verify` if the task is to assess an existing implemented change
 
 ## 7. Failure Cases
 

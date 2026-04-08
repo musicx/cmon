@@ -37,9 +37,9 @@ Required initial skill names:
 - `cmon:think`
 - `cmon:design`
 - `cmon:plan`
+- `cmon:challenge`
 - `cmon:work`
 - `cmon:verify`
-- `cmon:review`
 - `cmon:compound`
 
 Supporting non-core workflow skills may also use the `cmon:` namespace when they help orchestrate the lifecycle without becoming new mandatory stages.
@@ -47,7 +47,6 @@ Supporting non-core workflow skills may also use the `cmon:` namespace when they
 Current supporting skills:
 
 - `cmon:debug`
-- `cmon:pressure-test`
 - `cmon:refresh-knowledge`
 - `cmon:revalidate`
 - `cmon:worktree`
@@ -55,6 +54,8 @@ Current supporting skills:
 Deprecated compatibility alias:
 
 - `cmon:brainstorm`
+- `cmon:pressure-test`
+- `cmon:review`
 
 If repo-internal directories or files use filesystem-safe names without `:`, that is acceptable. The exported skill identity must still use the `cmon:` prefix.
 
@@ -121,9 +122,8 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Carry requirements and design decisions forward with traceability
    - This stage is normally `engineering-owned`
 
-5. **`cmon:pressure-test`**
-   - Run the explicit pre-work critique gate for non-trivial design or plan artifacts
-   - Use this to catch weak design or plan decisions before implementation starts
+5. **`cmon:challenge`**
+   - Run the explicit multi-role pre-work challenge on `design` / `plan` outputs before implementation starts
 
 6. **`cmon:work`**
    - Implement only against approved scope
@@ -132,18 +132,15 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Before any actual development starts, confirm the target project area is already a git repo, or initialize it if the work is substantial greenfield project creation
 
 7. **`cmon:verify`**
-   - Treat implementation as unaccepted until the evidence package actually supports the claim
+   - Treat implementation as unaccepted until the code, plan alignment, and evidence package actually support the claim
    - This is the default post-work stage
 
-8. **`cmon:review`**
-   - Use broader multi-lens review when the change is risky, externally significant, or explicitly worth the extra scrutiny
-
-9. **`cmon:compound`**
+8. **`cmon:compound`**
    - If the work produced new reusable knowledge, write it down in the project knowledge store
 
 ## Required Review Lenses
 
-For substantial work, `cmon` should eventually support at least these review perspectives:
+For substantial pre-work challenge, `cmon` should support at least these perspectives:
 
 - **Product**
   - Did we solve the right problem?
@@ -191,12 +188,17 @@ Quick heuristic:
   - engineering-owned
   - product and operations inputs are constraints, not co-equal plan authorship
 
+- `cmon:challenge`
+  - multi-lens by default
+  - product, engineering, and operations should all challenge the proposed design / plan package before work begins
+
 - `cmon:work`
   - engineering execution
-  - other roles re-enter through review, blockers, or scope decisions
+  - other roles re-enter through challenge findings, blockers, or scope decisions
 
-- `cmon:review`
-  - multi-lens by default
+- `cmon:verify`
+  - engineering acceptance by default
+  - confirms implementation still matches approved design / plan and meets engineering quality expectations
 
 - `cmon:compound`
   - multi-lens when the lesson has cross-role reuse value

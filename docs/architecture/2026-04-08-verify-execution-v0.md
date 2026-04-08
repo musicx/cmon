@@ -52,7 +52,6 @@ Return one of:
 
 - sufficient
 - insufficient but correctable inside work
-- insufficient and high-risk enough to justify broader review
 
 ### Stage 4: Route
 
@@ -64,10 +63,9 @@ Typical routes:
 
 - `proceed -> cmon:compound`
 - `revise -> cmon:work`
-- `proceed -> cmon:review`
 
 ## 4. Policy Choice
 
-`cmon:verify` is the default post-work acceptance gate.
+`cmon:verify` is the default post-work engineering acceptance gate.
 
-It is intentionally lighter than `cmon:review`.
+It should stay focused on implemented code, evidence, and engineering quality.

@@ -13,4 +13,4 @@
 
 ## Expected Route
 
-- Expected next stage: <cmon:compound | cmon:review | cmon:work | infer>
+- Expected next stage: <cmon:compound | cmon:work | infer>

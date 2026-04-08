@@ -3,6 +3,9 @@
 Date: 2026-04-07
 Status: Draft
 
+Legacy note: this document describes the older `cmon:review` execution surface.
+Current canonical workflow uses `cmon:challenge` before work and `cmon:verify` after work.
+
 This document turns the `cmon` review model into an executable orchestration flow.
 
 It is the bridge between:
