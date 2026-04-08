@@ -8,7 +8,7 @@
 
 ## Unit Boundary
 
-- Goal: create one compact operator-facing routing matrix for the six core `cmon:*` skills
+- Goal: create one compact operator-facing routing matrix for the canonical core `cmon:*` workflow skills
 - Files In Scope:
   - `docs/architecture/2026-04-07-core-skill-routing-matrix-v0.md`
 - Explicit Constraints:
@@ -33,6 +33,6 @@
 
 ## Execution State
 
-- Status: `awaiting_review`
+- Status: `awaiting_verify`
 - Notes:
   - scope stayed limited to the single target doc

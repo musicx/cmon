@@ -6,7 +6,7 @@
 - Requirements Path: `docs/brainstorms/2026-04-07-routing-matrix-refresh-requirements.md`
 - Design Path: `docs/designs/2026-04-07-routing-matrix-refresh-design.md`
 - Unit ID Or Title: `Unit 1: Refresh operator-facing workflow surfaces`
-- Final Status: `awaiting_review`
+- Final Status: `awaiting_verify`
 
 ## Implemented
 
@@ -46,10 +46,10 @@
 - Requirements preserved: `yes`
 - Design intent preserved: `yes`
 
-## Open Findings For Review
+## Open Findings For Verify Or Review
 
 - `none`
 
 ## Recommended Next Step
 
-- `cmon:review`
+- `cmon:verify`

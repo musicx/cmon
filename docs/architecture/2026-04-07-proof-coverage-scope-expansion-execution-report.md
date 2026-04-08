@@ -6,7 +6,7 @@
 - Requirements Path: `docs/brainstorms/2026-04-07-proof-coverage-scope-expansion-requirements.md`
 - Design Path: `docs/designs/2026-04-07-proof-coverage-scope-expansion-design.md`
 - Unit ID Or Title: `Unit 1: Add the proof-coverage reference and surface it from the architecture summary`
-- Final Status: `awaiting_review`
+- Final Status: `awaiting_verify`
 
 ## Implemented
 
@@ -47,10 +47,10 @@
 - Requirements preserved: `yes`
 - Design intent preserved: `yes`
 
-## Open Findings For Review
+## Open Findings For Verify Or Review
 
 - `none`
 
 ## Recommended Next Step
 
-- `cmon:review`
+- `cmon:verify`

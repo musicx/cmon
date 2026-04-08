@@ -4,7 +4,7 @@ Task: add a compact routing reference that tells operators which `cmon:*` skill 
 
 ## Relevant Area
 
-- Summary: The task lives in the workflow-definition layer of `cmon`, especially the docs that define the six core skills and their handoffs.
+- Summary: The task lives in the workflow-definition layer of `cmon`, especially the docs that define the canonical core workflow skills and their handoffs.
 - Candidate Paths:
   - `AGENTS.md`
   - `docs/architecture/2026-04-07-core-skills-v0.md`

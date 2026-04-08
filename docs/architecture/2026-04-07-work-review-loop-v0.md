@@ -5,11 +5,11 @@ Status: Draft
 
 This document defines the internal review loop inside `cmon:work`.
 
-It exists to keep implementation aligned before the change graduates to full `cmon:review`.
+It exists to keep implementation aligned before the change graduates to explicit `cmon:verify` and, when warranted, broader `cmon:review`.
 
 ## 1. Why This Layer Exists
 
-`cmon:review` is a broader multi-lens stage.
+`cmon:verify` is the default post-work acceptance stage, and `cmon:review` is the broader optional multi-lens stage.
 
 It should not be the first place where the workflow notices that:
 
@@ -28,7 +28,7 @@ The review loop is:
 3. spec compliance review
 4. code-quality review
 5. execution report
-6. external `cmon:review`
+6. external `cmon:verify`
 
 The order is mandatory.
 
@@ -37,7 +37,7 @@ The order is mandatory.
 Purpose:
 
 - compare the implementation against approved requirements, design, and plan
-- catch scope drift before broader review
+- catch scope drift before explicit verification
 - ensure evidence matches the unit claim
 
 Primary artifact:
@@ -92,11 +92,11 @@ If code-quality review returns `fix_required`:
 If both reviews pass:
 
 - write the unit execution report
-- hand the unit to `cmon:review`
+- hand the unit to `cmon:verify`
 
 ## 6. Boundaries
 
-This loop does not replace `cmon:review`.
+This loop does not replace `cmon:verify` or `cmon:review`.
 
 It is intentionally narrower.
 

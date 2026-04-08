@@ -5,13 +5,13 @@ Status: Draft
 
 This document records the first end-to-end example run for `cmon`.
 
-Note: this example was recorded before `cmon:design` was split into its own explicit stage. It still proves the original v0 chain, but it has now been superseded by `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md` for the richer proof case.
+Note: this example was recorded before `cmon:design` was split into its own explicit stage and before `cmon:verify` became the default post-work gate. It still proves the earlier v0 chain, but it has now been superseded by `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md` for the richer proof case.
 
 It was also recorded before `cmon:brainstorm` was renamed to `cmon:think`, so references to the older skill name in this example are historical, not canonical.
 
 The example task was intentionally small:
 
-- add one compact operator-facing routing matrix for the six core `cmon:*` skills
+- add one compact operator-facing routing matrix for the canonical core `cmon:*` workflow skills
 
 The goal was not to stress complexity. The goal was to prove the artifact chain and handoff contracts.
 
@@ -23,7 +23,7 @@ This task is small enough to stay bounded, but real enough to exercise the full 
 - `cmon:think` must choose the right artifact shape and hold scope
 - `cmon:plan` must define one bounded implementation unit
 - `cmon:work` must execute that unit with explicit verification
-- `cmon:review` must judge the result against the approved intent
+- in the earlier chain, `cmon:review` judged the result against the approved intent; in the current chain this responsibility is split between `cmon:verify` and optional broader review
 - `cmon:compound` must decide whether the accepted work produced a reusable lesson and preserve it durably
 
 ## Artifact Chain
@@ -49,6 +49,8 @@ This task is small enough to stay bounded, but real enough to exercise the full 
 
 ### Review
 
+This example predates `cmon:verify`, so the review artifact set below should now be read as historical evidence of the older post-work acceptance stage.
+
 - Review run manifest: `docs/architecture/2026-04-07-core-skill-routing-matrix-review-run-manifest.md`
 - Review context bundle: `docs/architecture/2026-04-07-core-skill-routing-matrix-review-context.md`
 - Product review: `docs/architecture/2026-04-07-core-skill-routing-matrix-product-review.md`
@@ -71,7 +73,7 @@ This task is small enough to stay bounded, but real enough to exercise the full 
 
 ## What This Example Proved
 
-- `understand -> brainstorm -> plan -> work -> review -> compound` now has a documentable, repeatable artifact chain.
+- the earlier `understand -> brainstorm -> plan -> work -> review -> compound` chain was documentable and repeatable before the later `verify` correction.
 - `work` and `review` can stay bounded without pretending every follow-up must be fixed in the same unit.
 - The repo can express non-blocking review outcomes as `accepted_with_followup` instead of collapsing everything into pass/fail.
 - `compound` can be trigger-driven rather than universal, and can still become mandatory when multiple medium-signal reuse triggers stack up.

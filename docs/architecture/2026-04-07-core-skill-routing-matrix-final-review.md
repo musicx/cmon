@@ -1,6 +1,6 @@
 ## Scope Check
 - Status: on_target
-- Summary: The implemented change matches the approved bounded unit: one compact routing reference for the six core skills, with no lifecycle drift and no unintended runtime expansion.
+- Summary: The implemented change matches the approved bounded unit: one compact routing reference for the canonical core workflow skills, with no lifecycle drift and no unintended runtime expansion.
 
 ## Merged Findings
 - Finding: matrix discoverability remains a follow-up rather than part of this unit

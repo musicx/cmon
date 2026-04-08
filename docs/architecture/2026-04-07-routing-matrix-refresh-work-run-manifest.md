@@ -10,7 +10,7 @@
 
 ## Unit Boundary
 
-- Goal: refresh the routing matrix, reusable workflow pattern doc, and richer example summary so all operator-facing workflow surfaces reflect the current `plan` and `work` contracts
+- Goal: refresh the routing matrix, reusable workflow pattern doc, and richer example summary so all operator-facing workflow surfaces reflect the current `plan`, `pressure-test`, `work`, and `verify` contracts
 - Patterns To Follow:
   - `docs/architecture/2026-04-07-core-skill-routing-matrix-v0.md`
   - `docs/solutions/workflow/operator-facing-routing-matrix-for-core-skills-2026-04-07.md`
@@ -47,6 +47,6 @@
 
 ## Execution State
 
-- Status: `awaiting_review`
+- Status: `awaiting_verify`
 - Notes:
   - `system interaction check required because workflow truth is exposed through multiple operator-facing surfaces`

@@ -2,7 +2,7 @@
 
 ## Completed Work
 
-- Work Summary: added a compact operator-facing routing matrix for the six core `cmon:*` skills and completed review with `accepted_with_followup`
+- Work Summary: added a compact operator-facing routing matrix for the canonical core `cmon:*` workflow skills and completed broader review with `accepted_with_followup`
 - Source Artifacts:
   - `docs/architecture/2026-04-07-core-skill-routing-matrix-v0.md`
   - `docs/architecture/2026-04-07-core-skill-routing-matrix-final-review.md`

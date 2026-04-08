@@ -2,7 +2,7 @@
 
 ## Unit Status
 
-- Status: `awaiting_review`
+- Status: `awaiting_verify`
 
 ## What Changed
 

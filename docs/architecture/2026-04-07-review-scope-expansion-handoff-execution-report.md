@@ -6,7 +6,7 @@
 - Requirements Path: `docs/brainstorms/2026-04-07-review-scope-expansion-handoff-requirements.md`
 - Design Path: `docs/designs/2026-04-07-review-scope-expansion-handoff-design.md`
 - Unit ID Or Title: `Unit 1: Add scope-expansion evidence to review inputs and refresh the existing pattern doc`
-- Final Status: `awaiting_review`
+- Final Status: `awaiting_verify`
 
 ## Implemented
 
@@ -43,4 +43,4 @@
 
 ## Recommended Next Step
 
-- `cmon:review`
+- `cmon:verify`

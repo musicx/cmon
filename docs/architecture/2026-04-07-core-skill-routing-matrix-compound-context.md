@@ -2,7 +2,7 @@
 
 ## Completed Work Summary
 
-- What happened: a compact routing matrix was added for the six core `cmon:*` skills, then reviewed and accepted with a non-blocking discoverability follow-up.
+- What happened: a compact routing matrix was added for the canonical core `cmon:*` workflow skills, then reviewed and accepted with a non-blocking discoverability follow-up.
 - Why it mattered: the repo had enough workflow structure that operators could lose time deciding which core skill to enter next.
 
 ## Source Artifacts

@@ -306,13 +306,13 @@ Weak evidence includes:
 
 `cmon:work` should preserve evidence in a dedicated verification artifact or report section.
 
-## 11. Handoff Contract To Review
+## 11. Handoff Contract To Verify
 
 Use:
 
 - `templates/workflow/stage-transition-decision-template.md`
 
-At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package containing:
+At the end of a meaningful unit, `cmon:work` should hand `cmon:verify` a package containing:
 
 - plan path
 - executed unit id
@@ -322,7 +322,7 @@ At the end of a meaningful unit, `cmon:work` should hand `cmon:review` a package
 - system interaction check result when relevant
 - any open findings or uncertainty
 
-The point is to make `cmon:review` judge the actual executed unit, not reconstruct it from chat memory.
+The point is to make downstream judgment inspect the actual executed unit rather than reconstruct it from chat memory.
 
 ## 12. Internal Review Loop
 
@@ -377,7 +377,7 @@ If spec compliance fails:
 
 - return to the current unit immediately
 - do not continue to code-quality review
-- do not hand off to `cmon:review`
+- do not hand off to `cmon:verify`
 
 If code-quality review fails:
 
@@ -388,7 +388,7 @@ If code-quality review fails:
 If both pass:
 
 - write the unit execution report
-- move to `cmon:review`
+- move to `cmon:verify`
 
 ## 13. Why This Matches cmon Philosophy
 
@@ -402,7 +402,8 @@ This design keeps the strongest part of `superpowers`:
 
 while preserving the broader `cmon` chain:
 
-- review after implementation
+- verify after implementation
+- review only when broader audit is warranted
 - compound when reusable learning appears
 
 and adds one of the strongest practical parts of `ce:work`:

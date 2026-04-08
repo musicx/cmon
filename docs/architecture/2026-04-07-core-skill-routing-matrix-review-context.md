@@ -2,7 +2,7 @@
 
 ## Review Target
 
-- Summary: newly added operator-facing routing matrix for the six core `cmon:*` skills
+- Summary: newly added operator-facing routing matrix for the canonical core `cmon:*` workflow skills
 - Base Ref: `n/a - example artifact review`
 - Scope Notes: single-doc review against approved requirements and plan
 
@@ -13,7 +13,7 @@
 ## Diff
 
 ```diff
-+ add one new architecture doc that summarizes the six core cmon skills in a routing matrix
++ add one new architecture doc that summarizes the canonical core cmon workflow skills in a routing matrix
 + add entry checks for understand/plan/review transitions
 + keep lifecycle order and naming unchanged
 ```
@@ -22,7 +22,7 @@
 
 - Path: `docs/brainstorms/2026-04-07-core-skill-routing-matrix-requirements.md`
 - Summary:
-  - add one compact routing reference for the six core skills
+  - add one compact routing reference for the canonical core workflow skills
   - preserve canonical lifecycle order and keep the change bounded
 
 ## Implementation Plan
