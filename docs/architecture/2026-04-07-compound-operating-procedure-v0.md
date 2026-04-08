@@ -82,10 +82,22 @@ Default target:
 
 ## 7. Step 6: Close The Loop
 
+Record the result using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 After compounding:
 
-- the implementation loop is complete
+- `proceed -> complete`
 - future `understand`, `brainstorm`, `plan`, and `review` passes should be able to discover the new knowledge
+
+If the maintenance result is real but incomplete:
+
+- `revise -> cmon:compound`
+
+If the source learning is too weak or contradictory to close responsibly:
+
+- `block`
 
 ## 8. Failure Cases
 

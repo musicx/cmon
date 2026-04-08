@@ -18,6 +18,8 @@
 
 - Target Output Path: <docs/brainstorms/... or docs/architecture/... or "session-local">
 - Output Mode: <session_local | write_artifact>
+- Expected Transition:
+  - <proceed -> cmon:design | proceed -> cmon:plan | revise -> cmon:think | block | infer>
 
 ## Known Gaps
 

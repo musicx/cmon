@@ -132,3 +132,9 @@ Typical transition targets:
 - back to the same stage with `revise`
 - forward to the next stage with `proceed`
 - upstream or stop with `block`
+
+Operational references:
+
+- `docs/architecture/2026-04-07-pressure-test-execution-v0.md`
+- `docs/architecture/2026-04-07-pressure-test-operating-procedure-v0.md`
+- `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`

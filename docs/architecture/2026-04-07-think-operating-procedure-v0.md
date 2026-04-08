@@ -93,17 +93,25 @@ Use `docs/architecture/` only when the thinking topic is fundamentally architect
 
 ## 7. Step 6: Route To The Next Skill
 
+Record the result using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If the output is still a ranked direction set or unresolved blockers remain:
 
-- stay in `cmon:think`
+- `revise -> cmon:think`
 
 If requirements are approved but design ambiguity remains:
 
-- move to `cmon:design`
+- `proceed -> cmon:design`
 
 If requirements are approved and design ambiguity is already low:
 
-- move to `cmon:plan`
+- `proceed -> cmon:plan`
+
+If ambiguity remains and cannot responsibly be compressed into assumptions:
+
+- `block`
 
 ## 8. Failure Cases
 

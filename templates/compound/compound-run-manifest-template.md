@@ -24,6 +24,8 @@
 
 - Output Mode: <session_local | write_artifact>
 - Preferred Target: <docs/solutions/... | docs/architecture/... | infer>
+- If Broader Drift Is Found:
+  - <recommend cmon:refresh-knowledge | keep inside cmon:compound | infer>
 
 ## Known Gaps
 

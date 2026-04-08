@@ -46,6 +46,10 @@ Use newer source artifacts to decide whether the doc should be:
 - deprecated
 - left alone
 
+Use:
+
+- `docs/architecture/2026-04-07-refresh-knowledge-rubric-v0.md`
+
 ## 5. Step 4: Write The Refresh Summary
 
 Use:
@@ -55,6 +59,8 @@ Use:
 Then record:
 
 - `templates/workflow/stage-transition-decision-template.md`
+
+The transition decision is the real output contract.
 
 ## 6. Step 5: Route
 

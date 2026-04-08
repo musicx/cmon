@@ -127,16 +127,21 @@ If material critique findings remain, revise the plan before handoff.
 
 ## 9. Step 8: Route To The Next Skill
 
+Record the result using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 If the plan is strong and non-blocking:
 
-- move to `cmon:work`
+- `proceed -> cmon:work`
 
 If the plan is still weak:
 
-- remain in `cmon:plan`
+- `revise -> cmon:plan`
 
 If upstream ambiguity was rediscovered:
 
+- `block`
 - route back to `cmon:think` or `cmon:design`
 
 ## 10. Failure Cases

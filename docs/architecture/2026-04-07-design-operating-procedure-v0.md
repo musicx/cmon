@@ -91,7 +91,19 @@ If the decision is `ready`:
 - treat the design as approved
 - hand it to `cmon:plan`
 
-## 7. Failure Cases
+## 7. Step 6: Route To The Next Skill
+
+Record the result using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
+Typical outcomes:
+
+- `proceed -> cmon:plan`
+- `revise -> cmon:design`
+- `block`
+
+## 8. Failure Cases
 
 Stop and surface the issue when:
 

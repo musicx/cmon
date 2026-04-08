@@ -173,9 +173,13 @@ The report should include:
 
 ## 12. Step 11: Route To The Next Skill
 
+Record the result using:
+
+- `templates/workflow/stage-transition-decision-template.md`
+
 Default next step:
 
-- `cmon:review`
+- `proceed -> cmon:review`
 
 If execution uncovered reusable learning:
 
@@ -183,7 +187,12 @@ If execution uncovered reusable learning:
 
 If the unit could not be completed because the plan boundary broke:
 
+- `block`
 - return to `cmon:plan`
+
+If the unit remains correctable inside the same bounded execution slice:
+
+- `revise -> cmon:work`
 
 ## 13. Failure Cases
 

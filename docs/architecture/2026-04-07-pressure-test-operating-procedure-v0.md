@@ -70,6 +70,9 @@ The output should name both:
 - the decision
 - the target stage
 
+Do not end with stage-local wording such as only `ready` or only `accepted_with_followup`.
+Normalize it into the shared transition contract.
+
 ## 7. Failure Cases
 
 Stop and surface the issue when:

@@ -15,6 +15,10 @@ They are not direct copies.
 
 `cmon` keeps them smaller and more constraint-oriented.
 
+Shared invocation policy for auxiliary skills is defined in:
+
+- `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`
+
 ## 1. Template Set
 
 ### Understand

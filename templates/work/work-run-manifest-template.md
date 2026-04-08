@@ -48,3 +48,7 @@
 - Status: <ready | in_progress | blocked | awaiting_scope_decision | awaiting_review | complete>
 - Notes:
   - <note or "none">
+
+## Expected Transition
+
+- <proceed -> cmon:review | revise -> cmon:work | block | infer>

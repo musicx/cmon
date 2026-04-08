@@ -21,6 +21,8 @@
 
 - Target Output Path: <docs/designs/... | docs/architecture/...>
 - Output Mode: <session_local | write_artifact>
+- Expected Transition:
+  - <proceed -> cmon:plan | revise -> cmon:design | block | infer>
 
 ## Known Constraints
 

@@ -84,3 +84,10 @@ Typical transition targets:
 - `proceed -> complete` after a narrow refresh is complete
 - `revise -> cmon:refresh-knowledge` when the maintenance pass is correct but incomplete
 - `block` when the newer evidence is still too weak or contradictory
+
+Operational references:
+
+- `docs/architecture/2026-04-07-refresh-knowledge-execution-v0.md`
+- `docs/architecture/2026-04-07-refresh-knowledge-operating-procedure-v0.md`
+- `docs/architecture/2026-04-07-refresh-knowledge-rubric-v0.md`
+- `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`
