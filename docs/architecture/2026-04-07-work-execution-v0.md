@@ -413,8 +413,10 @@ This contract now has matching operating docs:
 It is also exercised by this end-to-end example:
 
 - `docs/architecture/2026-04-07-e2e-example-core-skill-routing-matrix.md`
+- `docs/architecture/2026-04-07-e2e-example-routing-matrix-refresh-v1.md`
+- `docs/architecture/2026-04-07-e2e-example-stage-ownership-parallel-v1.md`
 
 The next useful additions are:
 
-1. a second example run that exercises scope expansion, blocked execution, or delegated strategy choice
-2. a richer end-to-end example that forces the system interaction check to matter
+1. a blocked or scope-expansion example
+2. a less documentation-heavy example that still exercises mature verification and review gates

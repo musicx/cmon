@@ -142,6 +142,13 @@ Additional lenses can be added later, but these three are mandatory in the proje
 
 `cmon` requires multi-role coverage across the workflow, but not the same collaboration pattern at every stage.
 
+Quick heuristic:
+
+- frame and accept with multiple lenses
+- design with a clear owner
+- plan with engineering ownership
+- execute with engineering only, unless the unit hits a blocker or later review
+
 - `cmon:understand`
   - often multi-lens, because context is easy to misread from only one viewpoint
 
@@ -171,6 +178,10 @@ Additional lenses can be added later, but these three are mandatory in the proje
 
 - `cmon:compound`
   - multi-lens when the lesson has cross-role reuse value
+
+Compact reference:
+
+- `docs/architecture/2026-04-07-stage-ownership-routing-v0.md`
 
 ## Artifact Expectations
 

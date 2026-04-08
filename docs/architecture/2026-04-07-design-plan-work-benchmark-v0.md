@@ -487,8 +487,8 @@ Add:
 1. deepen the new `superpowers`-style two-stage review loop:
    - spec or plan compliance review
    - code quality review
-2. prove the new `ce:work`-influenced system interaction checks on a stronger example
-3. prove delegated `serial` and `parallel` modes with stronger examples rather than only protocol docs
+2. keep proving the new `ce:work`-influenced system interaction checks on less documentation-heavy examples
+3. keep proving delegated execution with blocked, scope-expansion, or code-changing examples after the current docs-first `serial` and `parallel` proofs
 
 Do not add:
 

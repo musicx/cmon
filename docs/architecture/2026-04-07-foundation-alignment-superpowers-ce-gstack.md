@@ -248,4 +248,4 @@ This alignment implies these foundational choices for `cmon`:
 The next high-value follow-up after this alignment pass is:
 
 - prove the same execution model on a less documentation-heavy example
-- add a stronger example for `parallel` or blocked execution
+- add a stronger example for blocked execution or scope expansion

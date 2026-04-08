@@ -26,6 +26,10 @@ Not every task needs the full chain, but this is the default path for substantia
 
 ## Skill Roles
 
+Detailed ownership routing lives in:
+
+- `docs/architecture/2026-04-07-stage-ownership-routing-v0.md`
+
 ### `cmon:understand`
 
 Produces the context packet:
@@ -149,9 +153,9 @@ Produces the reusable learning artifact:
 
 The next iteration should add:
 
-1. exercise delegated `parallel` execution in an end-to-end example
-2. exercise a blocked or scope-expansion case in an end-to-end example
-3. prove update-existing compound flows on a less documentation-heavy task
+1. exercise a blocked or scope-expansion case in an end-to-end example
+2. prove update-existing compound flows on a less documentation-heavy task
+3. add a code-changing `parallel` example only if later evidence shows the docs-first proof is insufficient
 
 Detailed comparison and prioritization live in:
 

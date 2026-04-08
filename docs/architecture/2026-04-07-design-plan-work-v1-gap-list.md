@@ -1,7 +1,7 @@
 # cmon v1 Gap List: design, plan, work
 
 Date: 2026-04-07
-Status: Updated after `cmon:work` P0-3 implementation
+Status: Updated after `parallel` proof case
 
 This document turns the benchmark in `2026-04-07-design-plan-work-benchmark-v0.md` into an implementation-focused gap list.
 
@@ -115,8 +115,9 @@ Implemented artifacts:
 
 Remaining follow-up:
 
-- the richer end-to-end example should exercise `serial` or `parallel` explicitly
-- later refinement may add lightweight handoff conventions for delegated sub-steps, but not a runtime-heavy coordinator
+- the repo now has a `parallel` proof case on a real disjoint-write documentation task
+- later refinement may still add lightweight handoff conventions for delegated sub-steps, but not a runtime-heavy coordinator
+- a future code-changing `parallel` example is optional, not required for v1
 
 ### Implemented: P1-2 add system-wide interaction checks to `cmon:work`
 
@@ -184,8 +185,30 @@ Implemented artifacts:
 
 Remaining follow-up:
 
-- a future example should still prove `parallel` execution on a real disjoint-write scenario
 - a future example should still prove a blocked or scope-expansion path
+- a future code-changing `parallel` example may still be useful, but the base proof gap is now closed
+
+### Implemented: P1-5 prove delegated `parallel` execution on a real disjoint-write task
+
+What changed:
+
+- the repo now has a full end-to-end example built around a real bounded task that splits work into two parallel sub-steps
+- one sub-step updates architecture surfaces only
+- the other sub-step updates project principle and operator-facing surfaces only
+- the resulting proof shows `parallel` is legitimate when write scopes are disjoint and merge review stays coherent
+
+Implemented artifacts:
+
+- `docs/architecture/2026-04-07-e2e-example-stage-ownership-parallel-v1.md`
+- the supporting `docs/architecture/2026-04-07-stage-ownership-parallel-*` artifacts
+- `docs/architecture/2026-04-07-stage-ownership-routing-v0.md`
+- updates to `AGENTS.md`
+- updates to `docs/solutions/workflow/operator-facing-routing-matrix-for-core-skills-2026-04-07.md`
+
+Remaining follow-up:
+
+- a blocked or scope-expansion proof case is still needed
+- a code-changing `parallel` example may still be useful later, but it is not the next priority
 
 ## 4. P2 Gaps
 
@@ -244,8 +267,8 @@ If only one lane is worked at a time, use this order:
 
 The next unfinished items are now:
 
-1. a `parallel` execution example with real disjoint write scopes
-2. a blocked or scope-expansion example
+1. a blocked or scope-expansion example
+2. a less documentation-heavy proof for update-existing `compound`
 
 ## 6. Suggested Ownership Model
 

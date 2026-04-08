@@ -129,6 +129,5 @@ This layer is mainly influenced by:
 
 The next upgrades after this loop are:
 
-1. stronger examples that exercise delegated execution and the review loop together
-2. a refreshed end-to-end example that exercises this loop explicitly
-3. a richer example that forces the system interaction check to matter
+1. a blocked or scope-expansion example that exercises delegated execution and the review loop together
+2. a less documentation-heavy example that forces the same loop to carry more of the quality burden

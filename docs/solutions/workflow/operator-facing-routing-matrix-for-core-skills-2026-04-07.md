@@ -35,6 +35,13 @@ As the workflow matures, refresh the routing surface so it still exposes the mos
 - `cmon:work` may require a system interaction check before review
 - `cmon:review` assumes the internal work review loop already passed
 
+When the lifecycle mixes collaboration patterns, surface that fact explicitly in a compact ownership reference. In `cmon`, operators should be able to see quickly that:
+
+- `cmon:think`, `cmon:review`, and some `cmon:compound` runs are multi-lens
+- `cmon:design` is usually owner-led
+- `cmon:plan` is engineering-owned
+- `cmon:work` is engineering execution, not multi-role co-authoring
+
 ## Why This Matters
 
 Without a routing matrix, operators tend to do one of two bad things:
@@ -47,6 +54,8 @@ The matrix reduces entry ambiguity while preserving the repo's stronger boundary
 It also creates a cleaner review standard for small docs work: if a routing reference is correct and bounded, it can be accepted with follow-up instead of bloating the unit to solve every discoverability concern immediately.
 
 When the same workflow truth is exposed through more than one operator-facing surface, treat parity itself as part of the work. Updating only one surface leaves the operator with contradictory guidance.
+
+The same rule applies to collaboration pattern. If the repo says multi-role coverage is mandatory but does not clarify where owner-led or engineering-owned stages begin, operators will over-apply parallelism and lose the boundary model.
 
 ## When To Apply
 
@@ -65,5 +74,6 @@ When the same workflow truth is exposed through more than one operator-facing su
 ## Related
 
 - `docs/architecture/2026-04-07-core-skill-routing-matrix-v0.md`
+- `docs/architecture/2026-04-07-stage-ownership-routing-v0.md`
 - `docs/architecture/2026-04-07-e2e-example-core-skill-routing-matrix.md`
 - `docs/architecture/2026-04-07-core-skill-routing-matrix-final-review.md`
