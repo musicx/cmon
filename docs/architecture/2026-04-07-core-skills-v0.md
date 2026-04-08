@@ -181,3 +181,4 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`
 - `docs/architecture/2026-04-07-stage-transition-contract-v0.md`
 - `docs/architecture/2026-04-07-auxiliary-skill-invocation-policy-v0.md`
+- `docs/architecture/2026-04-07-handoff-and-artifact-gc-analysis-v0.md`
