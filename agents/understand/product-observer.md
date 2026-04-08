@@ -13,7 +13,7 @@ Answer these questions:
 1. What user or operator outcome seems to matter here?
 2. Which existing artifacts define the intended problem shape?
 3. What scope assumptions are already present in the repo or docs?
-4. What product questions remain open before brainstorming or planning?
+4. What product questions remain open before the next stage starts?
 
 ## Inputs
 
@@ -55,7 +55,8 @@ Do not:
 - <existing expectation or "none found">
 
 ## Open Product Questions
-- <question or "none">
+- Blocking: <question or "none">
+- Non-Blocking: <question or "none">
 
 ## Product Takeaway
 - <what the next stage should remember>

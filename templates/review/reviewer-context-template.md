@@ -17,6 +17,12 @@
 <diff content or summary pointer>
 ```
 
+## Understand Packet
+
+- Path: <path or "none">
+- Summary:
+  - <key point or "none">
+
 ## Requirements Or Design Artifact
 
 - Path: <path or "none">

@@ -56,6 +56,7 @@ Review should use all of the following when available:
 3. The approved plan
 4. Verification evidence from `cmon:work`
 5. Execution-boundary artifacts from `cmon:work`, especially a scope expansion request when one exists
+6. The current `cmon:understand` packet when prior repo decisions or local patterns materially shape the review target
 
 ## Default Scope Resolution
 
@@ -117,6 +118,7 @@ The bundle should contain:
 - base ref
 - changed files
 - diff
+- understand packet path and summary when relevant
 - approved requirements/design artifact path and summary
 - approved plan path and summary
 - work execution report path

@@ -55,7 +55,8 @@ Do not:
 - <pattern or constraint>
 
 ## Open Technical Questions
-- <question or "none">
+- Blocking: <question or "none">
+- Non-Blocking: <question or "none">
 
 ## Engineering Takeaway
 - <what the next stage should remember>

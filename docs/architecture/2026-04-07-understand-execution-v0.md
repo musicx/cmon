@@ -3,13 +3,13 @@
 Date: 2026-04-07
 Status: Draft
 
-This document turns `cmon:understand` into a multi-role context recovery flow.
+This document turns `cmon:understand` into a stronger multi-role stage-entry flow.
 
 ## 1. Purpose
 
 `cmon:understand` exists to recover verified context before later stages invent around gaps.
 
-It should produce one concise context packet, not a giant repo survey.
+It should produce one concise context packet that later stages can actually reuse, not a giant repo survey and not a vague preface.
 
 ## 2. Execution Stages
 
@@ -21,13 +21,22 @@ Use:
 - explicit paths if provided
 - `templates/understand/understand-run-manifest-template.md` when operator control is needed
 
+Decide:
+
+- what repo area is likely relevant
+- which stage is expected next
+- what understanding would be sufficient for that stage to start responsibly
+
 ### Stage 2: Gather Shared Context
 
 Assemble:
 
 - relevant docs
 - relevant code areas
+- prior durable artifacts
+- prior learnings
 - known constraints
+- local patterns
 - obvious gaps
 
 Use:
@@ -56,17 +65,30 @@ Use:
 
 - `templates/understand/synthesizer-input-template.md`
 
-### Stage 5: Route To Next Skill
+### Stage 5: Validate Packet Quality
+
+Before handoff, validate that the packet includes:
+
+- verified relevant area
+- strongest prior artifacts
+- reusable local patterns
+- constraints that will shape the next stage
+- open questions sorted by whether they block the next stage or merely inform it
+
+If the packet cannot support a responsible next-stage start, stay in `cmon:understand` and tighten it.
+
+### Stage 6: Route To Next Skill
 
 The synthesizer should recommend one of:
 
 - `cmon:think`
+- `cmon:design`
 - `cmon:plan`
 - `cmon:review`
 
 ## 3. v0 Policy Choice
 
-`cmon:understand` is intentionally light.
+`cmon:understand` is intentionally bounded, but it is no longer merely light.
 
 It is not:
 
@@ -74,7 +96,7 @@ It is not:
 - a planning pass
 - a broad code review
 
-It should recover only the context needed for the next skill.
+It should recover exactly the context the next skill should trust.
 
 ## 4. Why This Matches cmon
 
@@ -85,6 +107,10 @@ This keeps your required role separation early in the workflow:
 - operations
 
 without turning every understanding pass into a heavyweight research project.
+
+It also absorbs a stronger habit from the reference repos:
+
+- later stages should begin from a shared recovered packet, not from incompatible rediscovery
 
 ## 5. Next Step
 
@@ -98,4 +124,4 @@ It is also exercised by this end-to-end example:
 
 The next useful upgrade after this document is:
 
-- a second example where `cmon:understand` routes directly to `cmon:plan` or `cmon:review`
+- a unified stage transition contract that turns packet handoff into an explicit `proceed / revise / block` decision

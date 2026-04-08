@@ -16,8 +16,10 @@ Produce a merged understanding packet that:
 
 1. identifies the relevant repo area
 2. surfaces the most important existing artifacts
-3. records constraints that should shape the next step
-4. names open questions without inventing answers
+3. surfaces prior learnings and reusable local patterns
+4. records constraints that should shape the next step
+5. names open questions without inventing answers
+6. decides whether the packet is ready for the next stage
 
 ## Merge Rules
 
@@ -41,6 +43,10 @@ If the observers disagree or if evidence is weak, say so clearly.
 
 Only synthesize from the provided outputs and shared context bundle.
 
+### 5. Keep the next stage honest
+
+If the packet is not strong enough for a responsible handoff, say so explicitly instead of recommending optimistic routing.
+
 ## Output Format
 
 ```markdown
@@ -56,13 +62,24 @@ Only synthesize from the provided outputs and shared context bundle.
     - Engineering: <or "none">
     - Operations: <or "none">
 
-## Local Patterns And Constraints
-- <constraint or pattern>
+## Prior Learnings And Local Patterns
+- <learning or pattern>
+
+## Constraints
+- <constraint>
 
 ## Open Questions
-- <question or "none">
+- Blocking:
+  - <question or "none">
+- Non-Blocking:
+  - <question or "none">
+
+## Packet Readiness
+- Strong Enough For Next Stage: <yes | no>
+- Missing Context If No:
+  - <gap or "none">
 
 ## Recommended Next Step
-- cmon:think | cmon:plan | cmon:review
+- cmon:think | cmon:design | cmon:plan | cmon:review
 - Reason: <short explanation>
 ```

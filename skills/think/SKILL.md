@@ -129,6 +129,8 @@ Run `cmon:understand` or recover equivalent context.
 
 Ground the thinking in the actual repo before going deep.
 
+When an `understand` packet already exists, treat it as the default shared starting point instead of silently rebuilding incompatible context.
+
 ### Stage 2: Run the selected mode
 
 #### `ideate`

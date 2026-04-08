@@ -55,7 +55,8 @@ Do not:
 - <constraint or "none found">
 
 ## Open Operational Questions
-- <question or "none">
+- Blocking: <question or "none">
+- Non-Blocking: <question or "none">
 
 ## Operations Takeaway
 - <what the next stage should remember>

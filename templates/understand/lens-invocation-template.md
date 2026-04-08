@@ -18,3 +18,6 @@ Do not plan implementation. Do not perform synthesis.
 ## Output Contract
 
 Return only the structured output defined by the observer prompt.
+
+Prefer cited paths and concrete signals over abstract advice.
+Call out whether each question is blocking for the likely next stage or only important context.

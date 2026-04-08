@@ -14,6 +14,7 @@ Before starting, collect:
 - task summary
 - any explicit paths or repo area hints
 - any existing artifact paths already known
+- the most likely next stage, if already obvious
 
 Then create:
 
@@ -26,6 +27,7 @@ Record:
 - what needs to be understood
 - where understanding should begin
 - what next skill is expected, if already known
+- what would count as a sufficient packet for that next skill
 
 If the task is too vague to identify even a starting repo area, stop and clarify the task first.
 
@@ -38,6 +40,12 @@ Read:
 - any matching prior artifacts in `docs/brainstorms/`, `docs/plans/`, `docs/solutions/`, and `docs/architecture/`
 
 Inspect the nearby code area enough to verify structure and patterns.
+
+Explicitly recover:
+
+- any prior brainstorm, design, or plan that should constrain the next stage
+- any solution doc or pattern doc that should be reused
+- any repo-local pattern the next stage should follow
 
 Then fill:
 
@@ -57,6 +65,8 @@ Wrap each with:
 
 Each observer should stay in its lens.
 
+Each observer should cite actual artifacts or paths when possible.
+
 ## 5. Step 4: Synthesize The Context Packet
 
 Assemble the outputs using:
@@ -71,8 +81,10 @@ The result should identify:
 
 - relevant repo area
 - existing artifacts
+- prior learnings
 - patterns and constraints
 - open questions
+- packet readiness
 - the recommended next skill
 
 ## 6. Step 5: Route To The Next Skill
@@ -80,7 +92,8 @@ The result should identify:
 Default next steps:
 
 - `cmon:think` if scope, direction, or problem framing is still open
-- `cmon:plan` if requirements are already clear
+- `cmon:design` if requirements exist but flows, states, or boundaries still need explicit design
+- `cmon:plan` if requirements and design are already clear enough
 - `cmon:review` if the task is to assess an existing change
 
 ## 7. Failure Cases
@@ -90,5 +103,6 @@ Stop and surface the issue when:
 - repo structure is still ambiguous after local inspection
 - no relevant artifact or code area can be located
 - one lens reveals a major uncertainty that changes the next skill decision
+- the packet still names files and docs but does not explain why they matter downstream
 
 `cmon:understand` should end with a sharper context packet, not with guessed certainty.

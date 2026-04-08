@@ -226,14 +226,15 @@ When there is tension between starting implementation faster and making design a
 
 ## Current Phase
 
-This project is in **foundation design**.
+This project is in **workflow hardening and v1 stabilization**.
 
-The immediate goal is to define:
+The immediate goal is to strengthen the operating system around the existing workflow:
 
-- the repo structure
-- the core workflow
-- the initial role model
-- the artifact model
-- the first batch of skills and agent prompts for `Codex` and `Claude`
+- make `cmon:understand` a stronger entry contract
+- make stage transitions more explicit and reusable
+- keep critique orchestration lightweight rather than runtime-heavy
+- keep improving knowledge maintenance without widening scope into delivery infrastructure
 
-Implementation should follow the design documents in `docs/` as they are created and approved.
+Current strategic follow-up:
+
+- `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`

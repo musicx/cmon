@@ -29,6 +29,13 @@ The canonical execution shape is now:
 3. synthesized challenge decision
 4. revision or approval
 
+When an `understand` packet exists, use it as the verified entry context for:
+
+- relevant repo area
+- prior artifacts
+- reusable local patterns
+- constraints and unresolved unknowns
+
 ## When to Use
 
 Use this skill when any of these are true:
@@ -81,6 +88,7 @@ The owner is responsible for:
 - drafting the design
 - deciding what ambiguity must be removed before planning
 - incorporating relevant challenge from other lenses
+- consuming the current `understand` packet rather than rediscovering upstream context ad hoc
 
 Non-owner lenses are responsible for:
 

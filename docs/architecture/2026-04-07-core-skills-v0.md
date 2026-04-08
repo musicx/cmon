@@ -155,12 +155,14 @@ Current workflow proof coverage lives in:
 
 ## Next Implementation Layer
 
-The next iteration should add:
+The next iteration should focus on:
 
-1. add a blocked example only if later evidence shows the scope-expansion proof is insufficient
-2. add a code-changing `parallel` example only if later evidence shows the docs-first proof is insufficient
+1. strengthen `cmon:understand` into a stronger stage-entry contract
+2. add a unified stage transition decision contract across major handoffs
+3. consider thinner critique orchestration before adding more proof-only examples
 
 Detailed comparison and prioritization live in:
 
 - `docs/architecture/2026-04-07-design-plan-work-benchmark-v0.md`
 - `docs/architecture/2026-04-07-design-plan-work-v1-gap-list.md`
+- `docs/architecture/2026-04-07-next-opportunities-and-decisions-v0.md`

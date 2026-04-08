@@ -21,7 +21,8 @@
 Merge these outputs into one context packet that:
 
 - identifies the relevant repo area
-- highlights existing artifacts and patterns
+- highlights existing artifacts, patterns, and prior learnings
 - records important constraints
-- surfaces open questions
-- recommends the next skill
+- surfaces open questions with blocking status
+- states whether the packet is ready for the next skill
+- recommends the next skill with a short reason

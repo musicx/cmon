@@ -14,6 +14,7 @@
 
 ## Intent Artifact Paths
 
+- Understand Packet: <path | "none" | "infer when relevant">
 - Requirements Or Design Artifact: <path or "infer">
 - Implementation Plan: <path or "infer">
 

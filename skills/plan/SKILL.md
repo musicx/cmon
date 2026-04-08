@@ -70,6 +70,7 @@ A plan is not ready unless:
 - every feature-bearing unit has concrete test scenarios
 - execution boundaries are small enough to review cleanly
 - no critical requirement is delegated to executor improvisation
+- the current `understand` packet, when one exists, has been consumed rather than ignored
 - local patterns and prior learnings have been considered
 - deferred questions are truly execution-owned rather than hidden planning gaps
 - non-trivial plans have survived a lightweight critique pass before execution starts
@@ -77,12 +78,13 @@ A plan is not ready unless:
 ## Workflow
 
 1. Resolve whether this pass is `create` or `deepen`
-2. Read the approved requirements source
-3. Read the approved design source when one exists
-4. Re-read local repo constraints, patterns, and prior learnings
-5. Run conditional external research when the topic is risky or local patterns are thin
-6. Define or tighten a bounded set of implementation units
-7. For each unit, specify:
+2. Read the current `understand` packet when one exists
+3. Read the approved requirements source
+4. Read the approved design source when one exists
+5. Re-read local repo constraints, patterns, and prior learnings
+6. Run conditional external research when the topic is risky or local patterns are thin
+7. Define or tighten a bounded set of implementation units
+8. For each unit, specify:
    - goal
    - files or modules in scope
    - constraints
@@ -91,10 +93,10 @@ A plan is not ready unless:
    - test scenarios
    - execution note when posture matters
    - verification
-8. Identify what is explicitly out of scope
-9. Run a self-check for coverage, placeholders, weak research, and vague tests
-10. Run the pre-work critique stack when the plan is non-trivial, cross-cutting, or risk-bearing
-11. Write the plan to `docs/plans/`
+9. Identify what is explicitly out of scope
+10. Run a self-check for coverage, placeholders, weak research, and vague tests
+11. Run the pre-work critique stack when the plan is non-trivial, cross-cutting, or risk-bearing
+12. Write the plan to `docs/plans/`
 
 Use:
 

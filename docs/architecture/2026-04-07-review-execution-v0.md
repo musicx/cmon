@@ -37,6 +37,7 @@ Default base selection order:
 
 Locate:
 
+- current understand packet when prior repo decisions or local patterns materially affect the review target
 - approved requirements/design artifact
 - approved implementation plan
 - verification evidence
