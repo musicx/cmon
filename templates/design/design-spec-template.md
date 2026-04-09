@@ -8,6 +8,15 @@ owner_mode: product-led | engineering-led
 
 # <Clear Design Title>
 
+## Human Review Summary
+
+- What We Are Building:
+  - <short, concrete behavior / surface summary>
+- Why This Design:
+  - <why this direction fits the approved requirements>
+- Human Approval Needed For:
+  - <behavior, interaction, boundary, or accepted risk>
+
 ## Problem Frame
 
 [Short restatement of the approved problem and intended outcome]
@@ -31,15 +40,53 @@ owner_mode: product-led | engineering-led
 
 [Describe the user or system flow. Use prose, table, or diagram when it improves clarity.]
 
+Recommended Mermaid flowchart when the path has more than one meaningful step:
+
+```mermaid
+flowchart TD
+  A[Start] --> B[User or operator action]
+  B --> C[System response]
+  C --> D[End state]
+```
+
+## Interaction Model
+
+| Actor | Action | System Response | Notes |
+|---|---|---|---|
+| <user/operator/system> | <action> | <response> | <note> |
+
 ## States And Failure Handling
 
-- [Loading / empty / success / partial success / error / retry behavior as relevant]
-- [What the operator or user sees when things go wrong]
+| State | Trigger | User / Operator Visible Behavior | Recovery Or Next Step |
+|---|---|---|---|
+| <state> | <trigger> | <visible behavior> | <recovery> |
+
+Recommended Mermaid state diagram when state transitions matter:
+
+```mermaid
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Active: start
+  Active --> Error: failure
+  Error --> Idle: recover
+```
 
 ## Interfaces And Boundaries
 
 - [Important interface boundary]
 - [What is inside scope versus delegated to another surface]
+
+Use a table or graph when multiple surfaces or components interact:
+
+| Surface Or Component | Responsibility | Explicit Non-Responsibility |
+|---|---|---|
+| <surface> | <responsibility> | <non-responsibility> |
+
+```mermaid
+graph TD
+  A[Surface] --> B[Boundary]
+  B --> C[Dependency]
+```
 
 ## Key Design Decisions
 
@@ -49,6 +96,15 @@ owner_mode: product-led | engineering-led
 ## Operational Considerations
 
 - [Rollout, retry, migration, configuration, or failure-mode concern that affects design]
+
+## Human Review Checklist
+
+- The intended behavior is understandable without chat context: <yes | no>
+- User/operator interactions are explicit: <yes | no>
+- Important states and failures are explicit: <yes | no>
+- Boundaries and non-goals are explicit: <yes | no>
+- Remaining decisions are listed in the right section: <yes | no>
+- Diagrams/tables are used where they materially improve reviewability: <yes | no | not needed>
 
 ## Open Questions
 
@@ -71,10 +127,15 @@ owner_mode: product-led | engineering-led
 
 ## Challenge Decision
 
-- Planning readiness: [ready | revise]
-- Must fix before planning: [short summary or "none"]
+- Challenge Mode: design
+- Human approval readiness: [ready_for_human_approval | revise]
+- Must fix before human design approval: [short summary or "none"]
+- Challenge Summary Path: <path or "pending">
+- Challenge Disposition Path: <path or "pending">
 
 ## Next Step
 
-- `cmon:plan` when `Resolve Before Planning` is empty and ambiguity is acceptable
+- `cmon:challenge(mode=design)` before human approval
+- `human_design_approval` after challenge passes
+- `cmon:plan` only after human design approval
 - resume `cmon:design` when design blockers remain

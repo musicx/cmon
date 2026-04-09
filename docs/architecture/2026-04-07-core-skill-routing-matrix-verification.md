@@ -10,8 +10,8 @@
 - Command Or Procedure: manual comparison against `AGENTS.md`
   - Result: pass
   - Evidence:
-    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound`
-    - no new stage names or runtime concepts were introduced
+    - the lifecycle order in the matrix matches `cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound`
+    - the only added non-skill stages are conceptual human approval gates recorded in `docs/approvals/`
 
 - Command Or Procedure: manual comparison against `docs/architecture/2026-04-07-core-skills-v0.md`
   - Result: pass

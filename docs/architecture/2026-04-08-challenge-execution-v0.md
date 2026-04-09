@@ -7,7 +7,7 @@ This document defines the manual-first execution shape for `cmon:challenge`.
 
 ## 1. Purpose
 
-`cmon:challenge` exists to stress-test the proposed solution before implementation starts.
+`cmon:challenge` exists to stress-test the proposed solution before human approval and implementation starts.
 
 It reuses the strongest part of the earlier multi-role review idea:
 
@@ -15,7 +15,7 @@ It reuses the strongest part of the earlier multi-role review idea:
 - engineering challenge
 - operations challenge
 
-But it applies that challenge to design and plan artifacts, not to completed code.
+But it applies that challenge to design artifacts and design+plan packages, not to completed code.
 
 It should preserve the best operational behaviors from the older review surface:
 
@@ -30,6 +30,7 @@ Default inputs:
 - requirements artifact when relevant
 - design artifact when one exists
 - implementation plan when one exists
+- execution JSON when `mode=package`
 - understand packet when local repo context materially affects the proposal
 
 Use:
@@ -46,6 +47,7 @@ Use:
 
 Record:
 
+- whether the challenge mode is `design` or `package`
 - whether the challenge target is design, plan, or combined design-plus-plan
 - what next stage is desired
 - what risks or questions motivated the challenge pass
@@ -74,13 +76,12 @@ Challenge the target through:
 
 The goal is not to duplicate authorship.
 
-The goal is to expose what still looks weak before implementation begins.
+The goal is to expose what still looks weak before the corresponding human approval gate.
 
 Use:
 
-- `agents/challenge/product-challenger.md`
-- `agents/challenge/engineering-challenger.md`
-- `agents/challenge/ops-challenger.md`
+- `agents/challenge/design/...` when `mode=design`
+- `agents/challenge/package/...` when `mode=package`
 - `templates/challenge/lens-invocation-template.md`
 
 Each challenger should emit structured findings rather than a loose paragraph summary.
@@ -139,7 +140,8 @@ Do not rely on the transition decision alone to imply how findings were handled.
 
 Typical routes:
 
-- `proceed -> cmon:work`
+- `proceed -> human_design_approval` for `mode=design`
+- `proceed -> human_package_approval` for `mode=package`
 - `revise -> cmon:design`
 - `revise -> cmon:plan`
 - `block`

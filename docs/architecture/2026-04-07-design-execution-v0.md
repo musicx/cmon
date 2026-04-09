@@ -19,8 +19,9 @@ This stage should be treated as mandatory, not optional, for:
 This execution layer adds the missing operational pattern:
 
 - one owner drafts
-- non-owner lenses challenge
-- a merged decision determines whether planning may begin
+- the design artifact is written for human audit
+- `cmon:challenge(mode=design)` performs the multi-role challenge
+- human design approval determines whether planning may begin
 
 ## 2. Execution Stages
 
@@ -50,63 +51,36 @@ Owner assist prompts:
 
 The owner may also draft directly without a prompt, as long as the artifact shape stays the same.
 
-### Stage 3: Dispatch Non-Owner Challenge
+### Stage 3: Prepare For Design Challenge
 
-Run the non-owner challenge lenses for this draft.
+The design stage does not run the formal multi-role challenge itself.
+Instead, make the draft strong enough to challenge:
 
-Typical combinations:
+- what is being built is clear
+- why this shape is chosen is clear
+- user/operator interaction is explicit
+- diagrams, tables, state models, or graphs are included when they improve reviewability
+- remaining blockers are visible
 
-- for `product-led`: `engineering` and `operations`
-- for `engineering-led`: `product` and `operations`
-
-Optional full triad challenge is allowed when the work is large or risky.
-
-Challenge prompts:
-
-- `agents/design/product-challenger.md`
-- `agents/design/engineering-challenger.md`
-- `agents/design/ops-challenger.md`
-
-Wrap each call with:
-
-- `templates/design/challenge-invocation-template.md`
-
-### Stage 4: Synthesize The Challenge Output
-
-Pass the design draft and all challenge outputs into:
-
-- `agents/design/design-synthesizer.md`
-
-Use:
-
-- `templates/design/design-synthesizer-input-template.md`
-
-### Stage 5: Revise The Design Artifact
-
-If the challenge decision is `revise`:
-
-- update the design artifact
-- run the relevant challenge lenses again
-
-Do not hand unresolved design ambiguity to planning just because the draft is "close enough".
-
-### Stage 6: Route To Next Skill
+### Stage 4: Route To `cmon:challenge(mode=design)`
 
 Use:
 
 - `templates/workflow/stage-transition-decision-template.md`
 
-If planning readiness is `ready`:
+If challenge readiness is `ready`:
 
-- `proceed -> cmon:plan`
+- `proceed -> cmon:challenge(mode=design)`
 
-If the decision is `revise`:
+If the design artifact is still weak:
 
 - `revise -> cmon:design`
 
 If upstream instability prevents responsible design closure:
 
 - `block`
+
+Do not hand unresolved design ambiguity to `cmon:challenge` just because the draft is "close enough".
 
 ## 3. v0 Policy Choice
 
@@ -115,8 +89,8 @@ If upstream instability prevents responsible design closure:
 That means:
 
 - the owner drafts the artifact
-- challengers pressure-test the draft
-- the synthesizer decides whether planning may begin
+- formal multi-role challenge happens in `cmon:challenge(mode=design)`
+- the human approval gate decides whether planning may begin
 
 This keeps multi-role coverage without flattening role accountability.
 

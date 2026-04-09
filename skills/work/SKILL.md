@@ -13,12 +13,15 @@ Its job is not to "see what happens." Its job is to execute against approved bou
 
 ## Preconditions
 
-Do not use this skill unless one of these exists:
+Do not use this skill unless all required package artifacts exist:
 
-- an approved plan in `docs/plans/`
+- a human package approval in `docs/approvals/`
+- an approved Markdown plan in `docs/plans/`
 - a clearly approved, tightly bounded work unit derived from that plan
+- the approved plan's execution JSON
 
-If neither exists, go back to `cmon:plan`.
+If the human package approval is missing, stop before implementation and route back to `cmon:challenge(mode=package)` or the human approval gate.
+If the plan or execution JSON is missing or inconsistent, go back to `cmon:plan`.
 
 Before any real development begins, confirm the target project area is already a git repo.
 
@@ -32,13 +35,15 @@ If the work is substantial greenfield project creation and no git repo exists ye
 Before implementation starts, identify:
 
 1. The plan or work unit being executed
-2. The originating requirements and design artifacts when relevant
-3. Files or modules in scope
-4. Explicit constraints
-5. Patterns to follow
-6. Verification target
-7. Stop condition
-8. Whether the current unit should first route through `cmon:worktree`
+2. The execution JSON task or phase being executed
+3. The human package approval artifact
+4. The originating requirements and design artifacts when relevant
+5. Files or modules in scope
+6. Explicit constraints
+7. Patterns to follow
+8. Verification target
+9. Stop condition
+10. Whether the current unit should first route through `cmon:worktree`
 
 Use `templates/work/work-run-manifest-template.md` as the default way to lock the unit before coding when the execution boundary needs to be made explicit.
 Use `templates/work/execution-strategy-template.md` when the unit needs an explicit choice between inline, serial delegation, and parallel delegation.
@@ -48,24 +53,28 @@ Use `templates/work/unit-checkpoint-template.md` to record a meaningful unit che
 ## Workflow
 
 1. Read the relevant implementation unit critically
-2. Confirm repo foundation before editing anything
-3. Decide whether the unit should first use `cmon:worktree`
-4. Lock the current unit boundary
-5. Choose the execution strategy
-6. If delegating, write the delegated unit packet before execution starts
-7. Inspect the affected files, referenced patterns, and nearby tests
-8. Honor the unit's `Execution Note` when one exists
-9. Implement only what the unit requires
-10. If scope expansion appears necessary, stop and record it explicitly
-11. Write a checkpoint when the unit reaches a risky midpoint, a context switch, or cluster boundary
-12. Verify the unit with explicit evidence
-13. Run internal spec compliance review against requirements, design, and plan
-14. If compliance fails, return to the same unit and correct it before proceeding
-15. Run internal code-quality review on the completed unit
-16. If code quality fails, return to the same unit and correct it before proceeding
-17. Record simplification opportunities once several related units accumulate
-18. Record any findings that affect later units or require review
-19. Produce a clean handoff package for `cmon:verify`
+2. Read the corresponding execution JSON task
+3. Confirm human package approval exists
+4. Confirm repo foundation before editing anything
+5. Decide whether the unit should first use `cmon:worktree`
+6. Lock the current unit boundary
+7. Choose the execution strategy
+8. If delegating, write the delegated unit packet before execution starts
+9. Inspect the affected files, referenced patterns, and nearby tests
+10. Honor the unit's `Execution Note` when one exists
+11. Mark the JSON task `in_progress`
+12. Implement only what the unit requires
+13. If scope expansion appears necessary, stop and record it explicitly
+14. Write a checkpoint when the unit reaches a risky midpoint, a context switch, or cluster boundary
+15. Verify the unit with explicit evidence
+16. Run internal spec compliance review against requirements, design, and plan
+17. If compliance fails, return to the same unit and correct it before proceeding
+18. Run internal code-quality review on the completed unit
+19. If code quality fails, return to the same unit and correct it before proceeding
+20. Record simplification opportunities once several related units accumulate
+21. Update the JSON task status, completion evidence, and blockers
+22. Record any findings that affect later units or require review
+23. Produce a clean handoff package for `cmon:verify`
 
 ## Execution Posture
 
@@ -78,6 +87,7 @@ The plan is a decision artifact, not a script.
 - prefer existing patterns before inventing new structure
 
 If the unit is missing detail that blocks responsible execution, stop and return to `cmon:plan`.
+If the execution JSON is missing, stale, or inconsistent with the Markdown plan, stop and return to `cmon:plan`.
 
 Before editing, explicitly consider `cmon:worktree`.
 
@@ -246,6 +256,7 @@ For each executed unit, report:
 - `Verification`
 - `Execution strategy`
 - `Checkpoint path` when one exists
+- `Execution JSON status update`
 - `Internal review loop result`
 - `Simplification follow-ups`
 - `Open findings for verify or broader review`

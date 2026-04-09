@@ -5,7 +5,7 @@ Status: Draft
 
 This document defines the current execution scaffolding for `cmon:work`.
 
-Its job is to turn plan units into bounded implementation runs with explicit strategy choice, isolation checks, delegated packets, checkpoints, system interaction checks, and an internal review loop before explicit verification.
+Its job is to turn approved execution JSON tasks into bounded implementation runs with explicit strategy choice, isolation checks, delegated packets, checkpoints, system interaction checks, and an internal review loop before explicit verification.
 
 ## 1. Purpose
 
@@ -23,19 +23,22 @@ This layer exists to prevent the failures that usually happen during implementat
 
 For each execution unit, `cmon:work` must:
 
-1. load an approved unit from the plan
-2. confirm repo foundation before making edits
-3. decide whether workspace isolation should be upgraded first
-4. restate the unit boundary explicitly
-5. choose an execution strategy that fits the unit
-6. write delegated packets when execution is not inline
-7. execute only within that boundary
-8. record meaningful checkpoints during execution
-9. produce fresh verification evidence
-10. run system interaction checks when the unit has non-local effects
-11. run internal spec compliance review
-12. run internal code-quality review
-13. report what changed and what still needs verification or broader audit
+1. load an approved task from the execution JSON
+2. confirm the human package approval exists
+3. mark the task `in_progress` before making edits
+4. confirm repo foundation before making edits
+5. decide whether workspace isolation should be upgraded first
+6. restate the unit boundary explicitly
+7. choose an execution strategy that fits the unit
+8. write delegated packets when execution is not inline
+9. execute only within that boundary
+10. record meaningful checkpoints during execution
+11. update execution JSON with status, blockers, and completion evidence
+12. produce fresh verification evidence
+13. run system interaction checks when the unit has non-local effects
+14. run internal spec compliance review
+15. run internal code-quality review
+16. report what changed and what still needs verification or broader audit
 
 If it cannot do one of those things, it should stop and surface the problem.
 
@@ -46,6 +49,9 @@ If it cannot do one of those things, it should stop and surface the problem.
 Minimum inputs:
 
 - approved plan path
+- approved execution JSON path
+- execution JSON task identifier
+- human package approval path
 - unit identifier or unit title
 - target project directory or repo root
 - files or modules in scope
@@ -71,6 +77,7 @@ Purpose:
 
 - declare the exact unit being executed
 - confirm the repo root is versioned before edits start
+- bind the run to one execution JSON task
 - lock scope and constraints
 - record the chosen execution strategy
 - define verification before implementation starts
@@ -128,6 +135,7 @@ Purpose:
 
 - keep execution inspectable mid-flight
 - record whether scope integrity still holds
+- record the current execution JSON task status
 - surface simplification pressure before it silently accumulates
 
 Template:
@@ -193,6 +201,7 @@ Used at the end of the unit.
 Purpose:
 
 - summarize implementation state
+- record final execution JSON status and completion evidence
 - hand cleanly into `cmon:verify`
 
 Template:
@@ -213,6 +222,7 @@ Every work unit should be in one of these states:
 These states are intentionally simple.
 
 They are not a project-management system. They are execution discipline.
+The execution JSON is the canonical place to record the current task state.
 
 ## 6. Execution Strategy Policy
 

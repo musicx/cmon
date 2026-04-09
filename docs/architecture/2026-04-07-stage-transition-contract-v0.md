@@ -29,6 +29,8 @@ The transition contract makes handoff decisions consistent across:
 - `cmon:design`
 - `cmon:plan`
 - `cmon:challenge`
+- `human_design_approval`
+- `human_package_approval`
 - `cmon:work`
 - `cmon:verify`
 - `cmon:compound`
@@ -134,7 +136,7 @@ The minimum transition decision should record:
 ### `cmon:challenge`
 
 - `proceed`
-  - the tested artifact is ready for the named next stage
+  - the tested artifact is ready for the named human approval gate
 - `revise`
   - the design / plan package needs tightening before handoff
   - route to `cmon:design` when the weakness is behavioral, flow, state, or boundary truth
@@ -143,6 +145,37 @@ The minimum transition decision should record:
   - the artifact is too weak, incomplete, or misrouted for safe progression
   - do not start `cmon:work`
   - reroute upstream rather than pretending the issue can be repaired during implementation
+
+Mode-specific interpretation:
+
+- `mode=design`
+  - `proceed -> human_design_approval`
+  - never `proceed -> cmon:plan` directly
+- `mode=package`
+  - `proceed -> human_package_approval`
+  - never `proceed -> cmon:work` directly
+
+### `human_design_approval`
+
+- `proceed`
+  - the human operator approved the design artifact and planning may begin
+- `revise`
+  - required design changes remain before planning
+- `block`
+  - the design cannot be approved because intent, scope, or behavior requires upstream decision
+
+This is a conceptual human gate, not a skill.
+
+### `human_package_approval`
+
+- `proceed`
+  - the human operator approved the design / plan / execution JSON package and bounded work may begin
+- `revise`
+  - the plan, execution JSON, or design alignment needs revision before work
+- `block`
+  - the package cannot be approved because upstream intent, design, or planning is not stable
+
+This is a conceptual human gate, not a skill.
 
 ### `cmon:work`
 
@@ -200,9 +233,12 @@ Examples:
 
 - `cmon:understand -> cmon:think`
 - `cmon:think -> cmon:design`
-- `cmon:design -> cmon:plan`
-- `cmon:plan -> cmon:challenge`
-- `cmon:challenge -> cmon:work`
+- `cmon:design -> cmon:challenge(mode=design)`
+- `cmon:challenge(mode=design) -> human_design_approval`
+- `human_design_approval -> cmon:plan`
+- `cmon:plan -> cmon:challenge(mode=package)`
+- `cmon:challenge(mode=package) -> human_package_approval`
+- `human_package_approval -> cmon:work`
 - `cmon:work -> cmon:verify`
 - `cmon:verify -> cmon:compound`
 - `cmon:verify -> complete`

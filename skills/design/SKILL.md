@@ -25,9 +25,9 @@ Other lenses challenge and constrain the design when needed, but they do not nee
 The canonical execution shape is now:
 
 1. owner draft
-2. non-owner challenge
-3. synthesized challenge decision
-4. revision or approval
+2. human-reviewable design artifact
+3. handoff to `cmon:challenge(mode=design)`
+4. revision or `human_design_approval`
 
 When an `understand` packet exists, use it as the verified entry context for:
 
@@ -67,7 +67,7 @@ Do not use this skill to write the implementation plan.
 The only normal next step is:
 
 - write or update the design artifact
-- then move to `cmon:plan`
+- then move to `cmon:challenge(mode=design)`
 
 ## Core Contract
 
@@ -119,11 +119,13 @@ The artifact must include:
 - user or system flow
 - important states and failure handling
 - interface and boundary decisions
+- human review summary covering what is being built, why, and how users or operators interact with it
+- Markdown-native explanatory structures such as tables, Mermaid flowcharts, state diagrams, sequence diagrams, or graphs when they improve auditability
 - unresolved design blockers
 
 ## Quality Gate
 
-Before handing off to `cmon:plan`, review the artifact against these dimensions:
+Before handing off to `cmon:challenge(mode=design)`, review the artifact against these dimensions:
 
 - flow clarity
 - state completeness
@@ -132,16 +134,20 @@ Before handing off to `cmon:plan`, review the artifact against these dimensions:
 - operability and failure realism
 - ambiguity left for the implementer
 
-If any dimension is materially weak, revise the design artifact before planning.
+If any dimension is materially weak, revise the design artifact before challenge.
 
-The v0 challenge flow uses:
+The cross-role challenge flow now belongs to `cmon:challenge(mode=design)`.
+Older design-local challenger prompts are legacy references, not the canonical gate.
 
-- `templates/design/challenge-invocation-template.md`
-- `templates/design/design-synthesizer-input-template.md`
-- `agents/design/product-challenger.md`
-- `agents/design/engineering-challenger.md`
-- `agents/design/ops-challenger.md`
-- `agents/design/design-synthesizer.md`
+The canonical design challenge uses:
+
+- `templates/workflow/challenge-run-manifest-template.md`
+- `templates/challenge/challenge-context-template.md`
+- `templates/challenge/lens-invocation-template.md`
+- `agents/challenge/design/product-challenger.md`
+- `agents/challenge/design/engineering-challenger.md`
+- `agents/challenge/design/ops-challenger.md`
+- `agents/challenge/challenge-synthesizer.md`
 
 ## Hard Rules
 
@@ -158,7 +164,7 @@ Record the handoff using:
 
 If approved and non-blocking:
 
-- `proceed -> cmon:plan`
+- `proceed -> cmon:challenge(mode=design)`
 
 If not:
 

@@ -95,8 +95,8 @@ Purpose:
 
 - turn approved requirements into an explicit design artifact
 - make flows, states, boundaries, and interaction choices reviewable before planning
-- keep design review criteria explicit instead of hiding them inside planning
-- support owner-led challenge and approval before planning
+- make human review easier through summaries, tables, diagrams, and explicit interaction models
+- prepare the design for `cmon:challenge(mode=design)` and `human_design_approval`
 
 Key sections:
 
@@ -104,8 +104,11 @@ Key sections:
 - flow and state definition
 - interface and boundary decisions
 - requirements trace
+- human review summary
+- interaction model
+- optional Markdown-native Mermaid diagrams, tables, flowcharts, state diagrams, and graphs
 - design quality gate
-- owner mode and challenge routing
+- owner mode and challenge-to-approval routing
 
 ### Plan
 
@@ -113,6 +116,7 @@ Path:
 
 - `templates/plans/implementation-plan-template.md`
 - `templates/plans/plan-run-manifest-template.md`
+- `templates/plans/execution-graph-template.json`
 - `templates/plans/research-summary-template.md`
 - `templates/plans/plan-deepening-template.md`
 
@@ -123,6 +127,7 @@ Used by:
 Purpose:
 
 - turn approved intent into a bounded implementation plan
+- produce both human-readable Markdown and machine-readable execution JSON
 - support planning mode selection, research capture, and deepening passes
 
 Key sections:
@@ -134,6 +139,7 @@ Key sections:
 - research notes
 - technical decisions
 - implementation units
+- execution JSON path and task graph
 - test scenarios
 - execution note
 - verification
@@ -157,6 +163,7 @@ Used by:
 Purpose:
 
 - lock one implementation unit before editing starts
+- consume and update the approved execution JSON task state
 - preserve isolation and delegation decisions before execution starts
 - keep delegated slices bounded when execution is serial or parallel
 - record scope expansion rather than letting it hide in chat
@@ -202,10 +209,37 @@ Used by:
 
 Purpose:
 
-- challenge a proposed design / plan package before implementation begins
+- challenge a proposed design or design+plan+execution-JSON package before the corresponding human approval gate
 - keep product, engineering, and operations challenge inputs consistent
 - preserve structured findings and conservative synthesis at the pre-work gate
 - preserve raw per-lens outputs and explicit finding disposition so challenge handling remains inspectable later
+
+Mode-specific prompt paths:
+
+- `agents/challenge/design/product-challenger.md`
+- `agents/challenge/design/engineering-challenger.md`
+- `agents/challenge/design/ops-challenger.md`
+- `agents/challenge/package/product-challenger.md`
+- `agents/challenge/package/engineering-challenger.md`
+- `agents/challenge/package/ops-challenger.md`
+
+### Human Approvals
+
+Paths:
+
+- `templates/workflow/human-design-approval-template.md`
+- `templates/workflow/human-package-approval-template.md`
+
+Used by:
+
+- conceptual `human_design_approval`
+- conceptual `human_package_approval`
+
+Purpose:
+
+- record explicit human approval or requested changes after AI challenge
+- prevent silent transition from design to planning or from planning to implementation
+- preserve approval evidence in `docs/approvals/`
 
 ### Debug
 
@@ -298,6 +332,9 @@ Paths:
 - `templates/workflow/stage-transition-decision-template.md`
 - `templates/workflow/challenge-run-manifest-template.md`
 - `templates/workflow/challenge-summary-template.md`
+- `templates/workflow/challenge-disposition-template.md`
+- `templates/workflow/human-design-approval-template.md`
+- `templates/workflow/human-package-approval-template.md`
 
 Used by:
 
@@ -308,7 +345,7 @@ Purpose:
 - normalize handoff decisions into `proceed / revise / block`
 - make the next stage explicit
 - keep missing conditions visible instead of implying readiness
-- provide one thin orchestration surface for reusing existing critique stacks
+- provide one thin orchestration surface for challenge-to-approval transitions
 
 ## 2. Design Choices
 
@@ -326,12 +363,15 @@ This follows the `compound-engineering` split between:
 
 This is the `superpowers` influence.
 
-`cmon` wants stronger execution boundaries than a purely architectural plan, so the template defines bounded units with:
+`cmon` wants stronger execution boundaries than a purely architectural plan, so the template defines bounded units and the execution JSON records those units with:
 
 - files
 - constraints
 - verification
 - done criteria
+- status
+- dependencies
+- completion evidence
 
 ### Why solution templates split bugs from patterns
 
@@ -359,6 +399,8 @@ Not allowed:
 - dropping core boundary sections
 - removing requirement IDs from substantial brainstorm artifacts
 - writing plans without verification
+- writing plans without matching execution JSON
+- starting work without approved package and execution JSON task state
 - writing solution docs that do not state the reusable lesson
 
 ## 4. Current Status
@@ -369,12 +411,14 @@ The initial template set now covers:
 - pre-implementation intent artifacts
 - explicit design artifacts
 - bounded implementation planning
+- mandatory execution JSON task graphs
+- explicit human design and package approvals
 - bounded unit execution
 - trigger-based knowledge capture
 - reusable knowledge capture
 - multi-lens review dispatch and synthesis
 
-So the template layer is sufficient for a v0.1 end-to-end document flow, including the first operational `cmon:design` challenge flow.
+So the template layer is sufficient for a v0.1 end-to-end document flow, including design challenge, package challenge, approval gates, and execution JSON tracking.
 
 ## 5. Immediate Next Step
 

@@ -2,9 +2,10 @@
 
 ## Transition
 
-- From Stage: <cmon:understand | cmon:think | cmon:design | cmon:plan | cmon:challenge | cmon:work | cmon:verify | cmon:compound>
-- To Stage: <same-stage | cmon:think | cmon:design | cmon:plan | cmon:challenge | cmon:work | cmon:verify | cmon:compound | complete>
+- From Stage: <cmon:understand | cmon:think | cmon:design | cmon:plan | cmon:challenge | human_design_approval | human_package_approval | cmon:work | cmon:verify | cmon:compound>
+- To Stage: <same-stage | cmon:think | cmon:design | human_design_approval | cmon:plan | cmon:challenge | human_package_approval | cmon:work | cmon:verify | cmon:compound | complete>
 - Decision: <proceed | revise | block>
+- Challenge Mode: <design | package | not_applicable>
 
 ## Reason
 

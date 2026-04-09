@@ -19,7 +19,8 @@ Produce a merged challenge that:
 2. deduplicates overlapping findings
 3. resolves disagreements conservatively
 4. protects the pre-work boundary
-5. ends in one routing decision
+5. respects the declared challenge mode
+6. ends in one routing decision
 
 ## Merge Rules
 
@@ -47,8 +48,23 @@ Keep why each lens cared:
 
 Do not let missing design truth get deferred into planning.
 Do not let missing plan truth get deferred into implementation.
+Do not route directly to planning or implementation when a human approval gate is still required.
 
-### 5. Do not invent findings
+### 5. Respect challenge mode
+
+For `mode=design`:
+
+- the only `proceed` route is `human_design_approval`
+- route revisions that affect behavior, flow, state, or boundaries to `cmon:design`
+- do not evaluate implementation sequencing except as evidence that design ambiguity exists
+
+For `mode=package`:
+
+- the only `proceed` route is `human_package_approval`
+- route Markdown plan or execution JSON problems to `cmon:plan`
+- route discovered design contradiction back to `cmon:design`
+
+### 6. Do not invent findings
 
 Only synthesize from the challenge outputs you were given.
 
@@ -60,15 +76,16 @@ Use these top-level decisions:
   - no blocking issues remain
 
 - `revise`
-  - design or plan still needs real changes before work
+  - design, plan, or execution JSON still needs real changes before human approval
 
 - `block`
-  - upstream ambiguity or weakness is too high for responsible implementation
+  - upstream ambiguity or weakness is too high for responsible approval
 
 ## Output Format
 
 ```markdown
 ## Scope Check
+- Challenge Mode: design | package
 - Status: on_target | drift | incomplete
 - Summary: <merged view>
 
@@ -76,7 +93,7 @@ Use these top-level decisions:
 - Finding: <short title>
   - Severity: P0 | P1 | P2 | P3
   - Action Class: gated | manual | advisory
-  - Owner: cmon:design | cmon:plan | human
+  - Owner: cmon:design | cmon:plan | human_design_approval | human_package_approval | human
   - Source Lenses:
     - product
     - engineering
@@ -89,12 +106,12 @@ Use these top-level decisions:
     - <merged evidence bullets>
   - Recommended Action: <specific revision>
 
-## Must Fix Before Work
+## Must Fix Before Human Approval
 - <finding titles or "none">
 
 ## Final Decision
 - proceed | revise | block
-- Route Owner: cmon:design | cmon:plan | cmon:work | human
+- Route Owner: human_design_approval | human_package_approval | cmon:design | cmon:plan | human
 - Reason: <short explanation>
 ```
 
@@ -104,3 +121,5 @@ Use these top-level decisions:
 - Do not downgrade severity just because only one lens reported the issue
 - Do not let clean engineering feedback erase product or operations concerns
 - Do not route to `cmon:work` when required revisions clearly belong upstream
+- Do not route `mode=design` directly to `cmon:plan`
+- Do not route `mode=package` directly to `cmon:work`

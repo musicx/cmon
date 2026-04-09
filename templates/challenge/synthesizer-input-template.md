@@ -1,5 +1,9 @@
 # Challenge Synthesizer Input
 
+## Challenge Mode
+
+- Mode: <design | package>
+
 ## Challenge Context
 
 [Paste the shared challenge context bundle here]

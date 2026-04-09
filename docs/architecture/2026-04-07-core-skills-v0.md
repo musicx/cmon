@@ -35,10 +35,11 @@ It now also records the explicit design split added after the initial v0 chain.
 ## Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the default path for substantial work.
+`human_design_approval` and `human_package_approval` are conceptual approval gates recorded in `docs/approvals/`, not skills.
 
 ## Skill Roles
 
@@ -78,6 +79,8 @@ Produces the approved design artifact:
 - states and failure handling
 - interface and boundary decisions
 - requirements trace
+- human review summary covering what, why, and interaction behavior
+- tables, Mermaid diagrams, flowcharts, state diagrams, or graphs when useful for auditability
 - resolved and still-open design decisions
 
 Default collaboration pattern:
@@ -95,8 +98,10 @@ Mandatory trigger examples:
 
 ### `cmon:plan`
 
-Produces the implementation plan:
+Produces the implementation package:
 
+- human-readable Markdown implementation plan
+- required machine-readable execution JSON
 - implementation units
 - files in scope
 - patterns to follow
@@ -112,7 +117,18 @@ Default collaboration pattern:
 
 ### `cmon:challenge`
 
-Produces the pre-work challenge judgment:
+Produces the pre-approval challenge judgment.
+
+`cmon:challenge` has two canonical modes:
+
+- `mode=design`
+  - runs after `cmon:design`
+  - challenges whether the design artifact is strong enough for `human_design_approval`
+- `mode=package`
+  - runs after `cmon:plan`
+  - challenges whether the approved design, Markdown plan, and execution JSON are aligned and strong enough for `human_package_approval`
+
+Common outputs:
 
 - product challenge findings
 - engineering challenge findings
@@ -129,6 +145,7 @@ Produces the implementation result:
 
 - code
 - tests
+- execution JSON task status and completion evidence updates
 - verification evidence
 - delegated execution packet when strategy is not inline
 - unit checkpoint when execution state should stay inspectable
@@ -175,9 +192,12 @@ Produces the reusable learning artifact:
 | `cmon:understand` | none by default, context only |
 | `cmon:think` | `docs/brainstorms/...` |
 | `cmon:design` | `docs/designs/...` |
-| `cmon:plan` | `docs/plans/...` |
-| `cmon:challenge` | explicit pre-work challenge judgment and routing decision |
-| `cmon:work` | code + tests + verification evidence + scoped execution artifacts |
+| `cmon:challenge(mode=design)` | explicit design challenge judgment and routing decision |
+| `human_design_approval` | `docs/approvals/...` |
+| `cmon:plan` | `docs/plans/...md` plus `docs/plans/...execution.json` |
+| `cmon:challenge(mode=package)` | explicit package challenge judgment and routing decision |
+| `human_package_approval` | `docs/approvals/...` |
+| `cmon:work` | code + tests + execution JSON updates + verification evidence + scoped execution artifacts |
 | `cmon:verify` | explicit verification judgment and routing decision |
 | `cmon:compound` | `docs/solutions/...` or updated durable doc |
 
@@ -196,7 +216,10 @@ Shared handoff decisions should use:
 
 - no substantial coding before `cmon:plan`
 - no substantial planning when design ambiguity still blocks implementation decisions
-- no substantial work before the design / plan package has survived explicit pre-work challenge
+- no planning from a challenged design until `human_design_approval` exists
+- no substantial work before the design / plan / execution JSON package has survived `cmon:challenge(mode=package)` and `human_package_approval`
+- no `cmon:plan` output without a matching execution JSON
+- no `cmon:work` execution without consuming and updating the approved execution JSON task state
 - no implementation claim accepted without an explicit verify pass
 - no completion claim without evidence
 - no reusable lesson left undocumented when the compound trigger is met

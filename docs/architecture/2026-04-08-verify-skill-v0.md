@@ -20,8 +20,10 @@ That made it too easy to discover implementation-adjacent problems only after co
 
 The corrected shape is:
 
-- design gets challenged before planning
-- plan gets challenged before work
+- design gets challenged before human design approval
+- human design approval gates planning
+- the plan plus execution JSON gets challenged before human package approval
+- human package approval gates work
 - work implements the approved unit
 - verify checks whether implementation claims are actually supported
 - verify itself becomes the default post-work engineering review and acceptance gate
@@ -61,6 +63,7 @@ It should not:
 `cmon:challenge` is the canonical pre-work multi-role stage.
 
 It should handle design and plan challenge before code exists.
+It now does this through `mode=design` and `mode=package`.
 
 ## Further Tightening
 
@@ -75,7 +78,7 @@ It should handle design and plan challenge before code exists.
 For substantial implementation work, the default path should now be:
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 ## Related

@@ -14,6 +14,9 @@ The goal is to prove the workflow before adding any helper script.
 Before starting, collect:
 
 - approved plan path
+- approved execution JSON path
+- execution JSON task id
+- human package approval artifact
 - chosen implementation unit
 - relevant requirements reference
 - nearby files and tests
@@ -24,7 +27,7 @@ Then create:
 
 ## 2. Step 1: Lock The Unit
 
-Read the chosen implementation unit and restate:
+Read the chosen execution JSON task and matching Markdown plan unit, then restate:
 
 - goal
 - files in scope
@@ -32,11 +35,13 @@ Read the chosen implementation unit and restate:
 - verification
 - done condition
 
-If any of those are missing or vague, stop and return to:
+If the execution JSON is missing, invalid, stale, or inconsistent with the Markdown plan, stop and return to:
 
 - `cmon:plan`
 
-Do not start coding from an underspecified unit.
+Do not start coding from an underspecified unit or mismatched task graph.
+
+Confirm the human package approval artifact exists before continuing.
 
 ## 3. Step 2: Confirm Repo Foundation
 
@@ -72,6 +77,9 @@ If isolation is needed, finish that decision before editing.
 Record:
 
 - plan path
+- execution JSON path
+- execution JSON task id
+- human package approval path
 - unit id or title
 - explicit file scope
 - explicit constraints
@@ -79,6 +87,7 @@ Record:
 - stop condition
 
 The manifest is the working contract for the unit.
+Mark the execution JSON task `in_progress` before editing starts.
 
 ## 6. Step 5: Choose The Execution Strategy
 
@@ -149,6 +158,7 @@ When execution reaches a risky midpoint, a context switch, or a cluster boundary
 Use it to record:
 
 - whether the boundary still holds
+- the current execution JSON task status
 - whether upstream mismatch is starting to appear
 - whether simplification pressure is accumulating
 
@@ -222,6 +232,7 @@ The report should include:
 
 - what changed
 - files changed
+- execution JSON task status and completion evidence written
 - verification evidence
 - system interaction check result when relevant
 - execution strategy
@@ -259,6 +270,8 @@ If the unit remains correctable inside the same bounded execution slice:
 Stop and surface the issue when:
 
 - the target project directory still is not a git repo when real development should begin
+- the human package approval artifact is missing
+- execution JSON is missing, invalid, stale, or inconsistent with the Markdown plan
 - the unit boundary is not real in practice
 - the chosen execution strategy is no longer valid in practice
 - a delegated slice no longer fits its packet

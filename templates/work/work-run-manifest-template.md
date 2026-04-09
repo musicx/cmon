@@ -3,6 +3,9 @@
 ## Unit Identity
 
 - Plan Path: <docs/plans/...>
+- Execution JSON Path: <docs/plans/...execution.json>
+- Execution JSON Task ID: <task id>
+- Human Package Approval Path: <docs/approvals/...>
 - Requirements Path: <docs/brainstorms/... or "none">
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Repo Root Or Project Directory: <path>
@@ -16,6 +19,7 @@
 ## Unit Boundary
 
 - Goal: <what this unit must accomplish>
+- JSON Task Status Before Work: <pending | in_progress | blocked | complete>
 - Patterns To Follow:
   - <existing file or convention>
 - Files In Scope:
@@ -53,6 +57,7 @@
 ## Execution State
 
 - Status: <ready | in_progress | blocked | awaiting_scope_decision | awaiting_verify | complete>
+- JSON Task Status To Write: <in_progress | blocked | complete>
 - Checkpoint Expectation: <none | recommended | required>
 - Notes:
   - <note or "none">

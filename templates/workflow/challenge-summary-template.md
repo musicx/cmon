@@ -2,6 +2,7 @@
 
 ## Target
 
+- Challenge Mode: <design | package>
 - Challenge Target: <design | plan | design_and_plan>
 - Artifact Paths:
   - <path>
@@ -40,7 +41,7 @@
 
 - Summary: <1-3 sentences>
 - Final Decision: <proceed | revise | block>
-- Route Owner: <cmon:design | cmon:plan | cmon:work | human>
+- Route Owner: <human_design_approval | human_package_approval | cmon:design | cmon:plan | human>
 - Disposition Path: <path or "required">
 - Required Transition Decision:
   - See `templates/workflow/stage-transition-decision-template.md`

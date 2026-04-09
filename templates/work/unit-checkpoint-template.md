@@ -3,12 +3,16 @@
 ## Checkpoint Identity
 
 - Plan Path: <docs/plans/...>
+- Execution JSON Path: <docs/plans/...execution.json>
+- Execution JSON Task ID: <task id>
+- Human Package Approval Path: <docs/approvals/...>
 - Unit ID Or Title: <unit id>
 - Checkpoint Type: <mid_unit | end_of_unit | context_switch | cluster_review>
 
 ## Current State
 
 - Status: <in_progress | ready_for_verify | blocked | reroute_needed>
+- JSON Status: <pending | in_progress | blocked | complete>
 - Files Touched:
   - <file>
   - <file>

@@ -1,0 +1,50 @@
+{
+  "plan_id": "<stable-plan-id>",
+  "plan_path": "docs/plans/<plan-file>.md",
+  "requirements_path": "docs/brainstorms/<requirements-file>.md",
+  "design_path": "docs/designs/<design-file>.md",
+  "design_approval_path": "docs/approvals/<design-approval-file>.md",
+  "package_approval_path": "pending-human-package-approval",
+  "status": "pending",
+  "created_at": "YYYY-MM-DD",
+  "updated_at": "YYYY-MM-DD",
+  "phases": [
+    {
+      "id": "phase-1",
+      "title": "<phase title>",
+      "goal": "<phase goal>",
+      "status": "pending",
+      "depends_on": [],
+      "tasks": [
+        {
+          "id": "task-1",
+          "title": "<task title>",
+          "goal": "<task goal>",
+          "status": "pending",
+          "depends_on": [],
+          "files_in_scope": [
+            "path/to/file"
+          ],
+          "out_of_scope": [
+            "<explicit non-goal>"
+          ],
+          "constraints": [
+            "<constraint>"
+          ],
+          "expected_outputs": [
+            "<file, behavior, or artifact>"
+          ],
+          "verification": [
+            "<command or manual verification step>"
+          ],
+          "acceptance_criteria": [
+            "<criterion>"
+          ],
+          "completion_evidence": [],
+          "blockers": [],
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

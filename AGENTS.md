@@ -94,6 +94,13 @@ These assumptions are project policy unless explicitly revised in a design doc.
 
 For any non-trivial work inside `cmon`, prefer this lifecycle:
 
+```text
+cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound
+```
+
+`human_design_approval` and `human_package_approval` are conceptual approval gates, not skills.
+Record their decisions in `docs/approvals/` using the workflow approval templates.
+
 1. **`cmon:understand`**
    - Scan repo context, existing docs, and prior decisions
    - Use role-separated repo understanding where useful
@@ -112,6 +119,8 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
 3. **`cmon:design`**
    - Turn approved requirements into an explicit design artifact when flows, states, interfaces, UX, or architecture decisions would otherwise leak into planning
    - Make ambiguity visible before implementation planning starts
+   - Produce a human-reviewable artifact that explains what will happen, why, how users/operators interact with it, and what decisions remain
+   - Use tables, Mermaid diagrams, flowcharts, state diagrams, graphs, or other Markdown-native structures when they make the design easier to audit
    - Treat design as mandatory, not optional, when any of these are true:
      - the work is a greenfield project or new product surface
      - the work introduces a user-facing CLI, API, UI, or operator surface
@@ -121,17 +130,35 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
      - `product-led` for user, UX, operator, and workflow design
      - `engineering-led` for architecture, interface, and system-boundary design
    - Other lenses challenge and constrain, but do not need to co-author in parallel by default
+   - Normal next stage is `cmon:challenge(mode=design)`, not direct planning
 
-4. **`cmon:plan`**
+4. **`cmon:challenge(mode=design)`**
+   - Run product, engineering, and operations challenge against the design artifact before human review
+   - Ask whether the design is strong enough for `human_design_approval`, not whether it is ready for implementation
+   - If material issues remain, route back to `cmon:design`
+
+5. **`human_design_approval`**
+   - Pause for explicit human approval before implementation planning starts
+   - If the human requests changes, route back to `cmon:design` and repeat the design challenge
+
+6. **`cmon:plan`**
    - Produce a technical plan with explicit boundaries and verification
    - Carry requirements and design decisions forward with traceability
+   - Produce both a Markdown plan and a matching execution JSON file, including for one-task plans
    - This stage is normally `engineering-owned`
 
-5. **`cmon:challenge`**
-   - Run the explicit multi-role pre-work challenge on `design` / `plan` outputs before implementation starts
+7. **`cmon:challenge(mode=package)`**
+   - Run product, engineering, and operations challenge against the approved design, Markdown plan, and execution JSON
+   - Confirm plan/design alignment, execution boundaries, dependencies, verification, and handoff quality before human approval
+   - If material issues remain, route back to `cmon:plan` or `cmon:design` depending on the owner of the fix
 
-6. **`cmon:work`**
+8. **`human_package_approval`**
+   - Pause for explicit human approval before implementation starts
+   - If the human requests changes, route back to `cmon:plan` or `cmon:design` and repeat the relevant challenge
+
+9. **`cmon:work`**
    - Implement only against approved scope
+   - Consume the approved plan's execution JSON and update task status, blockers, and completion evidence as work proceeds
    - Keep tasks bounded and verifiable
    - This stage is explicitly `engineering-execution`, not multi-role co-execution
    - Before any actual development starts, confirm the target project area is already a git repo, or initialize it if the work is substantial greenfield project creation
@@ -139,11 +166,11 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - For serial or parallel delegation, preserve explicit delegated sub-executor packets
    - Use lightweight checkpoints and simplification review rather than one long opaque execution burst
 
-7. **`cmon:verify`**
+10. **`cmon:verify`**
    - Treat implementation as unaccepted until the code, plan alignment, and evidence package actually support the claim
    - This is the default post-work stage
 
-8. **`cmon:compound`**
+11. **`cmon:compound`**
    - If the work produced new reusable knowledge, write it down in the project knowledge store
 
 ## Required Review Lenses
@@ -198,10 +225,13 @@ Quick heuristic:
 
 - `cmon:challenge`
   - multi-lens by default
-  - product, engineering, and operations should all challenge the proposed design / plan package before work begins
+  - `mode=design` challenges a design artifact before `human_design_approval`
+  - `mode=package` challenges the approved design, Markdown plan, and execution JSON before `human_package_approval`
+  - product, engineering, and operations should all challenge the proposed artifact package before the corresponding human approval gate
 
 - `cmon:work`
   - engineering execution
+  - consumes approved execution JSON and updates task status/evidence
   - other roles re-enter through challenge findings, blockers, or scope decisions
 
 - `cmon:verify`
@@ -226,7 +256,10 @@ This repo should converge on a small set of durable artifact types:
   - design specs, user flows, states, interaction choices, and architecture-level design clarifications before planning
 
 - `docs/plans/`
-  - implementation plans and execution structure
+  - implementation plans and required execution JSON graphs
+
+- `docs/approvals/`
+  - human approval decisions for design and implementation package gates
 
 - `docs/solutions/`
   - learned patterns, solved problems, guardrails, and recurring failure modes

@@ -3,7 +3,7 @@
 Date: 2026-04-07
 Status: Draft
 
-This procedure describes how to run `cmon:plan` with explicit research and deepening behavior.
+This procedure describes how to run `cmon:plan` with explicit research, deepening behavior, and required execution JSON output.
 
 It is intentionally manual-first.
 
@@ -12,7 +12,8 @@ It is intentionally manual-first.
 Before starting, collect:
 
 - approved requirements artifact
-- approved design artifact when relevant
+- human-approved design artifact when relevant
+- human design approval artifact when design was required
 - existing plan when deepening
 - any prior learnings or architecture notes already known to be relevant
 
@@ -29,6 +30,7 @@ Record:
 - which questions must be answered during planning
 - what may be deferred safely to execution
 - where the resulting plan should be written
+- where the matching execution JSON should be written
 
 If the difference between `create` and `deepen` is unclear:
 
@@ -41,6 +43,7 @@ Read:
 
 - the requirements artifact
 - the design artifact when one exists
+- the human design approval artifact when design was required
 - the existing plan when deepening
 
 If the work still depends on unresolved product or design decisions:
@@ -76,16 +79,18 @@ Typical triggers:
 
 If local patterns are strong, skip external research and continue.
 
-## 6. Step 5: Write Or Deepen The Plan
+## 6. Step 5: Write Or Deepen The Plan And Execution JSON
 
 For `create` mode:
 
 - use `templates/plans/implementation-plan-template.md`
+- use `templates/plans/execution-graph-template.json`
 
 For `deepen` mode:
 
 - use `templates/plans/plan-deepening-template.md`
 - strengthen the existing plan in place
+- update the matching execution JSON in place
 
 Deepening should target:
 
@@ -94,12 +99,15 @@ Deepening should target:
 - weak test scenarios
 - oversized or underspecified implementation units
 - poor sequencing or hidden dependencies
+- missing, stale, or mismatched execution JSON tasks
 
 ## 7. Step 6: Run The Plan Self-Check
 
 Before handoff, verify:
 
 - the plan traces back to requirements and design
+- the plan references human design approval when design was required
+- the execution JSON exists, is valid JSON, and matches the Markdown plan
 - feature-bearing units have concrete test scenarios
 - file scope is explicit
 - deferred questions really belong to execution, not planning
@@ -107,7 +115,7 @@ Before handoff, verify:
 
 If these checks fail, keep revising inside `cmon:plan`.
 
-## 8. Step 7: Run The Critique Stack When Needed
+## 8. Step 7: Run The Planning Critique Stack When Needed
 
 If the plan is non-trivial, cross-cutting, or risk-bearing, assemble:
 
@@ -123,7 +131,7 @@ Merge the outcome using:
 
 - `templates/plans/plan-critique-summary-template.md`
 
-If material critique findings remain, revise the plan before handoff.
+If material critique findings remain, revise the Markdown plan and execution JSON before handoff.
 
 ## 9. Step 8: Route To The Next Skill
 
@@ -133,7 +141,7 @@ Record the result using:
 
 If the plan is strong and non-blocking:
 
-- `proceed -> cmon:challenge`
+- `proceed -> cmon:challenge(mode=package)`
 
 If the plan is still weak:
 
@@ -151,7 +159,8 @@ Stop and surface the issue when:
 - source artifacts contradict each other
 - local research reveals the chosen direction no longer fits the repo
 - a deferred question is actually a hidden planning blocker
+- execution JSON is missing, invalid, or inconsistent with the Markdown plan
 - the plan keeps drifting into file choreography or pseudo-implementation
-- critique findings show that the plan is not actually ready for execution
+- critique findings show that the package is not actually ready for `cmon:challenge(mode=package)`
 
 `cmon:plan` should fail by exposing weak decisions, not by pretending the executor will figure them out.

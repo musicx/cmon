@@ -3,11 +3,11 @@
 Date: 2026-04-07
 Status: Draft
 
-This document turns `cmon:plan` from a strong plan template into a planning workflow with explicit research, deepening, and critique behavior.
+This document turns `cmon:plan` from a strong plan template into a planning workflow with explicit research, deepening, critique behavior, and a required execution JSON graph.
 
 ## 1. Purpose
 
-`cmon:plan` exists to convert approved intent into a bounded implementation plan that an executor can trust.
+`cmon:plan` exists to convert approved intent and approved design into a bounded implementation package that a human approver and executor can trust.
 
 This execution layer adds the missing workflow behavior:
 
@@ -15,7 +15,8 @@ This execution layer adds the missing workflow behavior:
 - local research before structuring
 - conditional external research for risky or novel areas
 - explicit deepening when an existing plan is not yet strong enough
-- a smaller pre-work critique stack before execution begins
+- a required execution JSON task graph
+- a smaller planning critique stack before package challenge begins
 
 ## 2. Execution Stages
 
@@ -24,7 +25,7 @@ This execution layer adds the missing workflow behavior:
 Start from:
 
 - approved requirements artifact
-- approved design artifact when relevant
+- human-approved design artifact when relevant
 - task request
 - explicit operator control when needed through `templates/plans/plan-run-manifest-template.md`
 
@@ -38,6 +39,7 @@ Choose one mode:
 Locate:
 
 - requirements artifact
+- human approval artifact for design when design was required
 - design artifact when relevant
 - prior plan if deepening
 
@@ -72,31 +74,34 @@ Lean toward it when:
 
 Skip it when local patterns are already strong and current.
 
-### Stage 5: Structure Or Deepen The Plan
+### Stage 5: Structure Or Deepen The Plan And Execution JSON
 
 For `create` mode:
 
 - draft the plan using `templates/plans/implementation-plan-template.md`
+- draft the matching execution graph using `templates/plans/execution-graph-template.json`
 
 For `deepen` mode:
 
 - analyze the existing plan's weak points
 - run a deepening pass using `templates/plans/plan-deepening-template.md`
-- tighten traceability, file scope, sequencing, and test scenarios
+- tighten traceability, file scope, sequencing, test scenarios, and execution JSON task state
 
 ### Stage 6: Run Plan Self-Check
 
 Before handoff, confirm:
 
 - requirements and design trace are explicit
+- human design approval is referenced when required
 - file scope is exact
 - feature-bearing units have concrete test scenarios
+- the execution JSON exists, is valid JSON, and matches the Markdown plan
 - execution posture is carried when needed
 - no major ambiguity is being hidden in deferred questions
 
-### Stage 7: Run Pre-Work Critique Stack
+### Stage 7: Run Planning Critique Stack
 
-For non-trivial plans, run a smaller critique stack before execution.
+For non-trivial plans, run a smaller critique stack before package challenge.
 
 The default reviewers are:
 
@@ -109,13 +114,14 @@ Use:
 - `templates/plans/plan-critique-input-template.md`
 - `templates/plans/plan-critique-summary-template.md`
 
-The purpose is not to replace planning ownership.
+The purpose is not to replace planning ownership or `cmon:challenge(mode=package)`.
 
 The purpose is to catch:
 
 - design drift
 - weak feasibility assumptions
 - unjustified scope or hidden risk
+- Markdown/JSON mismatch
 
 ### Stage 8: Route To Next Skill
 
@@ -125,7 +131,7 @@ Use:
 
 If the plan is strong enough:
 
-- `proceed -> cmon:challenge`
+- `proceed -> cmon:challenge(mode=package)`
 
 If not:
 
@@ -145,7 +151,8 @@ This execution layer now adds a smaller critique stack, but keeps it lighter tha
 The policy choice is:
 
 - planning remains engineering-owned
-- critique is narrow and pre-work only
+- critique is narrow and prepares the package for the formal multi-role challenge
+- every `cmon:plan` writes both Markdown and execution JSON, including one-task plans
 - no runtime-heavy orchestration or multi-round approval loop in v0.1
 
 ## 4. What Was Borrowed From Mature Systems

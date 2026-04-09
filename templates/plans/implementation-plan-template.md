@@ -5,6 +5,8 @@ status: active
 date: YYYY-MM-DD
 origin: docs/brainstorms/<requirements-file>.md
 design: docs/designs/<design-file>.md | none
+design_approval: docs/approvals/<design-approval-file>.md | none
+execution_json: docs/plans/<plan-file>.execution.json
 mode: create | deepen
 deepened: YYYY-MM-DD | none
 ---
@@ -28,6 +30,12 @@ deepened: YYYY-MM-DD | none
 
 - D1. [Design decision, flow, or boundary this plan preserves]
 - D2. [Design decision, flow, or boundary this plan preserves]
+
+## Approval Trace
+
+- Human Design Approval: [path or "not required"]
+- Approval Constraints To Preserve:
+  - [constraint or "none"]
 
 ## Scope Boundaries
 
@@ -150,6 +158,12 @@ deepened: YYYY-MM-DD | none
 - [Engineering concern reviewers should check]
 - [Operations concern reviewers should check]
 
+## Execution JSON
+
+- Path: `docs/plans/<plan-file>.execution.json`
+- Status: <created | needs_update>
+- Must match the implementation units, dependencies, boundaries, verification, and acceptance criteria in this Markdown plan.
+
 ## Risks
 
 - [Meaningful risk]
@@ -160,13 +174,14 @@ deepened: YYYY-MM-DD | none
 - Design consistency review: <not run | pass | revise>
 - Engineering feasibility review: <not run | pass | revise>
 - Scope and risk review: <not run | pass | revise>
-- Readiness decision: <ready_for_work | revise_plan>
+- Readiness decision: <ready_for_package_challenge | revise_plan>
 
 ## Plan Quality Check
 
 - Requirements covered: [yes | no]
 - Design decisions preserved: [yes | no]
 - Exact file paths named: [yes | no]
+- Execution JSON exists and matches plan: [yes | no]
 - Feature-bearing units have test scenarios: [yes | no]
 - Execution boundaries are reviewable: [yes | no]
 - Research shaped the plan where needed: [yes | no]
@@ -175,4 +190,4 @@ deepened: YYYY-MM-DD | none
 
 ## Recommended Next Step
 
-- `cmon:work`
+- `cmon:challenge(mode=package)`

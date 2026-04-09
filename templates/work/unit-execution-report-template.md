@@ -3,6 +3,9 @@
 ## Unit Identity
 
 - Plan Path: <docs/plans/...>
+- Execution JSON Path: <docs/plans/...execution.json>
+- Execution JSON Task ID: <task id>
+- Human Package Approval Path: <docs/approvals/...>
 - Requirements Path: <docs/brainstorms/... or "none">
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Unit ID Or Title: <unit id>
@@ -50,6 +53,8 @@
 
 - Requirements preserved: <yes | no | unclear>
 - Design intent preserved: <yes | no | unclear>
+- Execution JSON updated: <yes | no>
+- JSON Status Written: <pending | in_progress | blocked | complete>
 
 ## Simplification Follow-Ups
 

@@ -16,14 +16,17 @@ Core goals:
 For substantial work, the default chain is:
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Highlights:
 
 - `cmon:design` is mandatory for greenfield, user-facing, stateful, or multi-workflow work
-- `cmon:challenge` is the multi-role pre-work gate for design / plan packages
+- `cmon:challenge(mode=design)` challenges the design before human design approval
+- `cmon:plan` produces both a Markdown implementation plan and a required execution JSON graph
+- `cmon:challenge(mode=package)` challenges approved design, plan, and execution JSON before human package approval
 - `cmon:work` executes only bounded units
+- `cmon:work` tracks progress against the approved execution JSON
 - `cmon:verify` is the default post-work engineering acceptance stage
 
 ## Core Skills
@@ -62,6 +65,8 @@ Deprecated aliases kept for compatibility:
   Durable artifact and invocation templates.
 - [docs/architecture/](/Users/ericliu/Code/projects/cmon/docs/architecture)
   Architecture notes, comparisons, execution docs, and benchmark decisions.
+- [docs/approvals/](/Users/ericliu/Code/projects/cmon/docs/approvals)
+  Human design and package approval artifacts.
 - [scripts/](/Users/ericliu/Code/projects/cmon/scripts)
   Lightweight local-dev helpers, including Codex live install.
 

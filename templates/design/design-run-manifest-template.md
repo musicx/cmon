@@ -22,7 +22,8 @@
 - Target Output Path: <docs/designs/... | docs/architecture/...>
 - Output Mode: <session_local | write_artifact>
 - Expected Transition:
-  - <proceed -> cmon:plan | revise -> cmon:design | block | infer>
+  - <proceed -> cmon:challenge(mode=design) | revise -> cmon:design | block | infer>
+- Human Review Required: <yes>
 
 ## Known Constraints
 

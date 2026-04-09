@@ -3,6 +3,7 @@
 ## Lens
 
 - Lens: <product | engineering | operations>
+- Challenge Mode: <design | package>
 - Challenged Target: <design | plan | design_and_plan>
 
 ## Verdict
@@ -16,7 +17,7 @@
 - Finding: <short title>
   - Severity: <P0 | P1 | P2 | P3>
   - Action Class: <gated | manual | advisory>
-  - Owner: <cmon:design | cmon:plan | human>
+  - Owner: <cmon:design | cmon:plan | human_design_approval | human_package_approval>
   - Confidence: <high | medium | low>
   - Why It Matters: <1-3 sentences>
   - Evidence:

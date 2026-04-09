@@ -5,6 +5,7 @@
 - Request Summary: <what needs to be planned>
 - Origin Requirements Path: <docs/brainstorms/... | "none">
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
+- Human Design Approval Path: <docs/approvals/... | "none">
 - Existing Plan Path: <docs/plans/... | "none">
 - Plan Mode: <create | deepen | infer>
 
@@ -26,10 +27,12 @@
 ## Output Expectations
 
 - Target Plan Path: <docs/plans/...>
+- Target Execution JSON Path: <docs/plans/...execution.json>
 - Output Mode: <session_local | write_artifact>
+- Write Execution JSON: <yes>
 - Run Critique Stack: <yes | no | conditional>
 - Expected Transition:
-  - <proceed -> cmon:challenge | revise -> cmon:plan | block | infer>
+  - <proceed -> cmon:challenge(mode=package) | revise -> cmon:plan | block | infer>
 
 ## Known Constraints
 

@@ -2,9 +2,10 @@
 
 ## Challenge Target
 
+- Challenge Mode: <design | package>
 - Summary: <what is being challenged>
 - Target Type: <design | plan | design_and_plan>
-- Desired Next Stage: <cmon:work | infer>
+- Desired Next Stage: <human_design_approval | human_package_approval | infer>
 - Scope Notes: <special notes or "none">
 
 ## Understand Packet
@@ -26,6 +27,12 @@
   - <key point or "none">
 
 ## Implementation Plan
+
+- Path: <path or "none">
+- Summary:
+  - <key point or "none">
+
+## Execution JSON
 
 - Path: <path or "none">
 - Summary:

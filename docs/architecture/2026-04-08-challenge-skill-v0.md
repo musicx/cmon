@@ -22,15 +22,17 @@ Replace the old canonical pre-work gate with:
 
 `cmon:challenge` is now the canonical pre-implementation multi-role challenge stage.
 
-It should be used after `cmon:design` and `cmon:plan`, before `cmon:work`.
+It should be used in two canonical modes:
+
+- `design` after `cmon:design`, before `human_design_approval`
+- `package` after `cmon:plan`, before `human_package_approval`
 
 ## New Boundaries
 
 `cmon:challenge` is for:
 
 - challenging design artifacts
-- challenging plan artifacts
-- challenging a combined design-plus-plan package
+- challenging a combined design-plus-plan package that also includes execution JSON
 
 It is not for:
 
@@ -63,6 +65,7 @@ It should inherit the strongest execution behaviors from the older review surfac
 - dedicated product / engineering / operations challengers
 - durable per-lens outputs
 - explicit finding disposition after synthesis
+- mode-specific product / engineering / operations prompts
 
 This keeps the stage split without losing the earlier review system's best discipline.
 
@@ -86,7 +89,7 @@ Keep `cmon:review` only as a deprecated compatibility alias for older workflows 
 ## Corrected Lifecycle
 
 ```text
-cmon:understand -> cmon:think -> cmon:design -> cmon:plan -> cmon:challenge -> cmon:work -> cmon:verify -> cmon:compound
+cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> human_design_approval -> cmon:plan -> cmon:challenge(mode=package) -> human_package_approval -> cmon:work -> cmon:verify -> cmon:compound
 ```
 
 Not every task needs the full chain, but this is the canonical path for substantial new work.

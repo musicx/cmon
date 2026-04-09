@@ -25,7 +25,6 @@ Record:
 
 - whether this design pass is `product-led` or `engineering-led`
 - what ambiguity the design must remove
-- which challenge lenses will run
 - where the resulting artifact should be written
 
 If owner mode is unclear, decide based on what would most distort planning if left vague:
@@ -44,54 +43,27 @@ Optional owner-assist prompts:
 - `agents/design/product-designer.md`
 - `agents/design/engineering-designer.md`
 
-The draft should be explicit enough that challenge lenses can criticize real decisions rather than react to placeholders.
+The draft should be explicit enough that `cmon:challenge(mode=design)` can criticize real decisions rather than react to placeholders.
 
-## 4. Step 3: Run Non-Owner Challenge
+Include human-review aids when they clarify the design:
 
-Run the relevant non-owner challenge prompts:
+- summary of what is being built and why
+- interaction model tables
+- Mermaid flowcharts, state diagrams, sequence diagrams, or graphs
+- explicit failure and degraded-state behavior
 
-- `agents/design/product-challenger.md`
-- `agents/design/engineering-challenger.md`
-- `agents/design/ops-challenger.md`
+## 4. Step 3: Self-Check Challenge Readiness
 
-Wrap each with:
+Before leaving `cmon:design`, confirm:
 
-- `templates/design/challenge-invocation-template.md`
+- behavior is explicit enough for human review
+- planning would not need to invent flow, state, boundary, or interaction truth
+- known blockers are recorded instead of hidden
+- the normal next stage is `cmon:challenge(mode=design)`
 
-Run all non-owner lenses by default.
-Skip a lens only when it is genuinely irrelevant to the design topic.
+If these checks fail, revise the design artifact inside `cmon:design`.
 
-## 5. Step 4: Synthesize The Challenge Result
-
-Assemble the outputs using:
-
-- `templates/design/design-synthesizer-input-template.md`
-
-Then run:
-
-- `agents/design/design-synthesizer.md`
-
-The result should identify:
-
-- whether planning may begin
-- what must be fixed before planning
-- what can be deferred safely
-- whether any quality-gate dimension is still weak
-
-## 6. Step 5: Revise Or Approve
-
-If the decision is `revise`:
-
-- update the design artifact
-- re-run the relevant challenge lenses
-- re-run the synthesizer
-
-If the decision is `ready`:
-
-- treat the design as approved
-- hand it to `cmon:plan`
-
-## 7. Step 6: Route To The Next Skill
+## 5. Step 4: Route To The Next Skill
 
 Record the result using:
 
@@ -99,16 +71,18 @@ Record the result using:
 
 Typical outcomes:
 
-- `proceed -> cmon:plan`
+- `proceed -> cmon:challenge(mode=design)`
 - `revise -> cmon:design`
 - `block`
 
-## 8. Failure Cases
+After `cmon:challenge(mode=design)` returns `proceed`, pause for `human_design_approval` before `cmon:plan`.
+
+## 6. Failure Cases
 
 Stop and surface the issue when:
 
 - the owner draft still contains obvious placeholders
-- challenge outputs reveal incompatible framings of the problem
 - the design keeps pushing implementation-shaping ambiguity downstream
+- the design is not reviewable by a human without reconstructing key flows from chat
 
 `cmon:design` should fail by exposing weak decisions, not by pretending planning will sort them out.

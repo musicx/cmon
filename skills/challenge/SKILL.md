@@ -9,15 +9,33 @@ Challenge the proposed solution before writing code.
 
 `cmon:challenge` is the canonical pre-work multi-role gate for `cmon`.
 
-It exists to test whether the current design and plan should actually survive contact with product expectations, engineering reality, and operational constraints.
+It exists to test whether the current design or design+plan package should actually survive contact with product expectations, engineering reality, operational constraints, and human approval.
 
 ## Purpose
 
 `cmon:challenge` should answer one narrow question:
 
-- is the current proposed solution strong enough to begin implementation responsibly
+- is the current proposed artifact strong enough to move to the next human approval gate
 
 It is not a post-work code review stage.
+
+## Challenge Modes
+
+Every challenge pass must declare one canonical mode:
+
+1. `design`
+   - after `cmon:design`
+   - before `human_design_approval`
+   - challenges whether the design is clear and complete enough for human approval and planning
+
+2. `package`
+   - after `cmon:plan`
+   - before `human_package_approval`
+   - challenges whether design, Markdown plan, and execution JSON align well enough for human approval and implementation
+
+Do not infer the mode silently.
+
+If the mode is unclear, stop and clarify the challenge target.
 
 ## Scope
 
@@ -64,6 +82,7 @@ Default inputs:
 - approved requirements when relevant
 - design artifact when one exists
 - implementation plan when one exists
+- execution JSON for `package` mode
 - understand packet when local context materially shapes the proposal
 
 The challenge pass should preserve:
@@ -81,7 +100,7 @@ This skill should answer:
 1. what proposed artifact package is being challenged
 2. what assumptions still look weak
 3. what must be revised before implementation starts
-4. whether the next stage should be `cmon:work`, return to `cmon:design`, or return to `cmon:plan`
+4. whether the next stage should be `human_design_approval`, `human_package_approval`, return to `cmon:design`, or return to `cmon:plan`
 5. whether scope is `on_target`, `drift`, or `incomplete`
 6. how each accepted, deferred, or rejected finding was handled before implementation starts
 
@@ -102,8 +121,11 @@ Use:
 
 Typical transitions:
 
-- `proceed -> cmon:work`
-  - when the challenged design/plan package is strong enough for bounded execution
+- `proceed -> human_design_approval`
+  - when `mode=design` and the design is strong enough for human approval
+
+- `proceed -> human_package_approval`
+  - when `mode=package` and the design / plan / execution JSON package is strong enough for human approval
 
 - `revise -> cmon:design`
   - when behavior, flow, state, or boundary truth is still weak
