@@ -7,6 +7,9 @@
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Repo Root Or Project Directory: <path>
 - Existing Git Repo Confirmed: <yes | no>
+- Isolation Decision: <stay | branch | worktree>
+- Isolation Notes:
+  - <reason or "current workspace is already clean enough">
 - Unit ID Or Title: <unit id>
 - Requirements Reference: <R1, R2 or "none">
 
@@ -33,6 +36,8 @@
 - Strategy Notes:
   - <why this strategy fits the unit>
   - <for parallel, list the disjoint write scopes>
+- Delegated Packet Paths:
+  - <path or "not needed">
 
 - Verification Target:
   - <test/build/manual verification>
@@ -48,6 +53,7 @@
 ## Execution State
 
 - Status: <ready | in_progress | blocked | awaiting_scope_decision | awaiting_verify | complete>
+- Checkpoint Expectation: <none | recommended | required>
 - Notes:
   - <note or "none">
 

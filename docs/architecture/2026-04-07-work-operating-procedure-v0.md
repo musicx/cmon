@@ -52,7 +52,22 @@ If the work is substantial greenfield project creation and git is still missing:
 
 Do not start real development in an unversioned project directory.
 
-## 4. Step 3: Fill The Work Run Manifest
+## 4. Step 3: Decide Isolation First When Needed
+
+Before implementation strategy is finalized, ask whether the current unit should first route through:
+
+- `cmon:worktree`
+
+Do this especially when:
+
+- the working tree already contains unrelated changes
+- the unit is risky enough that review should happen against a cleaner diff
+- execution will be `parallel`
+- the unit is a substantial greenfield slice
+
+If isolation is needed, finish that decision before editing.
+
+## 5. Step 4: Fill The Work Run Manifest
 
 Record:
 
@@ -65,7 +80,7 @@ Record:
 
 The manifest is the working contract for the unit.
 
-## 5. Step 4: Choose The Execution Strategy
+## 6. Step 5: Choose The Execution Strategy
 
 Before implementation starts, choose one of:
 
@@ -85,7 +100,13 @@ Only choose `parallel` when write scopes are disjoint and dependency order is ge
 
 If that is not clearly true, downgrade to `serial` or `inline`.
 
-## 6. Step 5: Inspect The Actual Code Area
+If the strategy is `serial` or `parallel`, also write:
+
+- `templates/work/delegated-unit-packet-template.md`
+
+for each delegated slice.
+
+## 7. Step 6: Inspect The Actual Code Area
 
 Before editing:
 
@@ -97,7 +118,7 @@ This is the last point where context gathering is allowed.
 
 After this, do not let implementation turn back into open-ended repo exploration.
 
-## 7. Step 6: Execute Only The Unit
+## 8. Step 7: Execute Only The Unit
 
 Implement only what the unit requires.
 
@@ -119,7 +140,19 @@ If extra work is required, use:
 
 and stop unless the expansion is clearly narrow and justified.
 
-## 8. Step 7: Capture Verification Evidence
+## 9. Step 8: Record A Checkpoint When Needed
+
+When execution reaches a risky midpoint, a context switch, or a cluster boundary, write:
+
+- `templates/work/unit-checkpoint-template.md`
+
+Use it to record:
+
+- whether the boundary still holds
+- whether upstream mismatch is starting to appear
+- whether simplification pressure is accumulating
+
+## 10. Step 9: Capture Verification Evidence
 
 Before saying the unit is complete, gather fresh evidence using:
 
@@ -129,7 +162,7 @@ The evidence must come from this session.
 
 Do not reuse stale output unless the command was rerun after the relevant code changed.
 
-## 9. Step 8: Run System Interaction Check When Needed
+## 11. Step 10: Run System Interaction Check When Needed
 
 If the unit has non-local effects, fill:
 
@@ -139,7 +172,7 @@ Run this check when the unit touches callbacks, middleware, retries, failure cle
 
 If the check reveals that the unit's actual impact is larger than the current boundary or current verification, stop and revise before continuing.
 
-## 10. Step 9: Run Spec Compliance Review
+## 12. Step 11: Run Spec Compliance Review
 
 After verification succeeds, assemble a packet using:
 
@@ -154,7 +187,7 @@ If the answer is not clearly yes, return to implementation.
 
 Do not move forward just because tests passed.
 
-## 11. Step 10: Run Code-Quality Review
+## 13. Step 12: Run Code-Quality Review
 
 Only after spec compliance is sound, assemble:
 
@@ -168,7 +201,18 @@ The goal is to surface:
 
 If material concerns remain, return to implementation and rerun the loop.
 
-## 12. Step 11: Write The Unit Execution Report
+## 14. Step 13: Review Simplification Before Handoff
+
+After one risky unit or several related units, explicitly ask:
+
+- has local duplication appeared
+- should a shared helper or common path be folded into the current approved boundary
+- would the simplification now require a plan change instead
+
+If simplification still fits the approved unit, handle it now.
+If it would widen scope materially, route it back to planning rather than silently absorbing it.
+
+## 15. Step 14: Write The Unit Execution Report
 
 After implementation and verification, write:
 
@@ -181,11 +225,13 @@ The report should include:
 - verification evidence
 - system interaction check result when relevant
 - execution strategy
+- checkpoint path when one exists
 - internal review loop results
+- simplification follow-ups
 - open findings
 - whether scope stayed intact
 
-## 13. Step 12: Route To The Next Skill
+## 16. Step 15: Route To The Next Skill
 
 Record the result using:
 
@@ -208,18 +254,20 @@ If the unit remains correctable inside the same bounded execution slice:
 
 - `revise -> cmon:work`
 
-## 14. Failure Cases
+## 17. Failure Cases
 
 Stop and surface the issue when:
 
 - the target project directory still is not a git repo when real development should begin
 - the unit boundary is not real in practice
 - the chosen execution strategy is no longer valid in practice
+- a delegated slice no longer fits its packet
 - required verification is unavailable
 - a required system interaction check exposes broader impact than the unit can safely carry
 - a file outside scope is needed and expansion is not narrow
 - the change needs product or architectural re-decision
 - spec compliance review shows plan or design drift
 - code-quality review shows material engineering weakness inside the unit
+- simplification now requires a structural plan change rather than a local cleanup
 
 `cmon:work` should fail loudly rather than succeed ambiguously.

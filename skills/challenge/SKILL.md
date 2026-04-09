@@ -53,8 +53,10 @@ Use:
 
 - `templates/workflow/challenge-run-manifest-template.md`
 - `templates/workflow/challenge-summary-template.md`
+- `templates/workflow/challenge-disposition-template.md`
 - `templates/challenge/challenge-context-template.md`
 - `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/lens-output-template.md`
 - `templates/challenge/synthesizer-input-template.md`
 
 Default inputs:
@@ -68,6 +70,8 @@ The challenge pass should preserve:
 
 - scope verdict
 - structured findings
+- raw per-lens challenge outputs
+- explicit finding disposition after synthesis
 - conservative merged routing
 
 ## Core Questions
@@ -79,6 +83,7 @@ This skill should answer:
 3. what must be revised before implementation starts
 4. whether the next stage should be `cmon:work`, return to `cmon:design`, or return to `cmon:plan`
 5. whether scope is `on_target`, `drift`, or `incomplete`
+6. how each accepted, deferred, or rejected finding was handled before implementation starts
 
 ## Non-Goals
 

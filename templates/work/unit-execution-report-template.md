@@ -7,6 +7,7 @@
 - Design Path: <docs/designs/... | docs/architecture/... | "none">
 - Unit ID Or Title: <unit id>
 - Final Status: <awaiting_verify | blocked | complete>
+- Isolation Decision Used: <stay | branch | worktree>
 
 ## Implemented
 
@@ -39,10 +40,20 @@
 - Code Quality Review Path: <path or "inline below">
 - Code Quality Outcome: <pass | fix_required>
 
+## Checkpoints
+
+- Checkpoint Path: <path | "none">
+- Checkpoint Summary:
+  - <summary or "none">
+
 ## Trace Integrity
 
 - Requirements preserved: <yes | no | unclear>
 - Design intent preserved: <yes | no | unclear>
+
+## Simplification Follow-Ups
+
+- <follow-up or "none">
 
 ## Open Findings For Verify
 

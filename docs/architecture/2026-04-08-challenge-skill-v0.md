@@ -61,6 +61,8 @@ It should inherit the strongest execution behaviors from the older review surfac
 - conservative merge rules
 - explicit scope verdicts
 - dedicated product / engineering / operations challengers
+- durable per-lens outputs
+- explicit finding disposition after synthesis
 
 This keeps the stage split without losing the earlier review system's best discipline.
 

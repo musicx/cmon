@@ -40,6 +40,10 @@ When an `understand` packet exists, use it as the verified entry context for:
 
 Use this skill when any of these are true:
 
+- the work is a greenfield project or new product surface
+- the work introduces a user-facing CLI, API, UI, or operator surface
+- the work introduces persistent state, config, storage, or workflow modes
+- the work has multiple commands, workflows, states, or failure paths
 - the work introduces a non-trivial user or operator flow
 - the work has multiple important states such as loading, empty, partial success, error, or retry
 - interfaces or system boundaries need to be defined before planning
@@ -49,6 +53,8 @@ Use this skill when any of these are true:
 Skip this skill only when all of these are true:
 
 - the change is tightly bounded
+- the work is not a greenfield or newly introduced product surface
+- no new user-facing surface, persistent state, config surface, or multi-mode workflow is being introduced
 - no meaningful flow or state design is being introduced
 - requirements are already specific enough that planning would not need to invent behavior
 

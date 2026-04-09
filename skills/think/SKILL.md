@@ -187,7 +187,8 @@ If the result is still a ranked direction set:
 
 If approved requirements exist:
 
-- `proceed -> cmon:design` when flow, state, interfaces, or cross-surface behavior still need explicit design work
+- `proceed -> cmon:design` when flow, state, interfaces, cross-surface behavior, greenfield product shape, or user-facing surface behavior still need explicit design work
+- `proceed -> cmon:design` by default for greenfield projects, new CLI/API/UI/operator surfaces, or work that introduces persistence, config, or multiple workflows
 - otherwise `proceed -> cmon:plan`
 
 If not approved:

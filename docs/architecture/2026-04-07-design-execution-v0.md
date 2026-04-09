@@ -9,6 +9,13 @@ This document turns `cmon:design` from a stage definition into an executable own
 
 `cmon:design` exists to make behavior, flow, state, and boundary truth explicit before planning starts.
 
+This stage should be treated as mandatory, not optional, for:
+
+- greenfield projects
+- new user-facing CLI, API, UI, or operator-facing surfaces
+- work that introduces persistence, config, storage, or multiple workflows
+- tasks where planning would otherwise have to invent behavior or boundary truth
+
 This execution layer adds the missing operational pattern:
 
 - one owner drafts

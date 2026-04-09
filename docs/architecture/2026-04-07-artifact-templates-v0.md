@@ -144,6 +144,8 @@ Key sections:
 Paths:
 
 - `templates/work/work-run-manifest-template.md`
+- `templates/work/delegated-unit-packet-template.md`
+- `templates/work/unit-checkpoint-template.md`
 - `templates/work/scope-expansion-request-template.md`
 - `templates/work/verification-evidence-template.md`
 - `templates/work/unit-execution-report-template.md`
@@ -155,7 +157,10 @@ Used by:
 Purpose:
 
 - lock one implementation unit before editing starts
+- preserve isolation and delegation decisions before execution starts
+- keep delegated slices bounded when execution is serial or parallel
 - record scope expansion rather than letting it hide in chat
+- keep mid-flight execution inspectable through lightweight checkpoints
 - capture fresh verification evidence
 - create a clean handoff package for explicit verification
 - keep execution traceable back to requirements, design, and plan posture
@@ -185,8 +190,10 @@ Paths:
 
 - `templates/workflow/challenge-run-manifest-template.md`
 - `templates/workflow/challenge-summary-template.md`
+- `templates/workflow/challenge-disposition-template.md`
 - `templates/challenge/challenge-context-template.md`
 - `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/lens-output-template.md`
 - `templates/challenge/synthesizer-input-template.md`
 
 Used by:
@@ -198,6 +205,7 @@ Purpose:
 - challenge a proposed design / plan package before implementation begins
 - keep product, engineering, and operations challenge inputs consistent
 - preserve structured findings and conservative synthesis at the pre-work gate
+- preserve raw per-lens outputs and explicit finding disposition so challenge handling remains inspectable later
 
 ### Debug
 

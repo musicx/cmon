@@ -112,6 +112,11 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
 3. **`cmon:design`**
    - Turn approved requirements into an explicit design artifact when flows, states, interfaces, UX, or architecture decisions would otherwise leak into planning
    - Make ambiguity visible before implementation planning starts
+   - Treat design as mandatory, not optional, when any of these are true:
+     - the work is a greenfield project or new product surface
+     - the work introduces a user-facing CLI, API, UI, or operator surface
+     - the work introduces persistent state, config, storage, or workflow modes
+     - the work has multiple commands, workflows, states, or failure paths
    - Default to a clear owner:
      - `product-led` for user, UX, operator, and workflow design
      - `engineering-led` for architecture, interface, and system-boundary design
@@ -130,6 +135,9 @@ For any non-trivial work inside `cmon`, prefer this lifecycle:
    - Keep tasks bounded and verifiable
    - This stage is explicitly `engineering-execution`, not multi-role co-execution
    - Before any actual development starts, confirm the target project area is already a git repo, or initialize it if the work is substantial greenfield project creation
+   - For risky, parallel, or noisy workspaces, route through `cmon:worktree` before editing
+   - For serial or parallel delegation, preserve explicit delegated sub-executor packets
+   - Use lightweight checkpoints and simplification review rather than one long opaque execution burst
 
 7. **`cmon:verify`**
    - Treat implementation as unaccepted until the code, plan alignment, and evidence package actually support the claim

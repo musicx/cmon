@@ -37,6 +37,7 @@ Use:
 - `templates/workflow/challenge-run-manifest-template.md`
 - `templates/challenge/challenge-context-template.md`
 - `templates/challenge/lens-invocation-template.md`
+- `templates/challenge/lens-output-template.md`
 - `templates/challenge/synthesizer-input-template.md`
 
 ## 3. Execution Stages
@@ -84,6 +85,8 @@ Use:
 
 Each challenger should emit structured findings rather than a loose paragraph summary.
 
+Write each challenger's output as a durable artifact rather than leaving it only in chat context.
+
 At minimum, each challenger should contribute:
 
 - scope verdict
@@ -100,6 +103,7 @@ At minimum, each challenger should contribute:
 Use:
 
 - `templates/workflow/challenge-summary-template.md`
+- `templates/workflow/challenge-disposition-template.md`
 - `templates/challenge/synthesizer-input-template.md`
 - `templates/workflow/stage-transition-decision-template.md`
 
@@ -120,7 +124,18 @@ Return one of:
 - `revise`
 - `block`
 
-### Stage 5: Route
+### Stage 5: Record Finding Disposition
+
+After synthesis, explicitly record what happened to each material finding:
+
+- accepted and routed to `cmon:design`
+- accepted and routed to `cmon:plan`
+- deferred with reason
+- rejected with reason
+
+Do not rely on the transition decision alone to imply how findings were handled.
+
+### Stage 6: Route
 
 Typical routes:
 
@@ -144,3 +159,7 @@ It should stay narrow:
 - no code mutation
 - no post-work verification role
 - but it should still inherit the strongest structured-finding and conservative-merge behavior from the earlier multi-role review surface
+- and it should leave a durable audit trail that lets an operator inspect:
+  - what each lens said
+  - what the merged finding set was
+  - how each material issue was ultimately handled

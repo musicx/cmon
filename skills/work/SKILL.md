@@ -38,27 +38,34 @@ Before implementation starts, identify:
 5. Patterns to follow
 6. Verification target
 7. Stop condition
+8. Whether the current unit should first route through `cmon:worktree`
 
 Use `templates/work/work-run-manifest-template.md` as the default way to lock the unit before coding when the execution boundary needs to be made explicit.
 Use `templates/work/execution-strategy-template.md` when the unit needs an explicit choice between inline, serial delegation, and parallel delegation.
+Use `templates/work/delegated-unit-packet-template.md` whenever `serial` or `parallel` execution delegates a bounded slice to a sub-executor.
+Use `templates/work/unit-checkpoint-template.md` to record a meaningful unit checkpoint before a context switch, after a risky slice, or after several related units accumulate simplification pressure.
 
 ## Workflow
 
 1. Read the relevant implementation unit critically
 2. Confirm repo foundation before editing anything
-3. Lock the current unit boundary
-4. Choose the execution strategy
-5. Inspect the affected files, referenced patterns, and nearby tests
-6. Honor the unit's `Execution Note` when one exists
-7. Implement only what the unit requires
-8. If scope expansion appears necessary, stop and record it explicitly
-9. Verify the unit with explicit evidence
-10. Run internal spec compliance review against requirements, design, and plan
-11. If compliance fails, return to the same unit and correct it before proceeding
-12. Run internal code-quality review on the completed unit
-13. If code quality fails, return to the same unit and correct it before proceeding
-14. Record any findings that affect later units or require review
-15. Produce a clean handoff package for `cmon:verify`
+3. Decide whether the unit should first use `cmon:worktree`
+4. Lock the current unit boundary
+5. Choose the execution strategy
+6. If delegating, write the delegated unit packet before execution starts
+7. Inspect the affected files, referenced patterns, and nearby tests
+8. Honor the unit's `Execution Note` when one exists
+9. Implement only what the unit requires
+10. If scope expansion appears necessary, stop and record it explicitly
+11. Write a checkpoint when the unit reaches a risky midpoint, a context switch, or cluster boundary
+12. Verify the unit with explicit evidence
+13. Run internal spec compliance review against requirements, design, and plan
+14. If compliance fails, return to the same unit and correct it before proceeding
+15. Run internal code-quality review on the completed unit
+16. If code quality fails, return to the same unit and correct it before proceeding
+17. Record simplification opportunities once several related units accumulate
+18. Record any findings that affect later units or require review
+19. Produce a clean handoff package for `cmon:verify`
 
 ## Execution Posture
 
@@ -71,6 +78,15 @@ The plan is a decision artifact, not a script.
 - prefer existing patterns before inventing new structure
 
 If the unit is missing detail that blocks responsible execution, stop and return to `cmon:plan`.
+
+Before editing, explicitly consider `cmon:worktree`.
+
+Treat `cmon:worktree` as the default route when:
+
+- the working tree already carries unrelated changes
+- the unit is risky enough that review should happen against a cleaner diff
+- the execution strategy is `parallel`
+- the unit is a substantial greenfield slice that should not share a noisy default workspace
 
 ## Execution Strategy
 
@@ -89,6 +105,14 @@ If the unit is missing detail that blocks responsible execution, stop and return
    - allowed only when write scopes are disjoint and dependency order is genuinely absent
 
 The strategy should be chosen before implementation starts and recorded explicitly for non-trivial units.
+
+When the strategy is `serial` or `parallel`, every delegated slice must receive a packet that preserves:
+
+- the parent unit goal
+- exact file scope
+- constraints
+- verification target
+- stop condition
 
 `parallel` is never allowed just because the task feels large.
 
@@ -110,6 +134,9 @@ It is allowed only when:
 - Do not use delegation to hide weak unit boundaries
 - Do not use `parallel` when write scopes overlap or when sequencing is ambiguous
 - Do not skip system interaction checks when the unit clearly has non-local effects
+- Do not delegate a sub-slice without an explicit delegated unit packet
+- Do not continue across several related units without recording at least one checkpoint
+- Do not ignore repeated simplification pressure when the same pattern has now appeared across related completed units
 
 ## Verification Rules
 
@@ -171,6 +198,44 @@ These are not replacements for `cmon:verify`.
 
 They exist to catch obvious drift and weak execution before the change reaches the explicit verification stage.
 
+## Incremental Development And Simplification
+
+`cmon:work` should borrow a lighter version of the strongest execution habits from mature systems:
+
+- record meaningful unit checkpoints instead of relying on one long opaque implementation burst
+- review simplification opportunities after several related units or before a context switch
+
+This does **not** force a git commit after every unit.
+
+It does require an inspectable checkpoint when:
+
+- a risky unit is partially complete
+- execution is about to switch context
+- several related units have accumulated local duplication or cleanup pressure
+
+Use `templates/work/unit-checkpoint-template.md`.
+
+If simplification clearly belongs inside the current approved boundary, handle it before handoff.
+If simplification would widen scope materially, route it to a later unit or back to `cmon:plan`.
+
+## Escalation Rules
+
+Stop and route upstream when any of these become true:
+
+- the unit depends on an unstated product or behavioral decision
+- the required verification target no longer fits inside the approved unit boundary
+- a file outside scope is now required in a non-narrow way
+- the chosen `parallel` or `serial` strategy is no longer valid in practice
+- the same symptom or execution blocker survives one attempted local repair and root cause is still uncertain
+- simplification now requires a structural plan change rather than a local cleanup
+
+Use the shared reflow rule:
+
+- framing or missing intent -> `cmon:think`
+- behavior or boundary truth -> `cmon:design`
+- unit structure, sequencing, or verification strategy -> `cmon:plan`
+- local code or evidence defect -> remain in `cmon:work`
+
 ## Output
 
 For each executed unit, report:
@@ -180,7 +245,9 @@ For each executed unit, report:
 - `Requirements / Design trace`
 - `Verification`
 - `Execution strategy`
+- `Checkpoint path` when one exists
 - `Internal review loop result`
+- `Simplification follow-ups`
 - `Open findings for verify or broader review`
 
 Use `templates/work/unit-execution-report-template.md` as the default handoff structure.

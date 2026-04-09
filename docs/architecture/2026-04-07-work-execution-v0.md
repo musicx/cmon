@@ -5,7 +5,7 @@ Status: Draft
 
 This document defines the current execution scaffolding for `cmon:work`.
 
-Its job is to turn plan units into bounded implementation runs with explicit strategy choice, system interaction checks, and an internal review loop before explicit verification.
+Its job is to turn plan units into bounded implementation runs with explicit strategy choice, isolation checks, delegated packets, checkpoints, system interaction checks, and an internal review loop before explicit verification.
 
 ## 1. Purpose
 
@@ -25,16 +25,19 @@ For each execution unit, `cmon:work` must:
 
 1. load an approved unit from the plan
 2. confirm repo foundation before making edits
-3. restate the unit boundary explicitly
-4. choose an execution strategy that fits the unit
-5. execute only within that boundary
-6. produce fresh verification evidence
-7. run system interaction checks when the unit has non-local effects
-8. run internal spec compliance review
-9. run internal code-quality review
-10. report what changed and what still needs verification or broader audit
+3. decide whether workspace isolation should be upgraded first
+4. restate the unit boundary explicitly
+5. choose an execution strategy that fits the unit
+6. write delegated packets when execution is not inline
+7. execute only within that boundary
+8. record meaningful checkpoints during execution
+9. produce fresh verification evidence
+10. run system interaction checks when the unit has non-local effects
+11. run internal spec compliance review
+12. run internal code-quality review
+13. report what changed and what still needs verification or broader audit
 
-If it cannot do one of those ten things, it should stop and surface the problem.
+If it cannot do one of those things, it should stop and surface the problem.
 
 ## 3. Required Inputs
 
@@ -58,7 +61,7 @@ Preferred explicit manifest:
 
 ## 4. Output Artifacts
 
-`cmon:work` should standardize eight work artifacts.
+`cmon:work` should standardize ten work artifacts.
 
 ### 4.1 Work Run Manifest
 
@@ -103,7 +106,35 @@ Template:
 
 - `templates/work/execution-strategy-template.md`
 
-### 4.4 Verification Evidence
+### 4.4 Delegated Unit Packet
+
+Used whenever a `serial` or `parallel` strategy delegates a bounded slice.
+
+Purpose:
+
+- preserve the parent unit boundary inside the delegated slice
+- prevent sub-executors from free-expanding scope
+- keep verification and stop conditions explicit for delegated work
+
+Template:
+
+- `templates/work/delegated-unit-packet-template.md`
+
+### 4.5 Unit Checkpoint
+
+Used when execution reaches a risky midpoint, a context switch, or a cluster of related units that should be simplified or inspected before proceeding.
+
+Purpose:
+
+- keep execution inspectable mid-flight
+- record whether scope integrity still holds
+- surface simplification pressure before it silently accumulates
+
+Template:
+
+- `templates/work/unit-checkpoint-template.md`
+
+### 4.6 Verification Evidence
 
 Used after code changes but before claiming completion.
 
@@ -116,7 +147,7 @@ Template:
 
 - `templates/work/verification-evidence-template.md`
 
-### 4.5 System Interaction Check
+### 4.7 System Interaction Check
 
 Used when the unit has non-local effects.
 
@@ -129,7 +160,7 @@ Template:
 
 - `templates/work/system-interaction-check-template.md`
 
-### 4.6 Spec Compliance Review Input
+### 4.8 Spec Compliance Review Input
 
 Used after verification and before final handoff.
 
@@ -142,7 +173,7 @@ Template:
 
 - `templates/work/spec-compliance-input-template.md`
 
-### 4.7 Code Quality Review Input
+### 4.9 Code Quality Review Input
 
 Used only after spec compliance review passes.
 
@@ -155,7 +186,7 @@ Template:
 
 - `templates/work/code-quality-review-input-template.md`
 
-### 4.8 Unit Execution Report
+### 4.10 Unit Execution Report
 
 Used at the end of the unit.
 
@@ -201,6 +232,8 @@ Use when:
 
 This should remain the default unless there is a real reason to delegate.
 
+Before choosing `inline`, explicitly ask whether the unit should first use `cmon:worktree` because the current branch or workspace is no longer a clean execution surface.
+
 ### 6.2 Serial
 
 Use when:
@@ -231,6 +264,22 @@ This is intentionally narrower than `ce:work`.
 
 The strategy must serve the unit boundary, not weaken it.
 
+When the strategy is not `inline`, `cmon:work` should require a delegated unit packet for every sub-slice.
+
+## 6.5 Checkpoint And Simplification Policy
+
+`cmon:work` should also preserve a lighter form of incremental execution discipline.
+
+This means:
+
+- record a checkpoint at risky midpoints or context switches
+- inspect simplification opportunities after several related units accumulate
+- avoid forcing one long opaque implementation burst
+
+This does not force a git commit after every unit.
+
+It does require an inspectable checkpoint when the execution state would otherwise become hard to reconstruct later.
+
 ## 7. System Interaction Check Policy
 
 Some units need more than local verification.
@@ -258,12 +307,15 @@ This is the main place where `cmon` borrows from the strongest system-awareness 
 `cmon:work` must stop and surface the issue when:
 
 - the target project area still lacks git initialization
+- the current workspace should first be isolated through `cmon:worktree`
 - the current unit boundary is unclear
 - required files are out of scope
 - verification cannot be run as planned
 - a required system interaction check cannot be completed responsibly
 - a failing dependency invalidates the unit
 - the work now requires product or architectural re-decision
+- a delegated sub-slice no longer fits its packet
+- simplification now requires a structural plan change rather than a local cleanup
 
 This is a core `cmon` policy:
 

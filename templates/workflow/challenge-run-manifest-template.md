@@ -19,5 +19,6 @@
 ## Output
 
 - Write Summary: <yes | no>
+- Write Per-Lens Outputs: <yes | no; default yes>
+- Write Disposition: <yes | no; default yes>
 - Required Transition Decision: <yes>
-

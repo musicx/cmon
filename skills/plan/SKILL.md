@@ -26,6 +26,7 @@ Use this skill when one of these is true:
 
 If product behavior or chosen direction is still ambiguous, go back to `cmon:think`.
 If flow, state, or boundary design is still ambiguous, go back to `cmon:design`.
+If the work is a greenfield project, a new user-facing CLI/API/UI/operator surface, or introduces persistence, config, or multiple workflows, require an explicit design artifact before planning.
 
 ## Required Outputs
 

@@ -49,6 +49,7 @@ Use `cmon:worktree` when:
 - the next unit is risky enough that a cleaner diff boundary is worth explicit isolation
 - more than one stream of implementation or fix work may proceed in parallel
 - a review or debug pass would be materially clearer in an isolated workspace
+- the current `cmon:work` unit is a substantial greenfield slice that should not share a noisy default workspace
 
 ### Conditionally Mandatory
 
@@ -57,6 +58,8 @@ Treat `cmon:worktree` as effectively mandatory when:
 - the same working tree already carries unrelated in-progress work
 - the intended parallel work would otherwise violate clean write-scope isolation
 - the invoking workflow explicitly depends on a clean diff boundary
+- `cmon:work` has selected `parallel` execution
+- the current workspace is too noisy to preserve a clean unit boundary or verify-ready diff
 
 ### Usually Skip
 

@@ -86,6 +86,13 @@ Default collaboration pattern:
 - `product-led` for experience-heavy design
 - `engineering-led` for architecture and interface-heavy design
 
+Mandatory trigger examples:
+
+- greenfield projects
+- new user-facing CLI, API, UI, or operator surfaces
+- work that introduces persistence, config, storage, or multiple workflows
+- cases where planning would otherwise invent behavior or boundary truth
+
 ### `cmon:plan`
 
 Produces the implementation plan:
@@ -123,6 +130,8 @@ Produces the implementation result:
 - code
 - tests
 - verification evidence
+- delegated execution packet when strategy is not inline
+- unit checkpoint when execution state should stay inspectable
 - review-relevant findings
 - scoped execution artifacts when needed
 
@@ -222,3 +231,4 @@ Detailed comparison and prioritization live in:
 - `docs/architecture/2026-04-08-verify-skill-v0.md`
 - `docs/architecture/2026-04-08-challenge-skill-v0.md`
 - `docs/architecture/2026-04-08-repo-foundation-gate-v0.md`
+- `docs/architecture/2026-04-08-work-stage-benchmark-v0.md`

@@ -5,6 +5,9 @@
 - Challenge Target: <design | plan | design_and_plan>
 - Artifact Paths:
   - <path>
+- Product Challenger Output Path: <path or "none">
+- Engineering Challenger Output Path: <path or "none">
+- Operations Challenger Output Path: <path or "none">
 
 ## Scope Check
 
@@ -38,5 +41,6 @@
 - Summary: <1-3 sentences>
 - Final Decision: <proceed | revise | block>
 - Route Owner: <cmon:design | cmon:plan | cmon:work | human>
+- Disposition Path: <path or "required">
 - Required Transition Decision:
   - See `templates/workflow/stage-transition-decision-template.md`
