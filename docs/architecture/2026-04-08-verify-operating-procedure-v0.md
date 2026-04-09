@@ -13,6 +13,7 @@ Before starting, collect:
 - verification evidence
 - system interaction check if one exists
 - scope expansion request if one exists
+- current git status
 
 Then create:
 
@@ -84,10 +85,32 @@ The summary should state:
 - what verification depth was used
 - whether any hard stops blocked acceptance
 - whether specialist scrutiny is still required
+- whether a commit was created or why commit is blocked
 - what remains unproven
 - whether the unit is accepted or needs more work
 
-## 8. Step 7: Route
+## 8. Step 7: Commit Accepted Work
+
+If the unit is accepted:
+
+1. Run `git status`.
+2. Stage only the accepted unit's intended files.
+3. Create a git commit for the accepted unit.
+4. Record commit hash and subject in the verification summary.
+
+If committing is unsafe or impossible, record the blocker in the verification summary.
+
+Valid blockers:
+
+- user decision to delay commit
+- unrelated dirty worktree
+- missing git repo
+- failing verification
+- scope mismatch
+
+Do not proceed as if verification is complete without a commit hash or explicit blocker.
+
+## 9. Step 8: Route
 
 Use:
 

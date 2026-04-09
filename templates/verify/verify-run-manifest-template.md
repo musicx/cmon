@@ -24,6 +24,15 @@
 - Performance-sensitive: <yes | no>
 - Contract-sensitive: <yes | no>
 
+## Git Commit Expectation
+
+- Git Repo Confirmed: <yes | no>
+- Commit Required If Accepted: <yes>
+- Dirty Worktree Before Verify:
+  - <summary or "none">
+- Known Unrelated Changes:
+  - <path or "none">
+
 ## Expected Route
 
 - Expected next stage: <cmon:compound | cmon:work | infer>

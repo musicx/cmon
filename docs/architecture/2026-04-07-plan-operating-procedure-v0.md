@@ -46,6 +46,15 @@ Read:
 - the human design approval artifact when design was required
 - the existing plan when deepening
 
+Validate that the human design approval is real before planning:
+
+- status is `approved` or `waived_by_user`
+- `Approved By` names the human
+- `User Approval Quote` contains the exact user approval or waiver
+- approval was recorded after `cmon:challenge(mode=design)`
+
+If the approval artifact is missing, pending, agent-authored without user evidence, or only inferred from the original task request, stop and request human approval.
+
 If the work still depends on unresolved product or design decisions:
 
 - stop and route back to `cmon:think` or `cmon:design`

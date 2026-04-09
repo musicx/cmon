@@ -26,6 +26,7 @@ The corrected shape is:
 - human package approval gates work
 - work implements the approved unit
 - verify checks whether implementation claims are actually supported
+- verify commits accepted units or records why commit is blocked
 - verify itself becomes the default post-work engineering review and acceptance gate
 
 ## What `cmon:verify` Should Do
@@ -41,6 +42,7 @@ The corrected shape is:
 - classify verification depth
 - stop on hard acceptance failures
 - record when specialist scrutiny is required
+- create a git commit for accepted implementation units or record an explicit commit blocker
 
 ## What `cmon:verify` Should Not Do
 
@@ -72,6 +74,7 @@ It now does this through `mode=design` and `mode=package`.
 - depth-aware
 - hard-stop aware
 - specialist-escalation aware
+- commit-aware
 
 ## Corrected Lifecycle
 

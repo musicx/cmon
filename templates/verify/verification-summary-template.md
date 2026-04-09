@@ -40,6 +40,17 @@
 - Performance: <needed | not_needed>
 - Contract: <needed | not_needed>
 
+## Git Commit
+
+- Commit Required: <yes>
+- Git Status Checked: <yes | no>
+- Commit Created: <yes | no>
+- Commit Hash: <hash | "none">
+- Commit Subject: <subject | "none">
+- Commit Blocker: <none | user_decision | unrelated_dirty_worktree | missing_git_repo | failing_verification | scope_mismatch | other>
+- Commit Blocker Detail:
+  - <detail or "none">
+
 ## Judgment
 
 - Claim verified: <yes | no | partially>
@@ -48,4 +59,4 @@
 
 ## Recommended Next Action
 
-- <proceed to compound | return to work>
+- <proceed to compound | return to work | commit before proceeding>

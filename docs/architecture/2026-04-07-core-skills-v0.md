@@ -40,6 +40,8 @@ cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> h
 
 Not every task needs the full chain, but this is the default path for substantial work.
 `human_design_approval` and `human_package_approval` are conceptual approval gates recorded in `docs/approvals/`, not skills.
+They are hard human gates.
+Agents may record explicit user decisions, but must not approve or waive on behalf of the user.
 
 ## Skill Roles
 
@@ -198,7 +200,7 @@ Produces the reusable learning artifact:
 | `cmon:challenge(mode=package)` | explicit package challenge judgment and routing decision |
 | `human_package_approval` | `docs/approvals/...` |
 | `cmon:work` | code + tests + execution JSON updates + verification evidence + scoped execution artifacts |
-| `cmon:verify` | explicit verification judgment and routing decision |
+| `cmon:verify` | explicit verification judgment, commit hash or commit blocker, and routing decision |
 | `cmon:compound` | `docs/solutions/...` or updated durable doc |
 
 Current workflow proof coverage lives in:
@@ -218,9 +220,12 @@ Shared handoff decisions should use:
 - no substantial planning when design ambiguity still blocks implementation decisions
 - no planning from a challenged design until `human_design_approval` exists
 - no substantial work before the design / plan / execution JSON package has survived `cmon:challenge(mode=package)` and `human_package_approval`
+- no treating agent-authored approval requests as human approvals
+- no `approved` or `waived_by_user` approval artifact without an exact user approval or waiver quote
 - no `cmon:plan` output without a matching execution JSON
 - no `cmon:work` execution without consuming and updating the approved execution JSON task state
 - no implementation claim accepted without an explicit verify pass
+- no accepted verify pass without a git commit hash or explicit commit blocker
 - no completion claim without evidence
 - no reusable lesson left undocumented when the compound trigger is met
 

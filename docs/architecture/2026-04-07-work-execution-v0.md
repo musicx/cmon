@@ -24,7 +24,7 @@ This layer exists to prevent the failures that usually happen during implementat
 For each execution unit, `cmon:work` must:
 
 1. load an approved task from the execution JSON
-2. confirm the human package approval exists
+2. confirm the human package approval is valid and contains explicit user approval or waiver evidence
 3. mark the task `in_progress` before making edits
 4. confirm repo foundation before making edits
 5. decide whether workspace isolation should be upgraded first
@@ -51,7 +51,7 @@ Minimum inputs:
 - approved plan path
 - approved execution JSON path
 - execution JSON task identifier
-- human package approval path
+- valid human package approval path
 - unit identifier or unit title
 - target project directory or repo root
 - files or modules in scope

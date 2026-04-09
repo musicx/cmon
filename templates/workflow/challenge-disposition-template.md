@@ -19,4 +19,6 @@
 
 - Ready For Human Approval: <yes | no>
 - Approval Target: <human_design_approval | human_package_approval | none>
+- Approval Artifact Status: <pending_user_approval | not_created | already_user_approved>
+- Agent Approval Prohibited: <yes>
 - Remaining Accepted Risk: <short note or "none">

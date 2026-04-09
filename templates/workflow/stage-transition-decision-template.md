@@ -27,3 +27,11 @@
 ## Notes
 
 - <optional note or "none">
+
+## Human Approval Evidence
+
+- Required Before Next Stage: <yes | no>
+- Approval Status: <not_required | pending_user_approval | approved | changes_required | rejected | waived_by_user>
+- Approved By: <human name or handle | "pending" | "not_required">
+- User Approval Quote:
+  - <exact user quote | "pending" | "not_required">

@@ -23,4 +23,5 @@
 - Write Summary: <yes | no>
 - Write Per-Lens Outputs: <yes | no; default yes>
 - Write Disposition: <yes | no; default yes>
+- Write Approval Request: <yes | no; if yes, status must be pending_user_approval unless explicit user approval already exists>
 - Required Transition Decision: <yes>

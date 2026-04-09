@@ -20,8 +20,16 @@ Do not use this skill unless all required package artifacts exist:
 - a clearly approved, tightly bounded work unit derived from that plan
 - the approved plan's execution JSON
 
-If the human package approval is missing, stop before implementation and route back to `cmon:challenge(mode=package)` or the human approval gate.
+If valid human package approval is missing, stop before implementation and route back to `cmon:challenge(mode=package)` or the human approval gate.
 If the plan or execution JSON is missing or inconsistent, go back to `cmon:plan`.
+
+Valid `human_package_approval` means:
+
+- approval status is `approved` or `waived_by_user`
+- `Approved By` identifies the human, not the agent
+- `User Approval Quote` records the exact user approval or waiver
+- approval happened after `cmon:challenge(mode=package)`
+- the artifact is not merely an agent-authored `pending_user_approval` request
 
 Before any real development begins, confirm the target project area is already a git repo.
 
@@ -54,7 +62,7 @@ Use `templates/work/unit-checkpoint-template.md` to record a meaningful unit che
 
 1. Read the relevant implementation unit critically
 2. Read the corresponding execution JSON task
-3. Confirm human package approval exists
+3. Confirm valid human package approval exists
 4. Confirm repo foundation before editing anything
 5. Decide whether the unit should first use `cmon:worktree`
 6. Lock the current unit boundary
@@ -272,6 +280,7 @@ Use `templates/work/unit-execution-report-template.md` as the default handoff st
 - No jumping to adjacent units without closing the current one
 - No skipping the internal review loop because the code "looks fine"
 - No using `parallel` delegation without explicit disjoint write scopes
+- No treating an agent-authored approval request as valid human approval
 
 ## Handoff
 

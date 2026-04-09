@@ -28,13 +28,21 @@ The JSON is required even for one-task plans because it records status, dependen
 Use this skill when one of these is true:
 
 - `cmon:think` already produced an approved requirements artifact
-- `cmon:design` already produced an approved design artifact
+- `cmon:design` already produced a human-approved design artifact
 - the user provided sufficiently clear behavior, scope, and success criteria
 
 If product behavior or chosen direction is still ambiguous, go back to `cmon:think`.
 If flow, state, or boundary design is still ambiguous, go back to `cmon:design`.
 If the work is a greenfield project, a new user-facing CLI/API/UI/operator surface, or introduces persistence, config, or multiple workflows, require an explicit design artifact before planning.
-If a required design artifact has not passed `human_design_approval`, do not plan yet.
+If a required design artifact has not passed valid `human_design_approval`, do not plan yet.
+
+Valid `human_design_approval` means:
+
+- approval status is `approved` or `waived_by_user`
+- `Approved By` identifies the human, not the agent
+- `User Approval Quote` records the exact user approval or waiver
+- approval happened after `cmon:challenge(mode=design)`
+- the artifact is not merely an agent-authored `pending_user_approval` request
 
 ## Required Outputs
 
@@ -169,6 +177,7 @@ Each unit must include:
 - Do not move to code from this skill
 - Do not skip local pattern and learning recovery
 - Do not use `deepen` as a way to avoid confronting upstream ambiguity
+- Do not treat an agent-authored approval request as valid human approval
 
 ## Handoff
 

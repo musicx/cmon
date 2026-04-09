@@ -238,6 +238,7 @@ Used by:
 Purpose:
 
 - record explicit human approval or requested changes after AI challenge
+- record exact user approval evidence rather than agent inference
 - prevent silent transition from design to planning or from planning to implementation
 - preserve approval evidence in `docs/approvals/`
 
@@ -401,6 +402,8 @@ Not allowed:
 - writing plans without verification
 - writing plans without matching execution JSON
 - starting work without approved package and execution JSON task state
+- marking human approval artifacts `approved` or `waived_by_user` without an explicit user quote
+- treating `pending_user_approval` as approval
 - writing solution docs that do not state the reusable lesson
 
 ## 4. Current Status

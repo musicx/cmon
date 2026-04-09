@@ -18,6 +18,7 @@ It exists to test whether the current design or design+plan package should actua
 - is the current proposed artifact strong enough to move to the next human approval gate
 
 It is not a post-work code review stage.
+It is not a human approval stage.
 
 ## Challenge Modes
 
@@ -93,6 +94,23 @@ The challenge pass should preserve:
 - explicit finding disposition after synthesis
 - conservative merged routing
 
+## Human Approval Boundary
+
+When `cmon:challenge` returns `proceed`, stop at the named human approval gate.
+
+Allowed:
+
+- create an approval request artifact with `Status: pending_user_approval`
+- summarize what the human should review
+- ask the user for explicit approval, requested changes, rejection, or waiver
+
+Not allowed:
+
+- mark a human approval artifact as `approved` based on challenge success
+- mark a human approval artifact as `approved` based on the user's initial task request
+- infer approval from silence, prior momentum, or agent confidence
+- proceed to `cmon:plan` or `cmon:work` without explicit user approval or waiver recorded in the approval artifact
+
 ## Core Questions
 
 This skill should answer:
@@ -122,10 +140,10 @@ Use:
 Typical transitions:
 
 - `proceed -> human_design_approval`
-  - when `mode=design` and the design is strong enough for human approval
+  - when `mode=design` and the design is strong enough to request human approval
 
 - `proceed -> human_package_approval`
-  - when `mode=package` and the design / plan / execution JSON package is strong enough for human approval
+  - when `mode=package` and the design / plan / execution JSON package is strong enough to request human approval
 
 - `revise -> cmon:design`
   - when behavior, flow, state, or boundary truth is still weak

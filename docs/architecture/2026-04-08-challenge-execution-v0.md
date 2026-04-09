@@ -150,6 +150,11 @@ Interpretation:
 
 - `revise` is the normal answer when the challenged package is directionally right but still weak
 - `block` means implementation must not start yet; it normally forces an upstream reroute rather than ending the overall task
+- `proceed` means "ready to ask the user", not "approved"
+
+If `proceed`, the agent may create an approval request artifact with `Status: pending_user_approval`.
+The agent must then stop and ask the user to approve, request changes, reject, or waive the gate.
+The agent must not set `approved` or `waived_by_user` unless the current conversation already contains explicit user approval or waiver for the challenged artifact.
 
 ## 4. Policy Choice
 

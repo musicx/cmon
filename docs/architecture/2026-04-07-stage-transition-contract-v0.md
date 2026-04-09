@@ -136,7 +136,7 @@ The minimum transition decision should record:
 ### `cmon:challenge`
 
 - `proceed`
-  - the tested artifact is ready for the named human approval gate
+  - the tested artifact is ready to request approval at the named human approval gate
 - `revise`
   - the design / plan package needs tightening before handoff
   - route to `cmon:design` when the weakness is behavioral, flow, state, or boundary truth
@@ -155,6 +155,9 @@ Mode-specific interpretation:
   - `proceed -> human_package_approval`
   - never `proceed -> cmon:work` directly
 
+`cmon:challenge` may create a `pending_user_approval` request artifact.
+It must not create an `approved` or `waived_by_user` artifact unless the current conversation already contains explicit user approval or waiver for the specific challenged artifact.
+
 ### `human_design_approval`
 
 - `proceed`
@@ -165,6 +168,9 @@ Mode-specific interpretation:
   - the design cannot be approved because intent, scope, or behavior requires upstream decision
 
 This is a conceptual human gate, not a skill.
+An agent may record this decision, but only after explicit user approval or waiver.
+Valid approval must include `Approved By`, `Approval Source`, `User Approval Quote`, and `Recorded By`.
+If no explicit user approval exists, the only valid forward state is `pending_user_approval`, and `cmon:plan` must not start.
 
 ### `human_package_approval`
 
@@ -176,6 +182,9 @@ This is a conceptual human gate, not a skill.
   - the package cannot be approved because upstream intent, design, or planning is not stable
 
 This is a conceptual human gate, not a skill.
+An agent may record this decision, but only after explicit user approval or waiver.
+Valid approval must include `Approved By`, `Approval Source`, `User Approval Quote`, and `Recorded By`.
+If no explicit user approval exists, the only valid forward state is `pending_user_approval`, and `cmon:work` must not start.
 
 ### `cmon:work`
 
@@ -189,7 +198,7 @@ This is a conceptual human gate, not a skill.
 ### `cmon:verify`
 
 - `proceed`
-  - the implementation claim is sufficiently supported and the implementation is acceptable
+  - the implementation claim is sufficiently supported, the implementation is acceptable, and the accepted unit has a git commit hash or explicit commit blocker
 - `revise`
   - the change requires more work or stronger evidence before acceptance
   - default route is back to `cmon:work`
@@ -198,6 +207,9 @@ This is a conceptual human gate, not a skill.
   - the claim cannot be judged responsibly because the evidence base or handoff package is too weak
   - do not treat the unit as accepted
   - restore a valid upstream route before any new acceptance claim
+
+If the code is accepted but not committed and no blocker is recorded, the correct decision is not `proceed`.
+Commit hygiene is part of verification, not a later optional cleanup.
 
 ### `cmon:compound`
 

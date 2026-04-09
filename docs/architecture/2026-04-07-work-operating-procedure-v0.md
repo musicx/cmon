@@ -41,7 +41,14 @@ If the execution JSON is missing, invalid, stale, or inconsistent with the Markd
 
 Do not start coding from an underspecified unit or mismatched task graph.
 
-Confirm the human package approval artifact exists before continuing.
+Confirm the human package approval artifact is valid before continuing:
+
+- status is `approved` or `waived_by_user`
+- `Approved By` names the human
+- `User Approval Quote` contains the exact user approval or waiver
+- approval was recorded after `cmon:challenge(mode=package)`
+
+If the approval artifact is missing, pending, agent-authored without user evidence, or only inferred from the original task request, stop and request human approval.
 
 ## 3. Step 2: Confirm Repo Foundation
 
@@ -271,6 +278,7 @@ Stop and surface the issue when:
 
 - the target project directory still is not a git repo when real development should begin
 - the human package approval artifact is missing
+- the human package approval artifact is pending, inferred, agent-authored without user evidence, or otherwise invalid
 - execution JSON is missing, invalid, stale, or inconsistent with the Markdown plan
 - the unit boundary is not real in practice
 - the chosen execution strategy is no longer valid in practice

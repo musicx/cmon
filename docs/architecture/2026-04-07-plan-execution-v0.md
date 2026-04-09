@@ -43,6 +43,9 @@ Locate:
 - design artifact when relevant
 - prior plan if deepening
 
+Treat the design approval artifact as valid only when it records explicit user approval or waiver after `cmon:challenge(mode=design)`.
+An agent-created `pending_user_approval` request, challenge pass, or inferred approval from the initial task request is not enough to start planning.
+
 If product behavior or design ambiguity still blocks planning:
 
 - stop and return upstream instead of letting planning invent it

@@ -101,6 +101,11 @@ cmon:understand -> cmon:think -> cmon:design -> cmon:challenge(mode=design) -> h
 `human_design_approval` and `human_package_approval` are conceptual approval gates, not skills.
 Record their decisions in `docs/approvals/` using the workflow approval templates.
 
+Human approval gates are hard stops.
+An agent may prepare an approval request artifact, but it must not mark approval as `approved` or `waived_by_user` unless the current conversation contains an explicit user approval or waiver for the specific artifact package.
+Valid approval artifacts must include the human approver, the exact user approval quote or instruction, the approval source, and the recording agent.
+Do not treat `cmon:challenge` success, user approval of the general task, or agent judgment as human approval.
+
 1. **`cmon:understand`**
    - Scan repo context, existing docs, and prior decisions
    - Use role-separated repo understanding where useful
@@ -139,6 +144,7 @@ Record their decisions in `docs/approvals/` using the workflow approval template
 
 5. **`human_design_approval`**
    - Pause for explicit human approval before implementation planning starts
+   - Do not proceed to `cmon:plan` until the user has explicitly approved or waived the specific design artifact after challenge
    - If the human requests changes, route back to `cmon:design` and repeat the design challenge
 
 6. **`cmon:plan`**
@@ -154,6 +160,7 @@ Record their decisions in `docs/approvals/` using the workflow approval template
 
 8. **`human_package_approval`**
    - Pause for explicit human approval before implementation starts
+   - Do not proceed to `cmon:work` until the user has explicitly approved or waived the specific design / plan / execution JSON package after challenge
    - If the human requests changes, route back to `cmon:plan` or `cmon:design` and repeat the relevant challenge
 
 9. **`cmon:work`**
@@ -168,6 +175,7 @@ Record their decisions in `docs/approvals/` using the workflow approval template
 
 10. **`cmon:verify`**
    - Treat implementation as unaccepted until the code, plan alignment, and evidence package actually support the claim
+   - When a verify pass accepts an implemented unit, create a git commit for that accepted unit before moving forward, or record an explicit commit blocker
    - This is the default post-work stage
 
 11. **`cmon:compound`**
