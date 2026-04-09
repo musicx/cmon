@@ -55,11 +55,16 @@ Use:
 - `scripts/link_codex_skills.py install`
 - `scripts/link_codex_skills.py status`
 - `scripts/link_codex_skills.py uninstall`
+- `scripts/link_codex_skills.ps1 install`
+- `scripts/link_codex_skills.ps1 status`
+- `scripts/link_codex_skills.ps1 uninstall`
 
 Optional flags:
 
 - `--codex-home <path>`
 - `--force`
+- `-CodexHome <path>` for PowerShell
+- `-Force` for PowerShell
 
 ## Expected Workflow
 

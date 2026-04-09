@@ -42,3 +42,6 @@ Current local-dev script:
 - `link_codex_skills.py`
   - installs live wrapper skills into `~/.codex/skills/`
   - keeps the canonical source in this repo through a symlinked vendor import
+- `link_codex_skills.ps1`
+  - Windows PowerShell equivalent for live wrapper install into Codex
+  - uses the same repo-link plus wrapper model as the Python installer
