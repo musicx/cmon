@@ -6,13 +6,13 @@ In v0, `cmon` is still document-first. The review helper is defined by docs and 
 
 One exception now exists:
 
-- local Codex installation support for live skill development
+- local Codex/opencode installation support for live skill development
 
 ## Intended Script Scope
 
 Future scripts here may help with:
 
-- installing `cmon` skills into local Codex via live wrappers
+- installing `cmon` skills into a shared local agents home via live wrappers
 - resolving work-unit manifests
 - rendering verification or execution reports
 - resolving review scope
@@ -40,8 +40,9 @@ The first script should stay narrow and support `cmon:review` only.
 Current local-dev script:
 
 - `link_codex_skills.py`
-  - installs live wrapper skills into `~/.codex/skills/`
+  - installs live wrapper skills into `~/.agents/skills/` by default
   - keeps the canonical source in this repo through a symlinked vendor import
+  - preserves `--codex-home` as a deprecated compatibility alias
 - `link_codex_skills.ps1`
-  - Windows PowerShell equivalent for live wrapper install into Codex
+  - Windows PowerShell equivalent for live wrapper install into the shared agents home
   - uses the same repo-link plus wrapper model as the Python installer

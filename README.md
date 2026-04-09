@@ -9,7 +9,7 @@ Core goals:
 - force explicit thinking, design, planning, challenge, work, and verification boundaries
 - keep implementation bounded and evidence-backed
 - preserve reusable knowledge without turning the repo into a general research platform
-- support live local skill development through Codex wrapper installs
+- support live local skill development through shared agent wrapper installs
 
 ## Canonical Workflow
 
@@ -70,15 +70,16 @@ Deprecated aliases kept for compatibility:
 - [scripts/](/Users/ericliu/Code/projects/cmon/scripts)
   Lightweight local-dev helpers, including Codex live install.
 
-## Local Codex Install
+## Local Agent Install
 
 `cmon` uses a live-wrapper model:
 
-- one vendor link into Codex-managed storage
+- one vendor link into agent-managed storage
+- default install home is `~/.agents`, shared by Codex/opencode-capable skill loaders
 - one thin installed wrapper per skill
 - canonical skill content stays in this repo
 
-That means you edit `cmon` in place, then restart Codex to pick up changes.
+That means you edit `cmon` in place, then restart Codex/opencode to pick up changes.
 
 macOS / Linux:
 

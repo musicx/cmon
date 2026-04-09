@@ -3,6 +3,8 @@ param(
     [ValidateSet("install", "uninstall", "status")]
     [string]$Command,
 
+    [string]$AgentsHome,
+
     [string]$CodexHome,
 
     [switch]$Force
@@ -15,12 +17,19 @@ $SkillsRoot = Join-Path $RepoRoot "skills"
 $MarkerFile = ".cmon-wrapper.json"
 $VendorName = "cmon"
 
-if (-not $CodexHome) {
-    if ($env:CODEX_HOME) {
-        $CodexHome = $env:CODEX_HOME
+if ($AgentsHome -and $CodexHome) {
+    throw "Use only one of -AgentsHome or deprecated -CodexHome."
+}
+
+if ($AgentsHome) {
+    $CodexHome = $AgentsHome
+}
+elseif (-not $CodexHome) {
+    if ($env:AGENTS_HOME) {
+        $CodexHome = $env:AGENTS_HOME
     }
     else {
-        $CodexHome = Join-Path $HOME ".codex"
+        $CodexHome = Join-Path $HOME ".agents"
     }
 }
 
@@ -210,7 +219,7 @@ function Install-CmonSkills {
 
     Write-Output "Installed $($skills.Count) cmon skill wrappers into $installRoot"
     Write-Output "Vendor link: $vendorRepoPath -> $RepoRoot"
-    Write-Output "Restart Codex to pick up new or updated skills."
+    Write-Output "Restart Codex/opencode to pick up new or updated skills."
 }
 
 function Uninstall-CmonSkills {
@@ -262,7 +271,7 @@ function Show-Status {
     $vendorRepoPath = Join-Path (Join-Path $CodexHomePath "vendor_imports") $VendorName
 
     Write-Output "Repo root: $RepoRoot"
-    Write-Output "Codex home: $CodexHomePath"
+    Write-Output "Agents home: $CodexHomePath"
     Write-Output "Vendor link: $vendorRepoPath"
 
     if (Test-Path -LiteralPath $vendorRepoPath) {

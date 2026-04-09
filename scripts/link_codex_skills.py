@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Install live cmon skills into Codex through a repo symlink plus thin wrappers.
+"""Install live cmon skills into an agent-shared home through thin wrappers.
 
 Why wrappers instead of symlinking each skill directory directly:
 
 - cmon skills refer to `agents/`, `templates/`, and `docs/` at the repo root
-- Codex resolves skill-relative paths from the installed skill directory
+- Codex and opencode resolve skill-relative paths from the installed skill directory
 - direct per-skill symlinks would therefore break those repo-relative references
 
 This script solves that by:
 
-1. creating one symlink from `$CODEX_HOME/vendor_imports/cmon` to this repo
-2. generating thin wrapper skill folders in `$CODEX_HOME/skills/`
-3. having each wrapper point Codex at the canonical skill source in the live repo
+1. creating one symlink from `$AGENTS_HOME/vendor_imports/cmon` to this repo
+2. generating thin wrapper skill folders in `$AGENTS_HOME/skills/`
+3. having each wrapper point the host agent at the canonical skill source in the live repo
 
 That keeps the installed skills live-updating while preserving repo-relative guidance.
 """
@@ -198,7 +198,7 @@ def install(codex_home: Path, force: bool) -> None:
 
     print(f"Installed {len(discover_skills())} cmon skill wrappers into {install_root}")
     print(f"Vendor symlink: {vendor_repo_path} -> {REPO_ROOT}")
-    print("Restart Codex to pick up new or updated skills.")
+    print("Restart Codex/opencode to pick up new or updated skills.")
 
 
 def uninstall(codex_home: Path) -> None:
@@ -226,7 +226,7 @@ def status(codex_home: Path) -> None:
     vendor_repo_path = codex_home / "vendor_imports" / VENDOR_NAME
 
     print(f"Repo root: {REPO_ROOT}")
-    print(f"Codex home: {codex_home}")
+    print(f"Agents home: {codex_home}")
     print(f"Vendor link: {vendor_repo_path}")
 
     if vendor_repo_path.is_symlink():
@@ -250,16 +250,21 @@ def status(codex_home: Path) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Manage live cmon skill wrappers for Codex.")
+    parser = argparse.ArgumentParser(description="Manage live cmon skill wrappers for Codex/opencode.")
     parser.add_argument(
         "command",
         choices=["install", "uninstall", "status"],
         help="Operation to perform.",
     )
     parser.add_argument(
+        "--agents-home",
+        default=None,
+        help="Shared agents home directory. Defaults to $AGENTS_HOME or ~/.agents.",
+    )
+    parser.add_argument(
         "--codex-home",
-        default=os.environ.get("CODEX_HOME", str(Path.home() / ".codex")),
-        help="Codex home directory. Defaults to $CODEX_HOME or ~/.codex.",
+        default=None,
+        help="Deprecated alias for --agents-home. Kept for existing scripts.",
     )
     parser.add_argument(
         "--force",
@@ -268,7 +273,16 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    codex_home = Path(args.codex_home).expanduser().resolve()
+    if args.agents_home and args.codex_home:
+        parser.error("Use only one of --agents-home or deprecated --codex-home.")
+
+    install_home_arg = (
+        args.agents_home
+        or args.codex_home
+        or os.environ.get("AGENTS_HOME")
+        or str(Path.home() / ".agents")
+    )
+    codex_home = Path(install_home_arg).expanduser().resolve()
 
     try:
         if args.command == "install":
